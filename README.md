@@ -1,4 +1,4 @@
 # bassform
 Simple SPA website framework built on Bootstrap and PHP.
 
-Build: v0.1
+Build: v1.0 - In Development
