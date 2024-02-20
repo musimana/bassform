@@ -1,0 +1,23 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+        - config/
+        - database/
+        - routes/
+        # - storage/app/stubs/
+        - tests/
+
+    # Level 9 is the highest level
+    level: 7
+
+    ignoreErrors:
+
+    excludePaths:
+        - tests/ # 40 errors 2023-12-04
+        - app/Providers/DuskServiceProvider.php # 8 errors 2024-02-01, all `Call to an undefined method App\Providers\DuskServiceProvider::`
+
+    checkGenericClassInNonGenericObjectType: false
