@@ -14,13 +14,17 @@
         "tightenco/ziggy": "^1.8.1"
     },
     "require-dev": {
+        "doctrine/dbal": "^3.8.0",
         "fakerphp/faker": "^1.23.1",
-        "laravel/pint": "^1.13.11",
-        "laravel/sail": "^1.27.4",
+        "jasonmccreary/laravel-test-assertions": "^2.3",
+        "larastan/larastan": "^2.9.0",
+        "laravel/dusk": "^7.12.1",
+        "laravel/pint": "^1.14.0",
+        "laravel/sail": "^1.28.0",
         "mockery/mockery": "^1.6.7",
         "nunomaduro/collision": "^7.10.0",
-        "pestphp/pest": "^2.33.6",
-        "pestphp/pest-plugin-laravel": "^2.2.0",
+        "pestphp/pest": "^2.34.0",
+        "pestphp/pest-plugin-laravel": "^2.3.0",
         "spatie/laravel-ignition": "^2.4.2"
     },
     "autoload": {
@@ -48,6 +52,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "lint": [
+            "./vendor/bin/pint"
+        ],
+        "test:types": [
+            "./vendor/bin/phpstan analyse -c phpstan.dist.neon --memory-limit=2G"
         ]
     },
     "extra": {
