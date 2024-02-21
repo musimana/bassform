@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'author' => env('APP_COPYRIGHT', 'MIT (' . date('Y') . ')'),
+    'copyright' => env('APP_COPYRIGHT', 'MIT (' . date('Y') . ')'),
 
     /*
     |--------------------------------------------------------------------------
