@@ -1,21 +1,22 @@
 <script setup>
-import InputError from '@/Components/Forms/Inputs/InputError.vue';
-import InputFile from '@/Components/Forms/Inputs/InputFile.vue';
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue';
-import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import InputError from '@/Components/Forms/Inputs/InputError.vue'
+import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
+import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
+import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import { useForm, usePage } from '@inertiajs/vue3'
 
 const form = useForm({
-    pdfUpload: {},
-});
+  pdfUpload: {},
+})
 
 const submit = () => {
-    form.post(route('textract.store'), {
-        preserveScroll: true,
-        onSuccess: () => form.reset(),
-    });
-};
+  form.post(route('textract.store'), {
+    preserveScroll: true,
+    onSuccess: () => form.reset(),
+  })
+}
+
 </script>
 
 <template>

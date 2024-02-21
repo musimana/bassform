@@ -1,28 +1,28 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue'
 
 defineProps({
-    inputId: {
-        type: String,
-        default: 'file-input',
-    },
-    modelValue: {
-        type: Object,
-        default: () => ({}),
-    },
-});
+  inputId: {
+    type: String,
+    default: 'file-input',
+  },
+  modelValue: {
+    type: Object,
+    default: () => ({}),
+  },
+})
 
-defineEmits(['update:modelValue']);
+defineEmits(['update:modelValue'])
 
-const input = ref(null);
+const input = ref(null)
 
 onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
-        input.value.focus();
-    }
-});
+  if (input.value.hasAttribute('autofocus')) {
+    input.value.focus()
+  }
+})
 
-defineExpose({ focus: () => input.value.focus() });
+defineExpose({ focus: () => input.value.focus() })
 </script>
 
 <template>
