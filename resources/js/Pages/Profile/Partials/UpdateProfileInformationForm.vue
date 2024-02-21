@@ -2,7 +2,7 @@
 import InputError from '@/Components/Forms/Inputs/InputError.vue';
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import InputText from '@/Components/Forms/Inputs/InputText.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 
 defineProps({
@@ -36,7 +36,7 @@ const form = useForm({
             <div>
                 <InputLabel for="name" value="Name" />
 
-                <TextInput
+                <InputText
                     id="name"
                     type="text"
                     class="mt-1 block w-full"
@@ -52,7 +52,7 @@ const form = useForm({
             <div>
                 <InputLabel for="email" value="Email" />
 
-                <TextInput
+                <InputText
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
