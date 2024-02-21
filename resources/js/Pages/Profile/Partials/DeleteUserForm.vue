@@ -1,7 +1,7 @@
 <script setup>
 import DangerButton from '@/Components/DangerButton.vue';
-import InputLabel from '@/Components/InputLabel.vue';
 import InputError from '@/Components/Forms/Inputs/InputError.vue';
+import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
