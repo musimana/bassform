@@ -1,36 +1,37 @@
 <script setup>
-import InputError from '@/Components/Forms/Inputs/InputError.vue';
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import InputText from '@/Components/Forms/Inputs/InputText.vue';
-import { useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import InputError from '@/Components/Forms/Inputs/InputError.vue'
+import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import { useForm } from '@inertiajs/vue3'
+import { ref } from 'vue'
 
-const passwordInput = ref(null);
-const currentPasswordInput = ref(null);
+const passwordInput = ref(null)
+const currentPasswordInput = ref(null)
 
 const form = useForm({
-    current_password: '',
-    password: '',
-    password_confirmation: '',
-});
+  current_password: '',
+  password: '',
+  password_confirmation: '',
+})
 
 const updatePassword = () => {
-    form.put(route('password.update'), {
-        preserveScroll: true,
-        onSuccess: () => form.reset(),
-        onError: () => {
-            if (form.errors.password) {
-                form.reset('password', 'password_confirmation');
-                passwordInput.value.focus();
-            }
-            if (form.errors.current_password) {
-                form.reset('current_password');
-                currentPasswordInput.value.focus();
-            }
-        },
-    });
-};
+  form.put(route('password.update'), {
+    preserveScroll: true,
+    onSuccess: () => form.reset(),
+    onError: () => {
+      if (form.errors.password) {
+        form.reset('password', 'password_confirmation')
+        passwordInput.value.focus()
+      }
+      if (form.errors.current_password) {
+        form.reset('current_password')
+        currentPasswordInput.value.focus()
+      }
+    },
+  })
+}
+
 </script>
 
 <template>

@@ -3,19 +3,24 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && vite build --ssr"
+        "build": "vite build && vite build --ssr",
+        "lint": "composer lint && npx eslint --fix \"resources/**/*.{js,vue}\" \"./*.{cjs,js}\""
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.14",
         "@tailwindcss/forms": "^0.5.7",
-        "@vitejs/plugin-vue": "^5.0.4",
+        "@vitejs/plugin-vue": "5.0.4",
         "@vue/server-renderer": "^3.4.19",
         "autoprefixer": "^10.4.17",
         "axios": "^1.6.7",
+        "eslint": "^8.56.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-vue": "^9.21.1",
         "laravel-vite-plugin": "^1.0.1",
         "postcss": "^8.4.35",
         "tailwindcss": "^3.4.1",
-        "vite": "^5.1.3",
+        "vite": "^5.1.4",
         "vue": "^3.4.19"
     }
 }
