@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Content\PageContentResource;
+use App\Http\Resources\Views\Public\Content\PageContentResource;
+use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
 use App\Models\Page;
-use App\Repositories\Public\PublicViewRepository;
+use App\Repositories\Views\PublicViewRepository;
 use Inertia\Response;
 
 class PageController extends Controller
@@ -14,9 +15,10 @@ class PageController extends Controller
     public function show(Page $page): Response
     {
         return (new PublicViewRepository)
-            ->getPublicView(
+            ->getViewDetails(
                 $page->template,
-                (new PageContentResource)->get()
+                (new PageContentResource)->getItem($page),
+                (new PageMetadataResource)->getItem($page)
             );
     }
 }

@@ -32,6 +32,15 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectHeaderValues.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectHtmlBody.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectHtmlHead.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectPropsAuth.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectPropsDetails.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectSessionValues.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectXmlSitemapIndex.php';
+include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectXmlSitemapPages.php';
+
 /*
 |--------------------------------------------------------------------------
 | Functions
@@ -43,7 +52,5 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
+include_once __DIR__ . '/Pest/Functions/CompositeTests/TestNotifiedUpdate.php';
+include_once __DIR__ . '/Pest/Functions/CompositeTests/TestNotifiedUpdateValidationErrorEmail.php';

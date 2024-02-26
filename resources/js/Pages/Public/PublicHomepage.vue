@@ -1,7 +1,8 @@
 <script setup>
-import PublicLayout from '@/Layouts/PublicLayout.vue'
+import AppHead from '@/Components/Sections/AppHead.vue'
+import AppPanel from '@/Components/Sections/AppPanel.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentHomepage from '@/Pages/Public/Partials/ContentHomepage.vue'
-import { Head } from '@inertiajs/vue3'
 
 defineProps({
   content: {
@@ -16,9 +17,11 @@ defineProps({
 </script>
 
 <template>
-    <Head :title="metadata?.appName" />
+  <AppHead :metadata="metadata" />
 
-    <PublicLayout>
-        <ContentHomepage />
-    </PublicLayout>
+  <LayoutGuest>
+    <AppPanel>
+      <ContentHomepage />
+    </AppPanel>
+  </LayoutGuest>
 </template>

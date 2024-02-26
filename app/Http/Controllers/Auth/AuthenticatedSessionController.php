@@ -4,50 +4,51 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\Views\Auth\Metadata\LoginMetadataResource;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\Views\AuthViewRepository;
+use App\Services\LogoutService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use Inertia\Response;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
-    public function create(): Response
+    const TEMPLATE_LOGIN = 'Auth/AuthLogin';
+
+    /** Display the login view. */
+    public function create(): RedirectResponse|Response
     {
-        return Inertia::render('Auth/Login', [
-            'canResetPassword' => Route::has('password.request'),
-            'status' => session('status'),
-        ]);
+        if (auth()->check()) {
+            return redirect(route('home'));
+        }
+
+        return (new AuthViewRepository)->getViewDetails(
+            self::TEMPLATE_LOGIN,
+            [],
+            (new LoginMetadataResource)->getItem()
+        );
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+    /** Handle an incoming authentication request. */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
-
-        $request->session()->regenerate();
+        if (!auth()->check()) {
+            $request->authenticate();
+            $request->session()->regenerate();
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
+    /** Destroy an authenticated session via GET request. */
+    public function edit(): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        return LogoutService::logout();
+    }
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+    /** Destroy an authenticated session via POST request. */
+    public function destroy(): RedirectResponse
+    {
+        return LogoutService::logout();
     }
 }

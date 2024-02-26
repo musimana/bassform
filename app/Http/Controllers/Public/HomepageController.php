@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Content\HomepageContentResource;
-use App\Repositories\Public\PublicViewRepository;
+use App\Http\Resources\Views\Public\Content\HomepageContentResource;
+use App\Repositories\Views\PublicViewRepository;
 use Inertia\Response;
 
 class HomepageController extends Controller
@@ -14,9 +14,9 @@ class HomepageController extends Controller
     /** Display the public homepage. */
     public function __invoke(): Response
     {
-        return (new PublicViewRepository)->getPublicView(
+        return (new PublicViewRepository)->getViewDetails(
             self::TEMPLATE_PUBLIC_INDEX,
-            (new HomepageContentResource)->get()
+            (new HomepageContentResource)->getItem()
         );
     }
 }
