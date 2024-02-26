@@ -16,7 +16,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Meta Copyright
+    | Copyright Message
     |--------------------------------------------------------------------------
     |
     | The copyright message string to be used in the footer.
@@ -39,13 +39,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Github Link
+    | Social Media Links
     |--------------------------------------------------------------------------
     |
-    | Github link for the project's repo. Used in the footer.
+    | Array of external links to be made available to the app's frontend.
     |
     */
 
-    'github' => env('APP_LINK_PROJECT_REPO'),
-
+    'social_links' => [
+        'github' => env('APP_LINK_PROJECT_REPO'),
+    ],
 ];
