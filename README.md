@@ -7,72 +7,28 @@ VILT stack template app for PHP 8.2.x created by Musimana. Features include with
 [Laravel 10.x](https://laravel.com/docs),
 [Tailwind 3.x](https://tailwindcss.com/docs)
 
-## Getting Started
+This project is based on Breeze, with an opinionated style that aims to simplify creating new instances. On top of the Breeze scaffolding,
+the template includes many additional scripts suitable for a variety of vanilla builds, with pointers for adding more advanced functionality.
 
-### Requirements
+## Installation
 
-* [Composer](https://getcomposer.org/download)
-* [Node.js](https://nodejs.org/en/download) with NPM
+See the [installation instructions](.docs/INSTALL.md) to get the project set-up locally.
 
-### Installation
+## Project CLI Commnds
 
-Once the repo is forked and then cloned to a local repository, install the project's dependencies by running the following:
+See the [console docs](.docs/CONSOLE.md) for details of common commands for the project, including compiling the assets & seeding content.
 
-```sh
-$ composer i
-# Installing dependencies from lock file (including require-dev)...
+## Contributing
 
-$ npm i
-# up to date, audited... // Exact message depends on the state of the local environment
+See the [info on contributing](.docs/CONTRIBUTING.md) if you would like to submit a PR for the project.
 
-$ php artisan migrate --seed
-# INFO  Preparing database...
-```
+## Testing
 
-Then create the local [Dotenv](./.env) with:
+See the [testing docs](.docs/TESTING.md) for info on running the project's test suite.
 
-```sh
-$ cp .env.example .env && php artisan key:generate
-# INFO  Application key set successfully.
-```
+## Releases
 
-Review the properties in the local [Dotenv](./.env) to ensure they are set-up to match the desired environment.
-
-## Compiling & Serving Assets
-
-To compile & serve the assets in development mode run:
-
-```sh
-$ npm run dev
-# > dev...
-```
-
-To compile & serve the assets in production mode run:
-
-```sh
-$ npm run build && php artisan inertia:start-ssr
-# > build...
-```
-
-### Other Project CLI Commnds
-
-```sh
-$ npm run lint
-# ... {runs the linters}
-
-$ composer test:types
-# ... {runs the project's type tests}
-
-$ php artisan test
-# ... {runs the project's unit tests}
-```
-
-Before the first run of the test suite in a new environment, run the following to create a local test SQLite database:
-
-```sh
-$ touch database/database.sqlite
-# ... {creates a local ./database/database.sqlite file}
-```
+See the [release instructions](.docs/RELEASE.md) for info on running deployments.
 
 ## License
 
