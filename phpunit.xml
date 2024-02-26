@@ -5,8 +5,12 @@
          colors="true"
 >
     <testsuites>
+        <testsuite name="Database">
+            <directory>tests/Unit/Database</directory>
+        </testsuite>
         <testsuite name="Unit">
             <directory>tests/Unit</directory>
+            <exclude>tests/Unit/Database</exclude>
         </testsuite>
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
@@ -23,6 +27,7 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
+        <env name="LOG_LEVEL" value="error"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
