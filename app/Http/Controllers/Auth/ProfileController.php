@@ -3,26 +3,75 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Requests\Auth\ProfileDeleteRequest;
+use App\Http\Requests\Auth\ProfileStoreRequest;
+use App\Http\Requests\Auth\ProfileUpdateRequest;
+use App\Http\Resources\Models\UserModelResource;
+use App\Http\Resources\Views\Auth\Metadata\DashboardMetadataResource;
+use App\Http\Resources\Views\Auth\Metadata\ProfileCreateMetadataResource;
+use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use App\Repositories\Views\AuthViewRepository;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    public function edit(Request $request): Response
+    const TEMPLATE_DASHBOARD = 'Profile/ProfileDashboard';
+
+    const TEMPLATE_PROFILE_EDIT = 'Profile/ProfileEdit';
+
+    const TEMPLATE_REGISTER = 'Auth/AuthRegister';
+
+    /** Display the authenticated user's dashboard. */
+    public function index(): Response
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        return (new AuthViewRepository)->getViewDetails(
+            self::TEMPLATE_DASHBOARD,
+            [],
+            (new DashboardMetadataResource)->getItem()
+        );
     }
 
-    /**
-     * Update the user's profile information.
-     */
+    /** Display the registration view. */
+    public function create(): RedirectResponse|Response
+    {
+        return auth()->check()
+            ? redirect(RouteServiceProvider::HOME)
+            : (new AuthViewRepository)->getViewDetails(
+                self::TEMPLATE_REGISTER,
+                [],
+                (new ProfileCreateMetadataResource)->getItem()
+            );
+    }
+
+    /** Handle an incoming registration request. */
+    public function store(ProfileStoreRequest $request): RedirectResponse
+    {
+        if (!auth()->check()) {
+            /** @var User $user */
+            $user = (new UserModelResource)->storeItem($request);
+
+            event(new Registered($user));
+            auth()->login($user);
+        }
+
+        return redirect(RouteServiceProvider::HOME);
+    }
+
+    /** Display the authenticated user's profile form. */
+    public function edit(): Response
+    {
+        return (new AuthViewRepository)->getViewDetails(
+            self::TEMPLATE_PROFILE_EDIT,
+            [],
+            (new ProfileEditMetadataResource)->getItem()
+        );
+    }
+
+    /** Update the authenticated user's profile information. */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -36,20 +85,14 @@ class ProfileController extends Controller
         return to_route('profile.edit');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    /** Delete the authenticated user's account. */
+    public function destroy(ProfileDeleteRequest $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
-
         $user = $request->user();
 
         auth()->logout();
 
-        $user->delete();
+        $user->forceDelete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
