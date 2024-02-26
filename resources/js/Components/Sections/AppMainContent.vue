@@ -1,9 +1,7 @@
 <script setup />
 
 <template>
-    <main class="max-w-7xl min-h-screen mx-auto p-16 lg:p-32">
-        <div class="mt-16 grid grid-cols-1 gap-6 lg:gap-8">
-            <slot />
-        </div>
-    </main>
+  <main class="w-full min-h-screen mx-auto lg:mt-0 px-6 lg:px-8 py-20 lg:py-28">
+    <slot />
+  </main>
 </template>
