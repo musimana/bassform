@@ -52,7 +52,5 @@ include_once __DIR__ . '/Pest/Expectations/ToHaveCorrectXmlSitemapPages.php';
 |
 */
 
-function something()
-{
-    // ..
-}
+include_once __DIR__ . '/Pest/Functions/CompositeTests/TestNotifiedUpdate.php';
+include_once __DIR__ . '/Pest/Functions/CompositeTests/TestNotifiedUpdateValidationErrorEmail.php';
