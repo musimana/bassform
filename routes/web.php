@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Public\HomepageController;
+use App\Http\Controllers\Public\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomepageController::class)->name('home');
+Route::get('/sitemaps/{sitemap}.xml', [SitemapController::class, 'show'])->name('sitemap.show');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 
 require __DIR__ . '/web/auth.php';
+require __DIR__ . '/web/public.php';
