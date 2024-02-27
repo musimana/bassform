@@ -2,6 +2,10 @@
 import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
+  customClasses: {
+    type: String,
+    default: 'app-button-primary-gray-800',
+  },
   href: {
     type: String,
     required: true,
@@ -11,7 +15,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <Link :href="href">
+  <Link
+    class="app-button-base"
+    :class="customClasses"
+    :href="href"
+  >
     <slot />
   </Link>
 </template>

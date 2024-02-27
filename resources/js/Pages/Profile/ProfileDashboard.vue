@@ -1,7 +1,7 @@
 <script setup>
 import AppHead from '@/Components/Sections/AppHead.vue'
 import AppPanel from '@/Components/Sections/AppPanel.vue'
-import LinkButtonPrimary from '@/Components/Navs/Links/LinkButtonPrimary.vue'
+import LinkButton from '@/Components/Navs/Links/LinkButton.vue'
 import LayoutUser from '@/Layouts/LayoutUser.vue'
 
 const props = defineProps({
@@ -31,10 +31,7 @@ const props = defineProps({
       <hr class="my-6" />
 
       <div class="flex justify-end">
-        <LinkButtonPrimary
-          class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition ease-in-out duration-150"
-          :href="route('profile.edit')"
-        >Edit Profile</LinkButtonPrimary>
+        <LinkButton :href="route('profile.edit')">Edit Profile</LinkButton>
       </div>
     </AppPanel>
   </LayoutUser>
