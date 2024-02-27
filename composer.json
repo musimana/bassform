@@ -4,6 +4,10 @@
     "description": "VILT stack template app with server-side rendering (SSR) & Pest, created by Musimana.",
     "keywords": ["Bassform", "Musimana", "Laravel", "VILT", "SSR", "MIT"],
     "license": "MIT",
+    "engines": {
+        "node": ">=20.9.0",
+        "npm": ">=10.2.3"
+    },
     "require": {
         "php": "8.2.*",
         "guzzlehttp/guzzle": "^7.8.1",
