@@ -1,9 +1,8 @@
 <script setup>
-import ButtonDanger from '@/Components/Navs/Buttons/ButtonDanger.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppModal from '@/Components/Modals/AppModal.vue'
-import ButtonSecondary from '@/Components/Navs/Buttons/ButtonSecondary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { useForm } from '@inertiajs/vue3'
 import { nextTick, ref } from 'vue'
@@ -53,7 +52,10 @@ const deleteUser = () => {
       </p>
 
       <div class="flex w-full sm:w-1/2 justify-center sm:justify-end">
-        <ButtonDanger @click="confirmUserDeletion">Delete Account</ButtonDanger>
+        <AppButton
+          custom-classes="app-button-primary-red-600"
+          @click="confirmUserDeletion"
+        >Delete Account</AppButton>
       </div>
     </div>
 
@@ -85,14 +87,18 @@ const deleteUser = () => {
         </div>
 
         <div class="mt-8 flex justify-end">
-          <ButtonSecondary @click="closeModal"> Cancel </ButtonSecondary>
+          <AppButton
+            custom-classes="app-button-secondary-white"
+            type="button"
+            @click="closeModal"
+          >Cancel</AppButton>
 
-          <ButtonDanger
-            class="ms-3"
+          <AppButton
+            custom-classes="app-button-primary-red-600 ms-3"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
             @click="deleteUser"
-          >Delete Account</ButtonDanger>
+          >Delete Account</AppButton>
         </div>
       </div>
     </AppModal>

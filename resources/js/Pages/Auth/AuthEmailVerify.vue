@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import ButtonPrimary from '@/Components/Navs/Buttons/ButtonPrimary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 
 const props = defineProps({
@@ -41,10 +41,10 @@ const verificationLinkSent = computed(() => props.metadata.status === 'verificat
 
     <form @submit.prevent="submit">
       <div class="mt-4 flex items-center justify-between">
-        <ButtonPrimary
+        <AppButton
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
-        >Resend Verification Email</ButtonPrimary>
+        >Resend Verification Email</AppButton>
 
         <Link
           :href="route('logout')"

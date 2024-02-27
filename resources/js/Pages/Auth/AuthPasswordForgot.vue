@@ -3,7 +3,7 @@ import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
-import ButtonPrimary from '@/Components/Navs/Buttons/ButtonPrimary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -59,10 +59,10 @@ const submit = () => {
       </div>
 
       <div class="flex items-center justify-end mt-4">
-        <ButtonPrimary
+        <AppButton
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
-        >Email Password Reset Link</ButtonPrimary>
+        >Email Password Reset Link</AppButton>
       </div>
     </form>
   </LayoutAuth>
