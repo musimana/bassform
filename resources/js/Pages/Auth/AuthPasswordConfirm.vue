@@ -3,7 +3,7 @@ import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
-import ButtonPrimary from '@/Components/Navs/Buttons/ButtonPrimary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -56,11 +56,11 @@ const submit = () => {
       </div>
 
       <div class="flex justify-end mt-4">
-        <ButtonPrimary
-          class="ms-4"
+        <AppButton
+          custom-classes="app-button-primary-gray-800 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
-        >Confirm</ButtonPrimary>
+        >Confirm</AppButton>
       </div>
     </form>
   </LayoutAuth>

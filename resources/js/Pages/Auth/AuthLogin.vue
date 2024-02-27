@@ -4,7 +4,7 @@ import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
-import ButtonPrimary from '@/Components/Navs/Buttons/ButtonPrimary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 
@@ -90,12 +90,12 @@ const submit = () => {
           class="underline text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200"
         >Forgot your password?</Link>
 
-        <ButtonPrimary
+        <AppButton
           id="button-login"
-          class="ms-4"
+          custom-classes="app-button-primary-gray-800 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
-        >Login</ButtonPrimary>
+        >Login</AppButton>
       </div>
     </form>
   </LayoutAuth>

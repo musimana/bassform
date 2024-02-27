@@ -3,7 +3,7 @@ import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
-import ButtonPrimary from '@/Components/Navs/Buttons/ButtonPrimary.vue'
+import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 
 const form = useForm({
@@ -56,11 +56,11 @@ const submit = () => {
         </progress>
       </span>
 
-      <ButtonPrimary
-        class="mt-4"
+      <AppButton
+        custom-classes="app-button-primary-gray-800 mt-4"
         :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
-      >Upload</ButtonPrimary>
+      >Upload</AppButton>
     </div>
   </form>
 
