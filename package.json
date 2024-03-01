@@ -6,22 +6,26 @@
         "build": "vite build && vite build --ssr",
         "lint": "composer lint && npx eslint --fix \"resources/**/*.{js,vue}\" \"./*.{cjs,js}\""
     },
+    "engines": {
+        "node": ">=20.9.0",
+        "npm": ">=10.2.3"
+    },
     "devDependencies": {
-        "@inertiajs/vue3": "^1.0.14",
+        "@inertiajs/vue3": "^1.0.15",
         "@tailwindcss/forms": "^0.5.7",
         "@vitejs/plugin-vue": "5.0.4",
-        "@vue/server-renderer": "^3.4.19",
-        "autoprefixer": "^10.4.17",
+        "@vue/server-renderer": "^3.4.21",
+        "autoprefixer": "^10.4.18",
         "axios": "^1.6.7",
-        "eslint": "^8.56.0",
+        "eslint": "^8.57.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-promise": "^6.1.1",
-        "eslint-plugin-vue": "^9.21.1",
-        "laravel-vite-plugin": "^1.0.1",
+        "eslint-plugin-vue": "^9.22.0",
+        "laravel-vite-plugin": "^1.0.2",
         "postcss": "^8.4.35",
         "tailwindcss": "^3.4.1",
         "vite": "^5.1.4",
-        "vue": "^3.4.19"
+        "vue": "^3.4.21"
     },
     "dependencies": {
         "@vueuse/core": "^10.9.0"
