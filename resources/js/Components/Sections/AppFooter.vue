@@ -3,7 +3,7 @@ import IconGithub from '@/Components/Icons/IconGithub.vue'
 </script>
 
 <template>
-  <footer class="absolute bottom-0 flex w-full m-auto p-4 items-center justify-between">
+  <footer class="absolute bottom-0 flex w-full m-auto py-4 px-6 lg:px-8 items-center justify-between">
     <div class="w-1/2 text-sm text-blue-900 dark:text-blue-200 text-start">
       <div v-if="$page.props.metadata.copyright !== ''" class="flex items-center gap-2">
         {{ $page.props.metadata.copyright }}
