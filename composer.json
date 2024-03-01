@@ -4,30 +4,26 @@
     "description": "VILT stack template app with server-side rendering (SSR) & Pest, created by Musimana.",
     "keywords": ["Bassform", "Musimana", "Laravel", "VILT", "SSR", "MIT"],
     "license": "MIT",
-    "engines": {
-        "node": ">=20.9.0",
-        "npm": ">=10.2.3"
-    },
     "require": {
         "php": "8.2.*",
         "guzzlehttp/guzzle": "^7.8.1",
         "inertiajs/inertia-laravel": "^0.6.11",
-        "laravel/framework": "^10.44.0",
+        "laravel/framework": "^10.46.0",
         "laravel/sanctum": "^3.3.3",
         "laravel/tinker": "^2.9.0",
-        "tightenco/ziggy": "^1.8.1"
+        "tightenco/ziggy": "^1.8.2"
     },
     "require-dev": {
-        "doctrine/dbal": "^3.8.0",
+        "doctrine/dbal": "^3.8.2",
         "fakerphp/faker": "^1.23.1",
-        "jasonmccreary/laravel-test-assertions": "^2.3",
-        "larastan/larastan": "^2.9.0",
-        "laravel/dusk": "^7.12.1",
+        "jasonmccreary/laravel-test-assertions": "^2.4.0",
+        "larastan/larastan": "^2.9.2",
+        "laravel/dusk": "^7.13.0",
         "laravel/pint": "^1.14.0",
-        "laravel/sail": "^1.28.0",
+        "laravel/sail": "^1.28.1",
         "mockery/mockery": "^1.6.7",
         "nunomaduro/collision": "^7.10.0",
-        "pestphp/pest": "^2.34.0",
+        "pestphp/pest": "^2.34.1",
         "pestphp/pest-plugin-laravel": "^2.3.0",
         "spatie/laravel-ignition": "^2.4.2"
     },

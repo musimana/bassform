@@ -21,14 +21,14 @@
     disabled:opacity-25;
 }
 
-.app-button-primary-gray-800 {
+.app-button-primary-gray-900 {
   @apply
-    bg-gray-800
-    border-gray-900
+    bg-gray-900
+    border-gray-700
     text-white
     hover:bg-gray-700
     focus:bg-gray-700
-    active:bg-gray-900;
+    active:bg-gray-950;
 }
 
 .app-button-primary-red-600 {

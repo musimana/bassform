@@ -1,4 +1,5 @@
 <script setup>
+import ControlDarkMode from '@/Components/Navs/ControlDarkMode.vue'
 import NavbarDesktopItems from '@/Components/Navs/Navbars/NavbarDesktopItems.vue'
 import NavbarDesktopLogin from '@/Components/Navs/Navbars/NavbarDesktopLogin.vue'
 import NavbarDesktopUser from '@/Components/Navs/Navbars/NavbarDesktopUser.vue'
@@ -12,9 +13,11 @@ defineEmits(['toggleNavbarMobile'])
 <template>
   <NavbarDesktopItems />
 
-  <span v-if="$page.props.metadata.canLogin || $page.props.metadata.canRegister || $page.props.auth.user" class="hidden lg:flex mx-4 my-auto font-semibold text-blue-800 dark:text-blue-200">|</span>
+  <span class="hidden lg:flex mx-4 my-auto font-semibold text-gray-900 dark:text-white">|</span>
 
-  <div v-if="$page.props.metadata.canLogin || $page.props.metadata.canRegister || $page.props.auth.user" class="hidden space-x-4 lg:-my-px lg:flex">
+  <div class="hidden space-x-4 lg:flex">
+    <ControlDarkMode />
+
     <NavbarDesktopUser v-if="$page.props.auth.user" />
 
     <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin || $page.props.metadata.canRegister" />

@@ -57,7 +57,7 @@ const submit = () => {
       </span>
 
       <AppButton
-        custom-classes="app-button-primary-gray-800 mt-4"
+        custom-classes="app-button-primary-gray-900 mt-4"
         :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
       >Upload</AppButton>
