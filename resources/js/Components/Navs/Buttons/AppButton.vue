@@ -2,7 +2,7 @@
 defineProps({
   customClasses: {
     type: String,
-    default: 'app-button-primary-gray-800',
+    default: 'app-button-primary-gray-900',
   },
   type: {
     type: String,

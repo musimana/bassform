@@ -92,7 +92,7 @@ const submit = () => {
 
         <AppButton
           id="button-login"
-          custom-classes="app-button-primary-gray-800 ms-4"
+          custom-classes="app-button-primary-gray-900 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >Login</AppButton>

@@ -57,7 +57,7 @@ const submit = () => {
 
       <div class="flex justify-end mt-4">
         <AppButton
-          custom-classes="app-button-primary-gray-800 ms-4"
+          custom-classes="app-button-primary-gray-900 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >Confirm</AppButton>
