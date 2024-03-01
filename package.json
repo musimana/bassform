@@ -22,5 +22,8 @@
         "tailwindcss": "^3.4.1",
         "vite": "^5.1.4",
         "vue": "^3.4.19"
+    },
+    "dependencies": {
+        "@vueuse/core": "^10.9.0"
     }
 }
