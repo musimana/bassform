@@ -13,7 +13,7 @@ defineEmits(['toggleNavbarMobile'])
 <template>
   <NavbarDesktopItems />
 
-  <span class="hidden lg:flex mx-4 my-auto font-semibold text-gray-900 dark:text-white">|</span>
+  <span class="hidden lg:flex mx-4 my-auto font-semibold text-gray-900 dark:text-gray-100 cursor-default">|</span>
 
   <div class="hidden space-x-4 lg:flex">
     <ControlDarkMode />

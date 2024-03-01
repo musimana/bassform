@@ -23,11 +23,11 @@ $seeds = [
             </p>
         </section>
 
-        <hr class="mb-1 border-blue-800 dark:border-blue-200" />
-        <hr class="mt-1 border-blue-800 dark:border-blue-200" />
+        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
+        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
 
         <section id="stack" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-white uppercase tracking-widest">++++ Stack ++++</h3>
+            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Stack ++++</h3>
 
             <p>
                 Built with a
@@ -35,7 +35,7 @@ $seeds = [
                     href="https://laravel.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="group inline-flex items-center hover:text-blue-900 dark:hover:text-blue-100 focus:outline focus:outline-2 focus:rounded-sm focus:outline-blue-200"
+                    class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"
                 >
                     <em>Laravel</em>
                 </a>

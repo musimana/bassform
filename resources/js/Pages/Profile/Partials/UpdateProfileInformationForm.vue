@@ -26,7 +26,7 @@ const form = useForm({
 <template>
   <section>
     <header>
-      <h3 class="font-semibold text-sm text-gray-900 dark:text-white uppercase tracking-widest">
+      <h3 class="font-semibold text-sm text-gray-900 dark:text-gray-100 uppercase tracking-widest">
         Profile Information
       </h3>
 
@@ -68,13 +68,13 @@ const form = useForm({
       </div>
 
       <div v-if="mustVerifyEmail && user.email_verified_at === null">
-        <p class="text-sm mt-2 text-gray-800">
+        <p class="text-sm mt-2 text-gray-600">
           Your email address is unverified.
           <Link
             :href="route('verification.send')"
             method="post"
             as="button"
-            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200"
+            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100"
           >Click here to re-send the verification email.</Link>
         </p>
 

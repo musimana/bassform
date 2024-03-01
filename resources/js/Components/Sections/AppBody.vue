@@ -3,7 +3,7 @@
 <template>
   <div class="fixed w-screen h-screen bg-pattern-darker bg-center bg-gray-100 dark:bg-gray-900 dark:bg-pattern-lighter"></div>
 
-  <div class="relative scroll-smooth overflow-y-auto lg:justify-center lg:items-center min-h-screen selection:bg-red-500 selection:text-white">
+  <div class="relative scroll-smooth overflow-y-auto lg:justify-center lg:items-center min-h-screen selection:bg-red-500 selection:text-gray-100">
     <slot />
   </div>
 </template>

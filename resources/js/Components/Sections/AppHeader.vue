@@ -5,12 +5,12 @@ import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
-  <header class="w-full flex h-18 fixed top-0 lg:right-0 m-auto px-6 lg:px-8 py-6 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl from-gray-700 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 shadow-2xl shadow-gray-500/20 dark:shadow-none">
+  <header class="w-full flex h-18 fixed top-0 lg:right-0 m-auto px-6 lg:px-8 py-6 bg-gray-100 dark:bg-gray-700 dark:bg-gradient-to-bl from-gray-700 via-transparent dark:ring-1 dark:ring-inset dark:ring-gray-100/5 shadow-2xl shadow-gray-500/20 dark:shadow-none">
     <div class="w-1/2 flex">
       <Link id="site-logo" :href="route('home')" class="shrink-0 flex items-start space-x-2">
-        <IconAppLogo class="w-7 h-7 stroke-blue-900 fill-blue-900 dark:stroke-blue-200 dark:fill-blue-200" />
+        <IconAppLogo class="w-7 h-7 stroke-gray-900 fill-gray-900 hover:stroke-gray-600 hover:fill-gray-600 dark:stroke-gray-100 dark:fill-gray-100 hover:dark:stroke-gray-300 hover:dark:fill-gray-300" />
 
-        <h1 id="site-title" class="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white">{{ $page.props.metadata.appName }}</h1>
+        <h1 id="site-title" class="text-lg lg:text-xl font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-600 hover:dark:text-gray-300">{{ $page.props.metadata.appName }}</h1>
       </Link>
     </div>
 

@@ -22,11 +22,11 @@ const props = defineProps({
 
   <LayoutUser>
     <template #pageHeader>
-      <h2 class="font-semibold text-md text-gray-900 dark:text-white uppercase tracking-widest">Dashboard</h2>
+      <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">Dashboard</h2>
     </template>
 
     <AppPanel>
-      <h3 class="font-semibold text-sm text-gray-900 dark:text-white uppercase tracking-widest">Account: {{ $page.props.auth.user.name }} ({{ $page.props.auth.user.email }})</h3>
+      <h3 class="font-semibold text-sm text-gray-900 dark:text-gray-100 uppercase tracking-widest">Account: {{ $page.props.auth.user.name }} ({{ $page.props.auth.user.email }})</h3>
 
       <hr class="my-6" />
 

@@ -40,7 +40,7 @@ const deleteUser = () => {
 <template>
   <section class="space-y-6">
     <header>
-      <h3 class="font-semibold text-sm text-gray-900 dark:text-white uppercase tracking-widest">
+      <h3 class="font-semibold text-sm text-gray-900 dark:text-gray-100 uppercase tracking-widest">
         Delete Account
       </h3>
     </header>
@@ -61,11 +61,11 @@ const deleteUser = () => {
 
     <AppModal :show="confirmingUserDeletion" @close="closeModal">
       <div class="p-6">
-        <h2 class="font-semibold text-sm text-gray-900 dark:text-white uppercase tracking-widest">
+        <h2 class="font-semibold text-sm text-gray-900 dark:text-gray-100 uppercase tracking-widest">
           Are you sure you want to delete your account?
         </h2>
 
-        <p class="mt-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+        <p class="mt-4 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
           Once your account is deleted, all of its resources and data will be permanently deleted. Please
           enter your password to confirm you would like to permanently delete your account.
         </p>
@@ -88,7 +88,7 @@ const deleteUser = () => {
 
         <div class="mt-8 flex justify-end">
           <AppButton
-            custom-classes="app-button-secondary-white"
+            custom-classes="app-button-secondary-gray-100"
             type="button"
             @click="closeModal"
           >Cancel</AppButton>

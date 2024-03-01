@@ -37,7 +37,7 @@ const isEmpty = (obj) => {
       <template #trigger>
         <button
           type="button"
-          class="py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-gray-50 focus:outline-none transition ease-in-out duration-150"
+          class="py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-50 focus:outline-none transition ease-in-out duration-150"
         >
           <SvgChevronDown class="fill-current ml-1 -mr-0.5 h-4 w-4" />
         </button>
