@@ -13,7 +13,7 @@ import IconGithub from '@/Components/Icons/IconGithub.vue'
     <div class="w-1/2 text-sm text-gray-900 dark:text-gray-100 text-end">
       <nav class="flex justify-end items-center gap-2">
         <a v-if="$page.props.metadata.links.github" :href="$page.props.metadata.links.github" title="Github Profile" target="_blank" rel="noopener noreferrer">
-          <IconGithub class="w-6 h-6 fill-gray-900 dark:fill-gray-100 hover:fill-gray-600 hover:dark:fill-gray-300 cursor-pointer" />
+          <IconGithub class="w-6 h-6 fill-gray-900 dark:fill-gray-100 hover:fill-gray-600 dark:hover:fill-gray-300 cursor-pointer" />
         </a>
       </nav>
     </div>

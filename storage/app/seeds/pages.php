@@ -17,8 +17,8 @@ $seeds = [
         'title' => 'About',
         'subtitle' => config('app.name'),
         'content' => '
-        <section id="welcome" class="px-4 pt-4 pb-8">
-            <p class="text-lg">
+        <section id="welcome" class="px-4 py-4">
+            <p class="text-lg pb-4">
                 Welcome traveller! This is a template VILT SSR app by Musimana. Enjoy making something great!
             </p>
         </section>
