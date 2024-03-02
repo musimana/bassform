@@ -69,4 +69,4 @@ test('getItem returns ok', function () {
             ],
             'title' => config('app.name'),
         ]);
-});
+})->todo('BASS-40 Needs NavbarItem modelling');

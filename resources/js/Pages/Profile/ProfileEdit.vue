@@ -24,7 +24,7 @@ const props = defineProps({
 
   <LayoutUser>
     <template #pageHeader>
-      <h2 class="font-semibold text-md text-gray-900 dark:text-white uppercase tracking-widest">Edit Profile</h2>
+      <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">Edit Profile</h2>
     </template>
 
     <AppPanel>

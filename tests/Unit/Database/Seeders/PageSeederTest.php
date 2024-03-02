@@ -14,5 +14,5 @@ it('runs successfully', function () {
         ->expectsOutputToContain('DONE')
         ->assertSuccessful();
 
-    expect(Page::count())->toBe(1);
+    expect(Page::count())->toBe(4);
 });

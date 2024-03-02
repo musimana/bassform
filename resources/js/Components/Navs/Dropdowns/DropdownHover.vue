@@ -12,7 +12,7 @@ const props = defineProps({
   },
   contentClasses: {
     type: String,
-    default: 'py-1 bg-gray-100',
+    default: 'py-1',
   },
 })
 
@@ -29,6 +29,7 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape))
 
 const widthClass = computed(() => {
   return {
+    24: 'w-24',
     48: 'w-48',
   }[props.width.toString()]
 })
@@ -46,13 +47,8 @@ const alignmentClasses = computed(() => {
 </script>
 
 <template>
-  <div class="relative">
-    <div @click="open = !open">
-      <slot name="trigger" />
-    </div>
-
-    <!-- Full Screen Dropdown Overlay -->
-    <div v-show="open" class="fixed inset-0 z-40" @click="open = false"></div>
+  <div class="dropdown relative h-8" @mouseover="open = true" @mouseleave="open = false">
+    <slot name="trigger" />
 
     <Transition
       enter-active-class="transition ease-out duration-200"
@@ -62,12 +58,10 @@ const alignmentClasses = computed(() => {
       leave-from-class="opacity-100 scale-100"
       leave-to-class="opacity-0 scale-95"
     >
-      <div
+    <div
         v-show="open"
-        class="absolute z-50 mt-6 shadow-lg"
+        class="dropdown-content hidden absolute z-50 pt-[26px] shadow-lg"
         :class="[widthClass, alignmentClasses]"
-        style="display: none"
-        @click="open = false"
       >
         <div class="-mr-1 bg-gray-100 dark:bg-gray-600 shadow-2xl shadow-gray-500/20 dark:shadow-none ring-1 ring-gray-950/5 dark:ring-gray-100/5" :class="contentClasses">
           <slot name="content" />
@@ -76,3 +70,9 @@ const alignmentClasses = computed(() => {
     </Transition>
   </div>
 </template>
+
+<style scoped>
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>

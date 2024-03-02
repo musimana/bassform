@@ -11,16 +11,14 @@ defineEmits(['toggleNavbarMobile'])
 </script>
 
 <template>
-  <NavbarDesktopItems />
+  <div class="hidden lg:flex space-x-6 lg:my-auto">
+    <NavbarDesktopItems />
 
-  <span class="hidden lg:flex mx-4 my-auto font-semibold text-gray-900 dark:text-white">|</span>
-
-  <div class="hidden space-x-4 lg:flex">
     <ControlDarkMode />
 
     <NavbarDesktopUser v-if="$page.props.auth.user" />
 
-    <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin || $page.props.metadata.canRegister" />
+    <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin" />
   </div>
 
   <ButtonHamburger :showing-navbar-mobile="showingNavbarMobile" @toggleNavbarMobile="$event => $emit('toggleNavbarMobile', $event)" />

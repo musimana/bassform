@@ -15,7 +15,9 @@ class SubItemsPagesResource implements ConstantIndexInterface
      */
     public function getItems(): array
     {
-        return Page::orderBy('created_at', 'desc')
+        return Page::where('slug', '!=', 'about')
+            ->where('slug', '!=', 'features')
+            ->orderBy('created_at', 'desc')
             ->get()
             ->map(fn ($page) => (new PageLinkResource)->getItem($page))
             ->toArray();

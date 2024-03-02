@@ -49,4 +49,21 @@ class PageFactory extends Factory
             'slug' => $slug,
         ]);
     }
+
+    /**
+     * Indicate that the model should match the project's default About page.
+     *
+     * @return static
+     */
+    public function aboutPage()
+    {
+        return $this->state(fn (array $attributes) => [
+            ...$attributes,
+            'slug' => 'about',
+            'title' => 'About',
+            'subtitle' => config('app.name'),
+            'content' => '',
+            'meta_title' => 'About',
+        ]);
+    }
 }

@@ -24,10 +24,10 @@
 .app-button-primary-gray-900 {
   @apply
     bg-gray-900
-    border-gray-700
-    text-white
-    hover:bg-gray-700
-    focus:bg-gray-700
+    border-gray-600
+    text-gray-100
+    hover:bg-gray-600
+    focus:bg-gray-600
     active:bg-gray-950;
 }
 
@@ -35,17 +35,17 @@
   @apply
     bg-red-600
     border-transparent
-    text-white
+    text-gray-100
     hover:bg-red-500 
     focus:ring-red-500
     active:bg-red-700;
 }
 
-.app-button-secondary-white {
+.app-button-secondary-gray-100 {
   @apply
-    bg-white
+    bg-gray-100
     border-gray-300
-    text-gray-700
+    text-gray-900
     shadow-sm
     hover:bg-gray-100
     focus:bg-gray-100
