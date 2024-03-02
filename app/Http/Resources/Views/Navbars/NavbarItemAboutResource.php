@@ -18,8 +18,8 @@ class NavbarItemAboutResource implements ConstantItemInterface
 
         return $about_page
             ? [
-                'title' => $about_page?->getTitle() ?? 'About',
-                'url' => $about_page?->getUrl() ?? '#',
+                'title' => $about_page->getTitle(),
+                'url' => $about_page->getUrl(),
             ]
             : [];
     }
