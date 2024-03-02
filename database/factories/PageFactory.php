@@ -63,6 +63,7 @@ class PageFactory extends Factory
             'title' => 'About',
             'subtitle' => config('app.name'),
             'content' => '',
+            'meta_title' => 'About',
         ]);
     }
 }
