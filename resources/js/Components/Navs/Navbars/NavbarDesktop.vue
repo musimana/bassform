@@ -18,7 +18,7 @@ defineEmits(['toggleNavbarMobile'])
 
     <NavbarDesktopUser v-if="$page.props.auth.user" />
 
-    <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin || $page.props.metadata.canRegister" />
+    <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin" />
   </div>
 
   <ButtonHamburger :showing-navbar-mobile="showingNavbarMobile" @toggleNavbarMobile="$event => $emit('toggleNavbarMobile', $event)" />
