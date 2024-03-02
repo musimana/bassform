@@ -2,9 +2,12 @@
 import AppBody from '@/Components/Sections/AppBody.vue'
 import IconAppLogo from '@/Components/Icons/IconAppLogo.vue'
 import { Link } from '@inertiajs/vue3'
+import { UseDark } from '@vueuse/components'
 </script>
 
 <template>
+  <UseDark />
+
   <AppBody>
     <main class="flex flex-col justify-center items-center min-h-screen pt-6 sm:pt-0">
       <Link :href="route('home')">
