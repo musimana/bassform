@@ -19,7 +19,7 @@ $seeds = [
         'content' => '
         <section id="welcome" class="px-4 py-4">
             <p class="text-lg pb-4">
-                Welcome traveller! This is a template VILT SSR app by Musimana. Enjoy making something great!
+                Welcome traveller! This is a template VILT SSR app by Musimana.
             </p>
         </section>
 
@@ -45,6 +45,79 @@ $seeds = [
         ',
         'in_sitemap' => 1,
         'meta_title' => 'About',
+        'meta_description' => config('metadata.description'),
+        'meta_keywords' => config('metadata.keywords'),
+        'template' => 'Public/PublicContent',
+        'is_homepage' => 0,
+    ],
+
+    [
+        'slug' => 'features',
+        'title' => 'Features',
+        'subtitle' => config('app.name'),
+        'content' => '
+        <section id="welcome" class="px-4 py-4">
+            <p class="text-lg pb-4">
+                The key features of the template are listed below.
+            </p>
+        </section>
+
+        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
+        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
+
+        <section id="ui-components" class="px-4 pt-12">
+            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ UI Components ++++</h3>
+
+            <ul class="ml-8 list-disc">
+                <li><a href="' . url('forms') . '">Forms</a></li>
+                <li><a href="' . url('modals') . '">Modals</a></li>
+            </ul>
+        </section>
+        ',
+        'in_sitemap' => 1,
+        'meta_title' => 'Features',
+        'meta_description' => config('metadata.description'),
+        'meta_keywords' => config('metadata.keywords'),
+        'template' => 'Public/PublicContent',
+        'is_homepage' => 0,
+    ],
+
+    [
+        'slug' => 'forms',
+        'title' => 'Forms',
+        'subtitle' => config('app.name'),
+        'content' => '
+        <section id="ui-components" class="px-4 pt-12">
+            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Available Input Components ++++</h3>
+
+            <ul class="ml-8 list-disc">
+                <li><a href="' . url('forms') . '">Forms</a></li>
+            </ul>
+        </section>
+        ',
+        'in_sitemap' => 1,
+        'meta_title' => 'Forms',
+        'meta_description' => config('metadata.description'),
+        'meta_keywords' => config('metadata.keywords'),
+        'template' => 'Public/PublicContent',
+        'is_homepage' => 0,
+    ],
+
+    [
+        'slug' => 'modals',
+        'title' => 'Modals',
+        'subtitle' => config('app.name'),
+        'content' => '
+        <section id="ui-components" class="px-4 pt-12">
+            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Available Input Components ++++</h3>
+
+            <ul class="ml-8 list-disc">
+                <li><a href="' . url('forms') . '">Forms</a></li>
+            </ul>
+        </section>
+        ',
+        'in_sitemap' => 1,
+        'meta_title' => 'Modals',
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContent',
