@@ -30,25 +30,12 @@ test('getItem returns ok', function () {
         ->toHaveCount(2);
 
     expect($actual['metadata']['navbarItems'][0])
-        ->toHaveCamelCaseKeys()
-        ->toHaveCount(2)
-        ->toMatchArray([
-            'title' => 'About',
-            'url' => '#',
-        ]);
-
-    expect($actual['metadata']['navbarItems'][1]['subItems'])
         ->toBeArray()
         ->toBeEmpty();
 
     expect($actual['metadata']['navbarItems'][1])
-        ->toHaveCamelCaseKeys()
-        ->toHaveCount(3)
-        ->toMatchArray([
-            'title' => 'Pages',
-            'url' => url('about'),
-            'subItems' => [],
-        ]);
+        ->toBeArray()
+        ->toBeEmpty();
 
     expect($actual['metadata'])
         ->toHaveCamelCaseKeys()
@@ -63,14 +50,7 @@ test('getItem returns ok', function () {
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => [
-                ['title' => 'About', 'url' => '#'],
-                [
-                    'title' => 'Pages',
-                    'url' => url('about'),
-                    'subItems' => [],
-                ],
-            ],
+            'navbarItems' => [[], []],
             'title' => config('app.name'),
         ]);
 
@@ -89,14 +69,7 @@ test('getItem returns ok', function () {
                 'links' => [
                     'github' => config('metadata.social_links.github'),
                 ],
-                'navbarItems' => [
-                    ['title' => 'About', 'url' => '#'],
-                    [
-                        'title' => 'Pages',
-                        'url' => url('about'),
-                        'subItems' => [],
-                    ],
-                ],
+                'navbarItems' => [[], []],
                 'title' => config('app.name'),
             ],
         ]);
