@@ -30,7 +30,7 @@ const submit = () => {
   ></article>
 
   <form @submit.prevent="submit" class="w-full">
-    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-600">
+    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
       <InputLabel class="my-auto w-full md:w-1/5 text-gray-600 dark:text-gray-400" for="pdfUpload" value="Select Files:" />
 
       <InputFile
@@ -68,8 +68,8 @@ const submit = () => {
 
   <h2 class="text-lg font-bold text-gray-600 dark:text-gray-300">Results:</h2>
 
-  <div class="w-full flex mt-8 p-4 bg-gray-200 dark:bg-gray-600">
+  <div class="w-full flex mt-8 p-4 bg-gray-300 dark:bg-gray-700">
     <code v-if="usePage().props.flash.output" class="text-gray-600 dark:text-gray-400">{{ usePage().props.flash.output }}</code>
-    <p v-else class="text-gray-400">[ <em>The response from the form will appear here.</em> ]</p>
+    <p v-else class="text-gray-600 dark:text-gray-400">[ <em>The response from the form will appear here.</em> ]</p>
   </div>
 </template>
