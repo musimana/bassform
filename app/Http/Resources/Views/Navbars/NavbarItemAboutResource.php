@@ -16,9 +16,11 @@ class NavbarItemAboutResource implements ConstantItemInterface
     {
         $about_page = Page::where('slug', 'about')->first();
 
-        return [
-            'title' => $about_page?->getTitle() ?? 'About',
-            'url' => $about_page?->getUrl() ?? '#',
-        ];
+        return $about_page
+            ? [
+                'title' => $about_page?->getTitle() ?? 'About',
+                'url' => $about_page?->getUrl() ?? '#',
+            ]
+            : [];
     }
 }

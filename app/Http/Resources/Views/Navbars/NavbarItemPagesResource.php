@@ -4,6 +4,7 @@ namespace App\Http\Resources\Views\Navbars;
 
 use App\Http\Resources\Views\Navbars\SubItems\SubItemsPagesResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
+use App\Models\Page;
 
 class NavbarItemPagesResource implements ConstantItemInterface
 {
@@ -14,10 +15,14 @@ class NavbarItemPagesResource implements ConstantItemInterface
      */
     public function getItem(): array
     {
-        return [
-            'title' => 'Pages',
-            'url' => route('page.show', 'about'),
-            'subItems' => (new SubItemsPagesResource)->getItems(),
-        ];
+        $features_page = Page::where('slug', 'features')->first();
+
+        return $features_page
+            ? [
+                'title' => $features_page->getTitle(),
+                'url' => $features_page->getUrl(),
+                'subItems' => (new SubItemsPagesResource)->getItems(),
+            ]
+            : [];
     }
 }

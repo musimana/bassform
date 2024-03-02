@@ -12,9 +12,9 @@ import SvgUser from '@/Components/Images/Svgs/Outline/SvgUser.vue'
     <SvgUser class="w-4 h-4 lg:m-auto stroke-gray-900 hover:stroke-gray-600 dark:stroke-gray-100 dark:hover:stroke-gray-300" />
   </a>
 
-  <LinkDesktop
+  <!-- <LinkDesktop
     v-if="$page.props.metadata.canRegister"
     :href="route('register')"
     >Register</LinkDesktop
-  >
+  > -->
 </template>

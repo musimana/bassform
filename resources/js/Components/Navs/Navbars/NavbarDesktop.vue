@@ -11,11 +11,9 @@ defineEmits(['toggleNavbarMobile'])
 </script>
 
 <template>
-  <NavbarDesktopItems />
+  <div class="hidden lg:flex space-x-6 lg:my-auto">
+    <NavbarDesktopItems />
 
-  <span class="hidden lg:flex mx-4 my-auto font-semibold text-gray-900 dark:text-gray-100 cursor-default">|</span>
-
-  <div class="hidden space-x-4 lg:flex">
     <ControlDarkMode />
 
     <NavbarDesktopUser v-if="$page.props.auth.user" />
