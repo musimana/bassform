@@ -16,6 +16,6 @@ defineProps({
 
   <article
     v-html="article"
-    class="app-challenge-part text-gray-600 dark:text-gray-200 text-sm leading-relaxed"
+    class="app-article text-gray-600 dark:text-gray-200 text-sm leading-relaxed"
   ></article>
 </template>

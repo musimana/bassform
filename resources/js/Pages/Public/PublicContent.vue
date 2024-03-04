@@ -32,7 +32,7 @@ defineProps({
         <article
           v-html="content.article"
           :id="content.title.replace(' ', '-').toLowerCase()"
-          class="app-challenge-part text-gray-600 dark:text-gray-200 text-sm leading-relaxed"
+          class="app-article text-gray-600 dark:text-gray-200 text-sm leading-relaxed"
         ></article>
       </div>
 
