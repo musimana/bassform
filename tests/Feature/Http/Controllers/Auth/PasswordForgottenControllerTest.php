@@ -68,7 +68,6 @@ test('store validates requests with a form request')
     );
 
 test('store sends a requested reset password link', function (User $user) {
-    $user->save();
     Notification::fake();
 
     $this->post(route('password.email'), ['email' => $user->email]);
@@ -127,7 +126,6 @@ test('store throws a validation error if email is unknown', function () {
 });
 
 test('edit renders the forgotten password update view', function (User $user) {
-    $user->save();
     Notification::fake();
 
     $this->post(route('password.email'), ['email' => $user->email]);
@@ -179,7 +177,6 @@ test('update resets passwords with a valid token given', function () {
 });
 
 test('update throws a validation error if email is missing', function (User $user) {
-    $user->save();
     testNotifiedUpdateValidationErrorEmail($this, [
         'not_email' => $user->email,
     ]);

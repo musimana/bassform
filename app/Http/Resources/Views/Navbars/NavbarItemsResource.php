@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Views\Navbars;
 
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
+use App\Models\Navbar;
 
 class NavbarItemsResource implements ConstantIndexInterface
 {
@@ -13,9 +14,10 @@ class NavbarItemsResource implements ConstantIndexInterface
      */
     public function getItems(): array
     {
-        return [
-            (new NavbarItemAboutResource)->getItem(),
-            (new NavbarItemPagesResource)->getItem(),
-        ];
+        $navbar_items = Navbar::first()?->items ?? collect();
+
+        return $navbar_items
+            ->map(fn ($page) => (new NavbarItemLinksResource)->getItem($page))
+            ->toArray();
     }
 }

@@ -16,7 +16,6 @@ test('TEMPLATE_PASSWORD_CONFIRM Vue page component exists', function () {
 });
 
 test('show renders the confirm password view', function (User $user) {
-    $user->save();
     $route = route('password.confirm');
     $actual = $this->actingAs($user)->get(route('password.confirm'));
     $session = session()->all();
@@ -42,7 +41,6 @@ test('show renders the confirm password view', function (User $user) {
 })->with('users');
 
 test('store confirms passwords with valid data', function (User $user) {
-    $user->save();
     $actual = $this->actingAs($user)->post(route('password.confirm.store'), [
         'password' => config('tests.default_password'),
     ]);
@@ -53,7 +51,6 @@ test('store confirms passwords with valid data', function (User $user) {
 })->with('users');
 
 test('store doesn\'t confirm passwords with invalid data', function (User $user) {
-    $user->save();
     $actual = $this->actingAs($user)->post(route('password.confirm.store'), [
         'password' => 'wrong-password',
     ]);

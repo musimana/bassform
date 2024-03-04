@@ -224,7 +224,6 @@ test('store throws a validation error if email >255 characters', function () {
 });
 
 test('store throws a validation error if email already taken', function (User $user) {
-    $user->save();
     $actual = $this
         ->from(route('register'))
         ->post(route('register.store'), [

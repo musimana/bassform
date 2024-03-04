@@ -13,7 +13,6 @@ test('update validates requests with a form request')
     );
 
 test('update can update the auth user\'s password', function (User $user) {
-    $user->save();
     $actual = $this
         ->actingAs($user)
         ->from(route('profile.edit'))

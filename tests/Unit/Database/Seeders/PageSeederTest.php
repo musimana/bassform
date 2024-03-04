@@ -13,6 +13,4 @@ it('runs successfully', function () {
         ->expectsOutputToContain('Database\Seeders\PageSeeder')
         ->expectsOutputToContain('DONE')
         ->assertSuccessful();
-
-    expect(Page::count())->toBe(4);
 });

@@ -107,7 +107,6 @@ test('update can update the auth user\'s profile info', function (User $user) {
 })->with('users');
 
 test('update leaves email verification status unchanged when the email address is unchanged', function (User $user) {
-    $user->save();
     $actual = $this
         ->actingAs($user)
         ->patch(route('profile.update'), [
@@ -250,7 +249,6 @@ test('destroy can delete the auth user\'s account', function (User $user) {
 })->with('users');
 
 test('destroy throws a validation error if password missing', function (User $user) {
-    $user->save();
     $actual = $this
         ->actingAs($user)
         ->from(route('profile.edit'))
@@ -268,7 +266,6 @@ test('destroy throws a validation error if password missing', function (User $us
 })->with('users');
 
 test('destroy throws a validation error if password isn\'t a string', function (User $user) {
-    $user->save();
     $actual = $this
         ->actingAs($user)
         ->from(route('profile.edit'))
@@ -286,7 +283,6 @@ test('destroy throws a validation error if password isn\'t a string', function (
 })->with('users');
 
 test('destroy throws a validation error if password isn\'t correct', function (User $user) {
-    $user->save();
     $actual = $this
         ->actingAs($user)
         ->from(route('profile.edit'))

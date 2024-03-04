@@ -37,6 +37,6 @@ test('getItem returns ok', function () {
         ->toMatchArray([
             'canonical' => url('test-page'),
             'description' => 'Test page example meta-description.',
-            'title' => $this->page->getTItle(),
+            'title' => $this->page->getTitle(),
         ]);
 });

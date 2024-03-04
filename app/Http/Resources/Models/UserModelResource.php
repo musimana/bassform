@@ -14,13 +14,13 @@ class UserModelResource implements UserStorableInterface
     ) {
     }
 
-    /** Get the content array for an applicant user. */
+    /** Get the user model. */
     public function getItem(): User
     {
         return $this->user;
     }
 
-    /** Store an applicant user array as a new user model. */
+    /** Store & return the given profile store request as a new user model. */
     public function storeItem(ProfileStoreRequest $request): User
     {
         $this->user = new User;

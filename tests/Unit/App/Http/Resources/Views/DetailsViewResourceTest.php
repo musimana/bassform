@@ -27,14 +27,6 @@ test('getItem returns ok', function () {
 
     expect($actual['metadata']['navbarItems'])
         ->toBeArray()
-        ->toHaveCount(2);
-
-    expect($actual['metadata']['navbarItems'][0])
-        ->toBeArray()
-        ->toBeEmpty();
-
-    expect($actual['metadata']['navbarItems'][1])
-        ->toBeArray()
         ->toBeEmpty();
 
     expect($actual['metadata'])
@@ -50,7 +42,7 @@ test('getItem returns ok', function () {
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => [[], []],
+            'navbarItems' => [],
             'title' => config('app.name'),
         ]);
 
@@ -69,7 +61,7 @@ test('getItem returns ok', function () {
                 'links' => [
                     'github' => config('metadata.social_links.github'),
                 ],
-                'navbarItems' => [[], []],
+                'navbarItems' => [],
                 'title' => config('app.name'),
             ],
         ]);

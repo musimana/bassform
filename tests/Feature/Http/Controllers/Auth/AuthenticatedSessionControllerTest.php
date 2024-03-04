@@ -50,7 +50,6 @@ test('store validates requests with a form request')
     );
 
 test('store authenticates users ok', function (User $user) {
-    $user->save();
     $actual = $this->post(route('login.store'), [
         'email' => $user->email,
         'password' => config('tests.default_password'),

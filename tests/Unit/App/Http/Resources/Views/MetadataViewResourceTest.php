@@ -23,28 +23,7 @@ test('getItem returns ok', function () {
 
     expect($actual['navbarItems'])
         ->toBeArray()
-        ->toHaveCount(2);
-
-    expect($actual['navbarItems'][0])
-        ->toHaveCamelCaseKeys()
-        ->toHaveCount(2)
-        ->toMatchArray([
-            'title' => 'About',
-            'url' => '#',
-        ]);
-
-    expect($actual['navbarItems'][1]['subItems'])
-        ->toBeArray()
         ->toBeEmpty();
-
-    expect($actual['navbarItems'][1])
-        ->toHaveCamelCaseKeys()
-        ->toHaveCount(3)
-        ->toMatchArray([
-            'title' => 'Pages',
-            'url' => url('about'),
-            'subItems' => [],
-        ]);
 
     expect($actual)
         ->toHaveCamelCaseKeys()
@@ -59,14 +38,7 @@ test('getItem returns ok', function () {
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => [
-                ['title' => 'About', 'url' => '#'],
-                [
-                    'title' => 'Pages',
-                    'url' => url('about'),
-                    'subItems' => [],
-                ],
-            ],
+            'navbarItems' => [],
             'title' => config('app.name'),
         ]);
-})->todo('BASS-40 Needs NavbarItem modelling');
+});
