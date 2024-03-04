@@ -4,12 +4,12 @@ namespace Tests\Browser\TestNavigation;
 
 use App\Models\Page;
 use App\Models\User;
+use Database\Seeders\NavbarSeeder;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Guest\Homepage;
 use Tests\Browser\Pages\Guest\PageView;
 use Tests\Browser\Pages\User\Login;
-use Tests\Browser\Pages\User\Register;
 use Tests\DuskTestCase;
 
 class HeaderNavigationTest extends DuskTestCase
@@ -58,7 +58,6 @@ class HeaderNavigationTest extends DuskTestCase
     /** Test the header navbar logout link works. */
     public function testNavbarLogoutLink(): void
     {
-        Page::factory()->aboutPage()->create();
         $user = User::factory()->create();
 
         $this->browse(fn (Browser $browser) => $browser
@@ -72,28 +71,11 @@ class HeaderNavigationTest extends DuskTestCase
         );
     }
 
-    /** Test the header navbar registration link works. */
-    public function testNavbarRegistrationLink(): void
-    {
-        $this->markTestIncomplete('Needs updated button hover dropdown handling');
-        Page::factory()->aboutPage()->create();
-
-        // $this->browse(fn (Browser $browser) => $browser
-        //     ->visit(new Homepage)
-        //     ->navigateViaHeader('@nav-register')
-
-        //     ->on(new Register)
-        // );
-    }
-
     /** Test the header navbar about link works. */
     public function testNavbarAboutLink(): void
     {
-        $page = Page::factory()->create([
-            'title' => 'About',
-            'meta_title' => 'About',
-            'slug' => 'about',
-        ]);
+        (new NavbarSeeder)->run();
+        $page = Page::factory()->aboutPage()->create();
 
         $this->browse(fn (Browser $browser) => $browser
             ->visit(new Homepage)
