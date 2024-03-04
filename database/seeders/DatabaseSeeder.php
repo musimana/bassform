@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(PageSeeder::class);
+        $this->call(NavbarSeeder::class);
         $this->call(UserSeeder::class);
     }
 }
