@@ -39,7 +39,7 @@ test('getItem returns ok with valid inputs', function (User $user) {
         ->updated_at->toEqual(null);
 
     expect(User::count())->toBe(0);
-})->with('users');
+})->with('user-ghosts');
 
 test('storeItem validates requests with a form request')
     ->assertActionUsesFormRequest(
@@ -73,4 +73,4 @@ test('storeItem returns ok with valid inputs', function (User $user) {
     $this->assertTrue(Hash::check(config('tests.default_password'), $actual->password));
 
     expect(User::count())->toBe(1);
-})->with('users');
+})->with('user-ghosts');
