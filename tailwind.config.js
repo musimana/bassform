@@ -21,4 +21,10 @@ export default {
   },
 
   plugins: [forms],
+
+  safelist: [
+    {
+      pattern: /ml-8|list-disc/,
+    },
+  ],
 }
