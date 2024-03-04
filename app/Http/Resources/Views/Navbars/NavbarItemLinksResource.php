@@ -29,10 +29,7 @@ class NavbarItemLinksResource implements NavbarItemInterface
             ? [
                 'title' => $title,
                 'url' => $navbar_item->getUrl(),
-                'subItems' => array_filter(
-                    $navbar_item->children->map(fn ($subitem) => self::getItem($subitem))->toArray(),
-                    fn ($subitem) => $subitem !== []
-                ),
+                'subItems' => $sub_items,
             ]
             : [
                 'title' => $title,
