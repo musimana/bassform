@@ -32,6 +32,7 @@ class PageSeeder extends Seeder
                     'meta_title' => $seed['meta_title'] ?? null,
                     'meta_description' => $seed['meta_description'] ?? null,
                     'meta_keywords' => $seed['meta_keywords'] ?? null,
+                    'template' => $seed['template'] ?? null,
                 ]);
             }
         }
