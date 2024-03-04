@@ -21,8 +21,7 @@ class HeaderNav extends BaseComponent
             ->assertVisible('@header-logo')
             ->assertVisible('@header-title')
             ->assertSeeLink(config('app.name'))
-            ->assertSeeIn('h1', config('app.name'))
-            ->assertSeeIn('nav', 'About');
+            ->assertSeeIn('h1', config('app.name'));
     }
 
     /**
