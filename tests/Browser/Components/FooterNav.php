@@ -18,6 +18,7 @@ class FooterNav extends BaseComponent
     {
         $browser
             ->assertPresent($this->selector())
-            ->assertSee(config('metadata.copyright'));
+            ->assertSee(config('metadata.copyright'))
+            ->assertPresent('@nav-footer-github');
     }
 }

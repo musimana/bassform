@@ -1,0 +1,67 @@
+article.app-article p {
+  @apply
+    mb-4;
+}
+
+article.app-article pre,
+article.app-article ul {
+  @apply
+    mb-6;
+}
+
+article.app-article ul {
+  @apply
+    ml-8
+    list-disc;
+}
+
+article.app-article ul.app-list-none {
+  @apply
+    ml-6
+    list-none;
+}
+
+section.app-code-block code,
+article.app-article pre {
+  @apply
+    border
+    rounded-md
+    border-blue-800
+    dark:border-blue-200
+    p-4;
+}
+
+section.app-code-block code,
+article.app-article p code,
+article.app-article pre {
+  @apply
+    bg-gray-100
+    dark:bg-gray-900
+    text-gray-950
+    dark:text-white;
+}
+
+article.app-article p code {
+  @apply px-2 py-1 rounded-sm;
+}
+
+article.app-article ul li em,
+article.app-article p em
+{
+  text-shadow: 0 0 2px rgb(5, 21,32);
+
+  @apply
+    font-semibold
+    text-blue-950
+    dark:text-white
+    not-italic
+    tracking-wide;
+}
+
+@media (prefers-color-scheme: dark) {
+  article.app-article ul li em,
+  article.app-article p em
+  {
+    text-shadow: 1px -1px 1px rgb(255, 255, 255);
+  }
+}

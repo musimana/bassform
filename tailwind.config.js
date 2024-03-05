@@ -13,6 +13,17 @@ export default {
   ],
 
   theme: {
+    screens: {
+      min: '320px',
+      xs: '480px',
+      sm: '640px',
+      md: '768px',
+      lg: '992px',
+      xl: '1440px',
+      xxl: '1920px',
+      max: '2560px',
+    },
+
     extend: {
       fontFamily: {
         sans: ['Figtree', ...defaultTheme.fontFamily.sans],
@@ -21,4 +32,10 @@ export default {
   },
 
   plugins: [forms],
+
+  safelist: [
+    {
+      pattern: /ml-8|list-disc/,
+    },
+  ],
 }

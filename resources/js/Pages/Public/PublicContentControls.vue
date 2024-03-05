@@ -1,22 +1,21 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutDefault from '@/Layouts/LayoutDefault.vue'
-import ContentHomepage from '@/Pages/Public/Partials/ContentHomepage.vue'
+import ContentControls from '@/Pages/Public/Partials/ContentControls.vue'
 
 defineProps({
   content: {
     type: Object,
-    default: () => ({}),
+    required: true,
   },
   metadata: {
     type: Object,
-    default: () => ({}),
+    required: true,
   },
 })
 </script>
 
 <template>
   <LayoutDefault>
-    <ContentHomepage />
+    <ContentControls />
   </LayoutDefault>
 </template>
