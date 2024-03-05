@@ -11,7 +11,7 @@ class PageContentResource implements PageItemInterface
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, string>
+     * @return array<string, array<int, string>|string>
      */
     public function getItem(Page $page): array
     {
