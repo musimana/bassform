@@ -29,7 +29,6 @@ defineExpose({ focus: () => input.value.focus() })
   <input
     :id="inputId"
     :name="inputId"
-    class="w-full md:w-4/5 border-gray-300 focus:border-blue-200 focus:ring-blue-200 rounded-md shadow-sm"
     ref="input"
     type="file"
     @input="$emit('update:modelValue', $event.target.files[0])"
