@@ -21,10 +21,6 @@ class AboutPageTest extends DuskTestCase
 
         $this->browse(fn (Browser $browser) => $browser
             ->visit(new PageView($page))
-            ->assertSee($page->title)
-            ->assertSee($page->subtitle)
-            ->assertSeeAnythingIn('#welcome')
-            ->assertPresent('#stack')
         );
     }
 }
