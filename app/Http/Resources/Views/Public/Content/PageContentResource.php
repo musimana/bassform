@@ -20,6 +20,7 @@ class PageContentResource implements PageItemInterface
             'article' => $page->content,
             'subtitle' => $page->getSubtitle(),
             'bodytext' => '',
+            'tabs' => self::getTabs($page),
             'title' => $page->getTitle(),
         ];
     }
@@ -40,5 +41,17 @@ class PageContentResource implements PageItemInterface
         return $page->slug === 'about'
             ? '<ul class="list-disc ml-8"><li>Laravel v' . $laravel_version . '</li><li>PHP v' . $php_version . '</li></ul>'
             : '';
+    }
+
+    /**
+     * Get the tabs array for the given page.
+     *
+     * @return array<int, string>
+     */
+    private static function getTabs(Page $page): array
+    {
+        return $page->slug === 'controls'
+            ? ['Pop-ups', 'Buttons']
+            : [];
     }
 }
