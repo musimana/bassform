@@ -24,12 +24,12 @@ $seeds = [
                 'url' => url('features'),
                 'subitems' => [
                     [
-                        'title' => 'Forms',
-                        'url' => url('forms'),
+                        'title' => 'Controls',
+                        'url' => url('controls'),
                     ],
                     [
-                        'title' => 'Modals',
-                        'url' => url('modals'),
+                        'title' => 'Forms',
+                        'url' => url('forms'),
                     ],
                 ],
             ],

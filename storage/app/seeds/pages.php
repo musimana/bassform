@@ -26,10 +26,22 @@ $seeds = [
         <hr class="mb-1 border-gray-900 dark:border-gray-100" />
         <hr class="mt-1 border-gray-900 dark:border-gray-100" />
 
-        <section id="stack" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Stack ++++</h3>
+        <section id="features" class="px-4 pt-12">
+            <h3 class="w-full pb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Features</h3>
 
-            <p>
+            <ul class="ml-8 list-disc">
+                <li><a href="' . url('controls') . '">Controls</a></li>
+                <li><a href="' . url('forms') . '">Forms</a></li>
+            </ul>
+        </section>
+
+        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
+        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
+
+        <section id="stack" class="px-4 pt-12">
+            <h3 class="w-full pb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3>
+
+            <p class="pb-4">
                 Built with a
                 <a
                     href="https://laravel.com/"
@@ -52,72 +64,23 @@ $seeds = [
     ],
 
     [
-        'slug' => 'features',
-        'title' => 'Features',
-        'subtitle' => config('app.name'),
-        'content' => '
-        <section id="welcome" class="px-4 py-4">
-            <p class="text-lg pb-4">
-                The key features of the template are listed below.
-            </p>
-        </section>
-
-        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
-        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
-
-        <section id="ui-components" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ UI Components ++++</h3>
-
-            <ul class="ml-8 list-disc">
-                <li><a href="' . url('forms') . '">Forms</a></li>
-                <li><a href="' . url('modals') . '">Modals</a></li>
-            </ul>
-        </section>
-        ',
+        'slug' => 'controls',
+        'title' => 'Controls',
+        'subtitle' => 'The UI control components that come with the template are demonstrated below.',
         'in_sitemap' => 1,
-        'meta_title' => 'Features',
+        'meta_title' => 'Controls',
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
-        'template' => 'Public/PublicContent',
+        'template' => 'Public/PublicContentControls',
         'is_homepage' => 0,
     ],
 
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'subtitle' => config('app.name'),
-        'content' => '
-        <section id="ui-components" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Available Input Components ++++</h3>
-
-            <ul class="ml-8 list-disc">
-                <li><a href="' . url('forms') . '">Forms</a></li>
-            </ul>
-        </section>
-        ',
+        'subtitle' => 'The UI form &amp; components that come with the template are demonstrated below.',
         'in_sitemap' => 1,
         'meta_title' => 'Forms',
-        'meta_description' => config('metadata.description'),
-        'meta_keywords' => config('metadata.keywords'),
-        'template' => 'Public/PublicContent',
-        'is_homepage' => 0,
-    ],
-
-    [
-        'slug' => 'modals',
-        'title' => 'Modals',
-        'subtitle' => config('app.name'),
-        'content' => '
-        <section id="ui-components" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-mono font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">++++ Available Input Components ++++</h3>
-
-            <ul class="ml-8 list-disc">
-                <li><a href="' . url('forms') . '">Forms</a></li>
-            </ul>
-        </section>
-        ',
-        'in_sitemap' => 1,
-        'meta_title' => 'Modals',
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContent',
