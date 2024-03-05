@@ -1,0 +1,33 @@
+<script setup>
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
+import ControlsTabButtons from '@/Pages/Public/Partials/Controls/ControlsTabButtons.vue'
+import ControlsTabPopUps from '@/Pages/Public/Partials/Controls/ControlsTabPopUps.vue'
+import TabBody from '@/Components/Navs/Tabs/TabBody.vue'
+import TabControls from '@/Components/Navs/Tabs/TabControls.vue'
+</script>
+
+<template>
+  <h4 class="w-full pt-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Tab Component</h4>
+
+  <TabControls :tabs-key="0" :tabs="$page.props.content.tabs" class="pt-4" />
+
+  <AppSectionDivider />
+
+  <TabBody
+    :key="0"
+    :tab="0"
+    :tabs-key="0"
+    class="w-full flex px-4 bg-white dark:bg-gray-900"
+  >
+    <ControlsTabPopUps />
+  </TabBody>
+
+  <TabBody
+    :key="1"
+    :tab="1"
+    :tabs-key="0"
+    class="w-full flex px-4 bg-white dark:bg-gray-900"
+  >
+    <ControlsTabButtons />
+  </TabBody>
+</template>
