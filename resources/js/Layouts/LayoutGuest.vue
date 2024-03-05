@@ -11,13 +11,13 @@ import AppPanel from '@/Components/Sections/AppPanel.vue'
     <AppHeader />
 
     <AppMainContent>
-      <AppPanel v-if="$slots.pageHeader">
-        <header>
+      <AppPanel>
+        <header v-if="$slots.pageHeader" class="mb-8">
           <slot name="pageHeader" />
         </header>
-      </AppPanel>
 
-      <slot />
+        <slot />
+      </AppPanel>
     </AppMainContent>
 
     <AppFooter />
