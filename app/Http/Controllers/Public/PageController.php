@@ -24,7 +24,7 @@ class PageController extends Controller
             );
     }
 
-    /** Display the given page. */
+    /** Display the request for the given page, if the route is valid. */
     public function store(Request $request, Page $page): RedirectResponse
     {
         if ($page->slug !== 'forms') {
