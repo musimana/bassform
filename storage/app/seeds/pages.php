@@ -78,12 +78,12 @@ $seeds = [
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'subtitle' => 'The UI form &amp; components that come with the template are demonstrated below.',
+        'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
         'in_sitemap' => 1,
         'meta_title' => 'Forms',
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
-        'template' => 'Public/PublicContent',
+        'template' => 'Public/PublicContentForms',
         'is_homepage' => 0,
     ],
 

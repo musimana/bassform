@@ -34,6 +34,7 @@ const submit = () => {
       <InputLabel class="my-auto w-full md:w-1/5 text-gray-600 dark:text-gray-400" for="pdfUpload" value="Select Files:" />
 
       <InputFile
+        class="w-full md:w-4/5 border-gray-300 focus:border-blue-200 focus:ring-blue-200 rounded-md shadow-sm"
         input-id="pdfUpload"
         v-model="form.pdfUpload"
       />
