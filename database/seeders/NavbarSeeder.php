@@ -33,7 +33,7 @@ class NavbarSeeder extends Seeder
                     $parent = NavbarItem::factory()->create([
                         'navbar_id' => $navbar->id,
                         'title' => $navbar_item['title'],
-                        'url' => $navbar_item['url'],
+                        'url' => $navbar_item['url'] ?? null,
                         'display_order' => $display_order,
                     ]);
 
