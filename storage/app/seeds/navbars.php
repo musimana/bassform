@@ -21,7 +21,6 @@ $seeds = [
             ],
             [
                 'title' => 'Features',
-                'url' => url('features'),
                 'subitems' => [
                     [
                         'title' => 'Controls',
