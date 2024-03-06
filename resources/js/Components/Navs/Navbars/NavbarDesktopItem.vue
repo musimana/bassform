@@ -3,7 +3,7 @@ import DropdownHover from '@/Components/Navs/Dropdowns/DropdownHover.vue'
 import DropdownLink from '@/Components/Navs/Dropdowns/DropdownLink.vue'
 import LinkDesktop from '@/Components/Navs/Links/LinkDesktop.vue'
 import LinkDesktopDud from '@/Components/Navs/Links/LinkDesktopDud.vue'
-import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
+import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChevronDown.vue'
 
 const props = defineProps({
   navbarItem: {
@@ -34,14 +34,14 @@ const isEmpty = (obj) => {
           :active="route('home') + $page.url === props.navbarItem.url"
           :href="props.navbarItem.url"
         >
-          {{ props.navbarItem.title }} <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
+          {{ props.navbarItem.title }} <OutlineChevronDown class="fill-current -mr-0.5 h-4 w-4" />
         </LinkDesktop>
 
         <LinkDesktopDud
           v-else
           class="h-full my-auto gap-x-1"
         >
-          {{ props.navbarItem.title }} <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
+          {{ props.navbarItem.title }} <OutlineChevronDown class="fill-current -mr-0.5 h-4 w-4" />
         </LinkDesktopDud>
       </template>
 

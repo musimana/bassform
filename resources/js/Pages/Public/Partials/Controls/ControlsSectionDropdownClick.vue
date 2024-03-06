@@ -1,7 +1,7 @@
 <script setup>
 import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
 import DropdownClick from '@/Components/Navs/Dropdowns/DropdownClick.vue'
-import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
+import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChevronDown.vue'
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
             custom-classes="app-button-secondary-gray-100"
             type="button"
           >
-            Click Here <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
+            Click Here <OutlineChevronDown class="fill-current -mr-0.5 h-4 w-4" />
           </AppButton>
         </template>
 
