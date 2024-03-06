@@ -1,6 +1,6 @@
 <script setup>
-import SvgMoon from '@/Components/Images/Svgs/Outline/SvgMoon.vue'
-import SvgSun from '@/Components/Images/Svgs/Outline/SvgSun.vue'
+import OutlineMoon from '@/Components/Icons/HeroIcons/Outline/OutlineMoon.vue'
+import OutlineSun from '@/Components/Icons/HeroIcons/Outline/OutlineSun.vue'
 import { UseDark } from '@vueuse/components'
 
 defineProps({
@@ -14,8 +14,8 @@ defineProps({
 <template>
   <UseDark v-slot="{ isDark, toggleDark }">
     <button :class="customClasses" @click="toggleDark()">
-      <SvgSun v-if="isDark" class="w-5 h-5 lg:m-auto dark:stroke-yellow-300 dark:hover:stroke-yellow-500" />
-      <SvgMoon v-else class="w-4 h-4 lg:m-auto stroke-gray-900 hover:stroke-gray-600" />
+      <OutlineSun v-if="isDark" class="w-5 h-5 lg:m-auto dark:stroke-yellow-300 dark:hover:stroke-yellow-500" />
+      <OutlineMoon v-else class="w-4 h-4 lg:m-auto stroke-gray-900 hover:stroke-gray-600" />
     </button>
   </UseDark>
 </template>
