@@ -7,7 +7,7 @@ import TabControls from '@/Components/Navs/Tabs/TabControls.vue'
 </script>
 
 <template>
-  <h4 class="w-full pt-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Tab Component</h4>
+  <h3 class="w-full pt-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Tab Component</h3>
 
   <TabControls :tabs-key="0" :tabs="$page.props.content.tabs" class="pt-4" />
 

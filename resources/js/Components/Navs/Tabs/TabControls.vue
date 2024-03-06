@@ -29,7 +29,7 @@ onMounted(() => selectTab(0))
         v-for="(tab,index) in props.tabs"
         :key="index"
         class="inline-flex space-x-2 border-t border-x  rounded-t-lg pl-6 pr-8 py-4 bg-white dark:bg-gray-900 transition ease-in-out duration-150 "
-        :class="{ 'border-blue-950 dark:border-blue-200 text-semibold': index === store.tabs[0].activeTab, 'opacity-75 cursor-pointer': index !== store.tabs[0].activeTab }"
+        :class="{ 'border-blue-950 dark:border-blue-200 text-semibold cursor-default': index === store.tabs[0].activeTab, 'opacity-75 cursor-pointer': index !== store.tabs[0].activeTab }"
         @click="selectTab(index)"
       >
         <h3

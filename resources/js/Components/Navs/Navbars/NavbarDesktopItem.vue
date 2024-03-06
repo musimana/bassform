@@ -1,7 +1,8 @@
 <script setup>
-import AppDropdown from '@/Components/Navs/Dropdowns/AppDropdown.vue'
+import DropdownHover from '@/Components/Navs/Dropdowns/DropdownHover.vue'
 import DropdownLink from '@/Components/Navs/Dropdowns/DropdownLink.vue'
 import LinkDesktop from '@/Components/Navs/Links/LinkDesktop.vue'
+import LinkDesktopDud from '@/Components/Navs/Links/LinkDesktopDud.vue'
 import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
 
 const props = defineProps({
@@ -25,22 +26,23 @@ const isEmpty = (obj) => {
 
 <template>
   <div class="inline-flex relative" v-if="!isEmpty(props.navbarItem.subItems)">
-    <LinkDesktop
-      v-if="props.navbarItem.subItems"
-      :active="route('home') + $page.url === props.navbarItem.url"
-      :href="props.navbarItem.url"
-    >
-      {{ props.navbarItem.title }}
-    </LinkDesktop>
-
-    <AppDropdown align="right" width="48">
+    <DropdownHover align="right" width="48">
       <template #trigger>
-        <button
-          type="button"
-          class="py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-4 transition ease-in-out duration-150"
+        <LinkDesktop
+          v-if="props.navbarItem.url"
+          class="h-full my-auto gap-x-1"
+          :active="route('home') + $page.url === props.navbarItem.url"
+          :href="props.navbarItem.url"
         >
-          <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
-        </button>
+          {{ props.navbarItem.title }} <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
+        </LinkDesktop>
+
+        <LinkDesktopDud
+          v-else
+          class="h-full my-auto gap-x-1"
+        >
+          {{ props.navbarItem.title }} <SvgChevronDown class="fill-current -mr-0.5 h-4 w-4" />
+        </LinkDesktopDud>
       </template>
 
       <template #content>
@@ -50,7 +52,7 @@ const isEmpty = (obj) => {
           :href="subItem.url"
         >{{ subItem.title }}</DropdownLink>
       </template>
-    </AppDropdown>
+    </DropdownHover>
   </div>
 
   <LinkDesktop

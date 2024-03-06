@@ -32,9 +32,9 @@ class NavbarItem extends Model
     }
 
     /** Get the url for the navbar item. */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
-        return $this->url ?? '#';
+        return $this->url;
     }
 
     /** The relationship for the navbar item's children. */
