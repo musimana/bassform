@@ -1,6 +1,6 @@
 <script setup>
 import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
-import AppDropdown from '@/Components/Navs/Dropdowns/AppDropdown.vue'
+import DropdownClick from '@/Components/Navs/Dropdowns/DropdownClick.vue'
 import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
 </script>
 
@@ -9,7 +9,7 @@ import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
     <h3 class="w-full pb-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Dropdown (Click) Component</h3>
 
     <div class="w-full py-4 flex justify-center bg-gray-300 dark:bg-gray-700">
-      <AppDropdown align="left" width="48">
+      <DropdownClick align="left" width="48">
         <template #trigger>
           <AppButton
             custom-classes="app-button-secondary-gray-100"
@@ -26,7 +26,7 @@ import SvgChevronDown from '@/Components/Images/Svgs/Outline/SvgChevronDown.vue'
             class="block px-4"
           >{{ option }}</span>
         </template>
-      </AppDropdown>
+      </DropdownClick>
     </div>
   </section>
 </template>
