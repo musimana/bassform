@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutDefault from '@/Layouts/LayoutDefault.vue'
 import ContentHomepage from '@/Pages/Public/Partials/ContentHomepage.vue'
 
