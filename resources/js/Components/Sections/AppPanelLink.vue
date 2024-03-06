@@ -1,5 +1,5 @@
 <script setup>
-import SvgArrowRight from '@/Components/Images/Svgs/Outline/SvgArrowRight.vue'
+import OutlineArrowRight from '@/Components/Icons/HeroIcons/Outline/OutlineArrowRight.vue'
 
 defineProps({
   item: {
@@ -22,6 +22,6 @@ defineProps({
       <p class="mt-8 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{{ item.content }}</p>
     </section>
 
-    <SvgArrowRight class="absolute right-0 shrink-0 stroke-gray-700 dark:stroke-gray-100 w-6 h-6 mx-8" />
+    <OutlineArrowRight class="absolute right-0 shrink-0 stroke-gray-700 dark:stroke-gray-100 w-6 h-6 mx-8" />
   </a>
 </template>
