@@ -35,7 +35,7 @@ export default {
 
   safelist: [
     {
-      pattern: /ml-8|list-disc/,
+      pattern: /ml-8|mt-12|list-disc/,
     },
   ],
 }
