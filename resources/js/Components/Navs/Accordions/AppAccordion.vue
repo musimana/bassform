@@ -15,7 +15,7 @@ const state = reactive({
   >
     <span
       class="-mx-4 -my-10"
-      :class="{ 'absolute block w-full h-full bg-gradient-to-t via-transparent from-gray-200 dark:from-gray-700' : !state.showingDetails, 'hidden' : state.showingDetails }"
+      :class="{ 'absolute block w-full h-full bg-gradient-to-t via-transparent from-gray-200 dark:from-gray-700 cursor-pointer' : !state.showingDetails, 'hidden' : state.showingDetails }"
     >&nbsp;</span>
 
     <slot />
