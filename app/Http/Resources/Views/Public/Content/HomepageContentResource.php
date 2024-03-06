@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources\Views\Public\Content;
 
+use App\Http\Resources\Views\Public\Summaries\PageSummaryResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
+use App\Models\Page;
 
 class HomepageContentResource implements ConstantItemInterface
 {
@@ -13,11 +15,18 @@ class HomepageContentResource implements ConstantItemInterface
      */
     public function getItem(): array
     {
+        $items = Page::whereNot('slug', 'about')->get();
+
         return [
             'heading' => 'Getting Started',
             'subheading' => '',
-            'bodytext' => '<p>VILT stack template app with server-side rendering (SSR) & Pest, created by Musimana.</p>',
-            'items' => [],
+            'bodytext' => implode('', [
+                '<p class="mb-8">' . config('metadata.description') . '</p>',
+                '<h3 class="font-semibold mt-12 mb-8 text-gray-700 dark:text-gray-300">Features</h3>',
+            ]),
+            'items' => $items
+                ->map(fn ($page) => (new PageSummaryResource)->getItem($page))
+                ->toArray(),
         ];
     }
 }
