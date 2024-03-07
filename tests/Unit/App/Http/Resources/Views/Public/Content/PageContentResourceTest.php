@@ -21,13 +21,11 @@ test('getItem returns ok', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(6)
+        ->toHaveCount(4)
         ->toMatchArray([
-            'addendum' => '',
-            'article' => null,
-            'subtitle' => '',
-            'bodytext' => '',
-            'tabs' => [],
-            'title' => '',
+            'blocks' => [],
+            'bodytext' => null,
+            'heading' => '',
+            'subheading' => '',
         ]);
 });
