@@ -1,4 +1,5 @@
 <script setup>
+import AppBlocks from '@/Components/Blocks/AppBlocks.vue'
 import LayoutDefault from '@/Layouts/LayoutDefault.vue'
 
 defineProps({
@@ -15,10 +16,6 @@ defineProps({
 
 <template>
   <LayoutDefault>
-    <div
-      v-if="content.addendum !== ''"
-      v-html="content.addendum"
-      class="px-4 pb-12 text-sm text-gray-900 dark:text-gray-100"
-    ></div>
+    <AppBlocks />
   </LayoutDefault>
 </template>
