@@ -2,56 +2,24 @@
 
 namespace App\Http\Resources\Views\Public\Content;
 
+use App\Http\Resources\Views\Blocks\BlocksResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
-use Illuminate\Foundation\Application;
 
 class PageContentResource implements PageItemInterface
 {
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, array<int, string>|string>
+     * @return array<string, array<int, array<string, array<int, string>|string>>|string>
      */
     public function getItem(Page $page): array
     {
         return [
-            'addendum' => self::getAddendum($page),
-            'article' => $page->content,
-            'subtitle' => $page->getSubtitle(),
-            'bodytext' => '',
-            'tabs' => self::getTabs($page),
-            'title' => $page->getTitle(),
+            'blocks' => (new BlocksResource)->getItems($page->blocks()),
+            'bodytext' => $page->content,
+            'heading' => $page->getTitle(),
+            'subheading' => $page->getSubtitle(),
         ];
-    }
-
-    /** Get the addendum string for the given page. */
-    private static function getAddendum(Page $page): string
-    {
-        $laravel_delimiter_position = strpos(Application::VERSION, '.');
-        $laravel_version = $laravel_delimiter_position
-            ? substr(Application::VERSION, 0, $laravel_delimiter_position) . '.x'
-            : Application::VERSION;
-
-        $php_delimiter_position = strrpos(PHP_VERSION, '.');
-        $php_version = $php_delimiter_position
-            ? substr(PHP_VERSION, 0, $php_delimiter_position) . '.x'
-            : PHP_VERSION;
-
-        return $page->slug === 'about'
-            ? '<ul class="list-disc ml-8"><li>Laravel v' . $laravel_version . '</li><li>PHP v' . $php_version . '</li></ul>'
-            : '';
-    }
-
-    /**
-     * Get the tabs array for the given page.
-     *
-     * @return array<int, string>
-     */
-    private static function getTabs(Page $page): array
-    {
-        return $page->slug === 'controls'
-            ? ['Pop-ups', 'Buttons']
-            : [];
     }
 }

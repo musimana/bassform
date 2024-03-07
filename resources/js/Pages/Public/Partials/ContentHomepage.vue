@@ -3,9 +3,7 @@ import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
 </script>
 
 <template>
-  <h2 class="text-center text-xl font-bold text-gray-800 dark:text-gray-300">{{ $page.props.metadata.appName }}</h2>
-
-  <div class="w-full py-8">
+  <div class="w-full pb-8">
     <hr class="max-w-7xl mx-auto border-gray-700 dark:border-gray-300" />
   </div>
 
@@ -20,7 +18,7 @@ import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
       class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
     >
       <AppPanelLink
-        v-for="item,index in $page.props.content?.items"
+        v-for="(item,index) in $page.props.content?.items"
         :key="index"
         :item="item"
       />

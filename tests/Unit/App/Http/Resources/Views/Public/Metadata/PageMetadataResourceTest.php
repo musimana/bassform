@@ -11,7 +11,6 @@ beforeEach(function () {
     $this->page = Page::factory()->create([
         'slug' => 'test-page',
         'meta_description' => 'Test page example meta-description.',
-        'meta_keywords' => 'test, page, keywords',
         'meta_title' => 'Test Page',
     ]);
 });
@@ -35,8 +34,8 @@ test('getItem returns ok', function () {
         ->toHaveCamelCaseKeys()
         ->toHaveCount(3)
         ->toMatchArray([
-            'canonical' => url('test-page'),
-            'description' => 'Test page example meta-description.',
-            'title' => $this->page->getTitle(),
+            'canonical' => url($this->page->slug),
+            'description' => $this->page->getMetaDescription(),
+            'title' => $this->page->getMetaTitle(),
         ]);
 });

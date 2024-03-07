@@ -17,43 +17,24 @@ $seeds = [
         'title' => 'About',
         'subtitle' => config('app.name'),
         'content' => '
-        <section id="welcome" class="px-4 py-4">
-            <p class="text-lg pb-4">
-                Welcome traveller! This is a template VILT SSR app by Musimana.
+        <section id="welcome" class="p-4">
+            <p class="text-lg tracking-widest border-l-4 border-gray-900 dark:border-gray-300 p-2 bg-gray-200 dark:bg-gray-800"><em>"Suped-up Laravel Breeze with Vue, Inertia & Tailwind"</em></p>
+            <p class="mt-8">
+                Bassform is a light-weight template for scaffolding <a href="https://laravel.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"><em>Laravel</em></a> apps,
+                with Vue for the UI.
+                It is based on and inspired by the VILT SSR flavour of <a href="https://github.com/laravel/breeze" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"><em>Laravel Breeze</em></a>.
+            </p>
+            <p>
+                The template includes versions of Breeze\'s authentication, profile & dark mode features,
+                plus additional common UI components, SEO enhancements and a test suite with near total code coverage.
+            </p>
+            <p>
+                The template is open source and once a new project has been initiated from it,
+                you\'re free to customise it however you wish.
             </p>
         </section>
 
-        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
-        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
-
-        <section id="features" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Features</h3>
-
-            <ul class="ml-8 list-disc">
-                <li><a href="' . url('controls') . '">Controls</a></li>
-                <li><a href="' . url('forms') . '">Forms</a></li>
-            </ul>
-        </section>
-
-        <hr class="mb-1 border-gray-900 dark:border-gray-100" />
-        <hr class="mt-1 border-gray-900 dark:border-gray-100" />
-
-        <section id="stack" class="px-4 pt-12">
-            <h3 class="w-full pb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3>
-
-            <p class="pb-4">
-                Built with a
-                <a
-                    href="https://laravel.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"
-                >
-                    <em>Laravel</em>
-                </a>
-                VILT stack.
-            </p>
-        </section>
+        <hr class="my-8 border-gray-900 dark:border-gray-100" />
         ',
         'in_sitemap' => 1,
         'meta_title' => 'About',
