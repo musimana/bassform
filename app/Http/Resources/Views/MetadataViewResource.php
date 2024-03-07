@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Views;
 
+use App\Http\Resources\Views\Navbars\NavbarItemsMobileResource;
 use App\Http\Resources\Views\Navbars\NavbarItemsResource;
 use App\Http\Resources\Views\Public\Formatters\CopyrightMessageResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
@@ -30,6 +31,7 @@ class MetadataViewResource implements ArrayToItemInterface
                 'github' => config('metadata.social_links.github'),
             ],
             'navbarItems' => (new NavbarItemsResource)->getItems(),
+            'navbarItemsMobile' => (new NavbarItemsMobileResource)->getItems(),
             'title' => config('app.name'),
         ];
 
