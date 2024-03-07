@@ -27,7 +27,7 @@ test('getItem returns ok', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(9)
+        ->toHaveCount(10)
         ->toMatchArray([
             'appName' => config('app.name'),
             'canLogin' => true,
@@ -39,6 +39,7 @@ test('getItem returns ok', function () {
                 'github' => config('metadata.social_links.github'),
             ],
             'navbarItems' => [],
+            'navbarItemsMobile' => [],
             'title' => config('app.name'),
         ]);
 });
