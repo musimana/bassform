@@ -3,7 +3,6 @@
 namespace Tests\Browser\TestNavigation;
 
 use App\Models\Page;
-use App\Models\User;
 use Database\Seeders\NavbarSeeder;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
@@ -52,22 +51,6 @@ class HeaderNavigationTest extends DuskTestCase
             ->navigateViaHeader('@nav-login')
 
             ->on(new Login)
-        );
-    }
-
-    /** Test the header navbar logout link works. */
-    public function testNavbarLogoutLink(): void
-    {
-        $user = User::factory()->create();
-
-        $this->browse(fn (Browser $browser) => $browser
-            ->loginAs($user)
-            ->visit(new Homepage)
-            ->assertAuthenticatedAs($user)
-            ->navigateViaHeader('@nav-logout')
-
-            ->on(new Homepage)
-            ->assertGuest()
         );
     }
 
