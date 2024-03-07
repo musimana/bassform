@@ -42,7 +42,7 @@ article.app-article pre {
 }
 
 article.app-article p code {
-  @apply px-2 py-1 rounded-sm;
+  @apply font-mono px-2 py-1 rounded-sm;
 }
 
 article.app-article ul li em,
@@ -52,9 +52,8 @@ article.app-article p em
 
   @apply
     font-semibold
-    text-blue-950
+    text-gray-900
     dark:text-white
-    not-italic
     tracking-wide;
 }
 
