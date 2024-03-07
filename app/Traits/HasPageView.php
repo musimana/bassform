@@ -27,4 +27,24 @@ trait HasPageView
     {
         return $this->title ?? '';
     }
+
+    /**
+     * Get the content blocks array for the item.
+     *
+     * @return array<int, string>
+     */
+    public function blocks(): array
+    {
+        $blocks = [];
+
+        if ($this->slug === 'about') {
+            $blocks[] = 'stack';
+        }
+
+        if ($this->slug === 'controls') {
+            $blocks[] = 'tabs';
+        }
+
+        return $blocks;
+    }
 }
