@@ -38,7 +38,7 @@ defineExpose({ focus: () => input.value.focus() })
     <option :disabled="!hasNull" value="" :class="{ 'hidden' : !hasNull }"><em>none</em></option>
 
     <option
-      v-for="option,index in options"
+      v-for="(option,index) in options"
       :key="index"
       :selected="{'selected': modelValue == option.value}"
       :value="option.value"

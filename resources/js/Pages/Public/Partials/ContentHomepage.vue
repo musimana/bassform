@@ -20,7 +20,7 @@ import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
       class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
     >
       <AppPanelLink
-        v-for="item,index in $page.props.content?.items"
+        v-for="(item,index) in $page.props.content?.items"
         :key="index"
         :item="item"
       />
