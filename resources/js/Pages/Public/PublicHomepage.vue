@@ -1,5 +1,6 @@
 <script setup>
-import LayoutDefault from '@/Layouts/LayoutDefault.vue'
+import AppHead from '@/Components/Sections/AppHead.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentHomepage from '@/Pages/Public/Partials/ContentHomepage.vue'
 
 defineProps({
@@ -15,7 +16,13 @@ defineProps({
 </script>
 
 <template>
-  <LayoutDefault>
+  <AppHead :metadata="metadata" />
+
+  <LayoutGuest>
+    <template #pageHeader>
+      <h2 class="text-center text-xl font-bold text-gray-800 dark:text-gray-300">{{ $page.props.content.heading }}</h2>
+    </template>
+
     <ContentHomepage />
-  </LayoutDefault>
+  </LayoutGuest>
 </template>

@@ -3,9 +3,7 @@ import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
 </script>
 
 <template>
-  <h2 class="text-center text-xl font-bold text-gray-800 dark:text-gray-300">{{ $page.props.metadata.appName }}</h2>
-
-  <div class="w-full py-8">
+  <div class="w-full pb-8">
     <hr class="max-w-7xl mx-auto border-gray-700 dark:border-gray-300" />
   </div>
 

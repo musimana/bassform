@@ -18,8 +18,7 @@ class HomepageContentResource implements ConstantItemInterface
         $items = Page::whereNot('slug', 'about')->get();
 
         return [
-            'heading' => 'Getting Started',
-            'subheading' => '',
+            'heading' => config('app.name'),
             'bodytext' => implode('', [
                 '<p class="mb-8">' . config('metadata.description') . '</p>',
                 '<h3 class="font-semibold mt-12 mb-8 text-gray-700 dark:text-gray-300">Features</h3>',
