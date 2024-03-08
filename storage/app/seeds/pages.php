@@ -42,6 +42,9 @@ $seeds = [
         'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContent',
         'is_homepage' => 0,
+        'blocks' => [
+            ['type' => 'stack'],
+        ],
     ],
 
     [
@@ -54,6 +57,12 @@ $seeds = [
         'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContentControls',
         'is_homepage' => 0,
+        'blocks' => [
+            [
+                'type' => 'tabs',
+                'data' => json_encode(['tabs' => ['Pop-ups', 'Buttons']]),
+            ],
+        ],
     ],
 
     [
