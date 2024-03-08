@@ -2,32 +2,24 @@
 
 namespace App\Http\Resources\Views\Blocks;
 
-use App\Models\Page;
+use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
+use App\Models\Block;
+use Illuminate\Support\Collection;
 
-class BlocksResource
+class BlocksResource implements CollectionIndexInterface
 {
     /**
-     * Get the content blocks array for the blocks.
+     * Get the content blocks array for the given block collections.
      *
-     * @param  array<int, string>  $blocks
-     * @return array<int, array<string, array<int, string>|string>>
+     * @return array<int, array<int|string, mixed>>
      */
-    public function getItems(array $blocks): array
+    public function getItems(Collection $collection): array
     {
-        $block_resources = [];
-
-        foreach ($blocks as $block) {
-            $resource = match ($block) {
+        return $collection->map(
+            fn (Block $block) => match ($block->type) {
                 'stack' => (new StackBlockResource)->getItem(),
-                'tabs' => (new TabsBlockResource)->getItem(Page::where('slug', 'controls')->first() ?? new Page),
-                default => false,
-            };
-
-            if ($resource) {
-                $block_resources[] = $resource;
+                default => $block->getDataArray() ?? [],
             }
-        }
-
-        return $block_resources;
+        )->toArray();
     }
 }

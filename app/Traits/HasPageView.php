@@ -2,6 +2,9 @@
 
 namespace App\Traits;
 
+use App\Models\Block;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 trait HasPageView
 {
     /** Get the meta-description for the resource. */
@@ -28,23 +31,11 @@ trait HasPageView
         return $this->title ?? '';
     }
 
-    /**
-     * Get the content blocks array for the item.
-     *
-     * @return array<int, string>
-     */
-    public function blocks(): array
+    /** The relationship for the resource's content blocks. */
+    public function blocks(): HasMany
     {
-        $blocks = [];
-
-        if ($this->slug === 'about') {
-            $blocks[] = 'stack';
-        }
-
-        if ($this->slug === 'controls') {
-            $blocks[] = 'tabs';
-        }
-
-        return $blocks;
+        return $this->hasMany(Block::class, 'parent_id')
+            ->where('parent_type', self::class)
+            ->orderBy('display_order');
     }
 }
