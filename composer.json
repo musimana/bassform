@@ -14,13 +14,13 @@
         "tightenco/ziggy": "^1.8.2"
     },
     "require-dev": {
-        "doctrine/dbal": "^3.8.2",
+        "doctrine/dbal": "^3.8.3",
         "fakerphp/faker": "^1.23.1",
         "jasonmccreary/laravel-test-assertions": "^2.4.0",
         "larastan/larastan": "^2.9.2",
         "laravel/dusk": "^7.13.0",
         "laravel/pint": "^1.14.0",
-        "laravel/sail": "^1.28.1",
+        "laravel/sail": "^1.28.2",
         "mockery/mockery": "^1.6.7",
         "nunomaduro/collision": "^7.10.0",
         "pestphp/pest": "^2.34.1",
