@@ -17,7 +17,7 @@ class PageContentResource implements PageItemInterface
     {
         return [
             'blocks' => (new BlocksResource)->getItems($page->blocks()),
-            'bodytext' => $page->content,
+            'bodytext' => $page->getContent(),
             'heading' => $page->getTitle(),
             'subheading' => $page->getSubtitle(),
         ];

@@ -51,6 +51,12 @@ class Page extends Model
 
     /** GETTERS */
 
+    /** Get the HTML content string for the page. */
+    public function getContent(): string
+    {
+        return $this->content ?? '';
+    }
+
     /**
      * Get the public URL's path for the page.
      */

@@ -15,7 +15,7 @@ import LayoutGuest from '@/Layouts/LayoutGuest.vue'
       </p>
     </template>
 
-    <div class="w-full mb-8" v-if="$page.props.content.bodytext">
+    <div class="w-full mb-8" v-if="$page.props.content.bodytext !== ''">
       <article
         v-html="$page.props.content.bodytext"
         :id="$page.props.content.heading.replace(' ', '-').toLowerCase()"
