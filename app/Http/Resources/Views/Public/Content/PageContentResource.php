@@ -11,13 +11,13 @@ class PageContentResource implements PageItemInterface
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, array<int, array<string, array<int, string>|string>>|string>
+     * @return array<string, array<int, array<int|string, mixed>>|string>>|string>
      */
     public function getItem(Page $page): array
     {
         return [
-            'blocks' => (new BlocksResource)->getItems($page->blocks()),
-            'bodytext' => $page->content,
+            'blocks' => (new BlocksResource)->getItems($page->blocks),
+            'bodytext' => $page->getContent(),
             'heading' => $page->getTitle(),
             'subheading' => $page->getSubtitle(),
         ];

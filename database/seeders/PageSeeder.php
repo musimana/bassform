@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Block;
 use App\Models\Page;
 use Exception;
 use Illuminate\Database\Seeder;
@@ -24,7 +25,7 @@ class PageSeeder extends Seeder
         /** @var array<int, mixed> $seeds */
         if ($seeds !== [0]) {
             foreach ($seeds as $seed) {
-                Page::factory()->create([
+                $page = Page::factory()->create([
                     'slug' => $seed['slug'] ?? null,
                     'title' => $seed['title'] ?? null,
                     'subtitle' => $seed['subtitle'] ?? null,
@@ -34,6 +35,16 @@ class PageSeeder extends Seeder
                     'meta_keywords' => $seed['meta_keywords'] ?? null,
                     'template' => $seed['template'] ?? null,
                 ]);
+
+                foreach ($seed['blocks'] ?? [] as $display_order => $block) {
+                    Block::factory()->create([
+                        'parent_type' => Page::class,
+                        'parent_id' => $page->id,
+                        'type' => $block['type'],
+                        'display_order' => $display_order,
+                        'data' => $block['data'] ?? null,
+                    ]);
+                }
             }
         }
     }
