@@ -1,6 +1,6 @@
 <script setup>
-import IconAppLogo from '@/Components/Icons/IconAppLogo.vue'
 import AppNavbar from '@/Components/Controls/Navbars/AppNavbar.vue'
+import IconAppLogo from '@/Components/Icons/IconAppLogo.vue'
 import { Link } from '@inertiajs/vue3'
 </script>
 
