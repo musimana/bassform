@@ -17,7 +17,7 @@ import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
     :key="0"
     :tab="0"
     :tabs-key="0"
-    class="w-full flex px-4 bg-white dark:bg-gray-900"
+    class="px-4 bg-white dark:bg-gray-900"
   >
     <ControlsTabPopUps />
   </TabBody>
@@ -26,7 +26,7 @@ import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
     :key="1"
     :tab="1"
     :tabs-key="0"
-    class="w-full flex px-4 bg-white dark:bg-gray-900"
+    class="px-4 bg-white dark:bg-gray-900"
   >
     <ControlsTabButtons />
   </TabBody>

@@ -56,9 +56,9 @@ class StackBlockResource implements ConstantItemInterface
 
         return [
             'html' => implode('', [
-                '<section id="stack"><h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3><ul class="list-disc ml-8 mb-8">',
+                '<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3><ul class="list-disc ml-8 mb-8">',
                 $li_elements_string,
-                '</ul><p>For PHP v' . $php_version . '</p></section>',
+                '</ul><p>For PHP v' . $php_version . '</p>',
             ]),
         ];
     }

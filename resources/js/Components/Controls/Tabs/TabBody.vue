@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="{ 'hidden' : tab !== store.tabs[tabsKey].activeTab}">
+  <section :class="{ 'hidden' : tab !== store.tabs[tabsKey].activeTab}">
     <slot></slot>
-  </div>
+  </section>
 </template>
