@@ -1,15 +1,17 @@
 <script setup>
 import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
+import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
 </script>
 
 <template>
   <AppSectionDivider margin="xl" />
 
-  <article
-    v-html="$page.props.content.bodytext"
-    class="text-gray-600 dark:text-gray-300"
-  ></article>
+  <AppSectionHtml
+    v-if="$page.props.content.bodytext !== ''"
+    :html="$page.props.content.bodytext"
+    class="px-4"
+  />
 
   <div class="w-full mb-8">
     <div

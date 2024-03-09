@@ -1,4 +1,5 @@
 <script setup>
+import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
 import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 </script>
@@ -15,13 +16,11 @@ import LayoutGuest from '@/Layouts/LayoutGuest.vue'
       </p>
     </template>
 
-    <div class="w-full mb-8" v-if="$page.props.content.bodytext !== ''">
-      <article
-        v-html="$page.props.content.bodytext"
-        :id="$page.props.content.heading.replace(' ', '-').toLowerCase()"
-        class="app-article text-gray-600 dark:text-gray-200 text-sm leading-relaxed"
-      ></article>
-    </div>
+    <AppSectionHtml
+      v-if="$page.props.content.bodytext !== ''"
+      :html="$page.props.content.bodytext"
+      :id="$page.props.content.heading.replace(' ', '-').toLowerCase()"
+    />
 
     <slot />
   </LayoutGuest>
