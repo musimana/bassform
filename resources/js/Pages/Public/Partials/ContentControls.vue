@@ -9,24 +9,23 @@ import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
 <template>
   <h3 class="w-full pt-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Tab Component</h3>
 
-  <TabControls :tabs-key="0" :tabs="$page.props.content?.blocks[0]?.tabs ?? {}" class="pt-4" />
+  <TabControls
+    class="pt-4"
+    :tabs="$page.props.content?.blocks[0]?.tabs ?? {}"
+  />
 
   <AppSectionDivider margin="min" />
 
   <TabBody
-    :key="0"
-    :tab="0"
-    :tabs-key="0"
     class="px-4 bg-white dark:bg-gray-900"
+    :tab="0"
   >
     <ControlsTabPopUps />
   </TabBody>
 
   <TabBody
-    :key="1"
-    :tab="1"
-    :tabs-key="0"
     class="px-4 bg-white dark:bg-gray-900"
+    :tab="1"
   >
     <ControlsTabButtons />
   </TabBody>
