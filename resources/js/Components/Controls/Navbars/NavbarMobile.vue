@@ -1,8 +1,8 @@
 <script setup>
-import ControlDarkMode from '@/Components/Navs/ControlDarkMode.vue'
-import NavbarMobileItems from '@/Components/Navs/Navbars/NavbarMobileItems.vue'
-import NavbarMobileLogin from '@/Components/Navs/Navbars/NavbarMobileLogin.vue'
-import NavbarMobileUser from '@/Components/Navs/Navbars/NavbarMobileUser.vue'
+import ControlDarkMode from '@/Components/Controls/ControlDarkMode.vue'
+import NavbarMobileItems from '@/Components/Controls/Navbars/NavbarMobileItems.vue'
+import NavbarMobileLogin from '@/Components/Controls/Navbars/NavbarMobileLogin.vue'
+import NavbarMobileUser from '@/Components/Controls/Navbars/NavbarMobileUser.vue'
 
 const props = defineProps({
   showingNavbarMobile: {

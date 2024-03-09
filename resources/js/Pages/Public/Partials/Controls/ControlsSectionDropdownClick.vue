@@ -1,6 +1,6 @@
 <script setup>
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
-import DropdownClick from '@/Components/Navs/Dropdowns/DropdownClick.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import DropdownClick from '@/Components/Controls/Dropdowns/DropdownClick.vue'
 import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChevronDown.vue'
 </script>
 

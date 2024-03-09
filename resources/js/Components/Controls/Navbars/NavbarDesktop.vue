@@ -1,9 +1,9 @@
 <script setup>
-import ControlDarkMode from '@/Components/Navs/ControlDarkMode.vue'
-import NavbarDesktopItems from '@/Components/Navs/Navbars/NavbarDesktopItems.vue'
-import NavbarDesktopLogin from '@/Components/Navs/Navbars/NavbarDesktopLogin.vue'
-import NavbarDesktopUser from '@/Components/Navs/Navbars/NavbarDesktopUser.vue'
-import ButtonHamburger from '@/Components/Navs/Buttons/ButtonHamburger.vue'
+import ControlDarkMode from '@/Components/Controls/ControlDarkMode.vue'
+import NavbarDesktopItems from '@/Components/Controls/Navbars/NavbarDesktopItems.vue'
+import NavbarDesktopLogin from '@/Components/Controls/Navbars/NavbarDesktopLogin.vue'
+import NavbarDesktopUser from '@/Components/Controls/Navbars/NavbarDesktopUser.vue'
+import ButtonHamburger from '@/Components/Controls/Buttons/ButtonHamburger.vue'
 
 defineProps(['showingNavbarMobile'])
 

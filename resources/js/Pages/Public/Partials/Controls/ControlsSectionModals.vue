@@ -1,5 +1,5 @@
 <script setup>
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppModal from '@/Components/Modals/AppModal.vue'
 import { ref } from 'vue'
 

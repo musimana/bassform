@@ -1,5 +1,5 @@
 <script setup>
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'

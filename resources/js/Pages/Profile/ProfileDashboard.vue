@@ -1,7 +1,7 @@
 <script setup>
 import AppHead from '@/Components/Sections/AppHead.vue'
 import AppPanel from '@/Components/Sections/AppPanel.vue'
-import LinkButton from '@/Components/Navs/Links/LinkButton.vue'
+import LinkButton from '@/Components/Controls/Links/LinkButton.vue'
 import LayoutUser from '@/Layouts/LayoutUser.vue'
 
 const props = defineProps({

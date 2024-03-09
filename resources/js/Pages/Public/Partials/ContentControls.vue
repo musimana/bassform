@@ -2,8 +2,8 @@
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import ControlsTabButtons from '@/Pages/Public/Partials/Controls/ControlsTabButtons.vue'
 import ControlsTabPopUps from '@/Pages/Public/Partials/Controls/ControlsTabPopUps.vue'
-import TabBody from '@/Components/Navs/Tabs/TabBody.vue'
-import TabControls from '@/Components/Navs/Tabs/TabControls.vue'
+import TabBody from '@/Components/Controls/Tabs/TabBody.vue'
+import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
 </script>
 
 <template>
