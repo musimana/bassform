@@ -30,7 +30,7 @@ const form = reactive({
     :endpoint="route('page.store', 'forms')"
     :form="form"
   >
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="text"
@@ -50,7 +50,7 @@ const form = reactive({
       <InputError class="mt-2" :message="form.errors.text" />
     </div>
 
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="select"
@@ -68,7 +68,7 @@ const form = reactive({
       <InputError class="mt-2" :message="form.errors.select" />
     </div>
 
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="pdfUpload"
@@ -119,7 +119,7 @@ const form = reactive({
 
   <h3 class="mb-4 text-lg font-bold text-gray-600 dark:text-gray-300">Results:</h3>
 
-  <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
+  <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
     <code v-if="usePage().props.flash.output" class="text-gray-600 dark:text-gray-400">{{ usePage().props.flash.output }}</code>
     <p v-else class="text-gray-600 dark:text-gray-400">[ <em>The response from the form will appear here.</em> ]</p>
   </div>

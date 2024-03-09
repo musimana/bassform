@@ -7,7 +7,7 @@ import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
   <section id="template-ui-dropdowns-hover" class="mb-8">
     <h3 class="w-full pb-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Dropdown (Hover) Component</h3>
 
-    <div class="w-full py-4 flex justify-center bg-gray-300 dark:bg-gray-700">
+    <div class="w-full py-4 flex justify-center bg-gray-200 dark:bg-gray-700">
       <DropdownHover align="left" width="48">
         <template #trigger>
           <span class="border-2 border-gray-950 dark:border-gray-100 p-2 rounded-md text-gray-950 dark:text-gray-100">Hover Here</span>
