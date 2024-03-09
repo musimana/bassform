@@ -8,7 +8,7 @@ const state = reactive({
 </script>
 
 <template>
-  <section
+  <div
     class="relative px-4 py-10 transition ease-in-out duration-150"
     :class="{ 'h-32 overflow-hidden' : !state.showingDetails }"
     @click="state.showingDetails = !state.showingDetails"
@@ -20,12 +20,11 @@ const state = reactive({
 
     <slot />
 
-    <div class="absolute bottom-0 right-0 mb-1 mr-2 border-t border-blue-950 dark:border-blue-200">
-      <button
-        class="text-md px-2 text-blue-950 dark:text-blue-200 hover:text-blue-800 dark:hover:text-blue-100 transition ease-in-out duration-150 cursor-pointer"
-      >
-        <span class="m-auto">Show {{ state.showingDetails ? 'Less' : 'More' }}</span>
-      </button>
-    </div>
-  </section>
+    <button
+      class="absolute bottom-0 right-0 mb-1 mr-2 border-t border-blue-950 dark:border-blue-200 text-md px-2 text-blue-950 dark:text-blue-200 hover:text-blue-800 dark:hover:text-blue-100 transition ease-in-out duration-150 cursor-pointer"
+      type="button"
+    >
+      <span class="m-auto">Show {{ state.showingDetails ? 'Less' : 'More' }}</span>
+    </button>
+  </div>
 </template>

@@ -3,7 +3,7 @@ import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 

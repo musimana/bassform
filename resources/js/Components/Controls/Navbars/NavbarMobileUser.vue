@@ -1,5 +1,5 @@
 <script setup>
-import LinkMobile from '@/Components/Navs/Links/LinkMobile.vue'
+import LinkMobile from '@/Components/Controls/Links/LinkMobile.vue'
 </script>
 
 <template>

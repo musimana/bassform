@@ -30,7 +30,7 @@ test('getItem returns ok', function () {
         ->toHaveCount(3)
         ->toMatchArray([
             'heading' => config('app.name'),
-            'bodytext' => '<p class="mb-8">Laravel VILT stack template app with server-side rendering (SSR), Larastan, Pest & Dusk test suites. Created by Musimana.</p><h3 class="font-semibold mt-12 mb-8 text-gray-700 dark:text-gray-300">Features</h3>',
+            'bodytext' => '<p class="mb-8">Laravel VILT stack template app with server-side rendering (SSR), Larastan, Pest & Dusk test suites. Created by Musimana.</p>',
             'items' => [],
         ]);
 });

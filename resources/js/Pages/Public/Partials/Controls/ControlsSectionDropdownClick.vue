@@ -1,6 +1,6 @@
 <script setup>
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
-import DropdownClick from '@/Components/Navs/Dropdowns/DropdownClick.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import DropdownClick from '@/Components/Controls/Dropdowns/DropdownClick.vue'
 import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChevronDown.vue'
 </script>
 
@@ -8,7 +8,7 @@ import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChev
   <section id="template-ui-dropdowns-click" class="mb-8">
     <h3 class="w-full pb-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Dropdown (Click) Component</h3>
 
-    <div class="w-full py-4 flex justify-center bg-gray-300 dark:bg-gray-700">
+    <div class="w-full py-4 flex justify-center bg-gray-200 dark:bg-gray-700">
       <DropdownClick align="left" width="48">
         <template #trigger>
           <AppButton

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import NavbarDesktop from '@/Components/Navs/Navbars/NavbarDesktop.vue'
-import NavbarMobile from '@/Components/Navs/Navbars/NavbarMobile.vue'
+import NavbarDesktop from '@/Components/Controls/Navbars/NavbarDesktop.vue'
+import NavbarMobile from '@/Components/Controls/Navbars/NavbarMobile.vue'
 
 const showingNavbarMobile = ref(false)
 

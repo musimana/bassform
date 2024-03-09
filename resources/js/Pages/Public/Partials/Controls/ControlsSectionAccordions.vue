@@ -1,5 +1,5 @@
 <script setup>
-import AppAccordion from '@/Components/Navs/Accordions/AppAccordion.vue'
+import AppAccordion from '@/Components/Controls/Accordions/AppAccordion.vue'
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script setup>
-import DropdownHover from '@/Components/Navs/Dropdowns/DropdownHover.vue'
-import DropdownLink from '@/Components/Navs/Dropdowns/DropdownLink.vue'
-import LinkDesktop from '@/Components/Navs/Links/LinkDesktop.vue'
-import LinkDesktopDud from '@/Components/Navs/Links/LinkDesktopDud.vue'
+import DropdownHover from '@/Components/Controls/Dropdowns/DropdownHover.vue'
+import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
+import LinkDesktop from '@/Components/Controls/Links/LinkDesktop.vue'
+import LinkDesktopDud from '@/Components/Controls/Links/LinkDesktopDud.vue'
 import OutlineChevronDown from '@/Components/Icons/HeroIcons/Outline/OutlineChevronDown.vue'
 
 const props = defineProps({

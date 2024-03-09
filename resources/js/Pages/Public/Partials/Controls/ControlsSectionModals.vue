@@ -1,5 +1,5 @@
 <script setup>
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppModal from '@/Components/Modals/AppModal.vue'
 import { ref } from 'vue'
 
@@ -19,7 +19,7 @@ const openModal = () => {
   <section id="template-ui-modals" class="mb-8">
     <h3 class="w-full pb-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Modal Component</h3>
 
-    <div class="w-full py-4 flex justify-center bg-gray-300 dark:bg-gray-700">
+    <div class="w-full py-4 flex justify-center bg-gray-200 dark:bg-gray-700">
       <AppButton
         custom-classes="app-button-secondary-gray-100"
         type="button"

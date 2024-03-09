@@ -2,8 +2,8 @@
 
 use App\Http\Resources\Views\Blocks\BlocksResource;
 use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
-use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 
 uses(RefreshDatabase::class);
 

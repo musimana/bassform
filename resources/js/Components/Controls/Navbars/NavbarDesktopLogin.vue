@@ -1,7 +1,7 @@
 <script setup>
-import DropdownHover from '@/Components/Navs/Dropdowns/DropdownHover.vue'
-import DropdownLink from '@/Components/Navs/Dropdowns/DropdownLink.vue'
-import LinkDesktopIcon from '@/Components/Navs/Links/LinkDesktopIcon.vue'
+import DropdownHover from '@/Components/Controls/Dropdowns/DropdownHover.vue'
+import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
+import LinkDesktopIcon from '@/Components/Controls/Links/LinkDesktopIcon.vue'
 import OutlineUser from '@/Components/Icons/HeroIcons/Outline/OutlineUser.vue'
 </script>
 

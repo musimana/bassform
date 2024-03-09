@@ -1,5 +1,5 @@
 <script setup>
-import NavbarDesktopItem from '@/Components/Navs/Navbars/NavbarDesktopItem.vue'
+import NavbarDesktopItem from '@/Components/Controls/Navbars/NavbarDesktopItem.vue'
 </script>
 
 <template>

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import AppButton from '@/Components/Navs/Buttons/AppButton.vue'
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 
 const props = defineProps({
