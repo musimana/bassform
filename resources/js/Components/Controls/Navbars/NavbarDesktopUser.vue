@@ -1,4 +1,5 @@
 <script setup>
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import DropdownHover from '@/Components/Controls/Dropdowns/DropdownHover.vue'
 import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
 import LinkDesktopIcon from '@/Components/Controls/Links/LinkDesktopIcon.vue'
@@ -27,7 +28,7 @@ import OutlineUser from '@/Components/Icons/HeroIcons/Outline/OutlineUser.vue'
         :active="route().current('profile.edit')"
       >Account</DropdownLink>
 
-      <hr class="mt-2 border-gray-900 dark:border-gray-100" />
+      <AppSectionDivider margin="sm" />
 
       <DropdownLink
         :href="route('logout.edit')"

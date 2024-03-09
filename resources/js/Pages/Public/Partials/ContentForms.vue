@@ -1,6 +1,7 @@
 <script setup>
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
@@ -114,7 +115,7 @@ const form = reactive({
     </div>
   </AppForm>
 
-  <hr class="my-8" />
+  <AppSectionDivider margin="xl" />
 
   <h3 class="mb-4 text-lg font-bold text-gray-600 dark:text-gray-300">Results:</h3>
 

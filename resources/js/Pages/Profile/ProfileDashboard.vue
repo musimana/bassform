@@ -1,6 +1,7 @@
 <script setup>
 import AppHead from '@/Components/Sections/AppHead.vue'
 import AppPanel from '@/Components/Sections/AppPanel.vue'
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import LinkButton from '@/Components/Controls/Links/LinkButton.vue'
 import LayoutUser from '@/Layouts/LayoutUser.vue'
 
@@ -28,7 +29,7 @@ const props = defineProps({
     <AppPanel>
       <h3 class="font-semibold text-sm text-gray-900 dark:text-gray-100 uppercase tracking-widest">Account: {{ $page.props.auth.user.name }} ({{ $page.props.auth.user.email }})</h3>
 
-      <hr class="my-6" />
+      <AppSectionDivider />
 
       <div class="flex justify-end">
         <LinkButton :href="route('profile.edit')">Edit Profile</LinkButton>

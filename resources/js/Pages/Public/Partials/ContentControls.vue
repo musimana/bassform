@@ -11,7 +11,7 @@ import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
 
   <TabControls :tabs-key="0" :tabs="$page.props.content?.blocks[0]?.tabs ?? {}" class="pt-4" />
 
-  <AppSectionDivider />
+  <AppSectionDivider margin="min" />
 
   <TabBody
     :key="0"

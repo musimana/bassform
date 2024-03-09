@@ -1,11 +1,10 @@
 <script setup>
 import AppPanelLink from '@/Components/Sections/AppPanelLink.vue'
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 </script>
 
 <template>
-  <div class="w-full pb-8">
-    <hr class="max-w-7xl mx-auto border-gray-700 dark:border-gray-300" />
-  </div>
+  <AppSectionDivider margin="xl" />
 
   <article
     v-html="$page.props.content.bodytext"
