@@ -10,8 +10,11 @@ import BlockIndexPanels from '@/Components/Blocks/BlockIndexPanels.vue'
   <AppSectionHtml
     v-if="$page.props.content.bodytext !== ''"
     :html="$page.props.content.bodytext"
-    class="px-4"
+    class="mb-12 px-4"
   />
 
-  <BlockIndexPanels />
+  <BlockIndexPanels
+    :items="$page.props.content.items ?? []"
+    title="Features"
+  />
 </template>

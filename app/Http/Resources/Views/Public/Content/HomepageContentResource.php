@@ -19,10 +19,7 @@ class HomepageContentResource implements ConstantItemInterface
 
         return [
             'heading' => config('app.name'),
-            'bodytext' => implode('', [
-                '<p class="mb-8">' . config('metadata.description') . '</p>',
-                '<h3 class="font-semibold mt-12 mb-8 text-gray-700 dark:text-gray-300">Features</h3>',
-            ]),
+            'bodytext' => '<p class="mb-8">' . config('metadata.description') . '</p>',
             'items' => $items
                 ->map(fn ($page) => (new PageSummaryResource)->getItem($page))
                 ->toArray(),
