@@ -88,6 +88,7 @@ const submit = () => {
         <AppButton
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
+          min-width="lg"
         >Reset Password</AppButton>
       </div>
     </form>

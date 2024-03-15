@@ -99,14 +99,13 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.password_confirmation" />
       </div>
 
-      <div class="flex items-center justify-end mt-4">
+      <div class="flex items-center justify-end mt-4 gap-x-4">
         <Link
           :href="route('login')"
           class="underline text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100"
         >Already registered?</Link>
 
         <AppButton
-          custom-classes="app-button-primary-gray-900 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >Register</AppButton>

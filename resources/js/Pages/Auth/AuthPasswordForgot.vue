@@ -62,7 +62,8 @@ const submit = () => {
         <AppButton
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
-        >Email Password Reset Link</AppButton>
+          min-width="xl"
+        >Send Password Reset Link</AppButton>
       </div>
     </form>
   </LayoutAuth>
