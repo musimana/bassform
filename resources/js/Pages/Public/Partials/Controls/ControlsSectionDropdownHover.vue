@@ -1,6 +1,6 @@
 <script setup>
 import DropdownHover from '@/Components/Controls/Dropdowns/DropdownHover.vue'
-import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
+import LinkDropdown from '@/Components/Controls/Links/LinkDropdown.vue'
 </script>
 
 <template>
@@ -14,14 +14,14 @@ import DropdownLink from '@/Components/Controls/Dropdowns/DropdownLink.vue'
         </template>
 
         <template #content>
-          <DropdownLink
+          <LinkDropdown
             :href="route('login')"
-          >Login</DropdownLink>
+          >Login</LinkDropdown>
 
-          <DropdownLink
+          <LinkDropdown
             v-if="$page.props.metadata.canRegister"
             :href="route('register')"
-          >Register</DropdownLink>
+          >Register</LinkDropdown>
         </template>
       </DropdownHover>
     </div>
