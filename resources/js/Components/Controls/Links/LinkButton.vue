@@ -1,5 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
+import { computed } from 'vue'
 
 const props = defineProps({
   customClasses: {
@@ -10,6 +11,19 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  minWidth: {
+    type: String,
+    default: 'lg',
+  },
+})
+
+const minWidthClass = computed(() => {
+  return {
+    sm: 'min-w-24',
+    md: 'min-w-32',
+    lg: 'min-w-48',
+    xl: 'min-w-64',
+  }[props.minWidth]
 })
 
 </script>
@@ -17,7 +31,7 @@ const props = defineProps({
 <template>
   <Link
     class="app-button-base"
-    :class="customClasses"
+    :class="[minWidthClass, customClasses]"
     :href="href"
   >
     <slot />

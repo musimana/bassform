@@ -1,4 +1,5 @@
 <script setup>
+import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import { reactive } from 'vue'
 
 const state = reactive({
@@ -20,11 +21,12 @@ const state = reactive({
 
     <slot />
 
-    <button
-      class="absolute bottom-0 right-0 mb-1 mr-2 border-t border-blue-950 dark:border-blue-200 text-md px-2 text-blue-950 dark:text-blue-200 hover:text-blue-800 dark:hover:text-blue-100 transition ease-in-out duration-150 cursor-pointer"
+    <AppButton
+      base-classes="absolute bottom-0 right-0 mb-1 mr-2 text-md px-2 transition ease-in-out duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:rounded-sm"
+      custom-classes="border-t border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-300"
       type="button"
     >
       <span class="m-auto">Show {{ state.showingDetails ? 'Less' : 'More' }}</span>
-    </button>
+    </AppButton>
   </div>
 </template>

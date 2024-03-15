@@ -83,7 +83,7 @@ const submit = () => {
         </label>
       </div>
 
-      <div class="flex items-center justify-end mt-4">
+      <div class="flex items-center justify-end mt-4 gap-x-4">
         <Link
           v-if="metadata.canResetPassword"
           :href="route('password.request')"
@@ -92,7 +92,6 @@ const submit = () => {
 
         <AppButton
           id="button-login"
-          custom-classes="app-button-primary-gray-900 ms-4"
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
         >Login</AppButton>

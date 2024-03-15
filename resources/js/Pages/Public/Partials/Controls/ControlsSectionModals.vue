@@ -16,7 +16,7 @@ const openModal = () => {
 </script>
 
 <template>
-  <section id="template-ui-modals" class="mb-8">
+  <section id="template-ui-modals" class="py-8">
     <h3 class="w-full pb-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Modal Component</h3>
 
     <div class="w-full py-4 flex justify-center bg-gray-200 dark:bg-gray-700">
@@ -38,7 +38,7 @@ const openModal = () => {
         </p>
 
         <p class="mt-4 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-          See the account deletion form on the <a :href="route('profile.edit')">Edit Profile</a> page for a more complex example.
+          See the account deletion form on the <a :href="route('profile.edit')" target="_blank" rel="noopener noreferrer">Edit Profile</a> page for a more complex example.
         </p>
 
         <div class="mt-8 flex justify-end">

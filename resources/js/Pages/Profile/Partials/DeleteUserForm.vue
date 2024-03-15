@@ -6,6 +6,8 @@ import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { useForm } from '@inertiajs/vue3'
 import { nextTick, ref } from 'vue'
+import OutlineTrash from '@/Components/Icons/HeroIcons/Outline/OutlineTrash.vue'
+import OutlineArrowUturnLeft from '@/Components/Icons/HeroIcons/Outline/OutlineArrowUturnLeft.vue'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
@@ -46,16 +48,20 @@ const deleteUser = () => {
     </header>
 
     <div class="flex">
-      <p class="flex w-full sm:w-1/2 lg:w-4/5 text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+      <p class="w-full pr-4 lg:w-4/5 text-gray-600 dark:text-gray-400 text-xs leading-relaxed text-justify">
         Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
         your account, please download any data or information that you wish to retain.
       </p>
 
-      <div class="flex w-full sm:w-1/2 justify-center sm:justify-end">
+      <div class="flex w-full md:w-1/2 justify-center sm:justify-end">
         <AppButton
           custom-classes="app-button-primary-red-600"
+          min-width="lg"
+          type="button"
           @click="confirmUserDeletion"
-        >Delete Account</AppButton>
+        >
+          <OutlineTrash class="mr-1 h-4 w-4" /> Delete Account
+        </AppButton>
       </div>
     </div>
 
@@ -70,7 +76,7 @@ const deleteUser = () => {
           enter your password to confirm you would like to permanently delete your account.
         </p>
 
-        <div class="mt-8">
+        <div class="mt-12 m-auto w-full sm:w-3/4 xl:w-1/2">
           <InputLabel for="password" value="Password" class="sr-only" />
 
           <InputText
@@ -78,27 +84,33 @@ const deleteUser = () => {
             ref="passwordInput"
             v-model="form.password"
             type="password"
-            class="mt-1 mx-auto block w-full sm:w-3/4"
+            class="mt-1 mx-auto block w-full"
             placeholder="Password"
             @keyup.enter="deleteUser"
           />
 
-          <InputError :message="form.errors.password" class="mt-2 mx-auto block w-full sm:w-3/4" />
+          <InputError :message="form.errors.password" class="mt-2 mx-auto block" />
         </div>
 
-        <div class="mt-8 flex justify-end">
+        <div class="mt-12 flex justify-end gap-x-4">
           <AppButton
             custom-classes="app-button-secondary-gray-100"
+            min-width="lg"
             type="button"
             @click="closeModal"
-          >Cancel</AppButton>
+          >
+            <OutlineArrowUturnLeft class="mr-1 h-4 w-4" /> Cancel
+          </AppButton>
 
           <AppButton
-            custom-classes="app-button-primary-red-600 ms-3"
+            custom-classes="app-button-primary-red-600"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
+            min-width="lg"
             @click="deleteUser"
-          >Delete Account</AppButton>
+          >
+            <OutlineTrash class="mr-1 h-4 w-4" /> Delete Account
+          </AppButton>
         </div>
       </div>
     </AppModal>

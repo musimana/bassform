@@ -9,6 +9,7 @@ import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
 import { usePage } from '@inertiajs/vue3'
 import { reactive } from 'vue'
 
@@ -30,7 +31,7 @@ const form = reactive({
     :endpoint="route('page.store', 'forms')"
     :form="form"
   >
-    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="text"
@@ -50,7 +51,7 @@ const form = reactive({
       <InputError class="mt-2" :message="form.errors.text" />
     </div>
 
-    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="select"
@@ -68,7 +69,7 @@ const form = reactive({
       <InputError class="mt-2" :message="form.errors.select" />
     </div>
 
-    <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
+    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
       <InputLabel
         class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
         for="pdfUpload"
@@ -90,13 +91,13 @@ const form = reactive({
       </label>
     </div>
 
-    <div class="w-full flex pt-4 justify-between">
+    <div class="w-full flex mt-4 pt-4 justify-between">
       <span class="flex mt-4">
         <InputError class="my-auto" :message="form.errors.pdfUpload" />
         <InputSuccess class="my-auto" :message="usePage().props.flash.status" />
       </span>
 
-      <span class="w-1/2 h-8 mt-4 py-1">
+      <span class="w-1/2 h-8 my-auto py-1">
         <progress
           v-if="form.progress"
           class="w-full my-auto"
@@ -108,10 +109,11 @@ const form = reactive({
       </span>
 
       <AppButton
-        custom-classes="app-button-primary-gray-900 mt-4"
         :class="{ 'opacity-25': form.processing }"
         :disabled="form.processing"
-      >Send</AppButton>
+      >
+        Send <OutlinePaperAirplane class="ml-2 h-4 w-4" />
+      </AppButton>
     </div>
   </AppForm>
 
@@ -119,7 +121,7 @@ const form = reactive({
 
   <h3 class="mb-4 text-lg font-bold text-gray-600 dark:text-gray-300">Results:</h3>
 
-  <div class="w-full flex p-4 bg-gray-200 dark:bg-gray-700">
+  <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
     <code v-if="usePage().props.flash.output" class="text-gray-600 dark:text-gray-400">{{ usePage().props.flash.output }}</code>
     <p v-else class="text-gray-600 dark:text-gray-400">[ <em>The response from the form will appear here.</em> ]</p>
   </div>
