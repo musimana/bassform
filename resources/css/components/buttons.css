@@ -2,19 +2,19 @@
   @apply
     inline-flex
     items-center
+    justify-center
+    my-auto
     border
     px-4
     py-2
     rounded-md
-    font-semibold
     text-xs
     uppercase
-    tracking-widest
-    active:bg-gray-900
     focus:outline-none
     focus:ring-2
-    focus:ring-blue-200
     focus:ring-offset-2
+    shadow-sm
+    dark:shadow-none
     transition
     ease-in-out
     duration-150
@@ -23,31 +23,46 @@
 
 .app-button-primary-gray-900 {
   @apply
+    font-bold
+    tracking-widest
     bg-gray-900
-    border-gray-600
-    text-gray-100
-    hover:bg-gray-600
-    focus:bg-gray-600
-    active:bg-gray-950;
-}
-
-.app-button-primary-red-600 {
-  @apply
-    bg-red-600
     border-transparent
+    dark:border-gray-100
     text-gray-100
-    hover:bg-red-500 
-    focus:ring-red-500
-    active:bg-red-700;
+    hover:bg-gray-700
+    focus:bg-gray-700
+    focus:focus:ring-gray-700
+    active:bg-gray-500;
 }
 
 .app-button-secondary-gray-100 {
   @apply
-    bg-gray-100
-    border-gray-300
-    text-gray-900
-    shadow-sm
-    hover:bg-gray-100
-    focus:bg-gray-100
-    active:bg-gray-200;
+    font-semibold
+    tracking-wide
+    bg-gray-50
+    border-transparent
+    dark:border-gray-950
+    text-gray-800
+    hover:text-gray-700
+    focus:text-gray-700
+    hover:bg-gray-300
+    hover:border-gray-50
+    dark:hover:border-gray-800
+    focus:bg-gray-200
+    focus:focus:ring-gray-200
+    active:bg-gray-400;
+}
+
+.app-button-primary-red-600 {
+  @apply
+    font-bold
+    tracking-widest
+    bg-red-600
+    border-transparent
+    dark:border-gray-100
+    text-gray-100
+    hover:bg-red-500
+    focus:bg-red-500
+    focus:ring-red-500
+    active:bg-red-700;
 }
