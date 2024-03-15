@@ -6,6 +6,10 @@ const props = defineProps({
     type: String,
     default: 'right',
   },
+  offset: {
+    type: String,
+    default: '24',
+  },
   width: {
     type: String,
     default: '48',
@@ -34,6 +38,13 @@ const widthClass = computed(() => {
   }[props.width.toString()]
 })
 
+const offsetClass = computed(() => {
+  return {
+    16: 'pt-4',
+    24: 'pt-6',
+  }[props.offset.toString()]
+})
+
 const alignmentClasses = computed(() => {
   if (props.align === 'left') {
     return 'ltr:origin-top-left rtl:origin-top-right start-0'
@@ -60,8 +71,8 @@ const alignmentClasses = computed(() => {
     >
     <div
         v-show="open"
-        class="dropdown-content hidden absolute z-50 pt-[26px] shadow-lg"
-        :class="[widthClass, alignmentClasses]"
+        class="dropdown-content hidden absolute z-40 shadow-lg"
+        :class="[widthClass, offsetClass, alignmentClasses]"
       >
         <div class="-mr-1 bg-gray-100 dark:bg-gray-600 shadow-2xl shadow-gray-500/20 dark:shadow-none ring-1 ring-gray-950/5 dark:ring-gray-100/5" :class="contentClasses">
           <slot name="content" />

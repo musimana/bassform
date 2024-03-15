@@ -3,7 +3,6 @@ import ControlDarkMode from '@/Components/Controls/ControlDarkMode.vue'
 import NavbarDesktopItems from '@/Components/Controls/Navbars/NavbarDesktopItems.vue'
 import NavbarDesktopLogin from '@/Components/Controls/Navbars/NavbarDesktopLogin.vue'
 import NavbarDesktopUser from '@/Components/Controls/Navbars/NavbarDesktopUser.vue'
-import ButtonHamburger from '@/Components/Controls/Buttons/ButtonHamburger.vue'
 
 defineProps(['showingNavbarMobile'])
 
@@ -20,6 +19,4 @@ defineEmits(['toggleNavbarMobile'])
 
     <NavbarDesktopLogin v-else-if="$page.props.metadata.canLogin" />
   </div>
-
-  <ButtonHamburger :showing-navbar-mobile="showingNavbarMobile" @toggleNavbarMobile="$event => $emit('toggleNavbarMobile', $event)" />
 </template>

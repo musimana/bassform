@@ -13,10 +13,11 @@ defineEmits(['toggleNavbarMobile'])
   <div class="flex items-center lg:hidden">
     <button
       id="nav-hamburger"
+      class="p-2 inline-flex items-center justify-center rounded-full border border-gray-600 dark:border-gray-400 text-gray-600 dark:text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 transition duration-150 ease-in-out"
+      type="button"
       @click="$emit('toggleNavbarMobile', !showingNavbarMobile)"
-      class="p-1 inline-flex items-center justify-center rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 transition duration-150 ease-in-out"
     >
-      <svg class="h-5 w-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+      <svg class="h-4 w-4" stroke="currentColor" fill="none" viewBox="0 0 24 24">
         <path
           :class="{
             hidden: showingNavbarMobile,
