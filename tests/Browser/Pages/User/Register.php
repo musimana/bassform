@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\User;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\AuthPage;
 
-class Register extends AuthPage
+final class Register extends AuthPage
 {
     /** Get the URL for the page. */
     public function url(): string

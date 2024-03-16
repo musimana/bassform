@@ -6,7 +6,7 @@ use App\Http\Resources\Views\Blocks\BlocksResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 
-class PageContentResource implements PageItemInterface
+final class PageContentResource implements PageItemInterface
 {
     /**
      * Get the content array for the given page's full public resource.

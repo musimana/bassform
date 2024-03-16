@@ -11,7 +11,7 @@ use Tests\Browser\Pages\User\Dashboard;
 use Tests\Browser\Pages\User\Login;
 use Tests\DuskTestCase;
 
-class WebMiddlewareTest extends DuskTestCase
+final class WebMiddlewareTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
 
-class PageController extends Controller
+final class PageController extends Controller
 {
     /** Display the given page. */
     public function show(Page $page): Response

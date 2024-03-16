@@ -35,16 +35,6 @@ expect()->extend('toHaveCorrectPropsDetails', function (
                 ->where('canRegister', $metadata['canRegister'] ?? '')
                 ->where('copyright', $metadata['copyright'] ?? '')
                 ->where('description', $metadata['description'] ?? '')
-                // ->has('navbarItems', 2)
-                // ->has('navbarItems.0', fn (Assert $page) => $page
-                //     ->where('title', $metadata['navbarItems'][0]['title'] ?? '')
-                //     ->where('url', $metadata['navbarItems'][0]['url'] ?? '')
-                // )
-                // ->has('navbarItems.1', fn (Assert $page) => $page
-                //     ->where('title', $metadata['navbarItems'][1]['title'] ?? '')
-                //     ->where('url', $metadata['navbarItems'][1]['url'] ?? '')
-                //     ->etc()
-                // )
                 ->has('links', fn (Assert $page) => $page
                     ->where('github', $metadata['links']['github'] ?? '')
                 )

@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Inertia\Response;
 
-class PasswordForgottenController extends Controller
+final class PasswordForgottenController extends Controller
 {
     const TEMPLATE_PASSWORD_FORGOT = 'Auth/AuthPasswordForgot';
 

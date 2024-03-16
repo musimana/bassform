@@ -13,7 +13,7 @@ arch('app/Models has valid architecture')
         SoftDeletes::class,
     ])
     ->not->toHaveSuffix('Model')
-    ->toBeUsedIn('App');
+    ->toBeUsedIn(['App\Http\Resources', 'Database\Seeders']);
 
 arch('app/Models doesn\'t use HTTP classes')
     ->expect(['Illuminate\Http', 'App\Http'])

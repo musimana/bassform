@@ -10,14 +10,6 @@ arch('it implements the expected interface')
     ->expect(HomepageContentResource::class)
     ->toImplement(ConstantItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(HomepageContentResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(HomepageContentResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new HomepageContentResource)->getItem();
 

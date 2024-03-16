@@ -5,7 +5,7 @@ namespace Tests\Browser\Components;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Component as BaseComponent;
 
-class FooterNav extends BaseComponent
+final class FooterNav extends BaseComponent
 {
     /** Get the root selector for the component. */
     public function selector(): string

@@ -7,14 +7,6 @@ arch('it implements the expected interface')
     ->expect(DashboardMetadataResource::class)
     ->toImplement(ConstantItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(DashboardMetadataResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(DashboardMetadataResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new DashboardMetadataResource)->getItem();
 

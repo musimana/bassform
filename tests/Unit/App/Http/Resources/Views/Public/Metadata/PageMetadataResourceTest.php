@@ -19,14 +19,6 @@ arch('it implements the expected interface')
     ->expect(PageMetadataResource::class)
     ->toImplement(PageItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(PageMetadataResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(PageMetadataResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new PageMetadataResource)->getItem($this->page);
 

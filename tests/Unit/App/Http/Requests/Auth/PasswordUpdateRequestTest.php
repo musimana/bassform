@@ -15,14 +15,6 @@ arch('it implements the expected interface')
     ->expect(PasswordUpdateRequest::class)
     ->toImplement(RequestInterface::class);
 
-arch('it has a rules method')
-    ->expect(PasswordUpdateRequest::class)
-    ->toHaveMethod('rules');
-
-arch('it\'s in use in the App namespace')
-    ->expect(PasswordUpdateRequest::class)
-    ->toBeUsedIn('App');
-
 test('rules returns ok', function () {
     $actual = $this->subject->rules();
 

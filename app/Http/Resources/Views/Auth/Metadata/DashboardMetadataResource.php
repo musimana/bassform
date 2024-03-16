@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 
-class DashboardMetadataResource implements ConstantItemInterface
+final class DashboardMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the dashboard page.

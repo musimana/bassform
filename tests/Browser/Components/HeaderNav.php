@@ -5,7 +5,7 @@ namespace Tests\Browser\Components;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Component as BaseComponent;
 
-class HeaderNav extends BaseComponent
+final class HeaderNav extends BaseComponent
 {
     /** Get the root selector for the component. */
     public function selector(): string

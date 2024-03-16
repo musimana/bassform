@@ -25,11 +25,11 @@ test('getItem returns ok', function () {
         ->toBeArray()
         ->toBeEmpty();
 
-    expect($actual['metadata']['navbarItems'])
+    expect($actual['metadata']['navbarDesktop'])
         ->toBeArray()
         ->toBeEmpty();
 
-    expect($actual['metadata']['navbarItemsMobile'])
+    expect($actual['metadata']['navbarMobile'])
         ->toBeArray()
         ->toBeEmpty();
 
@@ -46,8 +46,8 @@ test('getItem returns ok', function () {
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => [],
-            'navbarItemsMobile' => [],
+            'navbarDesktop' => [],
+            'navbarMobile' => [],
             'title' => config('app.name'),
         ]);
 
@@ -66,8 +66,8 @@ test('getItem returns ok', function () {
                 'links' => [
                     'github' => config('metadata.social_links.github'),
                 ],
-                'navbarItems' => [],
-                'navbarItemsMobile' => [],
+                'navbarDesktop' => [],
+                'navbarMobile' => [],
                 'title' => config('app.name'),
             ],
         ]);

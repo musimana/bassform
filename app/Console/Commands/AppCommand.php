@@ -8,8 +8,6 @@ abstract class AppCommand extends Command
 {
     private const MAX_LINE_LENGTH = 128;
 
-    private float $start_microtime = 0.0;
-
     /**
      * The name and signature of the console command.
      *
@@ -23,6 +21,8 @@ abstract class AppCommand extends Command
      * @var string
      */
     protected $description = 'Non-functional abstract base command class with generic helper methods, for other commands to extend from';
+
+    private float $start_microtime = 0.0;
 
     /** Execute the console command. */
     public function handle(): int

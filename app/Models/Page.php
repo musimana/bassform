@@ -14,7 +14,7 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
  * @method Builder|static inSitemap()
  * @method static Builder|static query()
  */
-class Page extends Model
+final class Page extends Model
 {
     use HasFactory,
         HasPageView,

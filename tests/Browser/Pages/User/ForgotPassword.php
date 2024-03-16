@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\User;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\AuthPage;
 
-class ForgotPassword extends AuthPage
+final class ForgotPassword extends AuthPage
 {
     /** Get the URL for the page. */
     public function url(): string

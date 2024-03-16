@@ -8,7 +8,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\User\Dashboard;
 use Tests\DuskTestCase;
 
-class DashboardTest extends DuskTestCase
+final class DashboardTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

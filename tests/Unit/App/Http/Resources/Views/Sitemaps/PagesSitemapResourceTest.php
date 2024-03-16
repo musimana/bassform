@@ -1,25 +1,21 @@
 <?php
 
-use App\Http\Resources\Views\Sitemaps\SitemapPagesContentResource;
+use App\Http\Resources\Views\Sitemaps\PagesSitemapResource;
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
 arch('it implements the expected interface')
-    ->expect(SitemapPagesContentResource::class)
+    ->expect(PagesSitemapResource::class)
     ->toImplement(ConstantIndexInterface::class);
 
 arch('it has a getItems method')
-    ->expect(SitemapPagesContentResource::class)
+    ->expect(PagesSitemapResource::class)
     ->toHaveMethod('getItems');
 
-arch('it\'s in use in the App namespace')
-    ->expect(SitemapPagesContentResource::class)
-    ->toBeUsedIn('App');
-
 test('getItems returns ok', function () {
-    $actual = (new SitemapPagesContentResource)->getItems();
+    $actual = (new PagesSitemapResource)->getItems();
 
     expect($actual)
         ->toBeArray()

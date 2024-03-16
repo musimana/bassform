@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Guest;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\StandardPage;
 
-class Homepage extends StandardPage
+final class Homepage extends StandardPage
 {
     /** Get the URL for the page. */
     public function url(): string

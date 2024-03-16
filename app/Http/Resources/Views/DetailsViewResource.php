@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views;
 
 use App\Interfaces\Resources\Items\ArraysToItemInterface;
 
-class DetailsViewResource implements ArraysToItemInterface
+final class DetailsViewResource implements ArraysToItemInterface
 {
     /**
      * Get the resource as an array.

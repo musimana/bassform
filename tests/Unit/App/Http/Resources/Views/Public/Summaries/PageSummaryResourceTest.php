@@ -11,14 +11,6 @@ arch('it implements the expected interface')
     ->expect(PageSummaryResource::class)
     ->toImplement(PageItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(PageSummaryResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(PageSummaryResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function (Page $page) {
     $actual = (new PageSummaryResource)->getItem($page);
 

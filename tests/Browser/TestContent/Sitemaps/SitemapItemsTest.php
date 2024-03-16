@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Sitemaps\SitemapItem;
 use Tests\DuskTestCase;
 
-class SitemapItemsTest extends DuskTestCase
+final class SitemapItemsTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

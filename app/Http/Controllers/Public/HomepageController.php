@@ -7,7 +7,7 @@ use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Repositories\Views\PublicViewRepository;
 use Inertia\Response;
 
-class HomepageController extends Controller
+final class HomepageController extends Controller
 {
     const TEMPLATE_PUBLIC_INDEX = 'Public/PublicHomepage';
 

@@ -6,7 +6,7 @@ use App\Interfaces\Resources\Storables\StringsToStringStorableInterface;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 
-class LocalDiskFileResource implements StringsToStringStorableInterface
+final class LocalDiskFileResource implements StringsToStringStorableInterface
 {
     /**
      * Get the content string of the given filepath if it exists or return the given

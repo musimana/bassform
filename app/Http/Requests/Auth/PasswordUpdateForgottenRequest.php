@@ -5,7 +5,7 @@ namespace App\Http\Requests\Auth;
 use App\Interfaces\Requests\RequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordUpdateForgottenRequest extends FormRequest implements RequestInterface
+final class PasswordUpdateForgottenRequest extends FormRequest implements RequestInterface
 {
     /**
      * Get the validation rules that apply to the request.

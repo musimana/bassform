@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 
-class PasswordResetMetadataResource implements ConstantItemInterface
+final class PasswordResetMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the password reset page.

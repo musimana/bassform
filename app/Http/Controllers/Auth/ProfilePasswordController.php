@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\PasswordUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 
-class ProfilePasswordController extends Controller
+final class ProfilePasswordController extends Controller
 {
     /** Update the authenticated user's password. */
     public function update(PasswordUpdateRequest $request): RedirectResponse

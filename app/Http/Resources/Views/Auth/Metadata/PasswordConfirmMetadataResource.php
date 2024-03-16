@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 
-class PasswordConfirmMetadataResource implements ConstantItemInterface
+final class PasswordConfirmMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the password confirmation page.

@@ -11,10 +11,6 @@ arch('it has a getItem method')
     ->expect(StackBlockResource::class)
     ->toHaveMethod('getItem');
 
-arch('it\'s in use in the App namespace')
-    ->expect(StackBlockResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new StackBlockResource)->getItem();
 

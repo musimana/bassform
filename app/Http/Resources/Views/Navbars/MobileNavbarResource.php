@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Navbars;
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
 use App\Models\Navbar;
 
-class NavbarItemsMobileResource implements ConstantIndexInterface
+final class MobileNavbarResource implements ConstantIndexInterface
 {
     /**
      * Get the items for the main public navbar.
@@ -16,7 +16,7 @@ class NavbarItemsMobileResource implements ConstantIndexInterface
     {
         $navbar_items = Navbar::first()?->items ?? collect();
         $navbar_items = $navbar_items
-            ->map(fn ($page) => (new NavbarItemLinksResource)->getItem($page))
+            ->map(fn ($page) => (new ItemLinksNavbarResource)->getItem($page))
             ->toArray();
         $navbar_items_filtered = [];
 

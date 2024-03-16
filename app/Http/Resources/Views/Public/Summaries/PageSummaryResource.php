@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Public\Summaries;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 
-class PageSummaryResource implements PageItemInterface
+final class PageSummaryResource implements PageItemInterface
 {
     /**
      * Get the resource as an array.

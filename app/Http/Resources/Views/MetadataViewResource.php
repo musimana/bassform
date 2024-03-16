@@ -2,13 +2,13 @@
 
 namespace App\Http\Resources\Views;
 
-use App\Http\Resources\Views\Navbars\NavbarItemsMobileResource;
-use App\Http\Resources\Views\Navbars\NavbarItemsResource;
-use App\Http\Resources\Views\Public\Formatters\CopyrightMessageResource;
+use App\Http\Resources\Views\Navbars\DesktopNavbarResource;
+use App\Http\Resources\Views\Navbars\MobileNavbarResource;
+use App\Http\Resources\Views\Public\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
 use Illuminate\Support\Facades\Route;
 
-class MetadataViewResource implements ArrayToItemInterface
+final class MetadataViewResource implements ArrayToItemInterface
 {
     /**
      * Get a view metadata array for a view by combining the given metadata with the
@@ -25,13 +25,13 @@ class MetadataViewResource implements ArrayToItemInterface
             'canLogin' => Route::has('login'),
             'canonical' => route('home'),
             'canRegister' => Route::has('register'),
-            'copyright' => (new CopyrightMessageResource)->getValue(),
+            'copyright' => (new CopyrightFormatterResource)->getValue(),
             'description' => config('metadata.description'),
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => (new NavbarItemsResource)->getItems(),
-            'navbarItemsMobile' => (new NavbarItemsMobileResource)->getItems(),
+            'navbarDesktop' => (new DesktopNavbarResource)->getItems(),
+            'navbarMobile' => (new MobileNavbarResource)->getItems(),
             'title' => config('app.name'),
         ];
 

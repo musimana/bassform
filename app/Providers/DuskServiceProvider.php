@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\Browser;
 
-class DuskServiceProvider extends ServiceProvider implements DeferrableProvider
+final class DuskServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /** Register Dusk's browser macros. */
     public function boot(): void

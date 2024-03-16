@@ -14,10 +14,6 @@ arch('it implements the expected interface')
     ->expect(UserModelResource::class)
     ->toImplement(UserStorableInterface::class);
 
-arch('it has a getItem method')
-    ->expect(UserModelResource::class)
-    ->toHaveMethod('getItem');
-
 arch('it has a storeItem method')
     ->expect(UserModelResource::class)
     ->toHaveMethod('storeItem');

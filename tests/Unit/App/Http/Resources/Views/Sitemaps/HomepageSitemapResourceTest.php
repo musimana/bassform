@@ -1,25 +1,21 @@
 <?php
 
-use App\Http\Resources\Views\Sitemaps\SitemapHomepageContentResource;
+use App\Http\Resources\Views\Sitemaps\HomepageSitemapResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
 arch('it implements the expected interface')
-    ->expect(SitemapHomepageContentResource::class)
+    ->expect(HomepageSitemapResource::class)
     ->toImplement(ConstantItemInterface::class);
 
 arch('it has a getItem method')
-    ->expect(SitemapHomepageContentResource::class)
+    ->expect(HomepageSitemapResource::class)
     ->toHaveMethod('getItem');
 
-arch('it\'s in use in the App namespace')
-    ->expect(SitemapHomepageContentResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
-    $actual = (new SitemapHomepageContentResource)->getItem();
+    $actual = (new HomepageSitemapResource)->getItem();
 
     expect($actual)
         ->toHaveCamelCaseKeys()

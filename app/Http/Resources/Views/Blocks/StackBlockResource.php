@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Blocks;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use Illuminate\Foundation\Application;
 
-class StackBlockResource implements ConstantItemInterface
+final class StackBlockResource implements ConstantItemInterface
 {
     /**
      * Get the content array for the app's stack content block.

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Resources\Views\Sitemaps\SitemapPageContentResource;
+use App\Http\Resources\Views\Sitemaps\PageSitemapResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,19 +17,15 @@ beforeEach(function () {
 });
 
 arch('it implements the expected interface')
-    ->expect(SitemapPageContentResource::class)
+    ->expect(PageSitemapResource::class)
     ->toImplement(PageItemInterface::class);
 
 arch('it has a getItem method')
-    ->expect(SitemapPageContentResource::class)
+    ->expect(PageSitemapResource::class)
     ->toHaveMethod('getItem');
 
-arch('it\'s in use in the App namespace')
-    ->expect(SitemapPageContentResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
-    $actual = (new SitemapPageContentResource)->getItem($this->page);
+    $actual = (new PageSitemapResource)->getItem($this->page);
 
     expect($actual)
         ->toHaveCamelCaseKeys()
