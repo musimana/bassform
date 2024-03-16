@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Views;
 
-use App\Http\Resources\Views\Navbars\NavbarItemsMobileResource;
-use App\Http\Resources\Views\Navbars\NavbarItemsResource;
 use App\Http\Resources\Views\Public\Formatters\CopyrightMessageResource;
+use App\Http\Resources\Views\Navbars\DesktopNavbarResource;
+use App\Http\Resources\Views\Navbars\MobileNavbarResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +30,8 @@ class MetadataViewResource implements ArrayToItemInterface
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => (new NavbarItemsResource)->getItems(),
-            'navbarItemsMobile' => (new NavbarItemsMobileResource)->getItems(),
+            'navbarDesktop' => (new DesktopNavbarResource)->getItems(),
+            'navbarMobile' => (new MobileNavbarResource)->getItems(),
             'title' => config('app.name'),
         ];
 

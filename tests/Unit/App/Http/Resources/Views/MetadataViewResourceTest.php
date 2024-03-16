@@ -21,7 +21,11 @@ arch('it\'s in use in the App namespace')
 test('getItem returns ok', function () {
     $actual = (new MetadataViewResource)->getItem([]);
 
-    expect($actual['navbarItems'])
+    expect($actual['navbarDesktop'])
+        ->toBeArray()
+        ->toBeEmpty();
+
+    expect($actual['navbarMobile'])
         ->toBeArray()
         ->toBeEmpty();
 
@@ -38,8 +42,8 @@ test('getItem returns ok', function () {
             'links' => [
                 'github' => config('metadata.social_links.github'),
             ],
-            'navbarItems' => [],
-            'navbarItemsMobile' => [],
+            'navbarDesktop' => [],
+            'navbarMobile' => [],
             'title' => config('app.name'),
         ]);
 });

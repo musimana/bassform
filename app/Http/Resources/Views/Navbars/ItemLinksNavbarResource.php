@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Navbars;
 use App\Interfaces\Resources\Items\NavbarItemInterface;
 use App\Models\NavbarItem;
 
-class NavbarItemLinksResource implements NavbarItemInterface
+class ItemLinksNavbarResource implements NavbarItemInterface
 {
     /**
      * Get the content array for the given page's public link.

@@ -4,7 +4,7 @@ import NavbarDesktopItem from '@/Components/Controls/Navbars/NavbarDesktopItem.v
 
 <template>
   <NavbarDesktopItem
-    v-for="(navbarItem,index) in $page.props.metadata.navbarItems"
+    v-for="(navbarItem,index) in $page.props.metadata.navbarDesktop"
     :key="index"
     :navbar-item="navbarItem"
   />

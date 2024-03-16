@@ -23,7 +23,7 @@ const props = defineProps({
       <NavbarMobileItems />
 
       <div class="px-3 pb-4 space-y-1">
-        <AppSectionDivider v-if="$page.props.metadata.navbarItemsMobile.length" />
+        <AppSectionDivider v-if="$page.props.metadata.navbarMobile.length" />
 
         <NavbarMobileUser v-if="$page.props.auth.user" />
 
