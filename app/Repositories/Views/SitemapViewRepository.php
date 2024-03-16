@@ -9,7 +9,7 @@ class SitemapViewRepository
     /**
      * Render the given template after injecting the given items array.
      *
-     * @param  array<string, mixed>  $items  = []
+     * @param  array<int, array<string, int|string>|string>  $items  = []
      */
     public function getView(string $template, array $items = []): View
     {
