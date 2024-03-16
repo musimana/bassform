@@ -8,7 +8,6 @@ parameters:
         - config/
         - database/
         - routes/
-        # - storage/app/stubs/
         - tests/
 
     # Level 9 is the highest level
@@ -17,7 +16,10 @@ parameters:
     ignoreErrors:
 
     excludePaths:
-        - tests/ # 40 errors 2023-12-04
+        - tests/Browser # 16 errors 2024-03-16, all `Call to an undefined method Laravel\Dusk\Browser::`
+        - tests/Feature # 252 errors 2024-03-16
+        - tests/Pest # 32 errors 2024-03-16
+        - tests/Unit # 150 errors 2024-03-16
         - app/Providers/DuskServiceProvider.php # 8 errors 2024-02-01, all `Call to an undefined method App\Providers\DuskServiceProvider::`
 
     checkGenericClassInNonGenericObjectType: false
