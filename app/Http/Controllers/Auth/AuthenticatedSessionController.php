@@ -11,7 +11,7 @@ use App\Services\LogoutService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
-class AuthenticatedSessionController extends Controller
+final class AuthenticatedSessionController extends Controller
 {
     const TEMPLATE_LOGIN = 'Auth/AuthLogin';
 

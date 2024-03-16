@@ -6,7 +6,7 @@ use App\Http\Resources\Views\DetailsViewResource;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PublicViewRepository
+final class PublicViewRepository
 {
     /**
      * Render the given template after injecting the given data arrays.

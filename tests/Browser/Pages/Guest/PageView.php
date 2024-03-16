@@ -6,7 +6,7 @@ use App\Models\Page as PageModel;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\StandardPage;
 
-class PageView extends StandardPage
+final class PageView extends StandardPage
 {
     /** Instantiate the class. */
     public function __construct(

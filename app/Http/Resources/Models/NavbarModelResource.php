@@ -5,7 +5,7 @@ namespace App\Http\Resources\Models;
 use App\Interfaces\Resources\Readonlys\NavbarReadonlyInterface;
 use App\Models\Navbar;
 
-class NavbarModelResource implements NavbarReadonlyInterface
+final class NavbarModelResource implements NavbarReadonlyInterface
 {
     /** Instantiate the resource. */
     public function __construct(

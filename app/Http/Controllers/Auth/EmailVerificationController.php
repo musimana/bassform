@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
-class EmailVerificationController extends Controller
+final class EmailVerificationController extends Controller
 {
     const TEMPLATE_EMAIL_VERIFY = 'Auth/AuthEmailVerify';
 

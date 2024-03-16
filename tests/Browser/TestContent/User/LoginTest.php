@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\User\Login;
 use Tests\DuskTestCase;
 
-class LoginTest extends DuskTestCase
+final class LoginTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

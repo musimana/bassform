@@ -6,7 +6,7 @@ use App\Http\Resources\Views\Public\Summaries\PageSummaryResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 
-class HomepageContentResource implements ConstantItemInterface
+final class HomepageContentResource implements ConstantItemInterface
 {
     /**
      * Get the content array for the site's homepage.

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Inertia\Response;
 
-class PasswordConfirmationController extends Controller
+final class PasswordConfirmationController extends Controller
 {
     const TEMPLATE_PASSWORD_CONFIRM = 'Auth/AuthPasswordConfirm';
 

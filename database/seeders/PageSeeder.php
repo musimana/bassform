@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Log;
 
-class PageSeeder extends Seeder
+final class PageSeeder extends Seeder
 {
     /** Run the database seeds. */
     public function run(): void

@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Sitemaps;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\SitemapPage;
 
-class SitemapIndex extends SitemapPage
+final class SitemapIndex extends SitemapPage
 {
     /** Get the URL for the page. */
     public function url(): string

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class LoginRequest extends FormRequest implements RequestInterface
+final class LoginRequest extends FormRequest implements RequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.

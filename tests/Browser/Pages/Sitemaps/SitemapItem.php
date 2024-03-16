@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Sitemaps;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\SitemapPage;
 
-class SitemapItem extends SitemapPage
+final class SitemapItem extends SitemapPage
 {
     /** Instantiate the class. */
     public function __construct(

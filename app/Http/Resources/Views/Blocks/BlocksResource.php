@@ -6,7 +6,7 @@ use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
 use App\Models\Block;
 use Illuminate\Support\Collection;
 
-class BlocksResource implements CollectionIndexInterface
+final class BlocksResource implements CollectionIndexInterface
 {
     /**
      * Get the content blocks array for the given block collections.

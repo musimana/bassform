@@ -8,7 +8,7 @@ use App\Http\Resources\Views\Public\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
 use Illuminate\Support\Facades\Route;
 
-class MetadataViewResource implements ArrayToItemInterface
+final class MetadataViewResource implements ArrayToItemInterface
 {
     /**
      * Get a view metadata array for a view by combining the given metadata with the

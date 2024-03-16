@@ -9,7 +9,7 @@ use App\Repositories\Views\SitemapViewRepository;
 use Illuminate\Contracts\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class SitemapController extends Controller
+final class SitemapController extends Controller
 {
     const TEMPLATE_SITEMAP_INDEX = 'sitemaps/default';
 

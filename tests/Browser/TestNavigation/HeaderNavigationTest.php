@@ -11,7 +11,7 @@ use Tests\Browser\Pages\Guest\PageView;
 use Tests\Browser\Pages\User\Login;
 use Tests\DuskTestCase;
 
-class HeaderNavigationTest extends DuskTestCase
+final class HeaderNavigationTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

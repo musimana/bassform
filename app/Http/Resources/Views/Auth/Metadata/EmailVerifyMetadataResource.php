@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 
-class EmailVerifyMetadataResource implements ConstantItemInterface
+final class EmailVerifyMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the email verification page.

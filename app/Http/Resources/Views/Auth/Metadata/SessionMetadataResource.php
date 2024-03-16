@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 
-class SessionMetadataResource implements ConstantItemInterface
+final class SessionMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the session's status.

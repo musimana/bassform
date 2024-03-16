@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\RedirectResponse;
 
-class LogoutService
+final class LogoutService
 {
     /** Destroy an authenticated session. */
     public static function logout(): RedirectResponse

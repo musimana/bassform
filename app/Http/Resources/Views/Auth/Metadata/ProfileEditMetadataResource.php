@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class ProfileEditMetadataResource implements ConstantItemInterface
+final class ProfileEditMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the edit profile page.

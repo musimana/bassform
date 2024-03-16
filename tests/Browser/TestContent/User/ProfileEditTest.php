@@ -8,7 +8,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\User\ProfileEdit;
 use Tests\DuskTestCase;
 
-class ProfileEditTest extends DuskTestCase
+final class ProfileEditTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

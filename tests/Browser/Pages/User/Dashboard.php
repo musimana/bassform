@@ -6,7 +6,7 @@ use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\StandardPage;
 
-class Dashboard extends StandardPage
+final class Dashboard extends StandardPage
 {
     /** Instantiate the class. */
     public function __construct(

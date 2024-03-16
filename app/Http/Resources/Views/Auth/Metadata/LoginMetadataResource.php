@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use Illuminate\Support\Facades\Route;
 
-class LoginMetadataResource implements ConstantItemInterface
+final class LoginMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the login page.

@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Navbars;
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
 use App\Models\Navbar;
 
-class MobileNavbarResource implements ConstantIndexInterface
+final class MobileNavbarResource implements ConstantIndexInterface
 {
     /**
      * Get the items for the main public navbar.

@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Sitemaps;
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
 use App\Models\Page;
 
-class PagesSitemapResource implements ConstantIndexInterface
+final class PagesSitemapResource implements ConstantIndexInterface
 {
     /**
      * Get the content array for the pages sitemap index resource.

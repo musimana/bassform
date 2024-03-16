@@ -6,7 +6,7 @@ use App\Http\Requests\Auth\ProfileStoreRequest;
 use App\Interfaces\Resources\Storables\UserStorableInterface;
 use App\Models\User;
 
-class UserModelResource implements UserStorableInterface
+final class UserModelResource implements UserStorableInterface
 {
     /** Instantiate the resource. */
     public function __construct(

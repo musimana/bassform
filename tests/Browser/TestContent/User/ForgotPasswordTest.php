@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\User\ForgotPassword;
 use Tests\DuskTestCase;
 
-class ForgotPasswordTest extends DuskTestCase
+final class ForgotPasswordTest extends DuskTestCase
 {
     use DatabaseTruncation;
 

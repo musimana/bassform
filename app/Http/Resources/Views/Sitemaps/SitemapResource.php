@@ -4,7 +4,7 @@ namespace App\Http\Resources\Views\Sitemaps;
 
 use App\Interfaces\Resources\Indexes\ConstantIndexInterface;
 
-class SitemapResource implements ConstantIndexInterface
+final class SitemapResource implements ConstantIndexInterface
 {
     /**
      * Get the content array for the sitemaps index resource.

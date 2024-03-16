@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Auth\Metadata;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use Illuminate\Support\Facades\Route;
 
-class ProfileCreateMetadataResource implements ConstantItemInterface
+final class ProfileCreateMetadataResource implements ConstantItemInterface
 {
     /**
      * Get the metadata array for the user registration page.

@@ -6,7 +6,7 @@ use App\Console\Commands\AppCommand;
 use App\Models\User;
 use Throwable;
 
-class SeedUsers extends AppCommand
+final class SeedUsers extends AppCommand
 {
     private const TABLE_HEADINGS = ['count', 'id', 'email'];
 

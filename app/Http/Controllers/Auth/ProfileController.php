@@ -17,7 +17,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
-class ProfileController extends Controller
+final class ProfileController extends Controller
 {
     const TEMPLATE_DASHBOARD = 'Profile/ProfileDashboard';
 

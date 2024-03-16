@@ -6,7 +6,7 @@ use App\Interfaces\Requests\RequestInterface;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileStoreRequest extends FormRequest implements RequestInterface
+final class ProfileStoreRequest extends FormRequest implements RequestInterface
 {
     /**
      * Get the validation rules that apply to the request.

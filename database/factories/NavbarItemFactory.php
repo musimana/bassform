@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\NavbarItem>
  */
-class NavbarItemFactory extends Factory
+final class NavbarItemFactory extends Factory
 {
     /**
      * Define the model's default state.

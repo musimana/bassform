@@ -4,7 +4,7 @@ namespace App\Repositories\Views;
 
 use Illuminate\Contracts\View\View;
 
-class SitemapViewRepository
+final class SitemapViewRepository
 {
     /**
      * Render the given template after injecting the given items array.

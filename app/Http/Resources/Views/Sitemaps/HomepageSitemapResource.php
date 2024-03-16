@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Sitemaps;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 
-class HomepageSitemapResource implements ConstantItemInterface
+final class HomepageSitemapResource implements ConstantItemInterface
 {
     /**
      * Get the content array for the site homepage sitemap item.

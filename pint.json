@@ -6,6 +6,7 @@
         "concat_space": {
             "spacing": "one"
         },
+        "final_class": true,
         "fully_qualified_strict_types": true,
         "global_namespace_import": {
             "import_classes": true,
@@ -44,6 +45,7 @@
     },
     "notPath": [
         "app/Console/Kernel.php",
+        "app/Exceptions/Handler.php",
         "app/Http/Kernel.php",
         "config/app.php",
         "config/broadcasting.php",
