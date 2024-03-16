@@ -10,9 +10,6 @@ class SeedUsers extends AppCommand
 {
     private const TABLE_HEADINGS = ['count', 'id', 'email'];
 
-    /** @var array<int, array<int, string>> */
-    private array $table_data = [];
-
     /**
      * The name and signature of the console command.
      *
@@ -26,6 +23,9 @@ class SeedUsers extends AppCommand
      * @var string
      */
     protected $description = 'Seed the users table with the specified number of records';
+
+    /** @var array<int, array<int, string>> */
+    private array $table_data = [];
 
     /** Execute the console command. */
     public function handle(): int
