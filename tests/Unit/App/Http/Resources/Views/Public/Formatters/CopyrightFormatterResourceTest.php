@@ -1,22 +1,22 @@
 <?php
 
-use App\Http\Resources\Views\Public\Formatters\CopyrightMessageResource;
+use App\Http\Resources\Views\Public\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Formatters\ConstantStringFormatterInterface;
 
 arch('it implements the expected interface')
-    ->expect(CopyrightMessageResource::class)
+    ->expect(CopyrightFormatterResource::class)
     ->toImplement(ConstantStringFormatterInterface::class);
 
 arch('it has a getValue method')
-    ->expect(CopyrightMessageResource::class)
+    ->expect(CopyrightFormatterResource::class)
     ->toHaveMethod('getValue');
 
 arch('it\'s in use in the App namespace')
-    ->expect(CopyrightMessageResource::class)
+    ->expect(CopyrightFormatterResource::class)
     ->toBeUsedIn('App');
 
 test('getValue returns ok', function () {
-    $actual = (new CopyrightMessageResource)->getValue();
+    $actual = (new CopyrightFormatterResource)->getValue();
 
     expect($actual)
         ->toBeString()

@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Views;
 
-use App\Http\Resources\Views\Public\Formatters\CopyrightMessageResource;
 use App\Http\Resources\Views\Navbars\DesktopNavbarResource;
 use App\Http\Resources\Views\Navbars\MobileNavbarResource;
+use App\Http\Resources\Views\Public\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +25,7 @@ class MetadataViewResource implements ArrayToItemInterface
             'canLogin' => Route::has('login'),
             'canonical' => route('home'),
             'canRegister' => Route::has('register'),
-            'copyright' => (new CopyrightMessageResource)->getValue(),
+            'copyright' => (new CopyrightFormatterResource)->getValue(),
             'description' => config('metadata.description'),
             'links' => [
                 'github' => config('metadata.social_links.github'),
