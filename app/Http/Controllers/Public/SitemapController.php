@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Views\Sitemaps\SitemapPagesContentResource;
-use App\Http\Resources\Views\Sitemaps\SitemapsContentResource;
+use App\Http\Resources\Views\Sitemaps\PagesSitemapResource;
+use App\Http\Resources\Views\Sitemaps\SitemapResource;
 use Illuminate\Contracts\View\View;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -17,7 +17,7 @@ class SitemapController extends Controller
     /** Get the view for the app's sitemap. */
     public function index(): View
     {
-        $sitemaps = (new SitemapsContentResource)->getItems();
+        $sitemaps = (new SitemapResource)->getItems();
 
         return view(self::TEMPLATE_SITEMAP_INDEX, compact('sitemaps'));
     }
@@ -32,7 +32,7 @@ class SitemapController extends Controller
         $matches = [];
 
         if ($sitemap === 'pages') {
-            $items = (new SitemapPagesContentResource)->getItems();
+            $items = (new PagesSitemapResource)->getItems();
 
             return view(self::TEMPLATE_SITEMAP_ITEMS, compact('items'));
         }

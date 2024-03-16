@@ -5,7 +5,7 @@ namespace App\Http\Resources\Views\Sitemaps;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 
-class SitemapPageContentResource implements PageItemInterface
+class PageSitemapResource implements PageItemInterface
 {
     /**
      * Get the content array for the given page's sitemap item.

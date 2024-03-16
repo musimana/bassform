@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Public\SitemapController;
-use App\Http\Resources\Views\Sitemaps\SitemapPagesContentResource;
-use App\Http\Resources\Views\Sitemaps\SitemapsContentResource;
+use App\Http\Resources\Views\Sitemaps\PagesSitemapResource;
+use App\Http\Resources\Views\Sitemaps\SitemapResource;
 use App\Models\Page;
 
 test('TEMPLATE_SITEMAP_INDEX blade template exists', function () {
@@ -42,7 +42,7 @@ test('index renders the sitemap index view', function () {
 
     expect($headers)->toHaveCorrectHeaderValues();
 
-    expect($actual)->toHaveCorrectXmlSitemapIndex((new SitemapsContentResource)->getItems());
+    expect($actual)->toHaveCorrectXmlSitemapIndex((new SitemapResource)->getItems());
 });
 
 test('show can render the general pages sitemap view', function () {
@@ -67,7 +67,7 @@ test('show can render the general pages sitemap view', function () {
 
     expect($headers)->toHaveCorrectHeaderValues();
 
-    expect($actual)->toHaveCorrectXmlSitemapPages((new SitemapPagesContentResource)->getItems());
+    expect($actual)->toHaveCorrectXmlSitemapPages((new PagesSitemapResource)->getItems());
 });
 
 test('show renders the 404 view for unknown sitemaps', function () {
