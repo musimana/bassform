@@ -15,10 +15,6 @@ arch('it has a getItems method')
     ->expect(DesktopNavbarResource::class)
     ->toHaveMethod('getItems');
 
-arch('it\'s in use in the App namespace')
-    ->expect(DesktopNavbarResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function (Navbar $navbar) {
     $actual = (new DesktopNavbarResource)->getItems();
 

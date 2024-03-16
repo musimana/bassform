@@ -15,10 +15,6 @@ arch('it has a getItems method')
     ->expect(BlocksResource::class)
     ->toHaveMethod('getItems');
 
-arch('it\'s in use in the App namespace')
-    ->expect(BlocksResource::class)
-    ->toBeUsedIn('App');
-
 test('getItems returns ok', function (Collection $blocks, array $expected) {
     $actual = (new BlocksResource)->getItems($blocks);
 

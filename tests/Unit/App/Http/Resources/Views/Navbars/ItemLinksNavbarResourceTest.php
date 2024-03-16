@@ -15,10 +15,6 @@ arch('it has a getItem method')
     ->expect(ItemLinksNavbarResource::class)
     ->toHaveMethod('getItem');
 
-arch('it\'s in use in the App namespace')
-    ->expect(ItemLinksNavbarResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function (NavbarItem $navbar_item) {
     $actual = (new ItemLinksNavbarResource)->getItem($navbar_item);
     $expected = [

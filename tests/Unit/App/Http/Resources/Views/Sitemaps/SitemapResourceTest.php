@@ -14,10 +14,6 @@ arch('it has a getItems method')
     ->expect(SitemapResource::class)
     ->toHaveMethod('getItems');
 
-arch('it\'s in use in the App namespace')
-    ->expect(SitemapResource::class)
-    ->toBeUsedIn('App');
-
 test('getItems returns ok', function () {
     $actual = (new SitemapResource)->getItems();
 

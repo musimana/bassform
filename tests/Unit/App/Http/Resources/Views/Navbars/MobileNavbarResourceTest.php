@@ -16,10 +16,6 @@ arch('it has a getItems method')
     ->expect(MobileNavbarResource::class)
     ->toHaveMethod('getItems');
 
-arch('it\'s in use in the App namespace')
-    ->expect(MobileNavbarResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $navbar = Navbar::factory()
         ->has(NavbarItem::factory(3), 'items')

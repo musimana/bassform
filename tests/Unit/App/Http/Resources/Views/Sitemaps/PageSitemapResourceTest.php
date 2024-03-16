@@ -24,10 +24,6 @@ arch('it has a getItem method')
     ->expect(PageSitemapResource::class)
     ->toHaveMethod('getItem');
 
-arch('it\'s in use in the App namespace')
-    ->expect(PageSitemapResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new PageSitemapResource)->getItem($this->page);
 

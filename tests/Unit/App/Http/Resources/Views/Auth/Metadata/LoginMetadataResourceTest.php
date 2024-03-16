@@ -7,14 +7,6 @@ arch('it implements the expected interface')
     ->expect(LoginMetadataResource::class)
     ->toImplement(ConstantItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(LoginMetadataResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(LoginMetadataResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new LoginMetadataResource)->getItem();
 

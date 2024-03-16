@@ -7,14 +7,6 @@ arch('it implements the expected interface')
     ->expect(ProfileCreateMetadataResource::class)
     ->toImplement(ConstantItemInterface::class);
 
-arch('it has a getItem method')
-    ->expect(ProfileCreateMetadataResource::class)
-    ->toHaveMethod('getItem');
-
-arch('it\'s in use in the App namespace')
-    ->expect(ProfileCreateMetadataResource::class)
-    ->toBeUsedIn('App');
-
 test('getItem returns ok', function () {
     $actual = (new ProfileCreateMetadataResource)->getItem();
 

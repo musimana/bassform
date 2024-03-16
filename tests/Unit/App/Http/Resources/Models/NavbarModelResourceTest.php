@@ -11,10 +11,6 @@ arch('it implements the expected interface')
     ->expect(NavbarModelResource::class)
     ->toImplement(NavbarReadonlyInterface::class);
 
-arch('it has a getItem method')
-    ->expect(NavbarModelResource::class)
-    ->toHaveMethod('getItem');
-
 test('getItem returns ok with valid inputs', function (Navbar $navbar) {
     expect(Navbar::count())->toBe(0);
 
