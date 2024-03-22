@@ -32,7 +32,7 @@ jobs:
     - name: Set directory permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Compile the assets & start the server
-      run: npm run dev &
+      run: npm run build && php artisan inertia:start-ssr &
     - name: Create test database
       run: |
         mkdir -p database
