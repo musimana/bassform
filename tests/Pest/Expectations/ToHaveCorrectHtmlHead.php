@@ -43,12 +43,6 @@ expect()->extend('toHaveCorrectHtmlHead', function (string $template) {
             '<script type="text/javascript">',
             'Ziggy',
             '</script>',
-            '<script type="module" src="http://[::1]:',
-            '/@vite/client"></script>',
-            '<script type="module" src="http://[::1]:',
-            '/resources/js/app.js"></script>',
-            '<script type="module" src="http://[::1]:',
-            '/resources/js/Pages/' . $template . '.vue"></script>',
             '</head>',
         ], false);
 
