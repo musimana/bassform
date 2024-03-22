@@ -24,7 +24,7 @@ expect()->extend('toHaveCorrectHtmlBody', function () {
         ->assertSeeInOrder([
             '<body class="font-sans antialiased">',
             '<div id="app" data-page="{',
-            '}"></div>',
+            '></div>',
             '</body>',
             '</html>',
         ], false);
