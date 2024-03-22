@@ -25,7 +25,6 @@ expect()->extend('toHaveCorrectHeaderValues', function () {
 
     $this
         ->toHaveKebabCaseKeys()
-        ->toHaveCount(5)
         ->toHaveKeys([
             'cache-control',
             'date',

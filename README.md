@@ -1,6 +1,6 @@
 # Bassform - VILT SSR
 
-VILT stack template app for PHP 8.2.x created by Musimana. Features include with server-side rendering (SSR) and Larastan, Pest & Dusk test suites.
+VILT stack template app for PHP 8.2.x created by Musimana. Features include server-side rendering (SSR) and Larastan, Pest & Dusk test suites.
 
 [Vue3](https://vuejs.org/),
 [Inertia](https://inertiajs.com/),
@@ -32,4 +32,4 @@ See the [release instructions](.docs/RELEASE.md) for info on running deployments
 
 ## License
 
-The both this app and the Laravel framework are open-source software, licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Both this app and the Laravel framework are open-source software, licensed under the [MIT license](https://opensource.org/licenses/MIT).
