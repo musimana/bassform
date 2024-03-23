@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
@@ -35,8 +34,6 @@ const submit = () => {
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <div v-if="metadata.status" class="mb-4 font-medium text-sm text-green-600">
       {{ metadata.status }}
     </div>

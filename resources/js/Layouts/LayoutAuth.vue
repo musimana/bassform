@@ -1,5 +1,6 @@
 <script setup>
 import AppBody from '@/Components/Sections/AppBody.vue'
+import AppHead from '@/Components/Sections/AppHead.vue'
 import IconAppLogo from '@/Components/Icons/IconAppLogo.vue'
 import { Link } from '@inertiajs/vue3'
 import { UseDark } from '@vueuse/components'
@@ -7,6 +8,8 @@ import { UseDark } from '@vueuse/components'
 
 <template>
   <UseDark />
+
+  <AppHead :metadata="$page.props.metadata" />
 
   <AppBody>
     <main class="flex flex-col justify-center items-center min-h-screen pt-6 sm:pt-0">

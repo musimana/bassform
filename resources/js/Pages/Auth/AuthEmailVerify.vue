@@ -1,6 +1,5 @@
 <script setup>
 import { computed } from 'vue'
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import { Link, useForm } from '@inertiajs/vue3'
@@ -28,8 +27,6 @@ const verificationLinkSent = computed(() => props.metadata.status === 'verificat
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <div class="mb-4 text-sm text-gray-600">
       Thanks for signing up! Before getting started, could you verify your email address by clicking on the link
       we just emailed to you? If you didn't receive the email, we will gladly send you another.

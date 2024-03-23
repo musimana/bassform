@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
@@ -32,8 +31,6 @@ const submit = () => {
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <div class="mb-4 text-sm text-gray-500">
       This is a secure area of the application. Please confirm your password before continuing.
     </div>

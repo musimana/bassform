@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
@@ -35,8 +34,6 @@ const submit = () => {
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <form @submit.prevent="submit">
       <div>
         <InputLabel for="name" value="Name" />
