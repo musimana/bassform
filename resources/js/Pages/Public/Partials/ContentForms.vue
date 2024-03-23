@@ -10,10 +10,9 @@ import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
-import { usePage } from '@inertiajs/vue3'
-import { reactive } from 'vue'
+import { useForm, usePage } from '@inertiajs/vue3'
 
-const form = reactive({
+const form = useForm({
   text: '',
   select: null,
   checkbox: false,
