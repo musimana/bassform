@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import AppPanel from '@/Components/Sections/AppPanel.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import LinkButton from '@/Components/Controls/Links/LinkButton.vue'
@@ -19,8 +18,6 @@ const props = defineProps({
 </script>
 
 <template>
-  <AppHead :metadata="metadata" />
-
   <LayoutUser>
     <template #pageHeader>
       <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">Dashboard</h2>

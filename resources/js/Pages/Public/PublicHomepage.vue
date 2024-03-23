@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import IconAppLogo from '@/Components/Icons/IconAppLogo.vue'
 import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentHomepage from '@/Pages/Public/Partials/ContentHomepage.vue'
@@ -17,8 +16,6 @@ defineProps({
 </script>
 
 <template>
-  <AppHead :metadata="metadata" />
-
   <LayoutGuest>
     <template #pageHeader>
       <div class="flex justify-center gap-x-4 mt-4">

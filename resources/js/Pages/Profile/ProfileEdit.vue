@@ -1,5 +1,4 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
 import AppPanel from '@/Components/Sections/AppPanel.vue'
 import LayoutUser from '@/Layouts/LayoutUser.vue'
 import DeleteUserForm from './Partials/DeleteUserForm.vue'
@@ -20,8 +19,6 @@ const props = defineProps({
 </script>
 
 <template>
-  <AppHead :metadata="metadata" />
-
   <LayoutUser>
     <template #pageHeader>
       <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">Edit Profile</h2>
