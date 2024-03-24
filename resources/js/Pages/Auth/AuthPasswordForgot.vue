@@ -1,5 +1,6 @@
 <script setup>
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import AppForm from '@/Components/Forms/AppForm.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
 import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
@@ -20,10 +21,6 @@ const form = useForm({
   email: '',
 })
 
-const submit = () => {
-  form.post(route('password.email'))
-}
-
 </script>
 
 <template>
@@ -37,7 +34,11 @@ const submit = () => {
       {{ metadata.status }}
     </div>
 
-    <form @submit.prevent="submit">
+    <AppForm
+      class="w-full"
+      :endpoint="route('password.email')"
+      :form="form"
+    >
       <FormInput
         input-label="Email"
         input-field="email"
@@ -61,6 +62,6 @@ const submit = () => {
           min-width="xl"
         >Send Password Reset Link</AppButton>
       </div>
-    </form>
+    </AppForm>
   </LayoutAuth>
 </template>
