@@ -1,13 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 
-defineProps({
-  inputType: {
-    type: String,
-    default: 'text',
-  },
-})
-
 const model = defineModel({
   type: String,
   required: true,
@@ -25,10 +18,9 @@ defineExpose({ focus: () => input.value.focus() })
 </script>
 
 <template>
-  <input
+  <textarea
     class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none"
     v-model="model"
     ref="input"
-    :type="inputType"
-  />
+  ></textarea>
 </template>

@@ -1,12 +1,9 @@
 <script setup>
 import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
-import AppHead from '@/Components/Sections/AppHead.vue'
 import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 </script>
 
 <template>
-  <AppHead :metadata="$page.props.metadata" />
-
   <LayoutGuest>
     <template #pageHeader>
       <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">{{ $page.props.content.heading }}</h2>

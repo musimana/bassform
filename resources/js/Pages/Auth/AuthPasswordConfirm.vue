@@ -1,10 +1,8 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
-import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import { useForm } from '@inertiajs/vue3'
 
 defineProps({
@@ -32,28 +30,26 @@ const submit = () => {
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <div class="mb-4 text-sm text-gray-500">
       This is a secure area of the application. Please confirm your password before continuing.
     </div>
 
     <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="password" value="Password" />
-
+      <FormInput
+        input-label="Password"
+        input-field="password"
+        :parent-form="form"
+      >
         <InputText
-            id="password"
-            type="password"
-            class="mt-1 block w-full"
-            v-model="form.password"
-            required
-            autocomplete="current-password"
-            autofocus
+          id="password"
+          name="password"
+          input-type="password"
+          class="my-1 block w-full"
+          v-model="form.password"
+          autocomplete="current-password"
+          autofocus
         />
-
-        <InputError class="mt-2" :message="form.errors.password" />
-      </div>
+      </FormInput>
 
       <div class="flex justify-end mt-4">
         <AppButton

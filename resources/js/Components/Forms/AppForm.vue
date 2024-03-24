@@ -1,17 +1,19 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-
 const props = defineProps({
-  endpoint: String,
-  form: Object,
+  endpoint: {
+    type: String,
+    required: true,
+  },
+  form: {
+    type: Object,
+    required: true,
+  },
 })
 
-const form = useForm(props.form)
-
 const submit = () => {
-  form.post(props.endpoint, {
+  props.form.post(props.endpoint, {
     preserveScroll: true,
-    onSuccess: () => form.reset(),
+    onSuccess: () => props.form.reset(),
   })
 }
 

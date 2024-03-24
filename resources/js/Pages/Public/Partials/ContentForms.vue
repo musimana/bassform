@@ -2,23 +2,27 @@
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
+import InputDate from '@/Components/Forms/Inputs/InputDate.vue'
+import InputDatetime from '@/Components/Forms/Inputs/InputDatetime.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import InputTextarea from '@/Components/Forms/Inputs/InputTextarea.vue'
 import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
-import { usePage } from '@inertiajs/vue3'
-import { reactive } from 'vue'
+import { useForm, usePage } from '@inertiajs/vue3'
 
-const form = reactive({
+const form = useForm({
   text: '',
   select: null,
-  checkbox: false,
+  date: '',
+  datetime: '',
+  textarea: '',
   pdfUpload: {},
-  errors: {},
+  checkbox: false,
 })
 
 </script>
@@ -31,56 +35,100 @@ const form = reactive({
     :endpoint="route('page.store', 'forms')"
     :form="form"
   >
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="text"
-        value="Text Input"
-      />
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Text Input*"
+        input-label-position="left"
+        input-field="text"
+        :parent-form="form"
+      >
+        <InputText
+          id="input-text"
+          name="text"
+          type="text"
+          class="block w-full"
+          v-model="form.text"
+          autofocus
+        />
+      </FormInput>
+    </div>
 
-      <InputText
-        id="input-text"
-        name="text"
-        type="text"
-        class="mt-1 block w-full md:w-2/3"
-        v-model="form.text"
-        required
-        autofocus
-      />
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Select Input*"
+        input-label-position="left"
+        input-field="select"
+        :parent-form="form"
+      >
+        <InputSelect
+          id="input-select"
+          class="block w-full"
+          :class="{ 'opacity-25': form.processing }"
+          :disabled="form.processing"
+          v-model="form.select"
+        />
+      </FormInput>
+    </div>
 
-      <InputError class="mt-2" :message="form.errors.text" />
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Date Input"
+        input-label-position="left"
+        input-field="date"
+        :parent-form="form"
+      >
+        <InputDate
+          id="input-date"
+          class="block w-full md:w-2/3 lg:w-1/4"
+          v-model="form.date"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Date &amp; Time Input"
+        input-label-position="left"
+        input-field="datetime"
+        :parent-form="form"
+        input-help-text="Time in local time"
+      >
+        <InputDatetime
+          id="input-date"
+          class="block w-full md:w-2/3 lg:w-1/4"
+          v-model="form.datetime"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Textarea Input"
+        input-label-position="left"
+        input-field="textarea"
+        :parent-form="form"
+      >
+        <InputTextarea
+          id="input-date"
+          class="block w-full"
+          v-model="form.textarea"
+        />
+      </FormInput>
     </div>
 
     <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="select"
-        value="Select Input"
-      />
-
-      <InputSelect
-        id="input-select"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
-        :model-value="form.select"
-        @update:modelValue="form.select = $event"
-      />
-
-      <InputError class="mt-2" :message="form.errors.select" />
-    </div>
-
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="pdfUpload"
-        value="PDF Upload Input"
-      />
-
-      <InputFile
-        class="w-full md:w-2/3"
-        input-id="pdfUpload"
-        v-model="form.pdfUpload"
-      />
+      <FormInput
+        input-label="PDF Upload Input"
+        input-label-position="left"
+        input-field="pdfUpload"
+        :parent-form="form"
+      >
+        <InputFile
+          class="w-full mt-2"
+          input-id="pdfUpload"
+          v-model="form.pdfUpload"
+        />
+      </FormInput>
     </div>
 
     <div class="w-full flex p-4">
@@ -93,7 +141,8 @@ const form = reactive({
 
     <div class="w-full flex mt-4 pt-4 justify-between">
       <span class="flex mt-4">
-        <InputError class="my-auto" :message="form.errors.pdfUpload" />
+        <InputError class="my-auto" :message="form.hasErrors ? 'Please update the indicated fields' : ''" />
+
         <InputSuccess class="my-auto" :message="usePage().props.flash.status" />
       </span>
 

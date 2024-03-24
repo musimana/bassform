@@ -1,7 +1,6 @@
 <script setup>
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { Link, useForm, usePage } from '@inertiajs/vue3'
 
@@ -35,37 +34,38 @@ const form = useForm({
       </p>
     </header>
 
-    <form @submit.prevent="form.patch(route('profile.update'))" class="mx-auto mt-6 space-y-6 max-w-xl">
-      <div>
-        <InputLabel for="name" value="Name" />
-
+    <form @submit.prevent="form.patch(route('profile.update'))" class="mx-auto mt-6 max-w-xl">
+      <FormInput
+        input-label="Name"
+        input-field="name"
+        input-slot-classes="w-full mb-4"
+        :parent-form="form"
+      >
         <InputText
           id="name"
-          type="text"
-          class="mt-1 block w-full"
+          name="name"
+          class="my-1 block w-full"
           v-model="form.name"
-          required
           autofocus
           autocomplete="name"
         />
+      </FormInput>
 
-        <InputError class="mt-2" :message="form.errors.name" />
-      </div>
-
-      <div>
-        <InputLabel for="email" value="Email" />
-
+      <FormInput
+        input-label="Email"
+        input-field="email"
+        input-slot-classes="w-full mb-6"
+        :parent-form="form"
+      >
         <InputText
           id="email"
-          type="email"
-          class="mt-1 block w-full"
+          name="email"
+          input-type="email"
+          class="my-1 block w-full"
           v-model="form.email"
-          required
           autocomplete="username"
         />
-
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
+      </FormInput>
 
       <div v-if="mustVerifyEmail && user.email_verified_at === null">
         <p class="text-sm mt-2 text-gray-600">

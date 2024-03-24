@@ -1,10 +1,8 @@
 <script setup>
-import AppHead from '@/Components/Sections/AppHead.vue'
-import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import { useForm } from '@inertiajs/vue3'
 
 const props = defineProps({
@@ -35,56 +33,57 @@ const submit = () => {
 
 <template>
   <LayoutAuth>
-    <AppHead :metadata="metadata" />
-
     <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="email" value="Email" />
-
+      <FormInput
+        input-label="Email"
+        input-field="email"
+        input-slot-classes="w-full mb-4"
+        :parent-form="form"
+      >
         <InputText
           id="email"
-          type="email"
-          class="mt-1 block w-full"
+          name="email"
+          input-type="email"
+          class="my-1 block w-full"
           v-model="form.email"
-          required
           autofocus
           autocomplete="username"
         />
+      </FormInput>
 
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="password" value="Password" />
-
+      <FormInput
+        input-label="Password"
+        input-field="password"
+        input-slot-classes="w-full mb-4"
+        :parent-form="form"
+      >
         <InputText
           id="password"
-          type="password"
-          class="mt-1 block w-full"
+          name="password"
+          input-type="password"
+          class="my-1 block w-full"
           v-model="form.password"
-          required
           autocomplete="new-password"
         />
+      </FormInput>
 
-        <InputError class="mt-2" :message="form.errors.password" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="password_confirmation" value="Confirm Password" />
-
+      <FormInput
+        input-label="Confirm Password"
+        input-field="password_confirmation"
+        input-slot-classes="w-full mb-4"
+        :parent-form="form"
+      >
         <InputText
           id="password_confirmation"
-          type="password"
-          class="mt-1 block w-full"
+          name="password_confirmation"
+          input-type="password"
+          class="my-1 block w-full"
           v-model="form.password_confirmation"
-          required
           autocomplete="new-password"
         />
+      </FormInput>
 
-        <InputError class="mt-2" :message="form.errors.password_confirmation" />
-      </div>
-
-      <div class="flex items-center justify-end mt-4">
+      <div class="flex items-center justify-end">
         <AppButton
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
