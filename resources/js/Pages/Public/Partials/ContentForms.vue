@@ -4,17 +4,23 @@ import AppForm from '@/Components/Forms/AppForm.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
+import InputDate from '@/Components/Forms/Inputs/InputDate.vue'
+import InputDatetime from '@/Components/Forms/Inputs/InputDatetime.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
 import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import InputTextarea from '@/Components/Forms/Inputs/InputTextarea.vue'
 import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 
 const form = useForm({
   text: '',
   select: null,
+  date: '',
+  datetime: '',
+  textarea: '',
   pdfUpload: {},
   checkbox: false,
 })
@@ -60,6 +66,52 @@ const form = useForm({
           :class="{ 'opacity-25': form.processing }"
           :disabled="form.processing"
           v-model="form.select"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Date Input"
+        input-label-position="left"
+        input-field="date"
+        :parent-form="form"
+      >
+        <InputDate
+          id="input-date"
+          class="block w-full md:w-2/3 lg:w-1/4"
+          v-model="form.date"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Date &amp; Time Input"
+        input-label-position="left"
+        input-field="datetime"
+        :parent-form="form"
+        input-help-text="Time in local time"
+      >
+        <InputDatetime
+          id="input-date"
+          class="block w-full md:w-2/3 lg:w-1/4"
+          v-model="form.datetime"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Textarea Input"
+        input-label-position="left"
+        input-field="textarea"
+        :parent-form="form"
+      >
+        <InputTextarea
+          id="input-date"
+          class="block w-full"
+          v-model="form.textarea"
         />
       </FormInput>
     </div>
