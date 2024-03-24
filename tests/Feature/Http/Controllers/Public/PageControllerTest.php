@@ -52,3 +52,38 @@ test('show renders the 404 view for unknown pages', function () {
 
     expect($session)->toHaveCorrectSessionValues($url);
 });
+
+test('store returns correctly for valid data', function () {
+    Page::factory()->create(['slug' => 'forms']);
+
+    $route = route('page.store', 'forms');
+    $actual = $this
+        ->from($route)
+        ->post($route, [
+            'text' => 'Test',
+            'select' => '1',
+            'checkbox' => true,
+        ]);
+
+    $actual
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('page.store', 'forms'));
+});
+
+test('store returns a 404 status for unknown pages', function () {
+    $url = url('/foo');
+    $actual = $this
+        ->from($url)
+        ->post($url, [
+            'text' => 'Test',
+            'select' => '1',
+            'checkbox' => true,
+        ]);
+    $session = session()->all();
+
+    $actual
+        ->assertStatus(404)
+        ->assertSessionHasNoErrors();
+
+    expect($session)->toHaveCorrectSessionValues($url);
+});
