@@ -141,7 +141,8 @@ const form = useForm({
 
     <div class="w-full flex mt-4 pt-4 justify-between">
       <span class="flex mt-4">
-        <InputError class="my-auto" :message="form.errors.pdfUpload" />
+        <InputError class="my-auto" :message="form.hasErrors ? 'Please update the indicated fields' : ''" />
+
         <InputSuccess class="my-auto" :message="usePage().props.flash.status" />
       </span>
 
