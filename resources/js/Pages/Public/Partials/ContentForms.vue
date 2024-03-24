@@ -2,10 +2,10 @@
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputFile from '@/Components/Forms/Inputs/InputFile.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
@@ -15,9 +15,8 @@ import { useForm, usePage } from '@inertiajs/vue3'
 const form = useForm({
   text: '',
   select: null,
-  checkbox: false,
   pdfUpload: {},
-  errors: {},
+  checkbox: false,
 })
 
 </script>
@@ -30,56 +29,54 @@ const form = useForm({
     :endpoint="route('page.store', 'forms')"
     :form="form"
   >
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="text"
-        value="Text Input"
-      />
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Text Input*"
+        input-label-position="left"
+        input-field="text"
+        :parent-form="form"
+      >
+        <InputText
+          id="input-text"
+          name="text"
+          type="text"
+          class="block w-full"
+          v-model="form.text"
+          autofocus
+        />
+      </FormInput>
+    </div>
 
-      <InputText
-        id="input-text"
-        name="text"
-        type="text"
-        class="mt-1 block w-full md:w-2/3"
-        v-model="form.text"
-        required
-        autofocus
-      />
-
-      <InputError class="mt-2" :message="form.errors.text" />
+    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+      <FormInput
+        input-label="Select Input*"
+        input-label-position="left"
+        input-field="select"
+        :parent-form="form"
+      >
+        <InputSelect
+          id="input-select"
+          class="block w-full"
+          :class="{ 'opacity-25': form.processing }"
+          :disabled="form.processing"
+          v-model="form.select"
+        />
+      </FormInput>
     </div>
 
     <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="select"
-        value="Select Input"
-      />
-
-      <InputSelect
-        id="input-select"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
-        :model-value="form.select"
-        @update:modelValue="form.select = $event"
-      />
-
-      <InputError class="mt-2" :message="form.errors.select" />
-    </div>
-
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
-      <InputLabel
-        class="my-auto w-full md:w-1/3 text-gray-700 dark:text-gray-300"
-        for="pdfUpload"
-        value="PDF Upload Input"
-      />
-
-      <InputFile
-        class="w-full md:w-2/3"
-        input-id="pdfUpload"
-        v-model="form.pdfUpload"
-      />
+      <FormInput
+        input-label="PDF Upload Input"
+        input-label-position="left"
+        input-field="pdfUpload"
+        :parent-form="form"
+      >
+        <InputFile
+          class="w-full mt-2"
+          input-id="pdfUpload"
+          v-model="form.pdfUpload"
+        />
+      </FormInput>
     </div>
 
     <div class="w-full flex p-4">

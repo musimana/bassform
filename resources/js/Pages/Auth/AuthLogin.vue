@@ -1,10 +1,9 @@
 <script setup>
-import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
-import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
+import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 
 defineProps({
@@ -39,38 +38,37 @@ const submit = () => {
     </div>
 
     <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="email" value="Email" />
-
+      <FormInput
+        input-label="Email"
+        input-field="email"
+        input-slot-classes="w-full mb-4"
+        :parent-form="form"
+      >
         <InputText
           id="email"
           name="email"
-          type="email"
-          class="mt-1 block w-full"
+          input-type="email"
+          class="my-1 block w-full"
           v-model="form.email"
-          required
           autofocus
           autocomplete="username"
         />
+      </FormInput>
 
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="password" value="Password" />
-
+      <FormInput
+        input-label="Password"
+        input-field="password"
+        :parent-form="form"
+      >
         <InputText
           id="password"
           name="password"
-          type="password"
-          class="mt-1 block w-full"
+          input-type="password"
+          class="my-1 block w-full"
           v-model="form.password"
-          required
           autocomplete="current-password"
         />
-
-        <InputError class="mt-2" :message="form.errors.password" />
-      </div>
+      </FormInput>
 
       <div class="mt-4 flex">
         <label class="flex items-center">

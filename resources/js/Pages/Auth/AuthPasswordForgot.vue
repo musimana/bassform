@@ -1,8 +1,7 @@
 <script setup>
-import LayoutAuth from '@/Layouts/LayoutAuth.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
+import FormInput from '@/Components/Forms/FormInput.vue'
+import LayoutAuth from '@/Layouts/LayoutAuth.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -39,21 +38,21 @@ const submit = () => {
     </div>
 
     <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="email" value="Email" />
-
+      <FormInput
+        input-label="Email"
+        input-field="email"
+        :parent-form="form"
+      >
         <InputText
           id="email"
-          type="email"
-          class="mt-1 block w-full"
+          name="email"
+          input-type="email"
+          class="my-1 block w-full"
           v-model="form.email"
-          required
           autofocus
           autocomplete="username"
         />
-
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
+      </FormInput>
 
       <div class="flex items-center justify-end mt-4">
         <AppButton
