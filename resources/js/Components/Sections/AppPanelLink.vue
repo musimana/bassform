@@ -12,7 +12,7 @@ defineProps({
 <template>
   <a
     :href="item.url"
-    class="relative grid grid-cols-1 scale-100 border-2 border-blue-600 dark:border-gray-200 p-8 bg-blue-800 bg-gradient-to-bl from-blue-300/80 via-blue-600 ring-1 ring-inset ring-gray-100/5 rounded-lg motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-blue-600 dark:focus:outline-gray-200"
+    class="relative grid grid-cols-1 scale-100 border-2 border-gray-400 dark:border-gray-200 p-8 bg-blue-800 bg-gradient-to-bl from-blue-300/80 via-blue-600 ring-1 ring-inset ring-gray-100/5 rounded-lg motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-blue-600 dark:focus:outline-gray-200"
   >
     <h3 class="text-gray-200 text-xl font-semibold">{{ item.title }}</h3>
 
