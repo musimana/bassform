@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Public\HomepageController;
 use App\Http\Resources\Views\DetailsViewResource;
-use App\Http\Resources\Views\MetadataViewResource;
 use App\Http\Resources\Views\Public\Content\HomepageContentResource;
+use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
 
 test('TEMPLATE_PUBLIC_INDEX Vue page component exists', function () {
     $template = (new ReflectionClassConstant(
@@ -33,7 +33,7 @@ it('can render the homepage view', function () {
 
     $data = (new DetailsViewResource)->getItem(
         (new HomepageContentResource)->getItem(),
-        (new MetadataViewResource)->getItem([])
+        (new HomepageMetadataResource)->getItem()
     );
 
     expect($actual)

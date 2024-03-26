@@ -9,6 +9,15 @@
     <base href="{{ url('/') }}">
     <meta name="robots" content="index, follow" />
 
+    @if(config('metadata.open_graph_image'))
+    <!-- Open Graph Image -->
+    <meta property="og:image" content="{{ Vite::asset(config('metadata.open_graph_image')) }}" inertia />
+    <meta property="og:title" content="{{ config('metadata.title') }}" inertia />
+    <meta property="og:description" content="{{ config('metadata.description') }}" inertia />
+    <meta property="og:image:width" content="1200" inertia />
+    <meta property="og:image:height" content="630" inertia />
+    @endif
+
     @if(config('metadata.author'))
     <meta name="author" content="{{ config('metadata.author') }}" />
     @endif
