@@ -23,11 +23,11 @@ defineProps({
     <meta v-if="metadata?.canonical && metadata.canonical !== ''" name="canonical" :content="metadata.canonical" />
     <meta v-if="metadata?.keywords && metadata.keywords !== ''" name="keywords" :content="metadata.keywords" />
 
-    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" name="keywords" property="og:image" :content="metadata.openGraphImage" />
-    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" name="keywords" property="og:title" :content="metadata.title" />
-    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" name="keywords" property="og:description" :content="metadata.description" />
-    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" name="keywords" property="og:image:width" content="1200" />
-    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" name="keywords" property="og:image:height" content="630" />
+    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" property="og:image" :content="metadata.openGraphImage" />
+    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" property="og:title" :content="metadata.title" />
+    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" property="og:description" :content="metadata.description" />
+    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" property="og:image:width" content="1200" />
+    <meta v-if="metadata?.openGraphImage && metadata.openGraphImage !== ''" property="og:image:height" content="630" />
 
     <meta v-if="metadata?.twitterCardImage && metadata.twitterCardImage !== ''" name="twitter:card" content="summary_large_image" />
     <meta v-if="metadata?.twitterCardImage && metadata.twitterCardImage !== ''" name="twitter:title" :content="metadata.title" />
