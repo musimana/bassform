@@ -2,7 +2,14 @@
     "name": "musimana/bassform",
     "type": "project",
     "description": "VILT stack template app with server-side rendering (SSR) & Pest, created by Musimana.",
-    "keywords": ["Bassform", "Musimana", "Laravel", "VILT", "SSR", "MIT"],
+    "keywords": [
+        "Bassform",
+        "Musimana",
+        "Laravel",
+        "VILT",
+        "SSR",
+        "MIT"
+    ],
     "license": "MIT",
     "require": {
         "php": "8.2.*",
@@ -24,7 +31,7 @@
         "nunomaduro/collision": "^8.1.1",
         "pestphp/pest": "^2.34.6",
         "pestphp/pest-plugin-laravel": "^2.3.0",
-        "spatie/laravel-ignition": "^2.4.2"
+        "spatie/laravel-ignition": "^2.5"
     },
     "autoload": {
         "psr-4": {
