@@ -2,14 +2,13 @@
 
 use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
-use Illuminate\Http\Request;
 
 arch('it implements the expected interface')
     ->expect(ProfileEditMetadataResource::class)
     ->toImplement(ConstantItemInterface::class);
 
 test('getItem returns ok', function () {
-    $actual = (new ProfileEditMetadataResource)->getItem(new Request);
+    $actual = (new ProfileEditMetadataResource)->getItem();
 
     expect($actual)
         ->toHaveCamelCaseKeys()

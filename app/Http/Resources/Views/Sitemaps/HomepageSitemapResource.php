@@ -14,9 +14,11 @@ final class HomepageSitemapResource implements ConstantItemInterface
      */
     public function getItem(): array
     {
+        $lastmod = strtotime(strval(Page::max('updated_at')));
+
         return [
             'loc' => route('home'),
-            'lastmod' => date('Y-m-d', strtotime(Page::max('updated_at'))),
+            'lastmod' => $lastmod ? date('Y-m-d', $lastmod) : '2024-03-01',
             'changefreq' => 'weekly',
             'priority' => 0.8,
         ];

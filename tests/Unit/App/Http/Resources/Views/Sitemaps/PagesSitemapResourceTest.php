@@ -26,7 +26,7 @@ test('getItems returns ok', function () {
         ->toHaveCount(4)
         ->toMatchArray([
             'loc' => url('/'),
-            'lastmod' => '1970-01-01',
+            'lastmod' => '2024-03-01',
             'changefreq' => 'weekly',
             'priority' => 0.8,
         ]);
