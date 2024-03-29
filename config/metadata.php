@@ -66,4 +66,17 @@ return [
     'social_links' => [
         'github' => env('APP_LINK_PROJECT_REPO'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Homepage
+    |--------------------------------------------------------------------------
+    |
+    | The path to the application's "home" route. Typically, users are
+    | redirected here after authentication.
+    |
+    */
+
+    'user_homepage' => env('APP_USER_HOMEPAGE', 'dashboard'),
+
 ];

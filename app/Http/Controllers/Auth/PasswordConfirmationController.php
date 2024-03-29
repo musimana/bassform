@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Auth\Metadata\PasswordConfirmMetadataResource;
-use App\Providers\RouteServiceProvider;
 use App\Repositories\Views\AuthViewRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,6 +39,6 @@ final class PasswordConfirmationController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(config('metadata.user_homepage'));
     }
 }
