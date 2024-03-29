@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Views\Auth\Metadata\LoginMetadataResource;
-use App\Providers\RouteServiceProvider;
 use App\Repositories\Views\AuthViewRepository;
 use App\Services\LogoutService;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +18,7 @@ final class AuthenticatedSessionController extends Controller
     public function create(): RedirectResponse|Response
     {
         if (auth()->check()) {
-            return redirect(route('home'));
+            return to_route(config('metadata.user_homepage'));
         }
 
         return (new AuthViewRepository)->getViewDetails(
@@ -37,7 +36,7 @@ final class AuthenticatedSessionController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(config('metadata.user_homepage'));
     }
 
     /** Destroy an authenticated session via GET request. */

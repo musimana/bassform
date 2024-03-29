@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Resources\Views\Auth\Metadata\EmailVerifyMetadataResource;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
@@ -84,7 +83,7 @@ test('edit renders the email verification view & can verify emails', function (U
 
     $actual
         ->assertSessionHasNoErrors()
-        ->assertRedirect(RouteServiceProvider::HOME . '?verified=1');
+        ->assertRedirect(config('metadata.user_homepage') . '?verified=1');
 })->with('users-unverified');
 
 test('edit renders the email verification view, but doesn\'t verify emails when invalid hash given', function (User $user) {

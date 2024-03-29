@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Auth\Metadata\EmailVerifyMetadataResource;
-use App\Providers\RouteServiceProvider;
 use App\Repositories\Views\AuthViewRepository;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,7 +19,7 @@ final class EmailVerificationController extends Controller
     public function show(): RedirectResponse|Response
     {
         return request()->user()->hasVerifiedEmail()
-            ? redirect()->intended(RouteServiceProvider::HOME)
+            ? redirect()->intended(config('metadata.user_homepage'))
             : (new AuthViewRepository)->getViewDetails(
                 self::TEMPLATE_EMAIL_VERIFY,
                 [],
@@ -32,7 +31,7 @@ final class EmailVerificationController extends Controller
     public function store(): RedirectResponse
     {
         if (request()->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(config('metadata.user_homepage'));
         }
 
         request()->user()->sendEmailVerificationNotification();
@@ -44,7 +43,7 @@ final class EmailVerificationController extends Controller
     public function edit(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
+            return redirect()->intended(config('metadata.user_homepage') . '?verified=1');
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -53,6 +52,6 @@ final class EmailVerificationController extends Controller
             event(new Verified($user));
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
+        return redirect()->intended(config('metadata.user_homepage') . '?verified=1');
     }
 }

@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Views\Auth\Metadata\LoginMetadataResource;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 
 test('TEMPLATE_LOGIN Vue page component exists', function () {
     $template = (new ReflectionClassConstant(
@@ -59,7 +58,7 @@ test('store authenticates users ok', function (User $user) {
 
     $actual
         ->assertSessionHasNoErrors()
-        ->assertRedirect(RouteServiceProvider::HOME);
+        ->assertRedirect(config('metadata.user_homepage'));
 })->with('users');
 
 test('store throws a validation error if email is missing', function (User $user) {
