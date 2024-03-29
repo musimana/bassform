@@ -6,7 +6,6 @@ use App\Http\Requests\Auth\ProfileUpdateRequest;
 use App\Http\Resources\Views\Auth\Metadata\DashboardMetadataResource;
 use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 test('TEMPLATE_DASHBOARD Vue page component exists', function () {
     $template = (new ReflectionClassConstant(
@@ -76,7 +75,7 @@ test('edit renders the profile update view', function (User $user) {
         ->toHaveCorrectPropsAuth(
             ProfileController::TEMPLATE_PROFILE_EDIT,
             [],
-            (new ProfileEditMetadataResource)->getItem(new Request)
+            (new ProfileEditMetadataResource)->getItem()
         );
 })->with('users');
 
