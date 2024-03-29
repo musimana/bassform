@@ -39,16 +39,6 @@ final class Page extends Model
         'is_homepage',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'in_sitemap' => 'boolean',
-        'is_homepage' => 'boolean',
-    ];
-
     /** GETTERS */
 
     /** Get the HTML content string for the page. */
@@ -89,5 +79,18 @@ final class Page extends Model
         return $query->where(function ($query) {
             $query->where('in_sitemap', 1);
         });
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'in_sitemap' => 'boolean',
+            'is_homepage' => 'boolean',
+        ];
     }
 }
