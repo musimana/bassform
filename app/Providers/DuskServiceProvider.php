@@ -6,49 +6,61 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\Browser;
 
+/**
+ * @method string getScreenshotFilename(string $filename_base, string $count_string)
+ * @method Browser scrollToTop()
+ */
 final class DuskServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /** Register Dusk's browser macros. */
     public function boot(): void
     {
-        Browser::macro('getScreenshotFilename', function ($filename_base, $count) {
+        Browser::macro('getScreenshotFilename', function (string $filename_base, string $count_string) {
             return date('Y-m-d') . '_' . str_replace(' ', '_', strtolower(config('app.name')))
                 . '/' . config('dusk.screen_width') . 'x' . config('dusk.screen_height')
-                . '/' . $filename_base . '_' . $count;
+                . '/' . $filename_base . '_' . $count_string;
         });
 
-        Browser::macro('screenshotWholePage', function ($filename_base) {
-            $this->scrollToTop()->pause(config('dusk.pause_length'));
+        Browser::macro('screenshotWholePage', function (string $filename_base) {
+            /** @var Browser $browser */
+            $browser = $this;
+            $browser->scrollToTop()->pause(config('dusk.pause_length'));
 
-            $screen_max = ceil($this->script('return document.body.offsetHeight / window.innerHeight')[0]);
+            $screen_max = ceil($browser->script('return document.body.offsetHeight / window.innerHeight')[0]);
 
             for ($screen = 1; $screen <= $screen_max; $screen++) {
-                $this->screenshot($this->getScreenshotFilename($filename_base, $screen))
+                $browser->screenshot($browser->getScreenshotFilename($filename_base, (string) $screen))
                     ->pause(config('dusk.pause_length'))
                     ->scrollDownScreenHeight();
             }
 
-            $this->scrollToTop()->pause(config('dusk.pause_length'));
+            $browser->scrollToTop()->pause(config('dusk.pause_length'));
 
-            return $this;
+            return $browser;
         });
 
         Browser::macro('scrollToTop', function () {
-            $this->script('window.scrollTo(0, 0)');
+            /** @var Browser $browser */
+            $browser = $this;
+            $browser->script('window.scrollTo(0, 0)');
 
-            return $this;
+            return $browser;
         });
 
         Browser::macro('scrollDownScreenHeight', function () {
-            $this->script('window.scrollBy(0, window.innerHeight)');
+            /** @var Browser $browser */
+            $browser = $this;
+            $browser->script('window.scrollBy(0, window.innerHeight)');
 
-            return $this;
+            return $browser;
         });
 
         Browser::macro('scrollToEnd', function () {
-            $this->script('window.scrollTo(0, document.body.scrollHeight)');
+            /** @var Browser $browser */
+            $browser = $this;
+            $browser->script('window.scrollTo(0, document.body.scrollHeight)');
 
-            return $this;
+            return $browser;
         });
     }
 

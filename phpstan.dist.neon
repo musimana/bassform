@@ -20,6 +20,5 @@ parameters:
         - tests/Feature # 252 errors 2024-03-16
         - tests/Pest # 32 errors 2024-03-16
         - tests/Unit # 150 errors 2024-03-16
-        - app/Providers/DuskServiceProvider.php # 8 errors 2024-02-01, all `Call to an undefined method App\Providers\DuskServiceProvider::`
 
     checkGenericClassInNonGenericObjectType: false
