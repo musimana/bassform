@@ -16,7 +16,7 @@ arch('app/Http/Controllers has valid architecture')
 
 arch('app/Http/Middleware has valid architecture')
     ->expect('App\Http\Middleware')
-    ->toBeUsedIn('App\Http');
+    ->not->toBeUsed();
 
 arch('app/Http/Requests has valid architecture')
     ->expect('App\Http\Requests')
