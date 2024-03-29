@@ -10,10 +10,11 @@ final class ItemLinksNavbarResource implements NavbarItemInterface
     /**
      * Get the content array for the given page's public link.
      *
-     * @return array<string, string|array<string, string>>
+     * @return array<string, null|string|array<string, null|string>>
      */
     public function getItem(NavbarItem $navbar_item): array
     {
+        // * @return array{}|array{title: string, url: ?string}|array{title: string, url: ?string, subItems: array{title: string, url: ?string}}
         $title = $navbar_item->getTitle();
 
         if (!$title) {
