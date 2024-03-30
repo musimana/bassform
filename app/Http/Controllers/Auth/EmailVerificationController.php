@@ -19,7 +19,7 @@ final class EmailVerificationController extends Controller
     /** Display the email verification prompt. */
     public function show(): RedirectResponse|Response
     {
-        return request()->user()->hasVerifiedEmail()
+        return request()->user()?->hasVerifiedEmail()
             ? redirect()->intended(RouteServiceProvider::HOME)
             : (new AuthViewRepository)->getViewDetails(
                 self::TEMPLATE_EMAIL_VERIFY,
@@ -31,11 +31,11 @@ final class EmailVerificationController extends Controller
     /** Send a new email verification notification, after a manual request by the user. */
     public function store(): RedirectResponse
     {
-        if (request()->user()->hasVerifiedEmail()) {
+        if (request()->user()?->hasVerifiedEmail()) {
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        request()->user()->sendEmailVerificationNotification();
+        request()->user()?->sendEmailVerificationNotification();
 
         return back()->with('status', 'verification-link-sent');
     }
@@ -43,11 +43,7 @@ final class EmailVerificationController extends Controller
     /** Mark the authenticated user's email address as verified. */
     public function edit(EmailVerificationRequest $request): RedirectResponse
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
-        }
-
-        if ($request->user()->markEmailAsVerified()) {
+        if (!$request->user()?->hasVerifiedEmail() && $request->user()?->markEmailAsVerified()) {
             /** @var MustVerifyEmail $user */
             $user = $request->user();
             event(new Verified($user));
