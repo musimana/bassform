@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Resources\Views\Public\Formatters\CopyrightFormatterResource;
+use App\Http\Resources\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Formatters\ConstantStringFormatterInterface;
 
 arch('it implements the expected interface')
