@@ -2,47 +2,63 @@ name: Laravel
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: 
+      - main
+      - '*.x'
   pull_request:
-    branches: [ "main", "develop" ]
-  workflow_dispatch:
 
 jobs:
-  laravel-tests:
-
+  tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.2, 8.3]
+
+    name: PHP ${{ matrix.php }}
+
     steps:
-      - uses: shivammathur/setup-php@v2
+      - name: Setup PHP
+        uses: actions/checkout@v4
+
+      - name: Checkout code
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
-      - uses: actions/checkout@v4
+          php-version: ${{ matrix.php }}
+
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-      - name: Copy .env
+
+      - name: Copy DotEnv
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
       - name: Install dependencies
         run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
           npm i
+
       - name: Generate key
         run: php artisan key:generate
+
       - name: Set directory permissions
         run: chmod -R 777 storage bootstrap/cache
+
       - name: Compile the assets & start the server
         run: npm run build && php artisan inertia:start-ssr &
+
       - name: Create test database
         run: |
           mkdir -p database
           touch database/database.sqlite
+
       - name: Run the linters
         run: npm run lint
+
       - name: Execute Type tests via Larastan
         run: composer test:types
+
       - name: Execute Unit tests via PHPUnit
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
         run: php artisan test
