@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Views;
 
+use App\Http\Resources\Formatters\CopyrightFormatterResource;
 use App\Http\Resources\Views\Navbars\DesktopNavbarResource;
 use App\Http\Resources\Views\Navbars\MobileNavbarResource;
-use App\Http\Resources\Formatters\CopyrightFormatterResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
 use Illuminate\Support\Facades\Route;
 
