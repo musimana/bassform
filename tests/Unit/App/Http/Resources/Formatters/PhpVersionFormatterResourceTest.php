@@ -12,5 +12,5 @@ test('getValue returns ok with valid inputs', function () {
 
     expect($actual)
         ->toBeString()
-        ->toEqual(substr(PHP_VERSION, 0, strrpos(PHP_VERSION, '.')) . '.x');
+        ->toEqual(substr(PHP_VERSION, 0, strrpos(PHP_VERSION, '.') ?: null) . '.x');
 });
