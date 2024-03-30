@@ -40,7 +40,7 @@ Route::controller(EmailVerificationController::class)->group(function () {
          * verification.notice
          * verification.send
          * verification.verify
-         * See [Laravel User Verification Docs](https://laravel.com/docs/10.x/verification)
+         * See [Laravel User Verification Docs](https://laravel.com/docs/11.x/verification)
          */
         Route::get('verify-email', 'show')->name('verification.notice');
 

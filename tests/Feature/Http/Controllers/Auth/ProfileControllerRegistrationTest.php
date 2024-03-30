@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Requests\Auth\ProfileStoreRequest;
 use App\Http\Resources\Views\Auth\Metadata\ProfileCreateMetadataResource;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 
 beforeEach(function () {
     $this->user_count_initial = User::count();
@@ -66,7 +65,7 @@ test('store registers new user records', function () {
 
     $actual
         ->assertSessionHasNoErrors()
-        ->assertRedirect(RouteServiceProvider::HOME);
+        ->assertRedirect(config('metadata.user_homepage'));
 
     expect(User::count())->toBe($this->user_count_initial + 1);
 });

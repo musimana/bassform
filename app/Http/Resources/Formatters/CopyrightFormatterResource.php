@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Views\Public\Formatters;
+namespace App\Http\Resources\Formatters;
 
 use App\Interfaces\Resources\Formatters\ConstantStringFormatterInterface;
 

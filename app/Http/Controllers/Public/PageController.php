@@ -15,9 +15,17 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class PageController extends Controller
 {
-    /** Display the given page. */
+    /**
+     * Display the given page.
+     *
+     * @throws HttpException
+     */
     public function show(Page $page): Response
     {
+        if (!$page->template) {
+            abort(404);
+        }
+
         return (new PublicViewRepository)
             ->getViewDetails(
                 $page->template,
@@ -59,7 +67,7 @@ final class PageController extends Controller
                 $files = [$files];
             }
 
-            if (!$generated_filename = $files[0]->store('uploads/pdf')) {
+            if (!$generated_filename = $files[0]?->store('uploads/pdf')) {
                 Log::error('ERROR | Failed to store uploaded PDF file for request:', $response);
 
                 abort(500, 'Failed to store uploaded PDF file');

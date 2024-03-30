@@ -39,27 +39,13 @@ final class Page extends Model
         'is_homepage',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'in_sitemap' => 'boolean',
-        'is_homepage' => 'boolean',
-    ];
-
-    /** GETTERS */
-
     /** Get the HTML content string for the page. */
     public function getContent(): string
     {
         return $this->content ?? '';
     }
 
-    /**
-     * Get the public URL's path for the page.
-     */
+    /** Get the public URL's path for the page. */
     public function getPath(): string
     {
         return $this->is_homepage
@@ -81,13 +67,24 @@ final class Page extends Model
             : route('page.show', $this->slug);
     }
 
-    /** SCOPES */
-
     /** Returns all Page models that should be in the sitemap (in_sitemap = 1). */
     public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
     {
         return $query->where(function ($query) {
             $query->where('in_sitemap', 1);
         });
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'in_sitemap' => 'boolean',
+            'is_homepage' => 'boolean',
+        ];
     }
 }

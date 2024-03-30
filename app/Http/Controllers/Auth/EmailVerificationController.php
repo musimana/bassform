@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Auth\Metadata\EmailVerifyMetadataResource;
-use App\Providers\RouteServiceProvider;
 use App\Repositories\Views\AuthViewRepository;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -19,8 +18,8 @@ final class EmailVerificationController extends Controller
     /** Display the email verification prompt. */
     public function show(): RedirectResponse|Response
     {
-        return request()->user()->hasVerifiedEmail()
-            ? redirect()->intended(RouteServiceProvider::HOME)
+        return request()->user()?->hasVerifiedEmail()
+            ? redirect()->intended(config('metadata.user_homepage'))
             : (new AuthViewRepository)->getViewDetails(
                 self::TEMPLATE_EMAIL_VERIFY,
                 [],
@@ -31,11 +30,11 @@ final class EmailVerificationController extends Controller
     /** Send a new email verification notification, after a manual request by the user. */
     public function store(): RedirectResponse
     {
-        if (request()->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME);
+        if (request()->user()?->hasVerifiedEmail()) {
+            return redirect()->intended(config('metadata.user_homepage'));
         }
 
-        request()->user()->sendEmailVerificationNotification();
+        request()->user()?->sendEmailVerificationNotification();
 
         return back()->with('status', 'verification-link-sent');
     }
@@ -43,16 +42,12 @@ final class EmailVerificationController extends Controller
     /** Mark the authenticated user's email address as verified. */
     public function edit(EmailVerificationRequest $request): RedirectResponse
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
-        }
-
-        if ($request->user()->markEmailAsVerified()) {
+        if (!$request->user()?->hasVerifiedEmail() && $request->user()?->markEmailAsVerified()) {
             /** @var MustVerifyEmail $user */
             $user = $request->user();
             event(new Verified($user));
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
+        return redirect()->intended(config('metadata.user_homepage') . '?verified=1');
     }
 }

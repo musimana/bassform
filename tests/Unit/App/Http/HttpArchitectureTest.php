@@ -16,7 +16,7 @@ arch('app/Http/Controllers has valid architecture')
 
 arch('app/Http/Middleware has valid architecture')
     ->expect('App\Http\Middleware')
-    ->toBeUsedIn('App\Http');
+    ->not->toBeUsed();
 
 arch('app/Http/Requests has valid architecture')
     ->expect('App\Http\Requests')
@@ -33,6 +33,12 @@ arch('app/Http/Resources has valid architecture')
 arch('app/Http/Resources/Files has valid architecture')
     ->expect('App\Http\Resources\Files')
     ->toHaveSuffix('FileResource');
+
+arch('app/Http/Resources/Views/Public/Formatters has valid architecture')
+    ->expect('App\Http\Resources\Formatters')
+    ->toHaveSuffix('FormatterResource')
+    ->toBeUsedIn('App\Http')
+    ->tohaveMethod('getValue');
 
 arch('app/Http/Resources/Models has valid architecture')
     ->expect('App\Http\Resources\Models')
@@ -61,12 +67,6 @@ arch('app/Http/Resources/Views/Public/Content has valid architecture')
     ->toHaveSuffix('ContentResource')
     ->toBeUsedIn('App\Http')
     ->tohaveMethod('getItem');
-
-arch('app/Http/Resources/Views/Public/Formatters has valid architecture')
-    ->expect('App\Http\Resources\Views\Public\Formatters')
-    ->toHaveSuffix('FormatterResource')
-    ->toBeUsedIn('App\Http')
-    ->tohaveMethod('getValue');
 
 arch('app/Http/Resources/Views/Public/Metadata has valid architecture')
     ->expect('App\Http\Resources\Views\Public\Metadata')

@@ -5,21 +5,36 @@ parameters:
 
     paths:
         - app/
+        - bootstrap/
         - config/
         - database/
         - routes/
         - tests/
 
     # Level 9 is the highest level
-    level: 7
-
-    ignoreErrors:
+    level: 8
 
     excludePaths:
-        - tests/Browser # 16 errors 2024-03-16, all `Call to an undefined method Laravel\Dusk\Browser::`
-        - tests/Feature # 252 errors 2024-03-16
-        - tests/Pest # 32 errors 2024-03-16
-        - tests/Unit # 150 errors 2024-03-16
-        - app/Providers/DuskServiceProvider.php # 8 errors 2024-02-01, all `Call to an undefined method App\Providers\DuskServiceProvider::`
+        - tests/Pest/Functions/CompositeTests # 5 errors 2024-03-29, whole directory needs refactoring
+
+    ignoreErrors:
+        - # From the way the methods are inherited by Pest
+            message: '#Call to an undefined method Pest\\#'
+            path: tests
+        - # To be fixed by adopting Pest syntax
+            message: '#Undefined variable: \$this#'
+            path: tests
+        - # From the way the methods are inherited by the Browser object
+            message: '#Call to an undefined method Laravel\\Dusk\\Browser::#'
+            path: tests/Browser
+            count: 16
+        - # From the way the methods are inherited by Pest
+            message: '#Function testNotifiedUpdate#'
+            path: tests/Feature/Http/Controllers/Auth/PasswordForgottenControllerTest.php
+            count: 5
+        - # From the way the methods are inherited by Pest
+            message: '#Access to an undefined property Pest\\Mixins\\Expectation\<App\\Models\\#'
+            path: tests/Unit
+            count: 3
 
     checkGenericClassInNonGenericObjectType: false

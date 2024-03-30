@@ -44,17 +44,11 @@
         "protected_to_private": true
     },
     "notPath": [
-        "app/Console/Kernel.php",
-        "app/Exceptions/Handler.php",
-        "app/Http/Kernel.php",
-        "config/app.php",
-        "config/broadcasting.php",
         "config/cache.php",
         "config/database.php",
         "config/filesystems.php",
         "config/logging.php",
         "config/session.php",
-        "public/index.php",
-        "tests/CreatesApplication.php"
+        "public/index.php"
     ]
 }
