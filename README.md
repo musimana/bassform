@@ -2,7 +2,7 @@
 
 ![Bassform - VILT SSR](resources/img/banner-readme.png)
 
-VILT stack template app for PHP 8.2.x created by Musimana. Features include server-side rendering (SSR) and Larastan, Pest & Dusk test suites.
+VILT stack template app for PHP 8.2.x|8.3.x created by Musimana. Features include server-side rendering (SSR) and Larastan, Pest & Dusk test suites.
 
 [Vue3](https://vuejs.org/),
 [Inertia](https://inertiajs.com/),
