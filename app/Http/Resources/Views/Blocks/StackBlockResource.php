@@ -2,8 +2,9 @@
 
 namespace App\Http\Resources\Views\Blocks;
 
+use App\Http\Resources\Formatters\LaravelVersionFormatterResource;
+use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
-use Illuminate\Foundation\Application;
 
 final class StackBlockResource implements ConstantItemInterface
 {
@@ -14,10 +15,9 @@ final class StackBlockResource implements ConstantItemInterface
      */
     public function getItem(): array
     {
-        $laravel_delimiter_position = strpos(Application::VERSION, '.');
-        $laravel_version = $laravel_delimiter_position
-            ? substr(Application::VERSION, 0, $laravel_delimiter_position) . '.x'
-            : Application::VERSION;
+        $laravel_version = (new LaravelVersionFormatterResource)->getValue();
+
+        $php_version = (new PhpVersionFormatterResource)->getValue();
 
         $php_delimiter_position = strrpos(PHP_VERSION, '.');
         $php_version = $php_delimiter_position
@@ -58,7 +58,7 @@ final class StackBlockResource implements ConstantItemInterface
             'html' => implode('', [
                 '<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3><ul class="list-disc ml-8 mb-8">',
                 $li_elements_string,
-                '</ul><p>For PHP v' . $php_version . '</p>',
+                '</ul><p>Running on PHP v' . $php_version . '</p>',
             ]),
         ];
     }
