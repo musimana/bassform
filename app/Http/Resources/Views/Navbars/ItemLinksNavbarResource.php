@@ -10,7 +10,7 @@ final class ItemLinksNavbarResource implements NavbarItemInterface
     /**
      * Get the content array for the given page's public link.
      *
-     * @return array<string, string|array<string, string>>
+     * @return array<string, null|string|array<string, null|string>>
      */
     public function getItem(NavbarItem $navbar_item): array
     {

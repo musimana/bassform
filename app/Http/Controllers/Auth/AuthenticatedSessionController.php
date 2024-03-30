@@ -19,7 +19,7 @@ final class AuthenticatedSessionController extends Controller
     public function create(): RedirectResponse|Response
     {
         if (auth()->check()) {
-            return redirect(route('home'));
+            return to_route('dashboard');
         }
 
         return (new AuthViewRepository)->getViewDetails(

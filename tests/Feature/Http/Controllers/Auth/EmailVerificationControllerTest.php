@@ -80,7 +80,7 @@ test('edit renders the email verification view & can verify emails', function (U
     $actual = $this->actingAs($user)->get($verificationUrl);
 
     Event::assertDispatched(Verified::class);
-    expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
+    expect($user->fresh()?->hasVerifiedEmail())->toBeTrue();
 
     $actual
         ->assertSessionHasNoErrors()
@@ -96,5 +96,5 @@ test('edit renders the email verification view, but doesn\'t verify emails when 
 
     $this->actingAs($user)->get($verificationUrl);
 
-    expect($user->fresh()->hasVerifiedEmail())->toBeFalse();
+    expect($user->fresh()?->hasVerifiedEmail())->toBeFalse();
 })->with('users-unverified');
