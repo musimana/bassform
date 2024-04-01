@@ -18,4 +18,5 @@ arch('app/Console/Commands has valid architecture')
 
 arch('app/Console/Commands/Seeds has valid architecture')
     ->expect('App\Console\Commands\Seeds')
+    ->toBeFinal()
     ->toHavePrefix('Seed');
