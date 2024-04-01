@@ -16,18 +16,20 @@ arch('app/Http/Controllers has valid architecture')
 
 arch('app/Http/Middleware has valid architecture')
     ->expect('App\Http\Middleware')
+    ->toBeFinal()
     ->not->toBeUsed();
 
 arch('app/Http/Requests has valid architecture')
     ->expect('App\Http\Requests')
     ->toExtend(FormRequest::class)
+    ->toBeFinal()
     ->toHaveSuffix('Request')
     ->toBeUsedIn('App\Http\Controllers')
     ->toHaveMethod('rules');
 
 arch('app/Http/Resources has valid architecture')
     ->expect('App\Http\Resources')
-    ->toBeClasses()
+    ->toBeFinal()
     ->toBeUsedIn('App\Http');
 
 arch('app/Http/Resources/Files has valid architecture')

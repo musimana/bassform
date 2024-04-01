@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 arch('app/Models has valid architecture')
     ->expect('App\Models')
     ->toBeClasses()
+    ->toBeFinal()
     ->toExtend(Model::class)
     ->toUse([
         HasFactory::class,
