@@ -1,6 +1,5 @@
 <script setup>
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
-import ControlDarkMode from '@/Components/Controls/ControlDarkMode.vue'
 import NavbarMobileItems from '@/Components/Controls/Navbars/NavbarMobileItems.vue'
 import NavbarMobileLogin from '@/Components/Controls/Navbars/NavbarMobileLogin.vue'
 import NavbarMobileUser from '@/Components/Controls/Navbars/NavbarMobileUser.vue'
