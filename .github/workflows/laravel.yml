@@ -1,4 +1,4 @@
-name: Laravel
+name: run-tests
 
 on:
   push:
@@ -8,37 +8,51 @@ on:
   pull_request:
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: true
-      matrix:
-        php: [8.2, 8.3]
 
-    name: PHP ${{ matrix.php }}
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.2, 8.3]
+        laravel: [11.*]
+        stability: [prefer-stable]
+        include:
+        - laravel: 11.*
+
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
-      - name: Setup PHP
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Checkout code
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: fileinfo, pdo, pdo_sqlite, sqlite, zip
+          coverage: none
 
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
 
-      - name: Copy DotEnv
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Install dependencies
         run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
           npm i
+
+      - name: Copy DotEnv
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Generate key
         run: php artisan key:generate
@@ -50,9 +64,7 @@ jobs:
         run: npm run build && php artisan inertia:start-ssr &
 
       - name: Create test database
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
+        run: touch database/database.sqlite
 
       - name: Run the linters
         run: npm run lint
@@ -60,5 +72,5 @@ jobs:
       - name: Execute Type tests via Larastan
         run: composer test:types
 
-      - name: Execute Unit tests via PHPUnit
+      - name: Execute Unit tests with PHPUnit via Pest
         run: php artisan test
