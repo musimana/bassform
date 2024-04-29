@@ -14,6 +14,7 @@ final class UserSeeder extends Seeder
 
         if (!$primary_user) {
             User::factory()->create([
+                'is_admin' => 1,
                 'name' => config('mail.from.name'),
                 'email' => config('mail.from.address'),
             ]);

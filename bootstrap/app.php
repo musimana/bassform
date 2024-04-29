@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminAccess;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -19,6 +20,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(HandleInertiaRequests::class);
 
         $middleware->api('throttle:60,1');
+
+        $middleware->alias([
+            'admin' => AdminAccess::class,
+        ]);
     })
     ->withExceptions()
     ->create();
