@@ -17,6 +17,7 @@ final class PageUpdateRequest extends FormRequest implements RequestInterface
         return [
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
+            'content' => ['nullable', 'string', 'max:5120'],
             'metaTitle' => ['nullable', 'string', 'max:255'],
             'metaDescription' => ['nullable', 'string', 'max:255'],
             'inSitemap' => ['required', 'boolean'],
