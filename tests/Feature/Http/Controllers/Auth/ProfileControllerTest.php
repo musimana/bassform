@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Requests\Auth\ProfileDeleteRequest;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
+use App\Http\Resources\Views\Auth\Content\DashboardContentResource;
 use App\Http\Resources\Views\Auth\Metadata\DashboardMetadataResource;
 use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
 use App\Models\User;
@@ -49,7 +50,7 @@ test('index renders the profile dashboard view', function (User $user) {
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
             ProfileController::TEMPLATE_DASHBOARD,
-            [],
+            (new DashboardContentResource)->getItem(),
             (new DashboardMetadataResource)->getItem()
         );
 })->with('users');
