@@ -40,6 +40,12 @@ final class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    /** Bool flag to indicate if the user has the given role. */
+    public function hasRole(string $role): bool
+    {
+        return $role === 'admin' && $this->is_admin;
+    }
+
     /**
      * Get the attributes that should be cast.
      *
