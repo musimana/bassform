@@ -20,4 +20,5 @@ Route::get('/sitemaps/{sitemap}.xml', [SitemapController::class, 'show'])->name(
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 
 require __DIR__ . '/web/auth.php';
+require __DIR__ . '/web/admin.php';
 require __DIR__ . '/web/public.php';
