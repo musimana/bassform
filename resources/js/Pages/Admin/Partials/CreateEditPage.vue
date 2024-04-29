@@ -6,12 +6,14 @@ import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
+import InputWysiwyg from '@/Components/Forms/Inputs/InputWysiwyg.vue'
 import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 
 const page = usePage().props.content
 
 const form = useForm({
+  content: page.content,
   inSitemap: page.inSitemap,
   metaDescription: page.metaDescription,
   metaTitle: page.metaTitle,
@@ -60,6 +62,21 @@ const form = useForm({
           type="text"
           class="block w-full"
           v-model="form.subtitle"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4">
+      <FormInput
+        input-label="Content"
+        input-label-position="left"
+        input-field="textarea"
+        :parent-form="form"
+      >
+        <InputWysiwyg
+          id="input-content"
+          class="block w-full"
+          v-model="form.content"
         />
       </FormInput>
     </div>
