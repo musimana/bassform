@@ -27,6 +27,11 @@ test('rules returns ok', function () {
             'string',
             'max:255',
         ],
+        'content' => [
+            'nullable',
+            'string',
+            'max:5120',
+        ],
         'metaTitle' => [
             'nullable',
             'string',
