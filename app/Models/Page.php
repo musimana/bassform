@@ -67,6 +67,12 @@ final class Page extends Model
             : route('page.show', $this->slug);
     }
 
+    /** Get the admin URL for the page edit view. */
+    public function getUrlEdit(): string
+    {
+        return route('admin.page.edit', $this->slug);
+    }
+
     /** Returns all Page models that should be in the sitemap (in_sitemap = 1). */
     public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
     {
