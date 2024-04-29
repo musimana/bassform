@@ -17,7 +17,7 @@ $seeds = [
         'title' => 'About',
         'subtitle' => config('app.name'),
         'content' => '
-            <p class="text-lg text-gray-800 dark:text-gray-200 tracking-widest mb-8 border-l-4 border-gray-900 dark:border-gray-300 p-2 bg-gray-200 dark:bg-gray-800"><em>"Suped-up Laravel Breeze with Vue, Inertia & Tailwind"</em></p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 tracking-widest mb-8 border-l-4 border-gray-900 dark:border-gray-300 p-2 bg-gray-200 dark:bg-gray-800"><em>"Laravel Breeze variant with Vue, Inertia & Tailwind"</em></p>
             <p class="px-4 pb-4">
                 Bassform is a light-weight template for scaffolding <a href="https://laravel.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"><em>Laravel</em></a> apps,
                 with Vue for the UI.

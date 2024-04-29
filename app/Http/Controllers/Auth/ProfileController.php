@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\ProfileDeleteRequest;
 use App\Http\Requests\Auth\ProfileStoreRequest;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
 use App\Http\Resources\Models\UserModelResource;
+use App\Http\Resources\Views\Auth\Content\DashboardContentResource;
 use App\Http\Resources\Views\Auth\Metadata\DashboardMetadataResource;
 use App\Http\Resources\Views\Auth\Metadata\ProfileCreateMetadataResource;
 use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
@@ -30,7 +31,7 @@ final class ProfileController extends Controller
     {
         return (new AuthViewRepository)->getViewDetails(
             self::TEMPLATE_DASHBOARD,
-            [],
+            (new DashboardContentResource)->getItem(),
             (new DashboardMetadataResource)->getItem()
         );
     }

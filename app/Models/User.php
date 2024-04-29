@@ -24,6 +24,7 @@ final class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
+        'is_admin',
         'name',
         'email',
         'password',
@@ -39,6 +40,12 @@ final class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    /** Bool flag to indicate if the user has the given role. */
+    public function hasRole(string $role): bool
+    {
+        return $role === 'admin' && $this->is_admin;
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -48,6 +55,7 @@ final class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'is_admin' => 'boolean',
             'password' => 'hashed',
         ];
     }
