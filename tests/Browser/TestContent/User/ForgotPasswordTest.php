@@ -11,7 +11,7 @@ final class ForgotPasswordTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    /** Test the day view renders & behaves correctly. */
+    /** Test the forgot password view renders & behaves correctly. */
     public function testForgotPasswordContent(): void
     {
         $this->browse(fn (Browser $browser) => $browser

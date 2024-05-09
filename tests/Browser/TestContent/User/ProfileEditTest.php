@@ -12,7 +12,7 @@ final class ProfileEditTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    /** Test the day view renders & behaves correctly. */
+    /** Test the profile edit view renders & behaves correctly. */
     public function testProfileEditContent(): void
     {
         $user = User::factory()->create();
