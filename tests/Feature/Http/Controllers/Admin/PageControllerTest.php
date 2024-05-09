@@ -43,7 +43,7 @@ test('edit renders the page create/edit view', function (Page $page) {
         );
 })->with('pages');
 
-test('show renders the 404 view for unknown pages', function () {
+test('edit renders the 404 view for unknown pages', function () {
     $url = url('admin/pages/foo');
     $user = User::factory()->isAdmin()->create();
     $actual = $this->actingAs($user)->get($url);
