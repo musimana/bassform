@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\TestAuth;
 
+use App\Models\Page;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
@@ -36,6 +37,7 @@ final class WebMiddlewareTest extends DuskTestCase
     /** Test the standard auth middleware works correctly. */
     public function testUserMiddleware(): void
     {
+        $page = Page::factory()->create();
         $user = User::factory()->create([
             'email' => 'test.user@example.com',
             'name' => 'Test User',
@@ -43,6 +45,7 @@ final class WebMiddlewareTest extends DuskTestCase
 
         Assert::assertTrue($user->email === 'test.user@example.com');
         Assert::assertTrue($user->name === 'Test User');
+        Assert::assertTrue(!$user->hasRole('admin'));
 
         $this->browse(fn (Browser $browser) => $browser
             ->assertGuest()
@@ -52,6 +55,11 @@ final class WebMiddlewareTest extends DuskTestCase
 
             ->on(new Dashboard($user))
             ->screenshotWholePage('dashboard-user-' . str_replace(['@', '.'], '_', $user->email))
+
+            ->visit($page->getUrlEdit())
+            ->assertSee('404')
+            ->assertSee('NOT FOUND')
+            ->screenshotWholePage('cms-user-denied')
 
             ->visit(new Homepage)
             ->assertAuthenticatedAs($user)
