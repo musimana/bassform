@@ -34,6 +34,8 @@ final class PageSeeder extends Seeder
                     'meta_description' => $seed['meta_description'] ?? null,
                     'meta_keywords' => $seed['meta_keywords'] ?? null,
                     'template' => $seed['template'] ?? null,
+                    'in_sitemap' => $seed['in_sitemap'] ?? 1,
+                    'is_homepage' => $seed['is_homepage'] ?? 0,
                 ]);
 
                 foreach ($seed['blocks'] ?? [] as $display_order => $block) {
