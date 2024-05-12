@@ -13,6 +13,23 @@
 $seeds = [
 
     [
+        'slug' => 'home',
+        'title' => config('app.name'),
+        'subtitle' => config('metadata.description'),
+        'content' => '
+            <p class="font-semibold">
+                <em>Welcome traveller, you can find demos of the app\'s features via the links below, with more available from the dashboard when you login.</em>
+            </p>
+        ',
+        'meta_title' => config('app.name'),
+        'meta_description' => config('metadata.description'),
+        'meta_keywords' => config('metadata.keywords'),
+        'template' => 'Public/PublicHomepage',
+        'in_sitemap' => 0,
+        'is_homepage' => 1,
+    ],
+
+    [
         'slug' => 'about',
         'title' => 'About',
         'subtitle' => config('app.name'),
