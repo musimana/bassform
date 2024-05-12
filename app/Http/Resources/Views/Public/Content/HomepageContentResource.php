@@ -15,14 +15,16 @@ final class HomepageContentResource implements ConstantItemInterface
      */
     public function getItem(): array
     {
-        $items = Page::whereNot('slug', 'about')->get();
+        $page = Page::query()->isHomepage()->first();
+        $items = Page::query()->isNotHomepage()->whereNot('slug', 'about')->get();
 
         return [
-            'heading' => config('app.name'),
-            'bodytext' => '<p class="mb-8">' . config('metadata.description') . '</p>',
+            'bodytext' => $page?->getContent() ?? '',
+            'heading' => $page?->getTitle() ?? config('app.name'),
             'items' => $items
                 ->map(fn ($page) => (new PageSummaryResource)->getItem($page))
                 ->toArray(),
+            'subheading' => $page?->getSubtitle() ?? '',
         ];
     }
 }
