@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Traits\HasForm;
 
-abstract class AuthPage extends Page
+abstract class AdminPage extends Page
 {
     use HasForm;
 

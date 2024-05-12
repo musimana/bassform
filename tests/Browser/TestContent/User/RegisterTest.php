@@ -11,7 +11,7 @@ final class RegisterTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    /** Test the day view renders & behaves correctly. */
+    /** Test the register view renders & behaves correctly. */
     public function testRegisterContent(): void
     {
         $this->browse(fn (Browser $browser) => $browser

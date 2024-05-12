@@ -4,10 +4,10 @@ import InputLabel from '@/Components/Forms/Inputs/InputLabel.vue'
 import AppModal from '@/Components/Modals/AppModal.vue'
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
-import { useForm } from '@inertiajs/vue3'
-import { nextTick, ref } from 'vue'
 import OutlineTrash from '@/Components/Icons/HeroIcons/Outline/OutlineTrash.vue'
 import OutlineArrowUturnLeft from '@/Components/Icons/HeroIcons/Outline/OutlineArrowUturnLeft.vue'
+import { useForm } from '@inertiajs/vue3'
+import { nextTick, ref } from 'vue'
 
 const confirmingUserDeletion = ref(false)
 const passwordInput = ref(null)
