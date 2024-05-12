@@ -20,8 +20,12 @@ final class PageController extends Controller
      *
      * @throws HttpException
      */
-    public function show(Page $page): Response
+    public function show(Page $page): RedirectResponse|Response
     {
+        if ($page->is_homepage) {
+            return to_route('home');
+        }
+
         if (!$page->template) {
             abort(404);
         }
