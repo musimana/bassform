@@ -10,8 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
- * @method Builder|static published()
  * @method Builder|static inSitemap()
+ * @method Builder|static isHomepage()
+ * @method Builder|static isNotHomepage()
  * @method static Builder|static query()
  */
 final class Page extends Model
@@ -78,6 +79,22 @@ final class Page extends Model
     {
         return $query->where(function ($query) {
             $query->where('in_sitemap', 1);
+        });
+    }
+
+    /** Return all Page models flagged as the homepage (is_homepage = 1). */
+    public function scopeIsHomepage(Builder|QueryBuilder $query): Builder|QueryBuilder
+    {
+        return $query->where(function ($query) {
+            $query->where('is_homepage', 1)->orderBy('udpated_at', 'desc');
+        });
+    }
+
+    /** Return all Page models not flagged as the homepage (is_homepage != 1). */
+    public function scopeIsNotHomepage(Builder|QueryBuilder $query): Builder|QueryBuilder
+    {
+        return $query->where(function ($query) {
+            $query->where('is_homepage', '!=', 1)->orderBy('udpated_at', 'desc');
         });
     }
 

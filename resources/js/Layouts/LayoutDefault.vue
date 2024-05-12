@@ -8,7 +8,10 @@ import LayoutGuest from '@/Layouts/LayoutGuest.vue'
     <template #pageHeader>
       <h2 class="font-semibold text-md text-gray-900 dark:text-gray-100 uppercase tracking-widest">{{ $page.props.content.heading }}</h2>
 
-      <p class="pt-2 font-semibold text-xs text-gray-900 dark:text-gray-100 uppercase tracking-widest">
+      <p
+        v-if="$page.props.content.subheading !== ''"
+        class="pt-2 font-semibold text-xs text-gray-900 dark:text-gray-100 uppercase tracking-widest"
+      >
         <em>{{ $page.props.content.subheading }}</em>
       </p>
     </template>

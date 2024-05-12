@@ -3,7 +3,9 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Resources\Views\DetailsViewResource;
+use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Http\Resources\Views\Public\Content\PageContentResource;
+use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
 use App\Models\Page;
 
@@ -16,29 +18,33 @@ test('show renders the page view', function (Page $page) {
     $actual = $this->get($route);
     $session = session()->all();
     $headers = $actual->headers->all();
+    $status = $page->is_homepage ? 302 : 200;
 
     $actual
-        ->assertStatus(200)
-        ->assertSessionHasNoErrors()
-        ->assertViewIs('app');
+        ->assertStatus($status)
+        ->assertSessionHasNoErrors();
 
     expect($session)->toHaveCorrectSessionValues($route);
 
-    expect($headers)->toHaveCorrectHeaderValues();
+    if ($status === 200) {
+        $actual->assertViewIs('app');
 
-    $data = (new DetailsViewResource)->getItem(
-        (new PageContentResource)->getItem($page),
-        (new PageMetadataResource)->getItem($page)
-    );
+        expect($headers)->toHaveCorrectHeaderValues();
 
-    expect($actual)
-        ->toHaveCorrectHtmlHead($page->template)
-        ->toHaveCorrectHtmlBody()
-        ->toHaveCorrectPropsDetails(
-            $page->template,
-            $data['content'],
-            $data['metadata']
+        $data = (new DetailsViewResource)->getItem(
+            (new PageContentResource)->getItem($page),
+            (new PageMetadataResource)->getItem($page)
         );
+
+        expect($actual)
+            ->toHaveCorrectHtmlHead($page->template)
+            ->toHaveCorrectHtmlBody()
+            ->toHaveCorrectPropsDetails(
+                $page->template,
+                $data['content'],
+                $data['metadata']
+            );
+    }
 })->with('pages');
 
 test('show renders the 404 view for unknown pages', function () {

@@ -22,9 +22,6 @@ final class PageFactory extends Factory
         /** @var array<int, string> $content_array */
         $content_array = fake()->paragraphs(5);
 
-        /** @var array<int, string> $meta_keywords_array */
-        $meta_keywords_array = fake()->words(5);
-
         return [
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
@@ -32,22 +29,8 @@ final class PageFactory extends Factory
             'content' => '<p>' . implode('</p><p>', $content_array) . '</p>',
             'meta_title' => ucwords($title),
             'meta_description' => fake()->words(24, true),
-            'meta_keywords' => implode(', ', $meta_keywords_array),
             'template' => 'Public/PublicContent',
-            'is_homepage' => 0,
         ];
-    }
-
-    /**
-     * Indicate that the model's slug should be the given slug.
-     *
-     * @return static
-     */
-    public function fixedSlug(string $slug)
-    {
-        return $this->state(fn (array $attributes) => [
-            'slug' => $slug,
-        ]);
     }
 
     /**
@@ -57,13 +40,35 @@ final class PageFactory extends Factory
      */
     public function aboutPage()
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes) => array_merge([
             ...$attributes,
             'slug' => 'about',
             'title' => 'About',
             'subtitle' => config('app.name'),
             'content' => '',
             'meta_title' => 'About',
-        ]);
+            'meta_description' => config('metadata.description'),
+        ]));
+    }
+
+    /**
+     * Indicate that the model should match the project's default homepage.
+     *
+     * @return static
+     */
+    public function homePage()
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'slug' => 'home',
+            'title' => config('app.name'),
+            'subtitle' => config('metadata.description'),
+            'content' => '',
+            'meta_title' => config('app.name'),
+            'meta_description' => config('metadata.description'),
+            'template' => 'Public/PublicHomepage',
+            'in_sitemap' => 0,
+            'is_homepage' => 1,
+        ]));
     }
 }
