@@ -50,4 +50,25 @@ final class PageFactory extends Factory
             'meta_description' => config('metadata.description'),
         ]));
     }
+
+    /**
+     * Indicate that the model should match the project's default homepage.
+     *
+     * @return static
+     */
+    public function homePage()
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'slug' => 'home',
+            'title' => config('app.name'),
+            'subtitle' => config('metadata.description'),
+            'content' => '',
+            'meta_title' => config('app.name'),
+            'meta_description' => config('metadata.description'),
+            'template' => 'Public/PublicHomepage',
+            'in_sitemap' => 0,
+            'is_homepage' => 1,
+        ]));
+    }
 }
