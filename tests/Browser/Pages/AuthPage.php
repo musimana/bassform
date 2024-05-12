@@ -3,9 +3,12 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use Tests\Browser\Traits\HasForm;
 
 abstract class AuthPage extends Page
 {
+    use HasForm;
+
     /** Assert the page has loaded correctly. */
     public function assertHasLoadedCorrectly(Browser $browser, string $url): void
     {

@@ -42,8 +42,10 @@ final class Login extends AuthPage
     {
         $browser
             ->pause(config('dusk.pause_length'))
-            ->typeSlowly('email', $email)
-            ->typeSlowly('password', config('tests.default_password'))
+            ->completeForm('form', [
+                'email' => $email,
+                'password' => config('tests.default_password'),
+            ])
             ->pause(config('dusk.pause_length'))
             ->screenshotWholePage('login-filled-' . str_replace(['@', '.'], '_', $email))
             ->click('@button-login')

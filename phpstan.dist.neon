@@ -27,7 +27,7 @@ parameters:
         - # From the way the methods are inherited by the Browser object
             message: '#Call to an undefined method Laravel\\Dusk\\Browser::#'
             path: tests/Browser
-            count: 16
+            count: 19
         - # From the way the methods are inherited by Pest
             message: '#Function testNotifiedUpdate#'
             path: tests/Feature/Http/Controllers/Auth/PasswordForgottenControllerTest.php
