@@ -34,18 +34,6 @@ final class PageFactory extends Factory
     }
 
     /**
-     * Indicate that the model's slug should be the given slug.
-     *
-     * @return static
-     */
-    public function fixedSlug(string $slug)
-    {
-        return $this->state(fn (array $attributes) => [
-            'slug' => $slug,
-        ]);
-    }
-
-    /**
      * Indicate that the model should match the project's default About page.
      *
      * @return static
