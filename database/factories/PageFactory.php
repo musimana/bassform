@@ -22,9 +22,6 @@ final class PageFactory extends Factory
         /** @var array<int, string> $content_array */
         $content_array = fake()->paragraphs(5);
 
-        /** @var array<int, string> $meta_keywords_array */
-        $meta_keywords_array = fake()->words(5);
-
         return [
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
@@ -32,9 +29,7 @@ final class PageFactory extends Factory
             'content' => '<p>' . implode('</p><p>', $content_array) . '</p>',
             'meta_title' => ucwords($title),
             'meta_description' => fake()->words(24, true),
-            'meta_keywords' => implode(', ', $meta_keywords_array),
             'template' => 'Public/PublicContent',
-            'is_homepage' => 0,
         ];
     }
 
