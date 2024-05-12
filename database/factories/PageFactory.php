@@ -40,13 +40,14 @@ final class PageFactory extends Factory
      */
     public function aboutPage()
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes) => array_merge([
             ...$attributes,
             'slug' => 'about',
             'title' => 'About',
             'subtitle' => config('app.name'),
             'content' => '',
             'meta_title' => 'About',
-        ]);
+            'meta_description' => config('metadata.description'),
+        ]));
     }
 }
