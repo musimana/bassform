@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
 use PHPUnit\Framework\Assert;
+use Tests\Browser\Pages\Admin\Page\AdminEditPage;
 use Tests\Browser\Pages\Guest\Homepage;
 use Tests\Browser\Pages\User\Dashboard;
 use Tests\Browser\Pages\User\Login;
@@ -64,6 +65,38 @@ final class WebMiddlewareTest extends DuskTestCase
             ->visit(new Homepage)
             ->assertAuthenticatedAs($user)
             ->screenshotWholePage('homepage-user')
+
+            ->visit('/logout')
+            ->on(new Homepage)
+            ->assertGuest()
+        );
+    }
+
+    /** Test the admin auth middleware works correctly. */
+    public function testAdminMiddleware(): void
+    {
+        $page = Page::factory()->create();
+        $user = User::factory()->isAdmin()->create([
+            'email' => 'test.admin@example.com',
+            'name' => 'Test Admin',
+        ]);
+
+        Assert::assertTrue($user->email === 'test.admin@example.com');
+        Assert::assertTrue($user->name === 'Test Admin');
+        Assert::assertTrue($user->hasRole('admin'));
+
+        $this->browse(fn (Browser $browser) => $browser
+            ->visit(new Login)
+            ->assertGuest()
+            ->loginAsUser($user->email)
+
+            ->on(new Dashboard($user))
+            ->assertAuthenticatedAs($user)
+            ->screenshotWholePage('dashboard-admin-' . str_replace(['@', '.'], '_', $user->email))
+
+            ->visit(new AdminEditPage($page))
+            ->assertAuthenticatedAs($user)
+            ->screenshotWholePage('admin-edit-page')
 
             ->visit('/logout')
             ->on(new Homepage)
