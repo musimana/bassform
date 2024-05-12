@@ -15,7 +15,7 @@
         "php": "8.2.*||8.3.*",
         "guzzlehttp/guzzle": "^7.8.1",
         "inertiajs/inertia-laravel": "^1.0.0",
-        "laravel/framework": "^11.5",
+        "laravel/framework": "^11.7",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9.0",
         "tightenco/ziggy": "^1.8.2"
@@ -31,7 +31,7 @@
         "nunomaduro/collision": "^8.1.1",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.4",
-        "spatie/laravel-ignition": "^2.6"
+        "spatie/laravel-ignition": "^2.7"
     },
     "autoload": {
         "psr-4": {
