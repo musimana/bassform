@@ -33,12 +33,9 @@ $seeds = [
             </p>
             <hr class="my-8 border-gray-900 dark:border-gray-100" />
         ',
-        'in_sitemap' => 1,
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
-        'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContent',
-        'is_homepage' => 0,
         'blocks' => [
             ['type' => 'stack'],
         ],
@@ -48,12 +45,9 @@ $seeds = [
         'slug' => 'controls',
         'title' => 'Controls',
         'subtitle' => 'The UI control components that come with the template are demonstrated below.',
-        'in_sitemap' => 1,
         'meta_title' => 'Controls',
         'meta_description' => 'Page demonstrating the UI control components that come with the template. Including accordions, buttons, dropdowns & modals.',
-        'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContentControls',
-        'is_homepage' => 0,
         'blocks' => [
             [
                 'type' => 'tabs',
@@ -66,12 +60,9 @@ $seeds = [
         'slug' => 'forms',
         'title' => 'Forms',
         'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
-        'in_sitemap' => 1,
         'meta_title' => 'Forms',
         'meta_description' => 'Page demonstrating the UI form & input components that come with the template. Including checkbox, text, select & file upload inputs.',
-        'meta_keywords' => config('metadata.keywords'),
         'template' => 'Public/PublicContentForms',
-        'is_homepage' => 0,
     ],
 
 ];
