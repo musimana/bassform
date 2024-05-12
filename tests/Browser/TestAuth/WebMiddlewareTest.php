@@ -27,7 +27,6 @@ final class WebMiddlewareTest extends DuskTestCase
             ->on(new Login)
             ->assertGuest()
 
-            ->visit(new Homepage)
             ->visit('/logout')
             ->on(new Login)
             ->assertGuest()
