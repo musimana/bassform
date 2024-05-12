@@ -35,12 +35,12 @@ const form = useForm({
       <FormInput
         input-label="Title*"
         input-label-position="left"
-        input-field="text"
+        input-field="title"
         :parent-form="form"
       >
         <InputText
           id="input-title"
-          name="text"
+          name="title"
           type="text"
           class="block w-full"
           v-model="form.title"
@@ -53,12 +53,12 @@ const form = useForm({
       <FormInput
         input-label="Subtitle"
         input-label-position="left"
-        input-field="text"
+        input-field="subtitle"
         :parent-form="form"
       >
         <InputText
           id="input-subtitle"
-          name="text"
+          name="subtitle"
           type="text"
           class="block w-full"
           v-model="form.subtitle"
@@ -70,7 +70,7 @@ const form = useForm({
       <FormInput
         input-label="Content"
         input-label-position="left"
-        input-field="textarea"
+        input-field="content"
         :parent-form="form"
       >
         <InputWysiwyg
@@ -85,12 +85,12 @@ const form = useForm({
       <FormInput
         input-label="Meta Title"
         input-label-position="left"
-        input-field="text"
+        input-field="metaTitle"
         :parent-form="form"
       >
         <InputText
           id="input-meta-title"
-          name="text"
+          name="metaTitle"
           type="text"
           class="block w-full"
           v-model="form.metaTitle"
@@ -102,12 +102,12 @@ const form = useForm({
       <FormInput
         input-label="Meta Description"
         input-label-position="left"
-        input-field="text"
+        input-field="metaDescription"
         :parent-form="form"
       >
         <InputText
           id="input-meta-description"
-          name="text"
+          name="metaDescription"
           type="text"
           class="block w-full"
           v-model="form.metaDescription"
@@ -117,7 +117,7 @@ const form = useForm({
 
     <div class="w-full flex p-4">
       <label class="flex items-start">
-        <InputCheckbox name="checkbox" v-model:checked="form.inSitemap" />
+        <InputCheckbox name="inSitemap" v-model:checked="form.inSitemap" />
 
         <span class="ms-2 text-sm text-gray-700 dark:text-gray-300">In Sitemap?</span>
       </label>

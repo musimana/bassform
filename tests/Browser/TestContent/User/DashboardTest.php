@@ -12,7 +12,7 @@ final class DashboardTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    /** Test the day view renders & behaves correctly. */
+    /** Test the dashboard view renders & behaves correctly. */
     public function testDashboardContent(): void
     {
         $user = User::factory()->create();

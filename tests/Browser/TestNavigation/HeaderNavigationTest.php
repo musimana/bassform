@@ -44,8 +44,6 @@ final class HeaderNavigationTest extends DuskTestCase
     /** Test the header navbar login link works. */
     public function testNavbarLoginLink(): void
     {
-        Page::factory()->aboutPage()->create();
-
         $this->browse(fn (Browser $browser) => $browser
             ->visit(new Homepage)
             ->navigateViaHeader('@nav-login')
