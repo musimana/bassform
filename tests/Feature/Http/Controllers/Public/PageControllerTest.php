@@ -3,9 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Public\PageController;
 use App\Http\Resources\Views\DetailsViewResource;
-use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Http\Resources\Views\Public\Content\PageContentResource;
-use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
 use App\Models\Page;
 

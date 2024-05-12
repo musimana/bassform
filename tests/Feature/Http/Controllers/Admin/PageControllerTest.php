@@ -57,14 +57,14 @@ test('edit renders the 404 view for unknown pages', function () {
 });
 
 test('update returns correctly for valid data', function () {
-    $page = Page::factory()->create(['slug' => 'forms']);
+    $page = Page::factory()->create(['title' => 'Old Title']);
     $route = route('admin.page.edit', [$page]);
     $user = User::factory()->isAdmin()->create();
     $actual = $this
         ->actingAs($user)
         ->from($route)
         ->patch($route, [
-            'title' => 'Test',
+            'title' => 'New Title',
             'inSitemap' => true,
         ]);
 
