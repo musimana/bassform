@@ -81,13 +81,9 @@ $ php artisan test --profile --compact
 # Top 10 slowest tests:
 # ... {shows details about the time taken by those tests because of --profile}
 
-$ php artisan test --filter Year2023 --bail
+$ php artisan test --filter Controller --bail
 # PASS  Tests\Feature\App\...
 # ... {acts the same as PHPUnit's `--stop-on-error --stop-on-failure` because of --bail}
-
-$ php artisan test --filter "example.+2023 Day 1 Part 1"
-#
-# PASS  Tests\Feature\App\...
 ```
 
 ### Integration Tests
