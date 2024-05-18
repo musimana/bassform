@@ -60,8 +60,12 @@ $ cp .env.example .env.dusk.{ENV}
 
 ### Type Tests
 
-*NB:* If a local `phpstan.neon` file exists for experimentation,
-use `composer stan -c phpstan.dist.neon` to run the type tests with the  project's committed config file
+To run the type tests with a local `phpstan.neon` file for experimentation use:
+
+```sh
+$ ./vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G
+# ... {run the types test with the given config}
+```
 
 ### Unit Tests
 
