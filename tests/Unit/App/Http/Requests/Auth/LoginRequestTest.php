@@ -25,6 +25,7 @@ test('rules returns ok', function () {
             'required',
             'string',
             'email',
+            'max:255',
         ],
         'password' => [
             'required',
