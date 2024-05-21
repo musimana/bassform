@@ -122,6 +122,9 @@ test('update returns correctly for maximum valid data', function (Page $page) {
     expect($page->title)->toEqual($data['title']);
     expect($page->subtitle)->toEqual($data['subtitle']);
     expect($page->content)->toEqual($data['content']);
+    expect($page->meta_title)->toEqual($data['metaTitle']);
+    expect($page->meta_description)->toEqual($data['metaDescription']);
+    expect($page->in_sitemap)->toEqual($data['inSitemap']);
     expect($page->blocks)->toEqual($page_original->blocks);
 })->with('pages');
 
