@@ -46,7 +46,14 @@ $ php artisan test
 # PASS  Tests\Unit\App\...
 ```
 
-See the [testing docs](TESTING.md) for more info on running the project's PHPUnit based test suite.
+Run the browser tests configured in the project's [PHPUnit Dusk config](phpunit.dusk.xml) with:
+
+```sh
+$ php artisan dusk
+# DevTools listening on...
+```
+
+See the [testing docs](TESTING.md) for first time set-up instructions & more info on running the project's tests.
 
 ---
 

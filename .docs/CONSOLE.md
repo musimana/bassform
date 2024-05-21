@@ -20,7 +20,7 @@ $ npm run build && php artisan inertia:start-ssr
 
 ### Seeding Users
 
-To seed the data and script stubs for a day's challenge, run e.g.:
+To seed test user records, run e.g.:
 
 ```sh
 > `php artisan seed:users`
