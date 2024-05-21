@@ -33,7 +33,7 @@ final class PageController extends Controller
     }
 
     /**
-     * Update the given page model withthe data from the given request.
+     * Update the given page model with the given request.
      *
      * @throws HttpException
      */
