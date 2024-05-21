@@ -56,22 +56,66 @@ test('edit renders the 404 view for unknown pages', function () {
     expect($session)->toHaveCorrectSessionValues($url);
 });
 
-test('update returns correctly for valid data', function () {
-    $page = Page::factory()->create(['title' => 'Old Title']);
+test('update returns correctly for minimum valid data', function (Page $page) {
+    $page_original = $page;
     $route = route('admin.page.edit', [$page]);
     $user = User::factory()->isAdmin()->create();
+    $data = [
+        'title' => $page->getTitle() . ' - UPDATED',
+        'inSitemap' => (bool) $page->in_sitemap,
+    ];
+
     $actual = $this
         ->actingAs($user)
+        ->assertAuthenticated()
         ->from($route)
-        ->patch($route, [
-            'title' => 'New Title',
-            'inSitemap' => true,
-        ]);
+        ->patch($route, $data);
 
     $actual
         ->assertSessionHasNoErrors()
         ->assertRedirect($route);
-});
+
+    $page->refresh();
+
+    expect($page->title)->toEqual($data['title']);
+    expect($page->subtitle)->toEqual($page_original->subtitle);
+    expect($page->content)->toEqual($page_original->content);
+    expect($page->meta_title)->toEqual($page_original->meta_title);
+    expect($page->meta_description)->toEqual($page_original->meta_description);
+    expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
+    expect($page->blocks)->toEqual($page_original->blocks);
+})->with('pages');
+
+test('update returns correctly for maximum valid data', function (Page $page) {
+    $page_original = $page;
+    $route = route('admin.page.edit', [$page]);
+    $user = User::factory()->isAdmin()->create();
+    $data = [
+        'title' => 'New Title',
+        'subtitle' => 'New Subtitle',
+        'content' => '<p>New content.</p>',
+        'metaTitle' => 'New Meta-Title',
+        'metaDescription' => 'New Meta-Description',
+        'inSitemap' => !$page->in_sitemap,
+    ];
+
+    $actual = $this
+        ->actingAs($user)
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch($route, $data);
+
+    $actual
+        ->assertSessionHasNoErrors()
+        ->assertRedirect($route);
+
+    $page->refresh();
+
+    expect($page->title)->toEqual($data['title']);
+    expect($page->subtitle)->toEqual($data['subtitle']);
+    expect($page->content)->toEqual($data['content']);
+    expect($page->blocks)->toEqual($page_original->blocks);
+})->with('pages');
 
 test('update returns a 404 status for unknown pages', function () {
     $url = url('admin/pages/foo');
