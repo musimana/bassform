@@ -79,70 +79,20 @@ test('update throws a validation error if password isn\'t correct', function (Us
     $this->assertTrue(Hash::check(config('tests.default_password'), $user->refresh()->password));
 })->with('users');
 
-test('update throws a validation error if new password missing', function (User $user) {
+test('update throws a validation error for invalid data', function (array $password_array, array $expected) {
+    $route = route('profile.edit');
+    $user = User::factory()->create();
+    $password_array = ['current_password' => config('tests.default_password'), ...$password_array];
+
     $actual = $this
         ->actingAs($user)
-        ->from(route('profile.edit'))
-        ->patch(route('profile.password.update'), [
-            'current_password' => config('tests.default_password'),
-            'not_password' => 'ten4characters',
-            'password_confirmation' => 'ten4characters',
-        ]);
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch(route('profile.password.update'), $password_array);
 
     $actual
-        ->assertSessionHasErrors(['password' => 'The password field is required.'])
-        ->assertRedirect(route('profile.edit'));
+        ->assertSessionHasErrors($expected)
+        ->assertRedirect($route);
 
     $this->assertTrue(Hash::check(config('tests.default_password'), $user->refresh()->password));
-})->with('users');
-
-test('update throws a validation error if new password isn\'t a string', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->from(route('profile.edit'))
-        ->patch(route('profile.password.update'), [
-            'current_password' => config('tests.default_password'),
-            'password' => 0,
-            'password_confirmation' => 'ten4characters',
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['password' => 'The password field must be a string.'])
-        ->assertRedirect(route('profile.edit'));
-
-    $this->assertTrue(Hash::check(config('tests.default_password'), $user->refresh()->password));
-})->with('users');
-
-test('update throws a validation error if new password is <14 characters', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->from(route('profile.edit'))
-        ->patch(route('profile.password.update'), [
-            'current_password' => config('tests.default_password'),
-            'password' => 'a13characters',
-            'password_confirmation' => 'a13characters',
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['password' => 'The password field must be at least 14 characters.'])
-        ->assertRedirect(route('profile.edit'));
-
-    $this->assertTrue(Hash::check(config('tests.default_password'), $user->refresh()->password));
-})->with('users');
-
-test('update throws a validation error if new password isn\'t confirmed', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->from(route('profile.edit'))
-        ->patch(route('profile.password.update'), [
-            'current_password' => config('tests.default_password'),
-            'password' => 'ten4characters',
-            'password_confirmation' => '4tencharacters',
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['password' => 'The password field confirmation does not match.'])
-        ->assertRedirect(route('profile.edit'));
-
-    $this->assertTrue(Hash::check(config('tests.default_password'), $user->refresh()->password));
-})->with('users');
+})->with('password-arrays-update-invalid');
