@@ -20,7 +20,7 @@ test('authorize returns ok', function () {
 test('rules returns ok', function () {
     $actual = $this->subject->rules();
 
-    $this->assertValidationRules([
+    $this->assertExactValidationRules([
         'email' => [
             'required',
             'string',
