@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PageUpdateRequest;
 use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
 use App\Http\Resources\Views\DetailsViewResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
@@ -56,26 +57,115 @@ test('edit renders the 404 view for unknown pages', function () {
     expect($session)->toHaveCorrectSessionValues($url);
 });
 
-test('update returns correctly for valid data', function () {
-    $page = Page::factory()->create(['title' => 'Old Title']);
+test('update validates requests with a form request')
+    ->assertActionUsesFormRequest(
+        PageController::class,
+        'update',
+        PageUpdateRequest::class
+    );
+
+test('update returns correctly for minimum valid data', function (Page $page) {
+    $page_original = $page;
     $route = route('admin.page.edit', [$page]);
     $user = User::factory()->isAdmin()->create();
+    $data = [
+        'title' => $page->getTitle() . ' - UPDATED',
+        'inSitemap' => (bool) $page->in_sitemap,
+    ];
+
     $actual = $this
         ->actingAs($user)
+        ->assertAuthenticated()
         ->from($route)
-        ->patch($route, [
-            'title' => 'New Title',
-            'inSitemap' => true,
-        ]);
+        ->patch($route, $data);
 
     $actual
         ->assertSessionHasNoErrors()
         ->assertRedirect($route);
+
+    $page->refresh();
+
+    expect($page->title)->toEqual($data['title']);
+    expect($page->subtitle)->toEqual($page_original->subtitle);
+    expect($page->content)->toEqual($page_original->content);
+    expect($page->meta_title)->toEqual($page_original->meta_title);
+    expect($page->meta_description)->toEqual($page_original->meta_description);
+    expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
+    expect($page->blocks)->toEqual($page_original->blocks);
+})->with('pages');
+
+test('update returns correctly for maximum valid data', function (Page $page) {
+    $page_original = $page;
+    $route = route('admin.page.edit', [$page]);
+    $user = User::factory()->isAdmin()->create();
+    $data = [
+        'title' => 'New Title',
+        'subtitle' => 'New Subtitle',
+        'content' => '<p>New content.</p>',
+        'metaTitle' => 'New Meta-Title',
+        'metaDescription' => 'New Meta-Description',
+        'inSitemap' => !$page->in_sitemap,
+    ];
+
+    $actual = $this
+        ->actingAs($user)
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch($route, $data);
+
+    $actual
+        ->assertSessionHasNoErrors()
+        ->assertRedirect($route);
+
+    $page->refresh();
+
+    expect($page->title)->toEqual($data['title']);
+    expect($page->subtitle)->toEqual($data['subtitle']);
+    expect($page->content)->toEqual($data['content']);
+    expect($page->meta_title)->toEqual($data['metaTitle']);
+    expect($page->meta_description)->toEqual($data['metaDescription']);
+    expect($page->in_sitemap)->toEqual($data['inSitemap']);
+    expect($page->blocks)->toEqual($page_original->blocks);
+})->with('pages');
+
+test('update ignores unknown fields', function () {
+    $page = Page::factory()->create();
+    $page_original = $page;
+    $route = route('admin.page.edit', [$page]);
+    $user = User::factory()->isAdmin()->create();
+    $data = [
+        'title' => $page->getTitle() . ' - UPDATED',
+        'inSitemap' => (bool) $page->in_sitemap,
+        'unknownField' => 'invalid value',
+    ];
+
+    $actual = $this
+        ->actingAs($user)
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch($route, $data);
+
+    $actual
+        ->assertSessionHasNoErrors()
+        ->assertRedirect($route);
+
+    $page->refresh();
+
+    /** @phpstan-ignore-next-line (Intentionally accessing undefined property as part of the test.) */
+    expect($page->unknown_field)->toBeNull();
+    expect($page->title)->toEqual($data['title']);
+    expect($page->subtitle)->toEqual($page_original->subtitle);
+    expect($page->content)->toEqual($page_original->content);
+    expect($page->meta_title)->toEqual($page_original->meta_title);
+    expect($page->meta_description)->toEqual($page_original->meta_description);
+    expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
+    expect($page->blocks)->toEqual($page_original->blocks);
 });
 
 test('update returns a 404 status for unknown pages', function () {
     $url = url('admin/pages/foo');
     $user = User::factory()->isAdmin()->create();
+
     $actual = $this
         ->actingAs($user)
         ->from($url)
@@ -92,3 +182,19 @@ test('update returns a 404 status for unknown pages', function () {
 
     expect($session)->toHaveCorrectSessionValues($url);
 });
+
+test('update throws a validation error for invalid data', function (array $page_array, array $expected) {
+    $page = Page::factory()->create();
+    $route = route('admin.page.edit', [$page]);
+    $user = User::factory()->isAdmin()->create();
+
+    $actual = $this
+        ->actingAs($user)
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch(route('admin.page.update', [$page]), $page_array);
+
+    $actual
+        ->assertSessionHasErrors($expected)
+        ->assertRedirect($route);
+})->with('page-arrays-update-invalid');

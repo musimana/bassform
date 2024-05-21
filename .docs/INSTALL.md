@@ -23,7 +23,11 @@ $ composer i
 
 $ npm i
 # up to date, audited... // Exact message depends on the state of the local environment
+```
 
+Set-up the app's database with the default content found in the [seeds directory](../storage/app/seeds/) with:
+
+```sh
 $ php artisan migrate --seed
 # INFO  Preparing database...
 ```

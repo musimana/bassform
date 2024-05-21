@@ -16,7 +16,7 @@ final class PasswordUpdateRequest extends FormRequest implements RequestInterfac
     {
         return [
             'current_password' => ['required', 'string', 'current_password'],
-            'password' => ['required', 'string', 'min:14', 'confirmed'],
+            'password' => ['required', 'string', 'min:14', 'max:255', 'confirmed'],
         ];
     }
 }

@@ -51,7 +51,6 @@ You can set-up an environment specific DotEnv for testing with:
 
 ```sh
 $ cp .env.example .env.dusk.{ENV}
-#
 # ... {copies the example DotEnv file to a live copy ignoring values in any other DotEnv file
 #        where {ENV} is the type of the local environment
 #            e.g. `.env.dusk.local`, `.env.dusk.testing`}
@@ -61,34 +60,30 @@ $ cp .env.example .env.dusk.{ENV}
 
 ### Type Tests
 
-*NB:* If a local `phpstan.neon` file exists for experimentation,
-use `composer stan -c phpstan.dist.neon` to run the type tests with the  project's committed config file
+To run the type tests with a local `phpstan.neon` file for experimentation use:
+
+```sh
+$ ./vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G
+# ... {run the types test with the given config}
+```
 
 ### Unit Tests
 
 ```sh
 $ php artisan test --parallel
-#
 # ... {runs all tests in parallel}
 
 $ php artisan test --retry
-#
 # ... {runs any tests that failed on the last run first for each test suite}
 
 $ php artisan test --profile --compact
-#
 # ... {tests run with minimal reporting because of --compact}
 # Top 10 slowest tests:
 # ... {shows details about the time taken by those tests because of --profile}
 
-$ php artisan test --filter Year2023 --bail
-#
+$ php artisan test --filter Controller --bail
 # PASS  Tests\Feature\App\...
 # ... {acts the same as PHPUnit's `--stop-on-error --stop-on-failure` because of --bail}
-
-$ php artisan test --filter "example.+2023 Day 1 Part 1"
-#
-# PASS  Tests\Feature\App\...
 ```
 
 ### Integration Tests

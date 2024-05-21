@@ -18,7 +18,7 @@ arch('it implements the expected interface')
 test('rules returns ok', function () {
     $actual = $this->subject->rules();
 
-    $this->assertValidationRules([
+    $this->assertExactValidationRules([
         'name' => [
             'required',
             'string',
@@ -36,6 +36,7 @@ test('rules returns ok', function () {
             'required',
             'string',
             'min:14',
+            'max:255',
             'confirmed',
         ],
     ], $actual);

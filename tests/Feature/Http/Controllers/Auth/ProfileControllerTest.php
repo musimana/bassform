@@ -107,8 +107,11 @@ test('update can update the auth user\'s profile info', function (User $user) {
 })->with('users');
 
 test('update leaves email verification status unchanged when the email address is unchanged', function (User $user) {
+    $route = route('profile.update');
+
     $actual = $this
         ->actingAs($user)
+        ->from($route)
         ->patch(route('profile.update'), [
             'name' => 'Test User',
             'email' => $user->email,
@@ -116,86 +119,25 @@ test('update leaves email verification status unchanged when the email address i
 
     $actual
         ->assertSessionHasNoErrors()
-        ->assertRedirect(route('profile.edit'));
+        ->assertRedirect($route);
 
     $this->assertNotNull($user->refresh()->email_verified_at);
 })->with('users');
 
-test('update throws a validation error if name missing', function (User $user) {
+test('update throws a validation error for invalid data', function (array $user_array, array $expected) {
+    $route = route('profile.edit');
+    $user = User::factory()->create();
+
     $actual = $this
         ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'email' => $user->email,
-        ]);
+        ->assertAuthenticated()
+        ->from($route)
+        ->patch(route('profile.update'), $user_array);
 
     $actual
-        ->assertSessionHasErrors(['name' => 'The name field is required.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if name isn\'t a string', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => 0,
-            'email' => $user->email,
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['name' => 'The name field must be a string.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if name >255 characters', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => str_pad('Test User', 256, 'a'),
-            'email' => $user->email,
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['name' => 'The name field must not be greater than 255 characters.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if email missing', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => 'Test User',
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field is required.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if email isn\'t a string', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => 'Test User',
-            'email' => 0,
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must be a string.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if email isn\'t a valid email', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => 'Test User',
-            'email' => 'test@',
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must be a valid email address.'])
-        ->assertStatus(302);
-})->with('users');
+        ->assertSessionHasErrors($expected)
+        ->assertRedirect($route);
+})->with('profile-arrays-update-invalid');
 
 test('update throws a validation error if new email already taken', function (User $user) {
     User::factory()->create(['email' => 'taken_email@example.com']);
@@ -209,19 +151,6 @@ test('update throws a validation error if new email already taken', function (Us
 
     $actual
         ->assertSessionHasErrors(['email' => 'The email has already been taken.'])
-        ->assertStatus(302);
-})->with('users');
-
-test('update throws a validation error if email >255 characters', function (User $user) {
-    $actual = $this
-        ->actingAs($user)
-        ->patch(route('profile.update'), [
-            'name' => 'Test User',
-            'email' => str_pad($user->email, 256, 'a', STR_PAD_LEFT),
-        ]);
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must not be greater than 255 characters.'])
         ->assertStatus(302);
 })->with('users');
 
