@@ -27,6 +27,16 @@ dataset('password-arrays-update-invalid', function () use ($standard_array) {
             array_merge($standard_array, ['password' => 'password', 'password_confirmation' => 'password']),
             ['password' => 'The password field must be at least 14 characters.'],
         ],
+        'password >255 characters' => [
+            array_merge(
+                $standard_array,
+                [
+                    'password' => str_pad('', 256, 'a'),
+                    'password_confirmation' => str_pad('', 256, 'a'),
+                ],
+            ),
+            ['password' => 'The password field must not be greater than 255 characters.'],
+        ],
         'password confirmation missing' => [
             ['password' => 'ten4characters'],
             ['password' => 'The password field confirmation does not match.'],
