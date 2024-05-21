@@ -18,7 +18,7 @@ final class ProfileStoreRequest extends FormRequest implements RequestInterface
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'string', 'min:14', 'confirmed'],
+            'password' => ['required', 'string', 'min:14', 'max:255', 'confirmed'],
         ];
     }
 }

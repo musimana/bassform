@@ -29,6 +29,7 @@ test('rules returns ok', function () {
             'required',
             'string',
             'min:14',
+            'max:255',
             'confirmed',
         ],
         'token' => [
