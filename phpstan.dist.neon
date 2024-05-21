@@ -18,6 +18,8 @@ parameters:
         - tests/Pest/Functions/CompositeTests # 5 errors 2024-03-29, whole directory needs refactoring
 
     ignoreErrors:
+        - # Replaces `checkGenericClassInNonGenericObjectType: false`
+            identifier: missingType.generics
         - # From the way the methods are inherited by Pest
             message: '#Call to an undefined method Pest\\#'
             path: tests
@@ -36,5 +38,3 @@ parameters:
             message: '#Access to an undefined property Pest\\Mixins\\Expectation\<App\\Models\\#'
             path: tests/Unit
             count: 3
-
-    checkGenericClassInNonGenericObjectType: false
