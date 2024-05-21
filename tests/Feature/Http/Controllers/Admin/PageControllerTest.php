@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PageUpdateRequest;
 use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
 use App\Http\Resources\Views\DetailsViewResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
@@ -55,6 +56,13 @@ test('edit renders the 404 view for unknown pages', function () {
 
     expect($session)->toHaveCorrectSessionValues($url);
 });
+
+test('update validates requests with a form request')
+    ->assertActionUsesFormRequest(
+        PageController::class,
+        'update',
+        PageUpdateRequest::class
+    );
 
 test('update returns correctly for minimum valid data', function (Page $page) {
     $page_original = $page;
