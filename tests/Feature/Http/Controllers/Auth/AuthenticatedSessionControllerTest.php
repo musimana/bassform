@@ -61,35 +61,24 @@ test('store authenticates users ok', function (User $user) {
         ->assertRedirect(config('metadata.user_homepage'));
 })->with('users');
 
-test('store throws a validation error if email is missing', function (User $user) {
+test('store throws a validation error for invalid data', function (array $password_array, array $expected) {
+    $route = route('login');
+    User::factory()->create();
+
+    if (($password_array['password'] ?? false) === 'ten4characters') {
+        $password_array['password'] = config('tests.default_password');
+    }
+
     $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'not_email' => $user->email,
-            'password' => config('tests.default_password'),
-        ]);
+        ->from($route)
+        ->post(route('login.store'), $password_array);
 
     $this->assertGuest();
 
     $actual
-        ->assertSessionHasErrors(['email' => 'The email field is required.'])
-        ->assertRedirect(route('login'));
-})->with('users');
-
-test('store throws a validation error if email isn\'t a string', function () {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => 0,
-            'password' => config('tests.default_password'),
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must be a string.'])
-        ->assertRedirect(route('login'));
-});
+        ->assertSessionHasErrors($expected)
+        ->assertRedirect($route);
+})->with('authenticated-session-arrays-store-invalid');
 
 test('store throws a validation error if email isn\'t correct', function () {
     $actual = $this
@@ -105,81 +94,6 @@ test('store throws a validation error if email isn\'t correct', function () {
         ->assertSessionHasErrors(['email' => 'These credentials do not match our records.'])
         ->assertRedirect(route('login'));
 });
-
-test('store throws a validation error if email isn\'t a valid email', function () {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => 'test@',
-            'password' => config('tests.default_password'),
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must be a valid email address.'])
-        ->assertRedirect(route('login'));
-});
-
-test('store throws a validation error if email >255 characters', function (User $user) {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => str_pad($user->email, 256, 'a', STR_PAD_LEFT),
-            'password' => config('tests.default_password'),
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'The email field must not be greater than 255 characters.'])
-        ->assertRedirect(route('login'));
-})->with('users');
-
-test('store throws a validation error if password is missing', function (User $user) {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => $user->email,
-            'not_password' => config('tests.default_password'),
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['password' => 'The password field is required.'])
-        ->assertRedirect(route('login'));
-})->with('users');
-
-test('store throws a validation error if password isn\'t a string', function (User $user) {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => $user->email,
-            'password' => 0,
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['password' => 'The password field must be a string.'])
-        ->assertRedirect(route('login'));
-})->with('users');
-
-test('store throws a validation error if password isn\'t correct', function (User $user) {
-    $actual = $this
-        ->from(route('login'))
-        ->post(route('login.store'), [
-            'email' => $user->email,
-            'password' => 'wrong-password',
-        ]);
-
-    $this->assertGuest();
-
-    $actual
-        ->assertSessionHasErrors(['email' => 'These credentials do not match our records.'])
-        ->assertRedirect(route('login'));
-})->with('users');
 
 test('edit logs out users with a get request', function (User $user) {
     $actual = $this->actingAs($user)->get(route('logout.edit'));
