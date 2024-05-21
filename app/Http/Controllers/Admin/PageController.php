@@ -8,6 +8,7 @@ use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
 use App\Models\Page;
 use App\Repositories\Views\AdminViewRepository;
+use App\Services\Admin\PageAdminService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -32,14 +33,15 @@ final class PageController extends Controller
     }
 
     /**
-     * Update the given page model.
+     * Update the given page model withthe data from the given request.
      *
      * @throws HttpException
      */
     public function update(PageUpdateRequest $request, Page $page): RedirectResponse
     {
-        $page->fill($request->validated());
-        $page->save();
+        if (!PageAdminService::update($page, collect($request->safe()))) {
+            throw new HttpException(500, 'Failed to update page.');
+        }
 
         return to_route('admin.page.edit', $page);
     }
