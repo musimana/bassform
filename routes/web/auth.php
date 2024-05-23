@@ -54,7 +54,7 @@ Route::controller(EmailVerificationController::class)->group(function () {
     });
 });
 
-/** ForgottenPasswordController Routes */
+/** PasswordConfirmationController Routes */
 Route::controller(PasswordConfirmationController::class)->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('confirm-password', 'show')->name('password.confirm');
@@ -62,7 +62,7 @@ Route::controller(PasswordConfirmationController::class)->group(function () {
     });
 });
 
-/** ForgottenPasswordController Routes */
+/** PasswordForgottenController Routes */
 Route::controller(PasswordForgottenController::class)->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('forgot-password', 'create')->name('password.request');

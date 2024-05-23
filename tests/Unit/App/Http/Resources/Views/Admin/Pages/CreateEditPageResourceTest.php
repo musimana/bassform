@@ -14,8 +14,9 @@ arch('it implements the expected interface')
 test('getItem returns ok')
     ->expect(fn () => (new CreateEditPageResource)->getItem(new Page))
     ->toHaveCamelCaseKeys()
-    ->toHaveCount(7)
+    ->toHaveCount(8)
     ->toMatchArray([
+        'id' => null,
         'blocks' => [],
         'content' => null,
         'subtitle' => '',

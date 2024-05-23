@@ -11,11 +11,12 @@ final class CreateEditPageResource implements PageItemInterface
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, array<int, array<int|string, mixed>>|bool|string>
+     * @return array<string, array<int, array<int|string, mixed>>|bool|int|string>
      */
     public function getItem(Page $page): array
     {
         return [
+            'id' => $page->id,
             'blocks' => (new BlocksResource)->getItems($page->blocks),
             'content' => $page->getContent(),
             'subtitle' => $page->getSubtitle(),
