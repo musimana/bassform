@@ -28,7 +28,7 @@ const form = useForm({
 
   <AppForm
     class="w-full"
-    :endpoint="route('page.store', 'forms')"
+    :endpoint="route('admin.page.edit', page.id)"
     :form="form"
   >
     <div class="w-full flex pt-4 px-4">
