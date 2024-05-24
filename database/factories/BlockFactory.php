@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\BlockType;
+use App\Models\Block;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,11 +19,11 @@ final class BlockFactory extends Factory
      */
     public function definition(): array
     {
-        $type = fake()->randomElement(['stack', 'tabs']);
+        $type = fake()->randomElement(Block::typeValues());
         $page = Page::inRandomOrder()->first() ?? Page::factory()->create();
         $blocks_count = count($page->blocks);
         $display_order = $blocks_count ? $blocks_count + 1 : 0;
-        $data = $type === 'tabs' ? json_encode(['tabs' => ['Tab One', 'Tab Two']]) : null;
+        $data = $type === BlockType::TABS->value ? json_encode(['tabs' => ['Tab One', 'Tab Two']]) : null;
 
         return [
             'type' => $type,
