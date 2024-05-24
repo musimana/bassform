@@ -37,4 +37,4 @@ parameters:
         - # From the way the methods are inherited by Pest
             message: '#Access to an undefined property Pest\\Mixins\\Expectation\<App\\Models\\#'
             path: tests/Unit
-            count: 3
+            count: 2
