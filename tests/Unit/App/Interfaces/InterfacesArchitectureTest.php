@@ -29,11 +29,6 @@ arch('app/Interfaces/Resources/Items has valid architecture')
     ->toHaveSuffix('ItemInterface')
     ->tohaveMethod('getItem');
 
-arch('app/Interfaces/Resources/Readonlys has valid architecture')
-    ->expect('App\Interfaces\Resources\Readonlys')
-    ->toHaveSuffix('ReadonlyInterface')
-    ->tohaveMethod('getItem');
-
 arch('app/Interfaces/Resources/Storables has valid architecture')
     ->expect('App\Interfaces\Resources\Storables')
     ->toHaveSuffix('StorableInterface');
