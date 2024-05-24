@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BlockType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,6 +24,19 @@ final class Block extends Model
         'display_order',
         'data',
     ];
+
+    /**
+     * Get an array of the block type's value.
+     *
+     * @return array<int, string>
+     */
+    public static function typeValues(): array
+    {
+        return array_map(
+            fn (BlockType $block_type) => $block_type->value,
+            BlockType::cases()
+        );
+    }
 
     /**
      * Get an array of the block's JSON encoded data field.
