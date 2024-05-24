@@ -5,13 +5,26 @@ namespace Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Components\FooterNav;
 use Tests\Browser\Components\HeaderNav;
+use Tests\Browser\Traits\HasSocialLinks;
 
 abstract class StandardPage extends Page
 {
+    use HasSocialLinks;
+
     /** Instantiate the class. */
     public function __construct(
         protected FooterNav $footer = new FooterNav
     ) {
+    }
+
+    /**
+     * Get the element shortcuts for the page.
+     *
+     * @return array<string, string>
+     */
+    public function elements(): array
+    {
+        return $this->getSelectorsSocialLinks();
     }
 
     /** Assert the page has loaded correctly. */

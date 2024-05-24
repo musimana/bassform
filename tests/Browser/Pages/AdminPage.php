@@ -4,10 +4,22 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 use Tests\Browser\Traits\HasForm;
+use Tests\Browser\Traits\HasSocialLinks;
 
 abstract class AdminPage extends Page
 {
-    use HasForm;
+    use HasForm,
+        HasSocialLinks;
+
+    /**
+     * Get the element shortcuts for the page.
+     *
+     * @return array<string, string>
+     */
+    public function elements(): array
+    {
+        return $this->getSelectorsSocialLinks();
+    }
 
     /** Assert the page has loaded correctly. */
     public function assertHasLoadedCorrectly(Browser $browser, string $url): void
