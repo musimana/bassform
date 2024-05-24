@@ -8,6 +8,7 @@ uses(RefreshDatabase::class);
 
 it('runs successfully', function () {
     expect(Navbar::count())->toBe(0);
+    expect(NavbarItem::count())->toBe(0);
 
     $this->artisan('db:seed', ['Database\Seeders\NavbarSeeder'])
         ->expectsOutputToContain('INFO  Seeding database.')
