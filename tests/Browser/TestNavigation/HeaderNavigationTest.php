@@ -60,7 +60,7 @@ final class HeaderNavigationTest extends DuskTestCase
 
         $this->browse(fn (Browser $browser) => $browser
             ->visit(new Homepage)
-            ->navigateViaHeader('@nav-about')
+            ->navigateViaHeader('nav a[href="' . route('page.show', 'about') . '"]')
 
             ->on(new PageView($page))
         );
