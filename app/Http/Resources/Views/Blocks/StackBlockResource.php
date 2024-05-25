@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Views\Blocks;
 
+use App\Enums\BlockType;
 use App\Http\Resources\Formatters\LaravelVersionFormatterResource;
 use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
@@ -55,6 +56,7 @@ final class StackBlockResource implements ConstantItemInterface
         }
 
         return [
+            'type' => BlockType::STACK->value,
             'html' => implode('', [
                 '<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3><ul class="list-disc ml-8 mb-8">',
                 $li_elements_string,

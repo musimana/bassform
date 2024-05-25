@@ -25,6 +25,11 @@ test('getItem returns ok', function () {
         ->toBeArray()
         ->toBeEmpty();
 
+    expect($actual['metadata']['links'])
+        ->toBeArray()
+        ->toHaveCount(count(config('metadata.social_links', [])))
+        ->toMatchArray(config('metadata.social_links'));
+
     expect($actual['metadata']['navbarDesktop'])
         ->toBeArray()
         ->toBeEmpty();
@@ -43,9 +48,7 @@ test('getItem returns ok', function () {
             'canRegister' => true,
             'copyright' => config('metadata.copyright'),
             'description' => config('metadata.description'),
-            'links' => [
-                'github' => config('metadata.social_links.github'),
-            ],
+            'links' => config('metadata.social_links'),
             'navbarDesktop' => [],
             'navbarMobile' => [],
             'title' => config('app.name'),
@@ -63,9 +66,7 @@ test('getItem returns ok', function () {
                 'canRegister' => true,
                 'copyright' => config('metadata.copyright'),
                 'description' => config('metadata.description'),
-                'links' => [
-                    'github' => config('metadata.social_links.github'),
-                ],
+                'links' => config('metadata.social_links'),
                 'navbarDesktop' => [],
                 'navbarMobile' => [],
                 'title' => config('app.name'),

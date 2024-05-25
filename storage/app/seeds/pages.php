@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\BlockType;
+
 /*
 |--------------------------------------------------------------------------
 | Page Model Seeds
@@ -54,7 +56,7 @@ $seeds = [
         'meta_description' => config('metadata.description'),
         'template' => 'Public/PublicContent',
         'blocks' => [
-            ['type' => 'stack'],
+            ['type' => BlockType::STACK->value],
         ],
     ],
 
@@ -67,7 +69,7 @@ $seeds = [
         'template' => 'Public/PublicContentControls',
         'blocks' => [
             [
-                'type' => 'tabs',
+                'type' => BlockType::TABS->value,
                 'data' => json_encode(['tabs' => ['Pop-ups', 'Buttons']]),
             ],
         ],

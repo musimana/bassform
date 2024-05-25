@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\Components;
 
+use Illuminate\Support\Facades\Route;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Component as BaseComponent;
 
@@ -31,15 +32,19 @@ final class HeaderNav extends BaseComponent
      */
     public function elements(): array
     {
-        return [
+        $elements = [
             '@header-logo' => '#site-logo',
             '@header-title' => '#site-title',
-            '@nav-about' => 'nav a[href="' . route('page.show', 'about') . '"]',
             '@nav-login' => 'nav a[href="' . route('login') . '"]',
             '@nav-logout' => 'nav a[href="' . route('logout') . '"]',
-            '@nav-register' => 'nav a[href="' . route('register') . '"]',
             '@responsive-hamburger' => '#nav-hamburger',
         ];
+
+        if (Route::has('register')) {
+            $elements['@nav-register'] = 'nav a[href="' . route('register') . '"]';
+        }
+
+        return $elements;
     }
 
     /** Click the given navbar item, with handling for the responsive navbar. */

@@ -2,6 +2,7 @@
 import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
+import InputBlocks from '@/Components/Forms/Inputs/InputBlocks.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
@@ -13,6 +14,7 @@ import { useForm, usePage } from '@inertiajs/vue3'
 const page = usePage().props.content
 
 const form = useForm({
+  blocks: page.blocks,
   content: page.content,
   inSitemap: page.inSitemap,
   metaDescription: page.metaDescription,
@@ -77,6 +79,19 @@ const form = useForm({
           id="input-content"
           class="block w-full"
           v-model="form.content"
+        />
+      </FormInput>
+    </div>
+
+    <div class="w-full flex pt-4 px-4">
+      <FormInput
+        input-label="Blocks"
+        input-label-position="left"
+        input-field="textarea"
+        :parent-form="form"
+      >
+        <InputBlocks
+          :blocks="form.blocks"
         />
       </FormInput>
     </div>

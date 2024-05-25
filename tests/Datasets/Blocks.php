@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\BlockType;
 use App\Http\Resources\Formatters\LaravelVersionFormatterResource;
 use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 use App\Models\Block;
@@ -14,28 +15,28 @@ $stack_html = '<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:t
     . '<li><a href="https://tailwindcss.com/docs" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center hover:text-gray-900 dark:hover:text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-100"><span style="display: inline-block;" class="font-mono w-48"><strong>T</strong>ailwind v3.x</span></a><em>CSS framework</em></li>'
     . '</ul><p>Running on PHP v' . $php_version . '</p>';
 
-$tabs = ['tabs' => ['Tab One', 'Tab Two']];
+$tabs = [BlockType::TABS->value => ['Tab One', 'Tab Two']];
 
 dataset('blocks', function () use ($stack_html, $tabs) {
     return [
         'stack block' => [
-            fn () => collect([Block::factory()->create(['type' => 'stack'])]),
-            [['html' => $stack_html]],
+            fn () => collect([Block::factory()->create(['type' => BlockType::STACK->value])]),
+            [['html' => $stack_html, 'type' => BlockType::STACK->value]],
         ],
         'stack blocks' => [
             fn () => collect([
-                Block::factory()->create(['type' => 'stack']),
-                Block::factory()->create(['type' => 'stack']),
+                Block::factory()->create(['type' => BlockType::STACK->value]),
+                Block::factory()->create(['type' => BlockType::STACK->value]),
             ]),
             [
-                ['html' => $stack_html],
-                ['html' => $stack_html],
+                ['html' => $stack_html, 'type' => BlockType::STACK->value],
+                ['html' => $stack_html, 'type' => BlockType::STACK->value],
             ],
         ],
         'tabs block' => [
             fn () => collect([
                 Block::factory()->create([
-                    'type' => 'tabs',
+                    'type' => BlockType::TABS->value,
                     'data' => json_encode($tabs),
                 ]),
             ]),
@@ -44,11 +45,11 @@ dataset('blocks', function () use ($stack_html, $tabs) {
         'tabs blocks' => [
             fn () => collect([
                 Block::factory()->create([
-                    'type' => 'tabs',
+                    'type' => BlockType::TABS->value,
                     'data' => json_encode($tabs),
                 ]),
                 Block::factory()->create([
-                    'type' => 'tabs',
+                    'type' => BlockType::TABS->value,
                     'data' => json_encode($tabs),
                 ]),
             ]),
@@ -59,14 +60,14 @@ dataset('blocks', function () use ($stack_html, $tabs) {
         ],
         'mixed blocks' => [
             fn () => collect([
-                Block::factory()->create(['type' => 'stack']),
+                Block::factory()->create(['type' => BlockType::STACK->value]),
                 Block::factory()->create([
-                    'type' => 'tabs',
+                    'type' => BlockType::TABS->value,
                     'data' => json_encode($tabs),
                 ]),
             ]),
             [
-                ['html' => $stack_html],
+                ['html' => $stack_html, 'type' => BlockType::STACK->value],
                 $tabs,
             ],
         ],

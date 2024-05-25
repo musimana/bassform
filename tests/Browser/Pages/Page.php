@@ -17,7 +17,7 @@ abstract class Page extends BasePage
     public static function siteElements(): array
     {
         return [
-            '@nav-footer-github' => 'nav a[href="' . config('metadata.social_links.github') . '"]',
+            '@main' => 'main',
         ];
     }
 

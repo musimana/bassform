@@ -21,6 +21,11 @@ arch('it\'s in use in the App namespace')
 test('getItem returns ok', function () {
     $actual = (new MetadataViewResource)->getItem([]);
 
+    expect($actual['links'])
+        ->toBeArray()
+        ->toHaveCount(count(config('metadata.social_links', [])))
+        ->toMatchArray(config('metadata.social_links'));
+
     expect($actual['navbarDesktop'])
         ->toBeArray()
         ->toBeEmpty();
@@ -39,9 +44,7 @@ test('getItem returns ok', function () {
             'canRegister' => true,
             'copyright' => config('metadata.copyright'),
             'description' => config('metadata.description'),
-            'links' => [
-                'github' => config('metadata.social_links.github'),
-            ],
+            'links' => config('metadata.social_links'),
             'navbarDesktop' => [],
             'navbarMobile' => [],
             'title' => config('app.name'),

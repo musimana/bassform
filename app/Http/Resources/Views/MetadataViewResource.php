@@ -27,9 +27,7 @@ final class MetadataViewResource implements ArrayToItemInterface
             'canRegister' => Route::has('register'),
             'copyright' => (new CopyrightFormatterResource)->getValue(),
             'description' => config('metadata.description'),
-            'links' => [
-                'github' => config('metadata.social_links.github'),
-            ],
+            'links' => config('metadata.social_links'),
             'navbarDesktop' => (new DesktopNavbarResource)->getItems(),
             'navbarMobile' => (new MobileNavbarResource)->getItems(),
             'title' => config('app.name'),

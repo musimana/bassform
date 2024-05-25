@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Views\Blocks;
 
+use App\Enums\BlockType;
 use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
 use App\Models\Block;
 use Illuminate\Support\Collection;
@@ -17,7 +18,7 @@ final class BlocksResource implements CollectionIndexInterface
     {
         return $collection->map(
             fn (Block $block) => match ($block->type) {
-                'stack' => (new StackBlockResource)->getItem(),
+                BlockType::STACK->value => (new StackBlockResource)->getItem(),
                 default => $block->getDataArray() ?? [],
             }
         )->toArray();
