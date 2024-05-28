@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Public;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Public\Content\PageContentResource;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
@@ -26,13 +27,15 @@ final class PageController extends Controller
             return to_route('home');
         }
 
-        if (!$page->template) {
+        $template = WebpageTemplate::tryFrom($page?->template ?? '');
+
+        if (!$template) {
             abort(404);
         }
 
         return (new PublicViewRepository)
             ->getViewDetails(
-                $page->template,
+                $template->value,
                 (new PageContentResource)->getItem($page),
                 (new PageMetadataResource)->getItem($page)
             );

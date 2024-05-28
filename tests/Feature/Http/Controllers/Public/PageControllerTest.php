@@ -57,6 +57,19 @@ test('show renders the 404 view for unknown pages', function () {
     expect($session)->toHaveCorrectSessionValues($url);
 });
 
+test('show renders the 404 view for unknown templates', function () {
+    $page = Page::factory()->create(['template' => 'Unknown\UnknownTemplate']);
+    $route = route('page.show', [$page]);
+    $actual = $this->get($route);
+    $session = session()->all();
+
+    $actual
+        ->assertStatus(404)
+        ->assertSessionHasNoErrors();
+
+    expect($session)->toHaveCorrectSessionValues($route);
+});
+
 test('store returns correctly for valid data', function () {
     Page::factory()->create(['slug' => 'forms']);
 
