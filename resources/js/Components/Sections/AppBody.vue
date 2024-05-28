@@ -1,4 +1,6 @@
-<script setup />
+<script setup>
+import AppCookieNotice from '@/Components/Sections/AppCookieNotice.vue'
+</script>
 
 <template>
   <div class="fixed w-screen h-screen bg-pattern-darker bg-center bg-gray-100 dark:bg-gray-900 dark:bg-pattern-lighter"></div>
@@ -6,6 +8,8 @@
   <div class="relative scroll-smooth overflow-y-auto lg:justify-center lg:items-center min-h-screen selection:bg-red-500 selection:text-gray-100">
     <slot />
   </div>
+
+  <AppCookieNotice class="m-auto py-4 px-6 lg:px-8" />
 </template>
 
 <style scoped>
