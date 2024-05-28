@@ -19,14 +19,24 @@ test('getItems returns ok', function () {
 
     expect($actual)
         ->toBeArray()
-        ->toHaveCount(1);
+        ->toHaveCount(2);
 
     expect($actual[0])
         ->toHaveCamelCaseKeys()
         ->toHaveCount(4)
         ->toMatchArray([
             'loc' => url('/'),
-            'lastmod' => '2024-03-01',
+            'lastmod' => strval(config('metadata.first_published_year')) . '-01-01',
+            'changefreq' => 'weekly',
+            'priority' => 0.8,
+        ]);
+
+    expect($actual[1])
+        ->toHaveCamelCaseKeys()
+        ->toHaveCount(4)
+        ->toMatchArray([
+            'loc' => url('privacy'),
+            'lastmod' => strval(config('metadata.first_published_year')) . '-01-01',
             'changefreq' => 'weekly',
             'priority' => 0.8,
         ]);
