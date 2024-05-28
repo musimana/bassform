@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Webpages\WebpageTemplate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -29,7 +30,7 @@ final class PageFactory extends Factory
             'content' => '<p>' . implode('</p><p>', $content_array) . '</p>',
             'meta_title' => ucwords($title),
             'meta_description' => fake()->words(24, true),
-            'template' => 'Public/PublicContent',
+            'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         ];
     }
 
@@ -66,7 +67,7 @@ final class PageFactory extends Factory
             'content' => '',
             'meta_title' => config('app.name'),
             'meta_description' => config('metadata.description'),
-            'template' => 'Public/PublicHomepage',
+            'template' => WebpageTemplate::PUBLIC_INDEX->value,
             'in_sitemap' => 0,
             'is_homepage' => 1,
         ]));
