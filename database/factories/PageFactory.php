@@ -20,16 +20,22 @@ final class PageFactory extends Factory
         /** @var string $title */
         $title = fake()->words(3, true);
 
+        /** @var string $subtitle */
+        $subtitle = fake()->words(5, true);
+
+        /** @var string $meta_description */
+        $meta_description = fake()->words(24, true);
+
         /** @var array<int, string> $content_array */
         $content_array = fake()->paragraphs(5);
 
         return [
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
-            'subtitle' => fake()->words(5, true),
+            'subtitle' => $subtitle,
             'content' => '<p>' . implode('</p><p>', $content_array) . '</p>',
             'meta_title' => ucwords($title),
-            'meta_description' => fake()->words(24, true),
+            'meta_description' => $meta_description,
             'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         ];
     }
