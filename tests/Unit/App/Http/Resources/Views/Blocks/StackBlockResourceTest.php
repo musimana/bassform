@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use App\Http\Resources\Views\Blocks\StackBlockResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 

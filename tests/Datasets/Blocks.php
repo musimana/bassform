@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use App\Http\Resources\Formatters\LaravelVersionFormatterResource;
 use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 use App\Models\Block;

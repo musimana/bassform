@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use App\Models\Block;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
