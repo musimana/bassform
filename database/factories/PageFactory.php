@@ -40,12 +40,8 @@ final class PageFactory extends Factory
         ];
     }
 
-    /**
-     * Indicate that the model should match the project's default About page.
-     *
-     * @return static
-     */
-    public function aboutPage()
+    /** Indicate that the model should match the project's default About page. */
+    public function aboutPage(): static
     {
         return $this->state(fn (array $attributes) => array_merge([
             ...$attributes,
@@ -58,12 +54,8 @@ final class PageFactory extends Factory
         ]));
     }
 
-    /**
-     * Indicate that the model should match the project's default homepage.
-     *
-     * @return static
-     */
-    public function homePage()
+    /** Indicate that the model should match the project's default homepage. */
+    public function homePage(): static
     {
         return $this->state(fn (array $attributes) => array_merge([
             ...$attributes,
