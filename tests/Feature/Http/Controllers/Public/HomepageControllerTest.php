@@ -1,20 +1,9 @@
 <?php
 
-use App\Http\Controllers\Public\HomepageController;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\DetailsViewResource;
 use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
-
-test('TEMPLATE_PUBLIC_INDEX Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        HomepageController::class,
-        'TEMPLATE_PUBLIC_INDEX'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 it('can render the homepage view', function () {
     $route = route('home');
@@ -37,10 +26,10 @@ it('can render the homepage view', function () {
     );
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(HomepageController::TEMPLATE_PUBLIC_INDEX)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::PUBLIC_INDEX->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsDetails(
-            HomepageController::TEMPLATE_PUBLIC_INDEX,
+            WebpageTemplate::PUBLIC_INDEX->value,
             $data['content'],
             $data['metadata']
         );
