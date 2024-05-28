@@ -29,6 +29,6 @@ final class SitemapItem extends SitemapPage
 
             ->assertVisible('urlset')
             ->assertVisible('url')
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

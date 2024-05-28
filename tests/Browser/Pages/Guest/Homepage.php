@@ -21,6 +21,6 @@ final class Homepage extends StandardPage
             ->assertHasCorrectCookies()
             ->assertHasRenderedCorrectly(config('app.name'))
 
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

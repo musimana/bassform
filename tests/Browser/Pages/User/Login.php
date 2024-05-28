@@ -22,7 +22,7 @@ final class Login extends AuthPage
             ->assertHasRenderedCorrectly('Login')
 
             ->assertGuest()
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 
     /**
@@ -41,14 +41,14 @@ final class Login extends AuthPage
     public function loginAsUser(Browser $browser, string $email): void
     {
         $browser
-            ->pause(config('dusk.pause_length'))
+            ->pause(config('tests.dusk.pause_length'))
             ->completeForm('form', [
                 'email' => $email,
                 'password' => config('tests.default_password'),
             ])
-            ->pause(config('dusk.pause_length'))
+            ->pause(config('tests.dusk.pause_length'))
             ->screenshotWholePage('login-filled-' . str_replace(['@', '.'], '_', $email))
             ->click('@button-login')
-            ->waitForLocation(route('dashboard'), config('dusk.wait_length'));
+            ->waitForLocation(route('dashboard'), config('tests.dusk.wait_length'));
     }
 }

@@ -26,7 +26,7 @@ abstract class DuskTestCase extends BaseTestCase
     protected function driver(): RemoteWebDriver
     {
         $options = (new ChromeOptions)->addArguments(collect([
-            $this->shouldStartMaximized() ? '--start-maximized' : '--window-size=' . config('dusk.screen_width') . ',' . config('dusk.screen_height'),
+            $this->shouldStartMaximized() ? '--start-maximized' : '--window-size=' . config('tests.dusk.screen_width') . ',' . config('tests.dusk.screen_height'),
         ])->unless($this->hasHeadlessDisabled(), function (Collection $items) {
             return $items->merge([
                 '--disable-gpu',
@@ -50,7 +50,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function hasHeadlessDisabled(): bool
     {
-        return config('dusk.headless_disabled');
+        return config('tests.dusk.headless_disabled');
     }
 
     /**
@@ -60,6 +60,6 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function shouldStartMaximized(): bool
     {
-        return config('dusk.start_maximised');
+        return config('tests.dusk.start_maximised');
     }
 }
