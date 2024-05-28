@@ -20,7 +20,7 @@ final class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'is_admin' => 0,
+            'is_admin' => false,
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -32,16 +32,18 @@ final class UserFactory extends Factory
     /** Set admin privileges for the model. */
     public function isAdmin(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
             'is_admin' => true,
-        ]);
+        ]));
     }
 
     /** Indicate that the model's email address should be unverified. */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
             'email_verified_at' => null,
-        ]);
+        ]));
     }
 }
