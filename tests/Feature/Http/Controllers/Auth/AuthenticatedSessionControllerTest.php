@@ -1,20 +1,10 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Views\Auth\Metadata\LoginMetadataResource;
 use App\Models\User;
-
-test('TEMPLATE_LOGIN Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        AuthenticatedSessionController::class,
-        'TEMPLATE_LOGIN'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 test('create renders the login view', function () {
     $route = route('login');
@@ -32,10 +22,10 @@ test('create renders the login view', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(AuthenticatedSessionController::TEMPLATE_LOGIN)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_LOGIN->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            AuthenticatedSessionController::TEMPLATE_LOGIN,
+            WebpageTemplate::AUTH_LOGIN->value,
             [],
             (new LoginMetadataResource)->getItem()
         );

@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\BlockType;
+use App\Enums\Webpages\WebpageTemplate;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ $seeds = [
         'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
-        'template' => 'Public/PublicHomepage',
+        'template' => WebpageTemplate::PUBLIC_INDEX->value,
         'in_sitemap' => 0,
         'is_homepage' => 1,
     ],
@@ -54,7 +55,7 @@ $seeds = [
         ',
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
-        'template' => 'Public/PublicContent',
+        'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         'blocks' => [
             ['type' => BlockType::STACK->value],
         ],
@@ -66,7 +67,7 @@ $seeds = [
         'subtitle' => 'The UI control components that come with the template are demonstrated below.',
         'meta_title' => 'Controls',
         'meta_description' => 'Page demonstrating the UI control components that come with the template. Including accordions, buttons, dropdowns & modals.',
-        'template' => 'Public/PublicContentControls',
+        'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
             [
                 'type' => BlockType::TABS->value,
@@ -81,7 +82,7 @@ $seeds = [
         'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
         'meta_title' => 'Forms',
         'meta_description' => 'Page demonstrating the UI form & input components that come with the template. Including checkbox, text, select & file upload inputs.',
-        'template' => 'Public/PublicContentForms',
+        'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
     ],
 
 ];
