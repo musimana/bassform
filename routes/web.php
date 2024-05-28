@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CookieController;
 use App\Http\Controllers\Public\HomepageController;
 use App\Http\Controllers\Public\PrivacyPolicyController;
 use App\Http\Controllers\Public\SitemapController;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomepageController::class)->name('home');
 Route::get('privacy', PrivacyPolicyController::class)->name('privacy');
+Route::post('cookies/acknowledge', [CookieController::class, 'store'])->name('cookies.store');
 Route::get('sitemaps/{sitemap}.xml', [SitemapController::class, 'show'])->name('sitemap.show');
 Route::get('sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 
