@@ -28,6 +28,6 @@ final class AdminEditPage extends AdminPage
             ->assertHasCorrectCookies()
             ->assertHasRenderedCorrectly($this->page->getTitle())
 
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

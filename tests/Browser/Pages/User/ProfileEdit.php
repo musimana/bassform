@@ -30,6 +30,6 @@ final class ProfileEdit extends StandardPage
             ->assertHasRenderedCorrectly('Profile')
 
             ->assertAuthenticatedAs($this->user)
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

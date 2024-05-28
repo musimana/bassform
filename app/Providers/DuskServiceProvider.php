@@ -17,24 +17,24 @@ final class DuskServiceProvider extends ServiceProvider implements DeferrablePro
     {
         Browser::macro('getScreenshotFilename', function (string $filename_base, string $count_string) {
             return date('Y-m-d') . '_' . str_replace(' ', '_', strtolower(config('app.name')))
-                . '/' . config('dusk.screen_width') . 'x' . config('dusk.screen_height')
+                . '/' . config('tests.dusk.screen_width') . 'x' . config('tests.dusk.screen_height')
                 . '/' . $filename_base . '_' . $count_string;
         });
 
         Browser::macro('screenshotWholePage', function (string $filename_base) {
             /** @var Browser $browser */
             $browser = $this;
-            $browser->scrollToTop()->pause(config('dusk.pause_length'));
+            $browser->scrollToTop()->pause(config('tests.dusk.pause_length'));
 
             $screen_max = ceil($browser->script('return document.body.offsetHeight / window.innerHeight')[0]);
 
             for ($screen = 1; $screen <= $screen_max; $screen++) {
                 $browser->screenshot($browser->getScreenshotFilename($filename_base, (string) $screen))
-                    ->pause(config('dusk.pause_length'))
+                    ->pause(config('tests.dusk.pause_length'))
                     ->scrollDownScreenHeight();
             }
 
-            $browser->scrollToTop()->pause(config('dusk.pause_length'));
+            $browser->scrollToTop()->pause(config('tests.dusk.pause_length'));
 
             return $browser;
         });

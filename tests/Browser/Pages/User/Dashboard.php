@@ -30,6 +30,6 @@ final class Dashboard extends StandardPage
             ->assertHasRenderedCorrectly('Dashboard')
 
             ->assertAuthenticatedAs($this->user)
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }
