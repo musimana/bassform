@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 /** PageController Routes */
 Route::controller(PageController::class)->group(function () {
-    Route::get('/{page:slug}', 'show')->name('page.show');
-    Route::post('/{page:slug}', 'store')->name('page.store');
+    Route::get('{page:slug}', 'show')->name('page.show');
+    Route::post('{page:slug}', 'store')->name('page.store');
 });

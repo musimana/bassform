@@ -22,7 +22,7 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
 
     expect($content)
         ->toBeArray()
-        ->toHaveCount(2);
+        ->toHaveCount(3);
 
     expect($content[0])
         ->toHaveCamelCaseKeys()
@@ -35,6 +35,16 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
         ]);
 
     expect($content[1])
+        ->toHaveCamelCaseKeys()
+        ->toHaveCount(4)
+        ->toMatchArray([
+            'loc' => url('privacy'),
+            'lastmod' => now()->format('Y-m-d'),
+            'changefreq' => 'weekly',
+            'priority' => 0.8,
+        ]);
+
+    expect($content[2])
         ->toHaveCamelCaseKeys()
         ->toHaveCount(4)
         ->toMatchArray([
