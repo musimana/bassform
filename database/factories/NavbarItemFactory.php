@@ -14,7 +14,7 @@ final class NavbarItemFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, int|string>
      */
     public function definition(): array
     {

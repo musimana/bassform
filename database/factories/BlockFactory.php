@@ -15,7 +15,7 @@ final class BlockFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, int|null|string>
      */
     public function definition(): array
     {
