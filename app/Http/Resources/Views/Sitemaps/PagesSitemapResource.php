@@ -21,6 +21,11 @@ final class PagesSitemapResource implements ConstantIndexInterface
             $static_pages[] = (new PageSitemapResource)->getItem($page);
         }
 
+        if (!Page::where([['slug', 'privacy'], ['in_sitemap', true]])->exists()) {
+            $page = Page::factory()->privacyPage()->make(['updated_at' => Page::min('updated_at')]);
+            $static_pages[] = (new PageSitemapResource)->getItem($page);
+        }
+
         return array_merge(
             $static_pages,
             Page::query()
