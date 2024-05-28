@@ -14,10 +14,15 @@ final class PagesSitemapResource implements ConstantIndexInterface
      */
     public function getItems(): array
     {
+        $static_pages = [];
+
+        if (!Page::where([['is_homepage', true], ['in_sitemap', true]])->exists()) {
+            $page = Page::factory()->homePage()->make(['updated_at' => Page::min('updated_at')]);
+            $static_pages[] = (new PageSitemapResource)->getItem($page);
+        }
+
         return array_merge(
-            [
-                (new HomepageSitemapResource)->getItem(),
-            ],
+            $static_pages,
             Page::query()
                 ->inSitemap()
                 ->get()
