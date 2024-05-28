@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Views\Auth\Metadata\LoginMetadataResource;
@@ -12,8 +13,6 @@ use Inertia\Response;
 
 final class AuthenticatedSessionController extends Controller
 {
-    const TEMPLATE_LOGIN = 'Auth/AuthLogin';
-
     /** Display the login view. */
     public function create(): RedirectResponse|Response
     {
@@ -22,7 +21,7 @@ final class AuthenticatedSessionController extends Controller
         }
 
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_LOGIN,
+            WebpageTemplate::AUTH_LOGIN->value,
             [],
             (new LoginMetadataResource)->getItem()
         );

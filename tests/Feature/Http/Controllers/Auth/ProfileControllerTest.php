@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Requests\Auth\ProfileDeleteRequest;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
@@ -7,28 +8,6 @@ use App\Http\Resources\Views\Auth\Content\DashboardContentResource;
 use App\Http\Resources\Views\Auth\Metadata\DashboardMetadataResource;
 use App\Http\Resources\Views\Auth\Metadata\ProfileEditMetadataResource;
 use App\Models\User;
-
-test('TEMPLATE_DASHBOARD Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        ProfileController::class,
-        'TEMPLATE_DASHBOARD'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
-
-test('TEMPLATE_PROFILE_EDIT Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        ProfileController::class,
-        'TEMPLATE_PROFILE_EDIT'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 test('index renders the profile dashboard view', function (User $user) {
     $route = route('dashboard');
@@ -46,10 +25,10 @@ test('index renders the profile dashboard view', function (User $user) {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(ProfileController::TEMPLATE_DASHBOARD)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::PROFILE_DASHBOARD->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            ProfileController::TEMPLATE_DASHBOARD,
+            WebpageTemplate::PROFILE_DASHBOARD->value,
             (new DashboardContentResource)->getItem(),
             (new DashboardMetadataResource)->getItem()
         );
@@ -71,10 +50,10 @@ test('edit renders the profile update view', function (User $user) {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(ProfileController::TEMPLATE_PROFILE_EDIT)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::PROFILE_EDIT->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            ProfileController::TEMPLATE_PROFILE_EDIT,
+            WebpageTemplate::PROFILE_EDIT->value,
             [],
             (new ProfileEditMetadataResource)->getItem()
         );

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Requests\Auth\ProfileStoreRequest;
 use App\Http\Resources\Views\Auth\Metadata\ProfileCreateMetadataResource;
@@ -7,17 +8,6 @@ use App\Models\User;
 
 beforeEach(function () {
     $this->user_count_initial = User::count();
-});
-
-test('TEMPLATE_REGISTER Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        ProfileController::class,
-        'TEMPLATE_REGISTER'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
 });
 
 test('create renders the registration view', function () {
@@ -36,10 +26,10 @@ test('create renders the registration view', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(ProfileController::TEMPLATE_REGISTER)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_REGISTER->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            ProfileController::TEMPLATE_REGISTER,
+            WebpageTemplate::AUTH_REGISTER->value,
             [],
             (new ProfileCreateMetadataResource)->getItem()
         );
