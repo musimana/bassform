@@ -30,10 +30,15 @@ final class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $cookies_acknowledged = session('cookies.acknowledged', false) || $request->cookie('consent-storage-granted', null);
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+            ],
+            'cookies' => [
+                'acknowledged' => $cookies_acknowledged,
             ],
             'flash' => [
                 'status' => session('status'),
