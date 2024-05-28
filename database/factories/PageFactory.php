@@ -70,4 +70,18 @@ final class PageFactory extends Factory
             'is_homepage' => true,
         ]));
     }
+
+    /** Indicate that the model should match the project's default Privacy page. */
+    public function privacyPage(): static
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'slug' => 'privacy',
+            'title' => 'Privacy Policy',
+            'subtitle' => config('app.name'),
+            'content' => view('partials.body.privacy')->render(),
+            'meta_title' => 'Privacy Policy',
+            'meta_description' => 'Privacy policy for the ' . config('app.name') . ' website, which covers how this app handles your data.',
+        ]));
+    }
 }
