@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomepageController::class)->name('home');
-Route::get('/sitemaps/{sitemap}.xml', [SitemapController::class, 'show'])->name('sitemap.show');
-Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('sitemaps/{sitemap}.xml', [SitemapController::class, 'show'])->name('sitemap.show');
+Route::get('sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 
 require __DIR__ . '/web/auth.php';
 require __DIR__ . '/web/admin.php';
