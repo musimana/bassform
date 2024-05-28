@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PageUpdateRequest;
@@ -38,7 +39,7 @@ test('edit renders the page create/edit view', function (Page $page) {
         ->toHaveCorrectHtmlHead($page->template)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsDetails(
-            PageController::TEMPLATE_ADMIN_CREATE_EDIT,
+            WebpageTemplate::ADMIN_CREATE_EDIT->value,
             $data['content'],
             $data['metadata']
         );
