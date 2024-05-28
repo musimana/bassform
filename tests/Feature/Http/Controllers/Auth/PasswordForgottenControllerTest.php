@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Auth\PasswordForgottenController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\PasswordResetLinkRequest;
@@ -8,28 +9,6 @@ use App\Http\Resources\Views\Auth\Metadata\PasswordForgotMetadataResource;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
-
-test('TEMPLATE_PASSWORD_FORGOT Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        PasswordForgottenController::class,
-        'TEMPLATE_PASSWORD_FORGOT'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
-
-test('TEMPLATE_PASSWORD_RESET Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        PasswordForgottenController::class,
-        'TEMPLATE_PASSWORD_RESET'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 arch('it extends the expected abstract controller')
     ->expect(PasswordForgottenController::class)
@@ -51,10 +30,10 @@ test('create renders the reset password link view', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(PasswordForgottenController::TEMPLATE_PASSWORD_FORGOT)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_PASSWORD_FORGOT->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            PasswordForgottenController::TEMPLATE_PASSWORD_FORGOT,
+            WebpageTemplate::AUTH_PASSWORD_FORGOT->value,
             [],
             (new PasswordForgotMetadataResource)->getItem()
         );
@@ -146,10 +125,10 @@ test('edit renders the forgotten password update view', function (User $user) {
         expect($headers)->toHaveCorrectHeaderValues();
 
         expect($actual)
-            ->toHaveCorrectHtmlHead(PasswordForgottenController::TEMPLATE_PASSWORD_RESET)
+            ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_PASSWORD_RESET->value)
             ->toHaveCorrectHtmlBody()
             ->toHaveCorrectPropsAuth(
-                PasswordForgottenController::TEMPLATE_PASSWORD_RESET,
+                WebpageTemplate::AUTH_PASSWORD_RESET->value,
                 [],
                 [
                     'canonical' => $route,

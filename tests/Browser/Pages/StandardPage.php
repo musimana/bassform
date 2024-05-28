@@ -31,7 +31,7 @@ abstract class StandardPage extends Page
     public function assertHasLoadedCorrectly(Browser $browser, string $url): void
     {
         $browser
-            ->waitForLocation($url, config('tests.wait_length'))
+            ->waitForLocation($url, config('tests.dusk.wait_length'))
             ->assertUrlIs($url)
             ->assertScript('window.__VUE__')
             ->assertScript('document.readyState', 'complete');

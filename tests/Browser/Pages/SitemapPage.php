@@ -10,7 +10,7 @@ abstract class SitemapPage extends Page
     public function assertHasLoadedCorrectly(Browser $browser, string $url): void
     {
         $browser
-            ->waitForLocation($url, config('tests.wait_length'))
+            ->waitForLocation($url, config('tests.dusk.wait_length'))
             ->assertUrlIs($url);
     }
 

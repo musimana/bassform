@@ -1,31 +1,9 @@
 <?php
 
-use App\Http\Controllers\Public\SitemapController;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\Sitemaps\PagesSitemapResource;
 use App\Http\Resources\Views\Sitemaps\SitemapResource;
 use App\Models\Page;
-
-test('TEMPLATE_SITEMAP_INDEX blade template exists', function () {
-    $template = (new ReflectionClassConstant(
-        SitemapController::class,
-        'TEMPLATE_SITEMAP_INDEX'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('views/' . $template . '.blade.php'));
-});
-
-test('TEMPLATE_SITEMAP_ITEMS blade template exists', function () {
-    $template = (new ReflectionClassConstant(
-        SitemapController::class,
-        'TEMPLATE_SITEMAP_ITEMS'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('views/' . $template . '.blade.php'));
-});
 
 test('index renders the sitemap index view', function () {
     $route = route('sitemap.index');
@@ -36,7 +14,7 @@ test('index renders the sitemap index view', function () {
     $actual
         ->assertStatus(200)
         ->assertSessionHasNoErrors()
-        ->assertViewIs('sitemaps.default');
+        ->assertViewIs(str_replace('/', '.', WebpageTemplate::SITEMAP_INDEX->value));
 
     expect($session)->toHaveCorrectSessionValues($route);
 
@@ -61,7 +39,7 @@ test('show can render the general pages sitemap view', function () {
     $actual
         ->assertStatus(200)
         ->assertSessionHasNoErrors()
-        ->assertViewIs('sitemaps.items');
+        ->assertViewIs(str_replace('/', '.', WebpageTemplate::SITEMAP_ITEMS->value));
 
     expect($session)->toHaveCorrectSessionValues($route);
 

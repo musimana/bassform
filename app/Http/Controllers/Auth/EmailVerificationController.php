@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Auth\Metadata\EmailVerifyMetadataResource;
 use App\Repositories\Views\AuthViewRepository;
@@ -13,15 +14,13 @@ use Inertia\Response;
 
 final class EmailVerificationController extends Controller
 {
-    const TEMPLATE_EMAIL_VERIFY = 'Auth/AuthEmailVerify';
-
     /** Display the email verification prompt. */
     public function show(): RedirectResponse|Response
     {
         return request()->user()?->hasVerifiedEmail()
             ? redirect()->intended(config('metadata.user_homepage'))
             : (new AuthViewRepository)->getViewDetails(
-                self::TEMPLATE_EMAIL_VERIFY,
+                WebpageTemplate::AUTH_EMAIL_VERIFY->value,
                 [],
                 (new EmailVerifyMetadataResource)->getItem()
             );

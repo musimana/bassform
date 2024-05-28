@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PageUpdateRequest;
 use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
@@ -15,8 +16,6 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class PageController extends Controller
 {
-    const TEMPLATE_ADMIN_CREATE_EDIT = 'Admin/AdminCreateEdit';
-
     /**
      * Display the edit view for the given page.
      *
@@ -26,7 +25,7 @@ final class PageController extends Controller
     {
         return (new AdminViewRepository)
             ->getViewCreateEdit(
-                self::TEMPLATE_ADMIN_CREATE_EDIT,
+                WebpageTemplate::ADMIN_CREATE_EDIT->value,
                 (new CreateEditPageResource)->getItem($page),
                 (new PageMetadataResource)->getItem($page)
             );

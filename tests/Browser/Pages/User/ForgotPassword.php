@@ -21,6 +21,6 @@ final class ForgotPassword extends AuthPage
             ->assertHasCorrectCookies()
             ->assertHasRenderedCorrectly('Forgot Password')
 
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

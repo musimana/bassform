@@ -1,22 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\Auth\Metadata\EmailVerifyMetadataResource;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
-
-test('TEMPLATE_EMAIL_VERIFY Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        EmailVerificationController::class,
-        'TEMPLATE_EMAIL_VERIFY'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 test('show renders the email verification view', function (User $user) {
     $route = route('verification.notice');
@@ -34,10 +23,10 @@ test('show renders the email verification view', function (User $user) {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(EmailVerificationController::TEMPLATE_EMAIL_VERIFY)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_EMAIL_VERIFY->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            EmailVerificationController::TEMPLATE_EMAIL_VERIFY,
+            WebpageTemplate::AUTH_EMAIL_VERIFY->value,
             [],
             (new EmailVerifyMetadataResource)->getItem()
         );

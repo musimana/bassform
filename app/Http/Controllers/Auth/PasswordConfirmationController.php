@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Auth\Metadata\PasswordConfirmMetadataResource;
 use App\Repositories\Views\AuthViewRepository;
@@ -13,13 +14,11 @@ use Inertia\Response;
 
 final class PasswordConfirmationController extends Controller
 {
-    const TEMPLATE_PASSWORD_CONFIRM = 'Auth/AuthPasswordConfirm';
-
     /** Show the confirm password view. */
     public function show(): Response
     {
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_PASSWORD_CONFIRM,
+            WebpageTemplate::AUTH_PASSWORD_CONFIRM->value,
             [],
             (new PasswordConfirmMetadataResource)->getItem()
         );

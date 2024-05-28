@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

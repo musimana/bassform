@@ -24,6 +24,6 @@ final class SitemapIndex extends SitemapPage
             ->assertVisible('sitemapindex')
             ->assertVisible('sitemap')
             ->assertVisible('loc')
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

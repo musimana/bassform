@@ -29,6 +29,6 @@ final class PageView extends StandardPage
             ->assertHasCorrectCookies()
             ->assertHasRenderedCorrectly($this->page->getMetaTitle())
 
-            ->pause(config('dusk.pause_length'));
+            ->pause(config('tests.dusk.pause_length'));
     }
 }

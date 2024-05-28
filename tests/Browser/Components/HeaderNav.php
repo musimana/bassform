@@ -50,7 +50,7 @@ final class HeaderNav extends BaseComponent
     /** Click the given navbar item, with handling for the responsive navbar. */
     public function clickNavItem(Browser $browser, string $selector): void
     {
-        if (config('dusk.screen_width') < 1024) {
+        if (config('tests.dusk.screen_width') < 1024) {
             $this->toggleMobileMenu($browser);
         }
 
@@ -60,7 +60,7 @@ final class HeaderNav extends BaseComponent
     /** Click the given navbar item, with handling for the responsive navbar. */
     public function clickNavSubItem(Browser $browser, string $selector, string $route): void
     {
-        if (config('dusk.screen_width') < 1024) {
+        if (config('tests.dusk.screen_width') < 1024) {
             $this->toggleMobileMenu($browser);
         }
 
@@ -72,7 +72,7 @@ final class HeaderNav extends BaseComponent
     /** Click the given navbar item, with handling for the responsive navbar. */
     public function toggleNavItem(Browser $browser, string $selector): void
     {
-        if (config('dusk.screen_width') < 1024) {
+        if (config('tests.dusk.screen_width') < 1024) {
             $this->toggleMobileMenu($browser);
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ProfileDeleteRequest;
 use App\Http\Requests\Auth\ProfileStoreRequest;
@@ -20,17 +21,11 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class ProfileController extends Controller
 {
-    const TEMPLATE_DASHBOARD = 'Profile/ProfileDashboard';
-
-    const TEMPLATE_PROFILE_EDIT = 'Profile/ProfileEdit';
-
-    const TEMPLATE_REGISTER = 'Auth/AuthRegister';
-
     /** Display the authenticated user's dashboard. */
     public function index(): Response
     {
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_DASHBOARD,
+            WebpageTemplate::PROFILE_DASHBOARD->value,
             (new DashboardContentResource)->getItem(),
             (new DashboardMetadataResource)->getItem()
         );
@@ -42,7 +37,7 @@ final class ProfileController extends Controller
         return auth()->check()
             ? to_route(config('metadata.user_homepage'))
             : (new AuthViewRepository)->getViewDetails(
-                self::TEMPLATE_REGISTER,
+                WebpageTemplate::AUTH_REGISTER->value,
                 [],
                 (new ProfileCreateMetadataResource)->getItem()
             );
@@ -66,7 +61,7 @@ final class ProfileController extends Controller
     public function edit(): Response
     {
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_PROFILE_EDIT,
+            WebpageTemplate::PROFILE_EDIT->value,
             [],
             (new ProfileEditMetadataResource)->getItem()
         );

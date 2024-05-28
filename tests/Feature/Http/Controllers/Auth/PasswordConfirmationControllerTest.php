@@ -1,19 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\PasswordConfirmationController;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\Auth\Metadata\PasswordConfirmMetadataResource;
 use App\Models\User;
-
-test('TEMPLATE_PASSWORD_CONFIRM Vue page component exists', function () {
-    $template = (new ReflectionClassConstant(
-        PasswordConfirmationController::class,
-        'TEMPLATE_PASSWORD_CONFIRM'
-    ))->getValue();
-
-    expect($template)->toBeString();
-
-    $this->assertFileExists(resource_path('js/Pages/' . $template . '.vue'));
-});
 
 test('show renders the confirm password view', function (User $user) {
     $route = route('password.confirm');
@@ -31,10 +20,10 @@ test('show renders the confirm password view', function (User $user) {
     expect($headers)->toHaveCorrectHeaderValues();
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(PasswordConfirmationController::TEMPLATE_PASSWORD_CONFIRM)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::AUTH_PASSWORD_CONFIRM->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsAuth(
-            PasswordConfirmationController::TEMPLATE_PASSWORD_CONFIRM,
+            WebpageTemplate::AUTH_PASSWORD_CONFIRM->value,
             [],
             (new PasswordConfirmMetadataResource)->getItem()
         );

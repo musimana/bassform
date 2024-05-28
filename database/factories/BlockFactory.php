@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use App\Models\Block;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -15,7 +15,7 @@ final class BlockFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, int|null|string>
      */
     public function definition(): array
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\PasswordResetLinkRequest;
 use App\Http\Requests\Auth\PasswordUpdateForgottenRequest;
@@ -17,15 +18,11 @@ use Inertia\Response;
 
 final class PasswordForgottenController extends Controller
 {
-    const TEMPLATE_PASSWORD_FORGOT = 'Auth/AuthPasswordForgot';
-
-    const TEMPLATE_PASSWORD_RESET = 'Auth/AuthPasswordReset';
-
     /** Display the password reset link request view. */
     public function create(): Response
     {
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_PASSWORD_FORGOT,
+            WebpageTemplate::AUTH_PASSWORD_FORGOT->value,
             [],
             (new PasswordForgotMetadataResource)->getItem()
         );
@@ -54,7 +51,7 @@ final class PasswordForgottenController extends Controller
     public function edit(): Response
     {
         return (new AuthViewRepository)->getViewDetails(
-            self::TEMPLATE_PASSWORD_RESET,
+            WebpageTemplate::AUTH_PASSWORD_RESET->value,
             [],
             (new PasswordResetMetadataResource)->getItem()
         );

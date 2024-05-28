@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Public;
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Sitemaps\PagesSitemapResource;
 use App\Http\Resources\Views\Sitemaps\SitemapResource;
@@ -11,15 +12,11 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class SitemapController extends Controller
 {
-    const TEMPLATE_SITEMAP_INDEX = 'sitemaps/default';
-
-    const TEMPLATE_SITEMAP_ITEMS = 'sitemaps/items';
-
     /** Get the view for the app's sitemap. */
     public function index(): View
     {
         return (new SitemapViewRepository)->getView(
-            self::TEMPLATE_SITEMAP_INDEX,
+            WebpageTemplate::SITEMAP_INDEX->value,
             (new SitemapResource)->getItems()
         );
     }
@@ -33,7 +30,7 @@ final class SitemapController extends Controller
     {
         if ($sitemap === 'pages') {
             return (new SitemapViewRepository)->getView(
-                self::TEMPLATE_SITEMAP_ITEMS,
+                WebpageTemplate::SITEMAP_ITEMS->value,
                 (new PagesSitemapResource)->getItems()
             );
         }

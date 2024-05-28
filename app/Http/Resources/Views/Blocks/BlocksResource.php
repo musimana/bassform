@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Views\Blocks;
 
-use App\Enums\BlockType;
+use App\Enums\Blocks\BlockType;
 use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
 use App\Models\Block;
 use Illuminate\Support\Collection;

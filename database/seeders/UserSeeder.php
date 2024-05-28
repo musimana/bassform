@@ -13,10 +13,9 @@ final class UserSeeder extends Seeder
         $primary_user = User::where([['email', config('mail.from.address')]])->first();
 
         if (!$primary_user) {
-            User::factory()->create([
-                'is_admin' => 1,
-                'name' => config('mail.from.name'),
-                'email' => config('mail.from.address'),
+            User::factory()->isAdmin()->create([
+                'name' => config('mail.from.name', 'admin'),
+                'email' => config('mail.from.address', 'admin@example.com'),
             ]);
         }
 
