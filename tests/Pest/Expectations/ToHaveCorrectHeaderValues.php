@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Str;
+use App\Enums\Regex;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +17,6 @@ use Illuminate\Support\Str;
 */
 
 expect()->extend('toHaveCorrectHeaderValues', function () {
-    $session_cookie_name = Str::slug(config('app.name'), '_') . '_session';
-
-    $regex_date = '\w{3}, \d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2} \w{3}';
-    $regex_xsrf_token = 'XSRF-TOKEN\=.+;\sexpires\=' . $regex_date . ';\sMax-Age\=7200;\spath\=\/;\ssamesite=lax';
-    $regex_session_cookie = $session_cookie_name . '\=.+;\sexpires\=' . $regex_date . ';\sMax-Age\=7200;\spath\=\/;\shttponly;\ssamesite=lax';
-
     $this
         ->toHaveKebabCaseKeys()
         ->toHaveKeys([
@@ -44,7 +38,7 @@ expect()->extend('toHaveCorrectHeaderValues', function () {
 
     expect($this->value['date'][0])
         ->toBeString()
-        ->toMatch('/' . $regex_date . '/');
+        ->toMatch(Regex::TIMESTAMP_COOKIE->value);
 
     expect($this->value['content-type'])
         ->toBeArray()
@@ -62,11 +56,11 @@ expect()->extend('toHaveCorrectHeaderValues', function () {
 
     expect($this->value['set-cookie'][0])
         ->toBeString()
-        ->toMatch('/' . $regex_xsrf_token . '/');
+        ->toMatch(Regex::cookieXsrf());
 
     expect($this->value['set-cookie'][1])
         ->toBeString()
-        ->toMatch('/' . $regex_session_cookie . '/');
+        ->toMatch(Regex::cookieSession());
 
     return $this;
 });
