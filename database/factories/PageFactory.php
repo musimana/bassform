@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Webpages\WebpageTemplate;
+use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,33 +11,29 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 final class PageFactory extends Factory
 {
+    use FakesDatabaseValues;
+
     /**
      * Define the model's default state.
      *
-     * @return array<string, string>
+     * @return array<string, bool|string|null>
      */
     public function definition(): array
     {
-        /** @var string $title */
-        $title = fake()->words(3, true);
-
-        /** @var string $subtitle */
-        $subtitle = fake()->words(5, true);
-
-        /** @var string $meta_description */
-        $meta_description = fake()->words(24, true);
-
-        /** @var array<int, string> $content_array */
-        $content_array = fake()->paragraphs(5);
+        $title = $this->getFakeString();
 
         return [
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
-            'subtitle' => $subtitle,
-            'content' => '<p>' . implode('</p><p>', $content_array) . '</p>',
-            'meta_title' => ucwords($title),
-            'meta_description' => $meta_description,
+            'subtitle' => null,
+            'content' => null,
+            'meta_title' => null,
+            'meta_description' => null,
+            'meta_keywords' => null,
+            'open_graph_id' => null,
             'template' => WebpageTemplate::PUBLIC_CONTENT->value,
+            'in_sitemap' => true,
+            'is_homepage' => false,
         ];
     }
 
