@@ -51,6 +51,25 @@ final class PageFactory extends Factory
         ]));
     }
 
+    /** Indicate that the model should use faked data with all fields filled. */
+    public function dummy(): static
+    {
+        $title = $this->getFakeString();
+
+        return $this->state(fn (array $attributes) => array_merge([
+            'slug' => urlencode(str_replace(' ', '-', $title)),
+            'title' => ucwords($title),
+            'subtitle' => $this->getFakeString(),
+            'content' => $this->getFakeTextHtml(),
+            'meta_title' => ucwords($title),
+            'meta_description' => $this->getFakeString(20, 30),
+            'template' => WebpageTemplate::PUBLIC_CONTENT->value,
+            'in_sitemap' => true,
+            'is_homepage' => false,
+            ...$attributes,
+        ]));
+    }
+
     /** Indicate that the model should match the project's default homepage. */
     public function homePage(): static
     {
