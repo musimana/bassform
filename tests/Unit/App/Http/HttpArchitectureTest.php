@@ -47,6 +47,11 @@ arch('app/Http/Resources/Models has valid architecture')
     ->toHaveConstructor()
     ->tohaveMethod('getItem');
 
+arch('app/Http/Resources/Views/Admin/Blocks has valid architecture')
+    ->expect('App\Http\Resources\Views\Admin\Blocks')
+    ->toHavePrefix('AdminBlock')
+    ->toHaveSuffix('Resource');
+
 arch('app/Http/Resources/Views/Admin/Pages has valid architecture')
     ->expect('App\Http\Resources\Views\Admin\Pages')
     ->toHaveSuffix('PageResource');
@@ -69,6 +74,11 @@ arch('app/Http/Resources/Views/Auth/Summaries has valid architecture')
 arch('app/Http/Resources/Views/Navbars has valid architecture')
     ->expect('App\Http\Resources\Views\Navbars')
     ->toHaveSuffix('NavbarResource');
+
+arch('app/Http/Resources/Views/Public/Blocks has valid architecture')
+    ->expect('App\Http\Resources\Views\Public\Blocks')
+    ->toHavePrefix('Block')
+    ->toHaveSuffix('Resource');
 
 arch('app/Http/Resources/Views/Public/Content has valid architecture')
     ->expect('App\Http\Resources\Views\Public\Content')

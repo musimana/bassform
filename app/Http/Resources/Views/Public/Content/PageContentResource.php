@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Views\Public\Content;
 
-use App\Http\Resources\Views\Blocks\BlocksResource;
+use App\Http\Resources\Views\Public\Blocks\BlocksResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 
