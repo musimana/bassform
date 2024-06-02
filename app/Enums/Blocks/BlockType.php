@@ -30,4 +30,27 @@ enum BlockType: string
             default => [],
         };
     }
+
+    /**
+     * Get an array of the block type's schema.
+     *
+     * @return array{label: string, inputs: array<int, bool|int|string>}
+     */
+    public function schema(): array
+    {
+        return match ($this) {
+            self::STACK => [
+                'label' => 'Application Stack',
+                'inputs' => [],
+            ],
+            self::TABS => [
+                'label' => 'Tabs',
+                'inputs' => [],
+            ],
+            self::UNKNOWN => [
+                'label' => '{unknown}',
+                'inputs' => [],
+            ],
+        };
+    }
 }
