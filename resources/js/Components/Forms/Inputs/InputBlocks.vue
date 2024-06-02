@@ -23,6 +23,6 @@ const props = defineProps({
     <div
       v-else
       class="opacity-75 cursor-not-allowed"
-    >Static Block</div>
+    >{{ block.schema.label }}</div>
   </div>
 </template>
