@@ -23,7 +23,7 @@ final class CreateEditPageResource implements PageItemInterface
             'title' => $page->getTitle(),
             'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
-            'inSitemap' => Page::where('id', $page->id)->inSitemap()->exists(),
+            'inSitemap' => $page->isInSitemap(),
         ];
     }
 }

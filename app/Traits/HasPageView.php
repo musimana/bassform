@@ -31,6 +31,12 @@ trait HasPageView
         return $this->title ?? '';
     }
 
+    /** Returns true if the item is marked as being in the sitemap. */
+    public function isInSitemap(): bool
+    {
+        return $this->in_sitemap ?? false;
+    }
+
     /**
      * The relationship for the resource's content blocks.
      *
