@@ -2,11 +2,10 @@
 
 namespace App\Traits;
 
-use App\Models\Block;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
 trait HasPageView
 {
+    use HasContentBlocks;
+
     /** Get the meta-description for the resource. */
     public function getMetaDescription(): string
     {
@@ -31,15 +30,9 @@ trait HasPageView
         return $this->title ?? '';
     }
 
-    /**
-     * The relationship for the resource's content blocks.
-     *
-     * @return HasMany<Block>
-     */
-    public function blocks(): HasMany
+    /** Returns true if the item is marked as being in the sitemap. */
+    public function isInSitemap(): bool
     {
-        return $this->hasMany(Block::class, 'parent_id')
-            ->where('parent_type', self::class)
-            ->orderBy('display_order');
+        return $this->in_sitemap ?? false;
     }
 }

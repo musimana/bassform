@@ -12,10 +12,8 @@ use Illuminate\Validation\ValidationException;
 
 final class LoginRequest extends FormRequest implements RequestInterface
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    /** Determine if the user is authorized to make this request. */
+    public function authorize(): true
     {
         return true;
     }
@@ -76,9 +74,7 @@ final class LoginRequest extends FormRequest implements RequestInterface
         ]);
     }
 
-    /**
-     * Get the rate limiting throttle key for the request.
-     */
+    /** Get the rate limiting throttle key for the request. */
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->input('email')) . '|' . $this->ip());

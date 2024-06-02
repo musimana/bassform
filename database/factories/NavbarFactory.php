@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 final class NavbarFactory extends Factory
 {
+    use FakesDatabaseValues;
+
     /**
      * Define the model's default state.
      *
@@ -16,11 +19,8 @@ final class NavbarFactory extends Factory
      */
     public function definition(): array
     {
-        /** @var string $title */
-        $title = fake()->words(3, true);
-
         return [
-            'title' => ucwords($title),
+            'title' => ucwords($this->getFakeString()),
         ];
     }
 }

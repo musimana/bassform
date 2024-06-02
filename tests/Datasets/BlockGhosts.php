@@ -18,16 +18,16 @@ $stack_html = '<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:t
 $tabs = ['tabs' => ['Tab One', 'Tab Two'], 'tabContents' => ['<p>Tab one content.</p>', '<p>Tab two content.</p>']];
 $tabs_json = json_encode($tabs) ?: '';
 
-dataset('blocks', function () use ($stack_html, $tabs, $tabs_json) {
+dataset('block-ghosts', function () use ($stack_html, $tabs, $tabs_json) {
     return [
         'stack block' => [
-            fn () => collect([Block::factory()->type(BlockType::STACK)->create()]),
+            fn () => collect([Block::factory()->type(BlockType::STACK)->make()]),
             [['html' => $stack_html, 'type' => BlockType::STACK->value]],
         ],
         'stack blocks' => [
             fn () => collect([
-                Block::factory()->type(BlockType::STACK)->create(),
-                Block::factory()->type(BlockType::STACK)->create(),
+                Block::factory()->type(BlockType::STACK)->make(),
+                Block::factory()->type(BlockType::STACK)->make(),
             ]),
             [
                 ['html' => $stack_html, 'type' => BlockType::STACK->value],
@@ -35,13 +35,13 @@ dataset('blocks', function () use ($stack_html, $tabs, $tabs_json) {
             ],
         ],
         'tabs block' => [
-            fn () => collect([Block::factory()->type(BlockType::TABS, $tabs_json)->create()]),
+            fn () => collect([Block::factory()->type(BlockType::TABS, $tabs_json)->make()]),
             [$tabs],
         ],
         'tabs blocks' => [
             fn () => collect([
-                Block::factory()->type(BlockType::TABS, $tabs_json)->create(),
-                Block::factory()->type(BlockType::TABS, $tabs_json)->create(),
+                Block::factory()->type(BlockType::TABS, $tabs_json)->make(),
+                Block::factory()->type(BlockType::TABS, $tabs_json)->make(),
             ]),
             [
                 $tabs,
@@ -50,8 +50,8 @@ dataset('blocks', function () use ($stack_html, $tabs, $tabs_json) {
         ],
         'all blocks' => [
             fn () => collect([
-                Block::factory()->type(BlockType::STACK)->create(),
-                Block::factory()->type(BlockType::TABS, $tabs_json)->create(),
+                Block::factory()->type(BlockType::STACK)->make(),
+                Block::factory()->type(BlockType::TABS, $tabs_json)->make(),
             ]),
             [
                 ['html' => $stack_html, 'type' => BlockType::STACK->value],

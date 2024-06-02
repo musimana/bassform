@@ -6,6 +6,7 @@ use App\Enums\Blocks\BlockType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 
 final class Block extends Model
 {
@@ -39,12 +40,36 @@ final class Block extends Model
     }
 
     /**
+     * Get an array of the block's data.
+     *
+     * @return array<string, array<int, string>|string>
+     */
+    public function getData(): array
+    {
+        return $this->getType()->staticData() ?: $this->getDataArray();
+    }
+
+    /**
      * Get an array of the block's JSON encoded data field.
      *
-     * @return array<int|string, mixed>
+     * @return array<string, array<int, string>|string>
      */
-    public function getDataArray(): ?array
+    public function getDataArray(): array
     {
-        return json_decode($this->data ?? '', true);
+        return json_decode($this->data ?? '', true) ?? [];
+    }
+
+    /** Get the block's type. */
+    public function getType(): BlockType
+    {
+        $block_type = BlockType::tryFrom($this->type ?? '');
+
+        if (!$block_type) {
+            Log::warning('Unknown block type: ' . strval($this->type) . ', id: ' . strval($this->id));
+
+            return BlockType::UNKNOWN;
+        }
+
+        return $block_type;
     }
 }

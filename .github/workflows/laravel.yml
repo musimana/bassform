@@ -74,3 +74,6 @@ jobs:
 
       - name: Execute Unit tests with PHPUnit via Pest
         run: php artisan test
+
+      - name: Run Artisan Optimize
+        run: php artisan optimize

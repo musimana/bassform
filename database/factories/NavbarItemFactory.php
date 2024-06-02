@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Navbar;
+use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -11,6 +12,8 @@ use Illuminate\Support\Str;
  */
 final class NavbarItemFactory extends Factory
 {
+    use FakesDatabaseValues;
+
     /**
      * Define the model's default state.
      *
@@ -18,12 +21,11 @@ final class NavbarItemFactory extends Factory
      */
     public function definition(): array
     {
-        /** @var string $title */
-        $title = fake()->words(fake()->numberBetween(1, 5), true);
+        $title = $this->getFakeString(1, 3);
         $url = url(Str::slug($title));
         $navbar = Navbar::inRandomOrder()->first() ?? Navbar::factory()->create();
         $items_count = count($navbar->items);
-        $display_order = $items_count ? $items_count + 1 : 0;
+        $display_order = $items_count ? $items_count : 0;
 
         return [
             'navbar_id' => $navbar->id,
