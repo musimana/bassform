@@ -41,10 +41,10 @@ final class Block extends Model
     /**
      * Get an array of the block's JSON encoded data field.
      *
-     * @return array<int|string, mixed>
+     * @return array<string, array<int, string>|string>
      */
-    public function getDataArray(): ?array
+    public function getDataArray(): array
     {
-        return json_decode($this->data ?? '', true);
+        return json_decode($this->data ?? '', true) ?? [];
     }
 }
