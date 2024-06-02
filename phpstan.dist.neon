@@ -21,6 +21,9 @@ parameters:
         - # Replaces `checkGenericClassInNonGenericObjectType: false`
             identifier: missingType.generics
         - # From the way the methods are inherited by Pest
+            message: '#Access to an undefined property Pest\\Mixins\\Expectation#'
+            path: tests
+        - # From the way the methods are inherited by Pest
             message: '#Call to an undefined method Pest\\#'
             path: tests
         - # To be fixed by adopting Pest syntax
@@ -34,7 +37,3 @@ parameters:
             message: '#Function testNotifiedUpdate#'
             path: tests/Feature/Http/Controllers/Auth/PasswordForgottenControllerTest.php
             count: 5
-        - # From the way the methods are inherited by Pest
-            message: '#Access to an undefined property Pest\\Mixins\\Expectation\<App\\Models\\#'
-            path: tests/Unit
-            count: 2
