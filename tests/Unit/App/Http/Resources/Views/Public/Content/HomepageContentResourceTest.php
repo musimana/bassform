@@ -14,14 +14,19 @@ arch('it implements the expected interface')
 test('getItem returns ok without a Page Model', function () {
     $actual = (new HomepageContentResource)->getItem();
 
+    expect($actual['blocks'])
+        ->toBeArray()
+        ->toBeEmpty();
+
     expect($actual['items'])
         ->toBeArray()
         ->toBeEmpty();
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
+        ->toHaveCount(5)
         ->toMatchArray([
+            'blocks' => [],
             'bodytext' => '',
             'heading' => config('app.name'),
             'items' => [],
@@ -38,14 +43,19 @@ test('getItem returns ok with a Page Model', function () {
 
     $actual = (new HomepageContentResource)->getItem();
 
+    expect($actual['blocks'])
+        ->toBeArray()
+        ->toBeEmpty();
+
     expect($actual['items'])
         ->toBeArray()
         ->toBeEmpty();
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
+        ->toHaveCount(5)
         ->toMatchArray([
+            'blocks' => [],
             'bodytext' => $page->content,
             'heading' => $page->title,
             'items' => [],
