@@ -1,4 +1,5 @@
 <script setup>
+import AppBlocks from '@/Components/Blocks/AppBlocks.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
 import BlockIndexPanels from '@/Components/Blocks/BlockIndexPanels.vue'
@@ -16,5 +17,9 @@ import BlockIndexPanels from '@/Components/Blocks/BlockIndexPanels.vue'
   <BlockIndexPanels
     :items="$page.props.content.items ?? []"
     title="Features"
+  />
+
+  <AppBlocks
+    v-if="$page.props.content.blocks ?? []"
   />
 </template>
