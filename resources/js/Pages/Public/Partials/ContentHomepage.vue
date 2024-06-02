@@ -15,6 +15,7 @@ import BlockIndexPanels from '@/Components/Blocks/BlockIndexPanels.vue'
   />
 
   <BlockIndexPanels
+    v-if="$page.props.content?.items.length"
     :items="$page.props.content.items ?? []"
     title="Features"
   />
