@@ -40,6 +40,16 @@ final class Block extends Model
     }
 
     /**
+     * Get an array of the block's data.
+     *
+     * @return array<string, array<int, string>|string>
+     */
+    public function getData(): array
+    {
+        return $this->getType()->staticData() ?: $this->getDataArray();
+    }
+
+    /**
      * Get an array of the block's JSON encoded data field.
      *
      * @return array<string, array<int, string>|string>
