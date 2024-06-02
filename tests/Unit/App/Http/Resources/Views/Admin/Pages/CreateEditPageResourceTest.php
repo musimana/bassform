@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
 use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
-use App\Http\Resources\Views\Blocks\BlocksResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +20,7 @@ test('getItem returns ok with stored models', function (Page $page) {
         ->toHaveCount(8)
         ->toMatchArray([
             'id' => $page->id,
-            'blocks' => (new BlocksResource)->getItems($page->blocks),
+            'blocks' => (new AdminBlocksResource)->getItems($page->blocks),
             'content' => $page->getContent(),
             'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
@@ -38,7 +38,7 @@ test('getItem returns ok with ghost models', function (Page $page) {
         ->toHaveCount(8)
         ->toMatchArray([
             'id' => $page->id,
-            'blocks' => (new BlocksResource)->getItems($page->blocks),
+            'blocks' => (new AdminBlocksResource)->getItems($page->blocks),
             'content' => $page->getContent(),
             'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
