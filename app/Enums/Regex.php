@@ -8,7 +8,7 @@ enum Regex: string
 {
     case TIMESTAMP_COOKIE = '/\w{3}, \d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2} \w{3}/';
 
-    /** Get the template's filepath. */
+    /** Get the RegEx pattern string for the app's XSRF cookie. */
     public static function cookieXsrf(): string
     {
         return '/XSRF-TOKEN\=.+;\sexpires\='
@@ -16,7 +16,7 @@ enum Regex: string
             . ';\sMax-Age\=7[0-29]{3};\spath\=\/;\ssamesite=lax/';
     }
 
-    /** Get the template's filepath. */
+    /** Get the RegEx pattern string for the app's session cookie. */
     public static function cookieSession(): string
     {
         $session_cookie_name = Str::slug(config('app.name'), '_') . '_session';
