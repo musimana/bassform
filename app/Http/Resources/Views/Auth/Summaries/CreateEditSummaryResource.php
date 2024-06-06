@@ -10,7 +10,7 @@ final class CreateEditSummaryResource implements PageItemInterface
     /**
      * Get the resource as an array.
      *
-     * @return array<string, string>
+     * @return array{content: string, title: string, url: string}
      */
     public function getItem(Page $page): array
     {

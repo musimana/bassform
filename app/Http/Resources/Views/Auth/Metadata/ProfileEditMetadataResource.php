@@ -10,7 +10,14 @@ final class ProfileEditMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the edit profile page.
      *
-     * @return array<string, bool|string>
+     * @return array{
+     *  canonical: string,
+     *  description: string,
+     *  keywords: string,
+     *  mustVerifyEmail: bool,
+     *  title: string,
+     *  status: bool,
+     * }
      */
     public function getItem(): array
     {

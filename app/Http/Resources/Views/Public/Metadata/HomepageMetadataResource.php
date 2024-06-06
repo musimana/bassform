@@ -10,7 +10,7 @@ final class HomepageMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the site homepage.
      *
-     * @return array<string, string>
+     * @return array{openGraphImage: string}
      */
     public function getItem(): array
     {

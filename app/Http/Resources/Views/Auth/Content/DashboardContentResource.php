@@ -11,7 +11,7 @@ final class DashboardContentResource implements ConstantItemInterface
     /**
      * Get the content array for the site's homepage.
      *
-     * @return array<string, array<int, array<string, string>>|string>
+     * @return array{items: array<int, array{content: string, title: string, url: string}>}
      */
     public function getItem(): array
     {

@@ -10,7 +10,12 @@ final class PagesSitemapResource implements ConstantIndexInterface
     /**
      * Get the content array for the pages sitemap index resource.
      *
-     * @return array<int, array<string, int|string>>
+     * @return array<int, array{
+     *  loc: string,
+     *  lastmod: string,
+     *  changefreq: string,
+     *  priority: float
+     * }>
      */
     public function getItems(): array
     {

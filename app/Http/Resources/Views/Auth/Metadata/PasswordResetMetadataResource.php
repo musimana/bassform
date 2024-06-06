@@ -9,7 +9,14 @@ final class PasswordResetMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the password reset page.
      *
-     * @return array<string, string>
+     * @return array{
+     *  canonical: string,
+     *  description: string,
+     *  email: string,
+     *  keywords: string,
+     *  title: string,
+     *  token: object|string|null,
+     * }
      */
     public function getItem(): array
     {

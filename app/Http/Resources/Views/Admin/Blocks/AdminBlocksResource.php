@@ -11,7 +11,12 @@ final class AdminBlocksResource implements CollectionIndexInterface
     /**
      * Get the content blocks array for the given block collections.
      *
-     * @return array<int, array<string, array<string, string>|int|string|false>>
+     * @return array<int, array{
+     *  id: int|false,
+     *  type: string,
+     *  data: array<string, array<int, string>|string>,
+     *  schema: array{label: string, inputs: array<int, bool|int|string>}
+     * }>
      */
     public function getItems(Collection $collection): array
     {

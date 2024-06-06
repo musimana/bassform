@@ -10,7 +10,14 @@ final class LoginMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the login page.
      *
-     * @return array<string, bool|string>
+     * @return array{
+     *  canonical: string,
+     *  canResetPassword: bool,
+     *  description: string,
+     *  keywords: string,
+     *  title: string,
+     *  status: bool,
+     * }
      */
     public function getItem(): array
     {

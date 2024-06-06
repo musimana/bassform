@@ -10,7 +10,12 @@ final class PageSitemapResource implements PageItemInterface
     /**
      * Get the content array for the given page's sitemap item.
      *
-     * @return array<string, float|string>
+     * @return array{
+     *  loc: string,
+     *  lastmod: string,
+     *  changefreq: string,
+     *  priority: float
+     * }
      */
     public function getItem(Page $page): array
     {

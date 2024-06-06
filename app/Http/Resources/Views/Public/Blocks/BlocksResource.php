@@ -11,7 +11,7 @@ final class BlocksResource implements CollectionIndexInterface
     /**
      * Get the content blocks array for the given block collections.
      *
-     * @return array<int, array<string, array<string, string>|int|string|false>>
+     * @return array<int, array{type: string, data: array<string, array<int, string>|string>}>
      */
     public function getItems(Collection $collection): array
     {
