@@ -19,7 +19,7 @@ test('getItems returns ok', function (Collection $blocks, array $expected) {
     foreach ($actual as $block) {
         $block_formatted = $block;
 
-        if (is_array($block['data'] ?? false)) {
+        if (is_array($block['data'])) {
             $block_formatted['data'] = json_encode($block['data']);
         }
 
