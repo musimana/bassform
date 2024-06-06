@@ -87,7 +87,7 @@ const form = useForm({
       <FormInput
         input-label="Blocks"
         input-label-position="left"
-        input-field="textarea"
+        input-field="blocks"
         :parent-form="form"
       >
         <InputBlocks
