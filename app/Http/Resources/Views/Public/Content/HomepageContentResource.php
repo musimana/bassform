@@ -12,7 +12,16 @@ final class HomepageContentResource implements ConstantItemInterface
     /**
      * Get the content array for the site's homepage.
      *
-     * @return array<string, array<int, array<string, string>>|string>
+     * @return array{
+     *  blocks: array<int, array{
+     *      type: string,
+     *      data: array<string, array<int, string>|string>,
+     *  }>,
+     *  bodytext: string,
+     *  heading: string,
+     *  items: array<int, array{content: string, title: string, url: string}>,
+     *  subheading: string,
+     * }
      */
     public function getItem(): array
     {

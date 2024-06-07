@@ -10,7 +10,7 @@ final class PageMetadataResource implements PageItemInterface
     /**
      * Get the public view metadata array for the given page.
      *
-     * @return array<string, string>
+     * @return array{canonical: string, description: string, title: string}
      */
     public function getItem(Page $page): array
     {

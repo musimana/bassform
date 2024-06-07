@@ -34,7 +34,7 @@ enum BlockType: string
     /**
      * Get an array of the block type's schema.
      *
-     * @return array{label: string, inputs: array<int, bool|int|string>}
+     * @return array{label: string, inputs: array<int, array<string, bool|int|string>>}
      */
     public function schema(): array
     {

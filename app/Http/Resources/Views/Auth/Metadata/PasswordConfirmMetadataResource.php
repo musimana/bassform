@@ -9,7 +9,12 @@ final class PasswordConfirmMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the password confirmation page.
      *
-     * @return array<string, string>
+     * @return array{
+     *  canonical: string,
+     *  description: string,
+     *  keywords: string,
+     *  title: string,
+     * }
      */
     public function getItem(): array
     {

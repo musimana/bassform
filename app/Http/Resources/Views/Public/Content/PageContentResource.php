@@ -11,7 +11,15 @@ final class PageContentResource implements PageItemInterface
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, array<int, array<int|string, mixed>>|string>>|string>
+     * @return array{
+     *  blocks: array<int, array{
+     *      type: string,
+     *      data: array<string, array<int, string>|string>,
+     *  }>,
+     *  bodytext: string,
+     *  heading: string,
+     *  subheading: string,
+     * }
      */
     public function getItem(Page $page): array
     {
