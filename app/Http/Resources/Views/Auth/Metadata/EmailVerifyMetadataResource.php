@@ -9,7 +9,13 @@ final class EmailVerifyMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the email verification page.
      *
-     * @return array<string, bool|string>
+     * @return array{
+     *  canonical: string,
+     *  description: string,
+     *  keywords: string,
+     *  title: string,
+     *  status: bool,
+     * }
      */
     public function getItem(): array
     {

@@ -11,7 +11,21 @@ final class CreateEditPageResource implements PageItemInterface
     /**
      * Get the content array for the given page's full public resource.
      *
-     * @return array<string, array<int, array<int|string, mixed>>|bool|int|string>
+     * @return array{
+     *  id: int|false,
+     *  blocks: array<int, array{
+     *      id: int|false,
+     *      type: string,
+     *      data: array<string, array<int, string>|string>,
+     *      schema: array{label:string, inputs:array<int, bool|int|string>}
+     *  }>,
+     *  content: string,
+     *  subtitle: string,
+     *  title: string,
+     *  metaTitle: string,
+     *  metaDescription: string,
+     *  inSitemap: bool,
+     * }
      */
     public function getItem(Page $page): array
     {

@@ -9,7 +9,7 @@ final class SessionMetadataResource implements ConstantItemInterface
     /**
      * Get the metadata array for the session's status.
      *
-     * @return array<string, bool>
+     * @return array{status: bool}
      */
     public function getItem(): array
     {

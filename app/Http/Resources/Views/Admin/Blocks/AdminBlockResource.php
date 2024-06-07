@@ -17,7 +17,12 @@ final class AdminBlockResource implements ConstantItemInterface
     /**
      * Get the content array for the resource's block.
      *
-     * @return array{id: int|false, type: string, data: array<string, array<int, string>|string>, schema: array{label: string, inputs: array<int, bool|int|string>}}
+     * @return array{
+     *  id: int|false,
+     *  type: string,
+     *  data: array<string, array<int, string>|string>,
+     *  schema: array{label: string, inputs: array<int, array<string, bool|int|string>>}
+     * }
      */
     public function getItem(): array
     {
