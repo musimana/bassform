@@ -30,7 +30,16 @@ See the [testing docs](.docs/TESTING.md) for info on running the project's test 
 
 ## Releases
 
-See the [release instructions](.docs/RELEASE.md) for info on running deployments.
+See the [release instructions](.docs/RELEASE.md) for info on releases & running deployments.
+
+### Backwards Compatibility
+
+Since the repo is offered as a template, it is offered on the basis that once an instance of it has been generated,
+there will be no attempts to maintain backwards compatibility between the instance and this repo.
+This means you are free to use the generated instance however you wish,
+but that there is no native mechanism for updating any given instance to match later versions of this template repository.
+
+For more info on this see the [Versioning Policy](.docs/RELEASE.md#versioning-policy).
 
 ## License
 
