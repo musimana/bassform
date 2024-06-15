@@ -1,5 +1,9 @@
 # INSTALLING THE PROJECT
 
+These instructions cover set-up for a local environment, for details about other environments see the [release docs](RELEASE.md).
+
+All commands listed should be run from the local repo's root directory.
+
 ## Requirements
 
 * [Composer](https://getcomposer.org/download)
@@ -14,6 +18,8 @@
 The recommended options for this are [Laragon](https://laragon.org/download/index.html) or [Xampp](https://www.apachefriends.org/download.html).
 
 ## Installation
+
+### Dependencies
 
 Once the repo is forked and then cloned to a local repository, install the project's dependencies by running the following:
 
