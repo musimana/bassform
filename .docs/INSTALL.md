@@ -25,12 +25,7 @@ $ npm i
 # up to date, audited... // Exact message depends on the state of the local environment
 ```
 
-Set-up the app's database with the default content found in the [seeds directory](../storage/app/seeds/) with:
-
-```sh
-$ php artisan migrate --seed
-# INFO  Preparing database...
-```
+### Environment Configuration
 
 Then create the local [Dotenv](./.env) with:
 
@@ -40,6 +35,22 @@ $ cp .env.example .env && php artisan key:generate
 ```
 
 Review the properties in the local [Dotenv](./.env) to ensure they are set-up to match the desired environment.
+
+### Database Initialisation
+
+Ensure a local database file exists with:
+
+```sh
+$ touch database/database.sqlite
+# ... {creates the file if it doesn't exist}
+```
+
+Set-up the app's database with the default content found in the [seeds directory](../storage/app/seeds/) with:
+
+```sh
+$ php artisan migrate --seed
+# INFO  Preparing database...
+```
 
 ---
 
