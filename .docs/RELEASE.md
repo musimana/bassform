@@ -17,6 +17,47 @@ method names, parameters & return types; and front-end templates.
 Each minor version is tested to ensure it's stability but no support is provided for updating an existing instance of the template to a later version of it.
 The template is provided as is, but without restrictions on how you can use it.
 
+## Production Environment Installation
+
+The specifics of the following depend on your hosting provider but are provided as a loose checklist.
+
+Check correct version of PHP is installed -> see the Laravel deployment docs for standard PHP extensions.
+
+Also check that `Git`, `Composer`; `Node.js`, `npm`, `rsync`; are installed with a sufficient version.
+
+### Installing NVM
+
+Node versions on Linux distributions should be normally be managed with [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating).
+
+### Environment Configuration
+
+#### DotEnv First Time Steps
+
+* `cp .env.example .env` -> `vim .env` and then update all values, `APP_ENV` must be `production` before next step
+* `php artisan key:generate`
+
+### Dependency Installation
+
+* `cd` into the newly created directory and run `composer install --no-dev --optimize-autoloader`
+* Install the node packages with `npm install --only=prod`
+
+### Database Set-Up
+
+#### Database First Time Steps
+
+* Create the database with `touch database/database.sqlite`
+* Run the migrations with `php artisan migrate --force --seed`
+
+#### Database Standard Steps
+
+* Run any new migrations with `php artisan migrate --force`
+
+### Optimisation
+
+* Run `php artisan optimize`
+* Restart workers
+* Restart FPM
+
 ---
 
 |Prev                                                                                                                                          |
