@@ -1,5 +1,9 @@
 # INSTALLING THE PROJECT
 
+These instructions cover set-up for a local environment, for details about other environments see the [release docs](RELEASE.md).
+
+All commands listed should be run from the local repo's root directory.
+
 ## Requirements
 
 * [Composer](https://getcomposer.org/download)
@@ -15,6 +19,8 @@ The recommended options for this are [Laragon](https://laragon.org/download/inde
 
 ## Installation
 
+### Dependencies
+
 Once the repo is forked and then cloned to a local repository, install the project's dependencies by running the following:
 
 ```sh
@@ -25,12 +31,7 @@ $ npm i
 # up to date, audited... // Exact message depends on the state of the local environment
 ```
 
-Set-up the app's database with the default content found in the [seeds directory](../storage/app/seeds/) with:
-
-```sh
-$ php artisan migrate --seed
-# INFO  Preparing database...
-```
+### Environment Configuration
 
 Then create the local [Dotenv](./.env) with:
 
@@ -40,6 +41,22 @@ $ cp .env.example .env && php artisan key:generate
 ```
 
 Review the properties in the local [Dotenv](./.env) to ensure they are set-up to match the desired environment.
+
+### Database Initialisation
+
+Ensure a local database file exists with:
+
+```sh
+$ touch database/database.sqlite
+# ... {creates the file if it doesn't exist}
+```
+
+Set-up the app's database with the default content found in the [seeds directory](../storage/app/seeds/) with:
+
+```sh
+$ php artisan migrate --seed
+# INFO  Preparing database...
+```
 
 ---
 

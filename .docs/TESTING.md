@@ -34,15 +34,6 @@ Whether the tests use Dark Mode is dependent on the relevant OS settings.
 
 ## One Time Set-Up
 
-### Unit Tests Set-Up
-
-Run the following to create a `database.sqlite` file for unit tests:
-
-```sh
-$ touch database/database.sqlite
-# ... {creates the database}
-```
-
 ### Integraion Tests Set-Up
 
 Make sure the `APP_URL` variable in the [DotEnv](/.env) file matches the URL used to access the app in a browser locally.
