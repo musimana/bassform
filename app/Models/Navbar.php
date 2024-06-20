@@ -21,13 +21,17 @@ final class Navbar extends Model
         'title',
     ];
 
-    /** Get the subtitle for the page. */
+    /** Get the title for the navbar. */
     public function getTitle(): string
     {
         return $this->title ?? '';
     }
 
-    /** The relationship for the navbar's items. */
+    /**
+     * The relationship for the navbar's items.
+     *
+     * @return HasMany<NavbarItem>
+     */
     public function items(): HasMany
     {
         return $this->hasMany(NavbarItem::class)

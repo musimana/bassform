@@ -14,8 +14,7 @@ abstract class StandardPage extends Page
     /** Instantiate the class. */
     public function __construct(
         protected FooterNav $footer = new FooterNav
-    ) {
-    }
+    ) {}
 
     /**
      * Get the element shortcuts for the page.

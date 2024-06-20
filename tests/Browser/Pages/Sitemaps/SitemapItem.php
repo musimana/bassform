@@ -10,8 +10,7 @@ final class SitemapItem extends SitemapPage
     /** Instantiate the class. */
     public function __construct(
         private string $sitemap
-    ) {
-    }
+    ) {}
 
     /** Get the URL for the page. */
     public function url(): string
