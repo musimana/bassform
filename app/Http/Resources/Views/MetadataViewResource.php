@@ -6,6 +6,7 @@ use App\Http\Resources\Formatters\CopyrightFormatterResource;
 use App\Http\Resources\Views\Navbars\DesktopNavbarResource;
 use App\Http\Resources\Views\Navbars\MobileNavbarResource;
 use App\Interfaces\Resources\Items\ArrayToItemInterface;
+use App\Models\Navbar;
 use Illuminate\Support\Facades\Route;
 
 final class MetadataViewResource implements ArrayToItemInterface
@@ -20,6 +21,8 @@ final class MetadataViewResource implements ArrayToItemInterface
      */
     public function getItem(array $metadata): array
     {
+        $navbar = Navbar::with('items')->first();
+
         $standard_metadata = [
             'appName' => config('app.name'),
             'canLogin' => Route::has('login'),
@@ -28,8 +31,8 @@ final class MetadataViewResource implements ArrayToItemInterface
             'copyright' => (new CopyrightFormatterResource)->getValue(),
             'description' => config('metadata.description'),
             'links' => config('metadata.social_links'),
-            'navbarDesktop' => (new DesktopNavbarResource)->getItems(),
-            'navbarMobile' => (new MobileNavbarResource)->getItems(),
+            'navbarDesktop' => $navbar ? (new DesktopNavbarResource($navbar))->getItems() : [],
+            'navbarMobile' => $navbar ? (new MobileNavbarResource($navbar))->getItems() : [],
             'title' => config('app.name'),
         ];
 
