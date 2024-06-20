@@ -1,28 +1,40 @@
-article.app-article p {
+section.app-article p {
   @apply
     mb-4;
 }
 
-article.app-article pre,
-article.app-article ul {
+section.app-article p a {
+  @apply
+    inline-flex
+    items-center
+    hover:text-gray-900
+    dark:hover:text-gray-50
+    focus:outline
+    focus:outline-2
+    focus:rounded-sm
+    focus:outline-gray-100;
+}
+
+section.app-article pre,
+section.app-article ul {
   @apply
     mb-6;
 }
 
-article.app-article ul {
+section.app-article ul {
   @apply
     ml-8
     list-disc;
 }
 
-article.app-article ul.app-list-none {
+section.app-article ul.app-list-none {
   @apply
     ml-6
     list-none;
 }
 
 section.app-code-block code,
-article.app-article pre {
+section.app-article pre {
   @apply
     border
     rounded-md
@@ -32,8 +44,8 @@ article.app-article pre {
 }
 
 section.app-code-block code,
-article.app-article p code,
-article.app-article pre {
+section.app-article p code,
+section.app-article pre {
   @apply
     bg-gray-100
     dark:bg-gray-900
@@ -41,26 +53,16 @@ article.app-article pre {
     dark:text-white;
 }
 
-article.app-article p code {
+section.app-article p code {
   @apply font-mono px-2 py-1 rounded-sm;
 }
 
-article.app-article ul li em,
-article.app-article p em
+section.app-article ul li i,
+section.app-article p i
 {
-  text-shadow: 0 0 2px rgb(5, 21,32);
-
   @apply
     font-semibold
     text-gray-900
-    dark:text-white
+    dark:text-gray-100
     tracking-wide;
-}
-
-@media (prefers-color-scheme: dark) {
-  article.app-article ul li em,
-  article.app-article p em
-  {
-    text-shadow: 1px -1px 1px rgb(255, 255, 255);
-  }
 }
