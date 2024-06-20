@@ -11,7 +11,7 @@ import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
 
   <TabControls
     class="pt-4"
-    :tabs="$page.props.content?.blocks[0]?.tabs ?? {}"
+    :tabs="['Pop-ups', 'Buttons']"
   />
 
   <AppSectionDivider margin="min" />

@@ -4,6 +4,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  method: {
+    type: String,
+    default: 'post',
+  },
   form: {
     type: Object,
     required: true,
@@ -11,10 +15,15 @@ const props = defineProps({
 })
 
 const submit = () => {
-  props.form.post(props.endpoint, {
-    preserveScroll: true,
-    onSuccess: () => props.form.reset(),
-  })
+  if (props.method === 'patch') {
+    props.form.patch(props.endpoint, {
+      preserveScroll: true,
+    })
+  } else {
+    props.form.post(props.endpoint, {
+      preserveScroll: true,
+    })
+  }
 }
 
 </script>

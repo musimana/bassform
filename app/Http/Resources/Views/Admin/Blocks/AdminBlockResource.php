@@ -11,8 +11,7 @@ final class AdminBlockResource implements ConstantItemInterface
     /** Instantiate the resource. */
     public function __construct(
         protected Block $block = new Block
-    ) {
-    }
+    ) {}
 
     /**
      * Get the content array for the resource's block.

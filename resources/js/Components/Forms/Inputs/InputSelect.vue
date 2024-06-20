@@ -8,10 +8,11 @@ defineProps({
   },
   modelValue: {},
   options: {
-    default: {
+    type: Object,
+    default: () => ({
       0: { label: 'No', value: 0 },
       1: { label: 'Yes', value: 1 },
-    },
+    }),
   },
 })
 

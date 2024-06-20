@@ -11,8 +11,7 @@ final class AdminEditPage extends AdminPage
     /** Instantiate the class. */
     public function __construct(
         private Page $page
-    ) {
-    }
+    ) {}
 
     /** Get the URL for the page. */
     public function url(): string

@@ -30,6 +30,7 @@ const form = useForm({
 
   <AppForm
     class="w-full"
+    method="patch"
     :endpoint="route('admin.page.edit', page.id)"
     :form="form"
   >
