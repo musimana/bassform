@@ -10,8 +10,7 @@ final class Form extends BaseComponent
     /** Instantiate the class. */
     public function __construct(
         private string $selector
-    ) {
-    }
+    ) {}
 
     /** Get the root selector for the component. */
     public function selector(): string

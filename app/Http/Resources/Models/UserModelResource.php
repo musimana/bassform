@@ -11,8 +11,7 @@ final class UserModelResource implements UserStorableInterface
     /** Instantiate the resource. */
     public function __construct(
         protected User $user = new User
-    ) {
-    }
+    ) {}
 
     /** Get the user model. */
     public function getItem(): User
