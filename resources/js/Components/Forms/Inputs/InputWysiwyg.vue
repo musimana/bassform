@@ -7,7 +7,20 @@ const model = defineModel({
   required: true,
 })
 
-const editorConfig = {}
+const editorConfig = {
+  link: {
+    decorators: {
+      openInNewTab: {
+        mode: 'manual',
+        label: 'Open in a new tab',
+        attributes: {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        },
+      },
+    },
+  },
+}
 
 </script>
 
