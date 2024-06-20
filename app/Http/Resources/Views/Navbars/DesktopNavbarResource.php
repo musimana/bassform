@@ -7,17 +7,27 @@ use App\Models\Navbar;
 
 final class DesktopNavbarResource implements ConstantIndexInterface
 {
+    /** Instantiate the resource. */
+    public function __construct(
+        protected Navbar $navbar = new Navbar
+    ) {}
+
     /**
      * Get the items for the main public navbar.
      *
-     * @return array<int, array<string, array<int, array<string, string>>|string>>
+     * @return array<int, array{
+     *  title: string,
+     *  url: string,
+     *  subItems: array<int, array{title: string, url: string}>
+     * }>
      */
     public function getItems(): array
     {
-        $navbar_items = Navbar::first()?->items ?? collect();
-
-        return $navbar_items
-            ->map(fn ($page) => (new ItemLinksNavbarResource)->getItem($page))
-            ->toArray();
+        return array_filter(
+            $this->navbar->items
+                ->map(fn ($navbar_item) => (new ItemLinksNavbarResource($navbar_item))->getItem())
+                ->toArray(),
+            fn ($navbar_item) => $navbar_item !== []
+        );
     }
 }

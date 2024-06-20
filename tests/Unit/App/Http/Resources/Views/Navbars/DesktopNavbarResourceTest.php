@@ -16,7 +16,7 @@ arch('it has a getItems method')
     ->toHaveMethod('getItems');
 
 test('getItem returns ok', function (Navbar $navbar) {
-    $actual = (new DesktopNavbarResource)->getItems();
+    $actual = (new DesktopNavbarResource($navbar))->getItems();
 
     expect($actual)
         ->toBeArray()
@@ -25,9 +25,14 @@ test('getItem returns ok', function (Navbar $navbar) {
     foreach ($navbar->items as $index => $navbar_item) {
         expect($actual[$index])
             ->toHaveCamelCaseKeys()
-            ->toHaveCount($navbar_item->children->count() ? 3 : 2);
+            ->toHaveCount(3);
 
         expect($actual[$index]['title'])->toEqual($navbar_item->getTitle());
         expect($actual[$index]['url'])->toEqual($navbar_item->getUrl());
+
+        $expected = $navbar_item->children->count()
+            ? $navbar_item->children->map(fn ($sub_item) => ['title' => $sub_item->getTitle(), 'url' => $sub_item->getUrl()])->toArray()
+            : [];
+        expect($actual[$index]['subItems'])->toEqual($expected);
     }
 })->with('navbars');
