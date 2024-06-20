@@ -21,7 +21,7 @@ test('getItem returns ok', function () {
         ->has(NavbarItem::factory(3), 'items')
         ->create();
 
-    $actual = (new MobileNavbarResource)->getItems();
+    $actual = (new MobileNavbarResource($navbar))->getItems();
 
     expect($actual)
         ->toBeArray()
