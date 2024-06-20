@@ -35,7 +35,7 @@ const form = useForm({
     :endpoint="route('page.store', 'forms')"
     :form="form"
   >
-    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex pt-4 px-4">
       <FormInput
         input-label="Text Input*"
         input-label-position="left"
@@ -53,7 +53,7 @@ const form = useForm({
       </FormInput>
     </div>
 
-    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex pt-4 px-4">
       <FormInput
         input-label="Select Input*"
         input-label-position="left"
@@ -70,7 +70,7 @@ const form = useForm({
       </FormInput>
     </div>
 
-    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex pt-4 px-4">
       <FormInput
         input-label="Date Input"
         input-label-position="left"
@@ -85,7 +85,7 @@ const form = useForm({
       </FormInput>
     </div>
 
-    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex pt-4 px-4">
       <FormInput
         input-label="Date &amp; Time Input"
         input-label-position="left"
@@ -101,7 +101,7 @@ const form = useForm({
       </FormInput>
     </div>
 
-    <div class="w-full flex pt-4 px-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex pt-4 px-4">
       <FormInput
         input-label="Textarea Input"
         input-label-position="left"
@@ -116,7 +116,7 @@ const form = useForm({
       </FormInput>
     </div>
 
-    <div class="w-full flex p-4 bg-gray-300 dark:bg-gray-700">
+    <div class="w-full flex p-4">
       <FormInput
         input-label="PDF Upload Input"
         input-label-position="left"
