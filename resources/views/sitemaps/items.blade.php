@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?php echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 <urlset
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
