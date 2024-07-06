@@ -36,7 +36,7 @@ final class PageController extends Controller
         return (new PublicViewRepository)
             ->getViewDetails(
                 $template->value,
-                (new PageContentResource)->getItem($page),
+                (new PageContentResource($page))->getItem(),
                 (new PageMetadataResource)->getItem($page)
             );
     }

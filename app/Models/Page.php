@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Admin\IsAdminResource;
 use App\Traits\HasPageView;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
- * @method Builder|static inSitemap()
  * @method Builder|static isHomepage()
  * @method Builder|static isNotHomepage()
  * @method static Builder|static query()
@@ -19,6 +19,7 @@ final class Page extends Model
 {
     use HasFactory,
         HasPageView,
+        IsAdminResource,
         SoftDeletes;
 
     /**
@@ -66,20 +67,6 @@ final class Page extends Model
         return $this->is_homepage
             ? route('home')
             : route('page.show', $this->slug);
-    }
-
-    /** Get the admin URL for the page edit view. */
-    public function getUrlEdit(): string
-    {
-        return route('admin.page.edit', $this->slug);
-    }
-
-    /** Returns all Page models that should be in the sitemap (in_sitemap = 1). */
-    public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
-    {
-        return $query->where(function ($query) {
-            $query->where('in_sitemap', 1);
-        });
     }
 
     /** Return all Page models flagged as the homepage (is_homepage = 1). */

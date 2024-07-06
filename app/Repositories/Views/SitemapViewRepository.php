@@ -13,7 +13,7 @@ final class SitemapViewRepository
      *  loc: string,
      *  lastmod: string,
      *  changefreq: string,
-     *  priority: float
+     *  priority: string
      * }|string>  $items  = []
      */
     public function getView(string $template, array $items = []): View

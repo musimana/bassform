@@ -46,7 +46,7 @@ test('edit renders the page create/edit view', function (Page $page) {
 })->with('pages');
 
 test('edit renders the 404 view for unknown pages', function () {
-    $url = url('admin/pages/foo');
+    $url = url('admin/pages/101');
     $user = User::factory()->isAdmin()->create();
     $actual = $this->actingAs($user)->get($url);
     $session = session()->all();
@@ -164,7 +164,7 @@ test('update ignores unknown fields', function () {
 });
 
 test('update returns a 404 status for unknown pages', function () {
-    $url = url('admin/pages/foo');
+    $url = url('admin/pages/101');
     $user = User::factory()->isAdmin()->create();
 
     $actual = $this

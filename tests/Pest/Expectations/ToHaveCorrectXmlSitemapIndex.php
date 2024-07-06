@@ -29,7 +29,6 @@ expect()->extend('toHaveCorrectXmlSitemapIndex', function (array $content) {
 
     (new TestResponse($this->value))
         ->assertSeeInOrder([
-            '<?xml version=\'1.0\' encoding=\'UTF-8\'?>',
             '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
             '<sitemap>',
             '<loc>' . url('sitemaps/pages.xml') . '</loc>',

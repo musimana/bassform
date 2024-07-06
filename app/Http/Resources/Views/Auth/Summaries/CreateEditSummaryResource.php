@@ -10,14 +10,14 @@ final class CreateEditSummaryResource implements PageItemInterface
     /**
      * Get the resource as an array.
      *
-     * @return array{content: string, title: string, url: string}
+     * @return array{content: string, title: string, url: string|false}
      */
     public function getItem(Page $page): array
     {
         return [
             'content' => $page->getMetaDescription(),
             'title' => $page->getTitle(),
-            'url' => $page->getUrlEdit(),
+            'url' => $page->getUrlAdminEdit(),
         ];
     }
 }

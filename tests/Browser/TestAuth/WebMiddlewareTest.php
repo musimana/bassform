@@ -57,7 +57,7 @@ final class WebMiddlewareTest extends DuskTestCase
             ->on(new Dashboard($user))
             ->screenshotWholePage('dashboard-user-' . str_replace(['@', '.'], '_', $user->email))
 
-            ->visit($page->getUrlEdit())
+            ->visit($page->getUrlAdminEdit())
             ->assertSee('404')
             ->assertSee('NOT FOUND')
             ->screenshotWholePage('cms-user-denied')

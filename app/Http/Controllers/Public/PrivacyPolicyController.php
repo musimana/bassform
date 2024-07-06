@@ -20,7 +20,7 @@ final class PrivacyPolicyController extends Controller
 
         return (new PublicViewRepository)->getViewDetails(
             $template,
-            (new PageContentResource)->getItem($page),
+            (new PageContentResource($page))->getItem(),
             (new PageMetadataResource)->getItem($page)
         );
     }
