@@ -20,7 +20,9 @@ final class PageSitemapResource implements PageItemInterface
     public function getItem(Page $page): array
     {
         $updated_at = strtotime(strval($page->updated_at));
-        $lastmod = $updated_at ? date('Y-m-d', $updated_at) : strval(config('metadata.first_published_year')) . '-01-01';
+        $lastmod = $updated_at
+            ? date('Y-m-d', $updated_at)
+            : strval(config('metadata.first_published_year')) . '-01-01';
 
         return [
             'loc' => $page->getUrl(),
