@@ -1,15 +1,14 @@
 <?php
 
 use App\Http\Resources\Views\Public\Content\PageContentResource;
-use App\Interfaces\Resources\Items\PageItemInterface;
-use App\Models\Page;
+use App\Interfaces\Resources\Items\ConstantItemInterface;
 
 arch('it implements the expected interface')
     ->expect(PageContentResource::class)
-    ->toImplement(PageItemInterface::class);
+    ->toImplement(ConstantItemInterface::class);
 
 test('getItem returns ok', function () {
-    $actual = (new PageContentResource)->getItem(new Page);
+    $actual = (new PageContentResource)->getItem();
 
     expect($actual)
         ->toHaveCamelCaseKeys()

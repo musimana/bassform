@@ -3,13 +3,18 @@
 namespace App\Http\Resources\Views\Public\Content;
 
 use App\Http\Resources\Views\Public\Blocks\BlocksResource;
-use App\Interfaces\Resources\Items\PageItemInterface;
+use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 
-final class PageContentResource implements PageItemInterface
+final class PageContentResource implements ConstantItemInterface
 {
+    /** Instantiate the resource. */
+    public function __construct(
+        protected Page $page = new Page
+    ) {}
+
     /**
-     * Get the content array for the given page's full public resource.
+     * Get the full public item array for the resource's page.
      *
      * @return array{
      *  blocks: array<int, array{
@@ -21,13 +26,13 @@ final class PageContentResource implements PageItemInterface
      *  subheading: string,
      * }
      */
-    public function getItem(Page $page): array
+    public function getItem(): array
     {
         return [
-            'blocks' => (new BlocksResource)->getItems($page->blocks),
-            'bodytext' => $page->getContent(),
-            'heading' => $page->getTitle(),
-            'subheading' => $page->getSubtitle(),
+            'blocks' => (new BlocksResource)->getItems($this->page->blocks),
+            'bodytext' => $this->page->getContent(),
+            'heading' => $this->page->getTitle(),
+            'subheading' => $this->page->getSubtitle(),
         ];
     }
 }
