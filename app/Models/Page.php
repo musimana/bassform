@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
- * @method Builder|static inSitemap()
  * @method Builder|static isHomepage()
  * @method Builder|static isNotHomepage()
  * @method static Builder|static query()
@@ -68,14 +67,6 @@ final class Page extends Model
         return $this->is_homepage
             ? route('home')
             : route('page.show', $this->slug);
-    }
-
-    /** Returns all Page models that should be in the sitemap (in_sitemap = 1). */
-    public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
-    {
-        return $query->where(function ($query) {
-            $query->where('in_sitemap', 1);
-        });
     }
 
     /** Return all Page models flagged as the homepage (is_homepage = 1). */

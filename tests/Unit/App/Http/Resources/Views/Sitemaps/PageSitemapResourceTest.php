@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Resources\Views\Sitemaps\PageSitemapResource;
-use App\Interfaces\Resources\Items\PageItemInterface;
+use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,14 +18,10 @@ beforeEach(function () {
 
 arch('it implements the expected interface')
     ->expect(PageSitemapResource::class)
-    ->toImplement(PageItemInterface::class);
-
-arch('it has a getItem method')
-    ->expect(PageSitemapResource::class)
-    ->toHaveMethod('getItem');
+    ->toImplement(ConstantItemInterface::class);
 
 test('getItem returns ok', function () {
-    $actual = (new PageSitemapResource)->getItem($this->page);
+    $actual = (new PageSitemapResource($this->page))->getItem();
 
     expect($actual)
         ->toHaveCamelCaseKeys()
@@ -33,7 +29,7 @@ test('getItem returns ok', function () {
         ->toMatchArray([
             'loc' => url('test-page'),
             'lastmod' => now()->format('Y-m-d'),
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'changefreq' => 'monthly',
+            'priority' => '0.7',
         ]);
 });

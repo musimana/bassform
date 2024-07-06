@@ -10,10 +10,6 @@ arch('it implements the expected interface')
     ->expect(PagesSitemapResource::class)
     ->toImplement(ConstantIndexInterface::class);
 
-arch('it has a getItems method')
-    ->expect(PagesSitemapResource::class)
-    ->toHaveMethod('getItems');
-
 test('getItems returns ok', function () {
     $actual = (new PagesSitemapResource)->getItems();
 
@@ -28,7 +24,7 @@ test('getItems returns ok', function () {
             'loc' => url('/'),
             'lastmod' => strval(config('metadata.first_published_year')) . '-01-01',
             'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'priority' => '1.0',
         ]);
 
     expect($actual[1])
@@ -37,7 +33,7 @@ test('getItems returns ok', function () {
         ->toMatchArray([
             'loc' => url('privacy'),
             'lastmod' => strval(config('metadata.first_published_year')) . '-01-01',
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'changefreq' => 'yearly',
+            'priority' => '0.1',
         ]);
 });

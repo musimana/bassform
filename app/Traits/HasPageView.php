@@ -2,6 +2,13 @@
 
 namespace App\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
+
+/**
+ * @method Builder|static inSitemap()
+ * @method static Builder|static query()
+ */
 trait HasPageView
 {
     use HasContentBlocks;
@@ -34,5 +41,13 @@ trait HasPageView
     public function isInSitemap(): bool
     {
         return $this->in_sitemap ?? false;
+    }
+
+    /** Returns all models that should be in the sitemap (in_sitemap = 1). */
+    public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
+    {
+        return $query->where(function ($query) {
+            $query->where('in_sitemap', 1);
+        });
     }
 }
