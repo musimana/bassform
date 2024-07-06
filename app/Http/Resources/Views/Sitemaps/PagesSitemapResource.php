@@ -14,7 +14,7 @@ final class PagesSitemapResource implements ConstantIndexInterface
      *  loc: string,
      *  lastmod: string,
      *  changefreq: string,
-     *  priority: float
+     *  priority: string
      * }>
      */
     public function getItems(): array

@@ -33,7 +33,7 @@ test('getItem returns ok', function () {
         ->toMatchArray([
             'loc' => url('test-page'),
             'lastmod' => now()->format('Y-m-d'),
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'changefreq' => 'monthly',
+            'priority' => '0.7',
         ]);
 });

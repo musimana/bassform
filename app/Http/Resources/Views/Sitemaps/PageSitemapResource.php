@@ -21,7 +21,7 @@ final class PageSitemapResource implements ConstantItemInterface
      *  loc: string,
      *  lastmod: string,
      *  changefreq: string,
-     *  priority: float
+     *  priority: string
      * }
      */
     public function getItem(): array
@@ -34,8 +34,8 @@ final class PageSitemapResource implements ConstantItemInterface
         return [
             'loc' => $this->page->getUrl(),
             'lastmod' => $lastmod,
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'changefreq' => $this->changefreq,
+            'priority' => $this->priority,
         ];
     }
 }

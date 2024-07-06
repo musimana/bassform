@@ -31,7 +31,7 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
             'loc' => url('/'),
             'lastmod' => now()->format('Y-m-d'),
             'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'priority' => '1.0',
         ]);
 
     expect($content[1])
@@ -40,8 +40,8 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
         ->toMatchArray([
             'loc' => url('privacy'),
             'lastmod' => now()->format('Y-m-d'),
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
+            'changefreq' => 'yearly',
+            'priority' => '0.1',
         ]);
 
     expect($content[2])
@@ -66,7 +66,7 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
             '<loc>' . url('/') . '</loc>',
             '<lastmod>' . now()->format('Y-m-d') . '</lastmod>',
             '<changefreq>weekly</changefreq>',
-            '<priority>0.8</priority>',
+            '<priority>1.0</priority>',
             '</url>',
             '</urlset>',
         ], false);
