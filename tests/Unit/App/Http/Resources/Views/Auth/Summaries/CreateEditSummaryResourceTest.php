@@ -20,6 +20,6 @@ test('getItem returns ok', function (Page $page) {
         ->toMatchArray([
             'content' => $page->getMetaDescription(),
             'title' => $page->getTitle(),
-            'url' => $page->getUrlEdit(),
+            'url' => $page->getUrlAdminEdit(),
         ]);
 })->with('pages');

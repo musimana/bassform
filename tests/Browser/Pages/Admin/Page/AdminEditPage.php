@@ -16,7 +16,7 @@ final class AdminEditPage extends AdminPage
     /** Get the URL for the page. */
     public function url(): string
     {
-        return $this->page->getUrlEdit();
+        return $this->page->getUrlAdminEdit() ?: '';
     }
 
     /** Assert that the browser is on the page. */
