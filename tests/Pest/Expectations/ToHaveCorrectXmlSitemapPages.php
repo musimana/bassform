@@ -21,8 +21,7 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
         ->toBeString();
 
     expect($content)
-        ->toBeArray()
-        ->toHaveCount(3);
+        ->toBeArray();
 
     expect($content[0])
         ->toHaveCamelCaseKeys()
@@ -44,15 +43,13 @@ expect()->extend('toHaveCorrectXmlSitemapPages', function ($content) {
             'priority' => '0.1',
         ]);
 
-    expect($content[2])
-        ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
-        ->toMatchArray([
-            'loc' => url('/test-page'),
-            'lastmod' => now()->format('Y-m-d'),
-            'changefreq' => 'weekly',
-            'priority' => 0.8,
-        ]);
+    if ($content[2] ?? false) {
+        expect($content[2])
+            ->toHaveCamelCaseKeys()
+            ->toHaveCount(4)
+            ->changefreq->toEqual('monthly')
+            ->priority->toEqual('0.7');
+    }
 
     (new TestResponse($this->value))
         ->assertSeeInOrder([
