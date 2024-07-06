@@ -10,10 +10,6 @@ arch('it implements the expected interface')
     ->expect(PagesSitemapResource::class)
     ->toImplement(ConstantIndexInterface::class);
 
-arch('it has a getItems method')
-    ->expect(PagesSitemapResource::class)
-    ->toHaveMethod('getItems');
-
 test('getItems returns ok', function () {
     $actual = (new PagesSitemapResource)->getItems();
 
