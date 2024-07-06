@@ -23,12 +23,12 @@ final class PagesSitemapResource implements ConstantIndexInterface
 
         if (!Page::where([['is_homepage', true], ['in_sitemap', true]])->exists()) {
             $page = Page::factory()->homePage()->make(['updated_at' => Page::min('updated_at')]);
-            $static_pages[] = (new PageSitemapResource)->getItem($page);
+            $static_pages[] = (new PageSitemapResource($page, 'weekly', '1.0'))->getItem();
         }
 
         if (!Page::where([['slug', 'privacy'], ['in_sitemap', true]])->exists()) {
             $page = Page::factory()->privacyPage()->make(['updated_at' => Page::min('updated_at')]);
-            $static_pages[] = (new PageSitemapResource)->getItem($page);
+            $static_pages[] = (new PageSitemapResource($page, 'yearly', '0.1'))->getItem();
         }
 
         return array_merge(
@@ -36,7 +36,7 @@ final class PagesSitemapResource implements ConstantIndexInterface
             Page::query()
                 ->inSitemap()
                 ->get()
-                ->map(fn ($page) => (new PageSitemapResource)->getItem($page))
+                ->map(fn ($page) => (new PageSitemapResource($page))->getItem())
                 ->toArray(),
         );
     }

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Resources\Views\Sitemaps\PageSitemapResource;
-use App\Interfaces\Resources\Items\PageItemInterface;
+use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,14 +18,14 @@ beforeEach(function () {
 
 arch('it implements the expected interface')
     ->expect(PageSitemapResource::class)
-    ->toImplement(PageItemInterface::class);
+    ->toImplement(ConstantItemInterface::class);
 
 arch('it has a getItem method')
     ->expect(PageSitemapResource::class)
     ->toHaveMethod('getItem');
 
 test('getItem returns ok', function () {
-    $actual = (new PageSitemapResource)->getItem($this->page);
+    $actual = (new PageSitemapResource($this->page))->getItem();
 
     expect($actual)
         ->toHaveCamelCaseKeys()
