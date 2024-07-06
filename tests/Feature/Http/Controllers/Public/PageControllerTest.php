@@ -30,7 +30,7 @@ test('show renders the page view', function (Page $page) {
         expect($headers)->toHaveCorrectHeaderValues();
 
         $data = (new DetailsViewResource)->getItem(
-            (new PageContentResource)->getItem($page),
+            (new PageContentResource($page))->getItem(),
             (new PageMetadataResource)->getItem($page)
         );
 

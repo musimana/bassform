@@ -22,7 +22,7 @@ it('can render the privacy page view without a Page model', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     $data = (new DetailsViewResource)->getItem(
-        (new PageContentResource)->getItem($page),
+        (new PageContentResource($page))->getItem(),
         (new PageMetadataResource)->getItem($page)
     );
 
@@ -53,7 +53,7 @@ it('can render the privacy page view with a Page model', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     $data = (new DetailsViewResource)->getItem(
-        (new PageContentResource)->getItem($page),
+        (new PageContentResource($page))->getItem(),
         (new PageMetadataResource)->getItem($page)
     );
 
