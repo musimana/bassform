@@ -22,7 +22,7 @@ import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
     <AppSectionHtml
       v-else
       :html="block.data.html"
-      class="px-4 pb-12 text-sm text-gray-900 dark:text-gray-100"
+      class="app-article px-4 pb-8 leading-relaxed"
       :id="'section-' + index"
     ></AppSectionHtml>
   </div>
