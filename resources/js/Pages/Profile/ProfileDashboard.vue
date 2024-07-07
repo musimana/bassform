@@ -1,7 +1,7 @@
 <script setup>
 import AppPanel from '@/Components/Sections/AppPanel.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
-import BlockIndexPanels from '@/Components/Blocks/BlockIndexPanels.vue'
+import BlockPanelLinks from '@/Components/Blocks/BlockPanelLinks.vue'
 import LinkButton from '@/Components/Controls/Links/LinkButton.vue'
 import LayoutUser from '@/Layouts/LayoutUser.vue'
 
@@ -35,7 +35,7 @@ const props = defineProps({
     </AppPanel>
 
     <AppPanel>
-      <BlockIndexPanels
+      <BlockPanelLinks
         :items="$page.props.content.items ?? []"
         title="Edit Pages"
       />
