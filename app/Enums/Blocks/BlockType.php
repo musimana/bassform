@@ -9,6 +9,7 @@ enum BlockType: string
 {
     /* List of the content blocks available to the application. */
     case PANEL_LINKS = 'panel-links';
+    case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
     case UNKNOWN = 'unknown';
@@ -44,6 +45,9 @@ enum BlockType: string
                 'label' => 'Panel Links',
                 'inputs' => [
                 ],
+            ],
+            self::SECTION_DIVIDER => [
+                'label' => 'Section Divider',
             ],
             self::STACK => [
                 'label' => 'Application Stack',
