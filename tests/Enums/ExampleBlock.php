@@ -8,6 +8,7 @@ use App\Models\Block;
 enum ExampleBlock: string
 {
     /* List of the example content blocks available for tests. */
+    case PANEL_LINKS = 'panel-links';
     case STACK = 'stack';
     case TABS = 'tabs';
     case UNKNOWN = 'unknown';
@@ -20,6 +21,21 @@ enum ExampleBlock: string
     public function exampleData(): ?array
     {
         return match ($this) {
+            self::PANEL_LINKS => [
+                'title' => 'Panel Links Title',
+                'items' => [
+                    [
+                        'title' => 'Panel 1 Title',
+                        'description' => 'Panel 1 Title Description',
+                        'url' => 'http://example.com',
+                    ],
+                    [
+                        'title' => 'Panel 2 Title',
+                        'description' => 'Panel 2 Title Description',
+                        'url' => 'http://example.com/test',
+                    ],
+                ],
+            ],
             self::STACK => null,
             self::TABS => [
                 'tabs' => ['Tab One', 'Tab Two'],
