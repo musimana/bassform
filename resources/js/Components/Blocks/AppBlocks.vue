@@ -2,6 +2,7 @@
 import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
 import BlockPanelLinks from '@/Components/Blocks/BlockPanelLinks.vue'
 import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 </script>
 
 <template>
@@ -18,6 +19,8 @@ import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
       :block-data="block.data"
       :id="'tabs-' + index"
     />
+
+    <AppSectionDivider v-else-if="block?.type === 'section-divider'" />
 
     <AppSectionHtml
       v-else
