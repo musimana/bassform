@@ -51,11 +51,9 @@ enum BlockType: string
             ],
             self::STACK => [
                 'label' => 'Application Stack',
-                'inputs' => [],
             ],
             self::TABS => [
                 'label' => 'Tabs',
-                'inputs' => [],
             ],
             default => [],
         };
