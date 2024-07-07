@@ -1,10 +1,18 @@
 <script setup>
 import AppSectionHtml from '@/Components/Sections/AppSectionHtml.vue'
+import BlockPanelLinks from '@/Components/Blocks/BlockPanelLinks.vue'
 import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
 </script>
 
 <template>
   <div v-for="(block,index) in $page.props.content.blocks" :key="index">
+    <BlockPanelLinks
+      v-if="block?.type === 'panel-links'"
+      :id="'panel-links-' + index"
+      :items="block.data.items"
+      :title="block.data.title"
+    />
+
     <BlockTabs
       v-if="(block,index) in $page.props.content.blocks"
       :block-data="block.data"
