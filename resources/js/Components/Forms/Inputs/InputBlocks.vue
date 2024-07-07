@@ -15,7 +15,7 @@ const props = defineProps({
     class="border mb-4 p-4 bg-gray-300 dark:bg-gray-700 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none"
   >
     <div
-      v-if="block.type === 'stack'"
+      v-if="!block.schema.inputs.length && block.data?.html"
       class="opacity-75 cursor-not-allowed"
       v-html="block.data.html"
     ></div>
