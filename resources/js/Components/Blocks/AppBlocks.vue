@@ -22,8 +22,8 @@ import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
     <AppSectionHtml
       v-else
       :html="block.data.html"
-      :id="'block-' + index"
       class="px-4 pb-12 text-sm text-gray-900 dark:text-gray-100"
+      :id="'section-' + index"
     ></AppSectionHtml>
   </div>
 </template>
