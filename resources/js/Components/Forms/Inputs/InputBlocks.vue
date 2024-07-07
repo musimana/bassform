@@ -12,7 +12,7 @@ const props = defineProps({
   <div
     v-for="(block,index) in props.blocks"
     :key="index"
-    class="flex border mb-4 p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none"
+    class="border mb-4 p-4 bg-gray-300 dark:bg-gray-700 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none"
   >
     <div
       v-if="block.type === 'stack'"
