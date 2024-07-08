@@ -1,4 +1,5 @@
 <script setup>
+import AppBlocks from '@/Components/Blocks/AppBlocks.vue'
 import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentForms from '@/Pages/Public/Partials/ContentForms.vue'
 
@@ -16,6 +17,8 @@ defineProps({
 
 <template>
   <LayoutGuest>
+    <AppBlocks />
+
     <ContentForms />
   </LayoutGuest>
 </template>
