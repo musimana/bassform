@@ -12,6 +12,7 @@ enum ExampleBlock: string
     case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
+    case WYSIWYG = 'wysiwyg';
     case UNKNOWN = 'unknown';
 
     /**
@@ -43,6 +44,7 @@ enum ExampleBlock: string
                 'tabs' => ['Tab One', 'Tab Two'],
                 'tabContents' => ['<p>Tab one content.</p>', '<p>Tab two content.</p>'],
             ],
+            self::WYSIWYG => ['html' => '<p>test</p>'],
             default => BlockType::from($this->value)->staticData(),
         };
     }
