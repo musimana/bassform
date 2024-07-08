@@ -1,5 +1,5 @@
 <script setup>
-import LayoutDefault from '@/Layouts/LayoutDefault.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentForms from '@/Pages/Public/Partials/ContentForms.vue'
 
 defineProps({
@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <LayoutDefault>
+  <LayoutGuest>
     <ContentForms />
-  </LayoutDefault>
+  </LayoutGuest>
 </template>
