@@ -22,11 +22,6 @@ $seeds = [
         'slug' => 'home',
         'title' => config('app.name'),
         'subtitle' => config('metadata.description'),
-        'content' => '
-            <p class="font-semibold">
-                <em>Welcome traveller, you can find demos of the app\'s features via the links below, with more available from the dashboard when you login.</em>
-            </p>
-        ',
         'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
@@ -34,6 +29,22 @@ $seeds = [
         'in_sitemap' => 0,
         'is_homepage' => 1,
         'blocks' => [
+            ['type' => BlockType::SECTION_DIVIDER->value],
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <p><strong>Welcome traveller</strong>, you can find demos of the app\'s features via the links below,
+                            with more available from the dashboard when you login.</p>
+                        <p>You can also see the code on the
+                            <a
+                                href="https://github.com/musimana/bassform"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            ><i>Public Repo</i></a>.</p>
+                    ',
+                ]),
+            ],
             [
                 'type' => BlockType::PANEL_LINKS->value,
                 'data' => json_encode([
