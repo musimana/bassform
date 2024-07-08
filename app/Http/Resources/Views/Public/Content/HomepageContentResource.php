@@ -4,6 +4,7 @@ namespace App\Http\Resources\Views\Public\Content;
 
 use App\Http\Resources\Views\Public\Blocks\BlocksResource;
 use App\Http\Resources\Views\Public\Summaries\PageSummaryResource;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
 
@@ -37,5 +38,11 @@ final class HomepageContentResource implements ConstantItemInterface
                 ->toArray(),
             'subheading' => $page?->getSubtitle() ?? '',
         ];
+    }
+
+    /** Get the template for the resource. */
+    public function getTemplate(): ?WebpageTemplate
+    {
+        return $this->page->getTemplate();
     }
 }

@@ -62,3 +62,10 @@ test('getItem returns ok with a Page Model', function () {
             'subheading' => $page->subtitle,
         ]);
 });
+
+test('getTemplate returns a WebpageTemplate', function () {
+    $actual = (new HomepageContentResource)->getTemplate();
+
+    expect($actual?->value)
+        ->toEqual('Public/PublicContent');
+});
