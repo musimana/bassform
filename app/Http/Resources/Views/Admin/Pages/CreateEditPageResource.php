@@ -31,7 +31,7 @@ final class CreateEditPageResource implements PageItemInterface
     {
         return [
             'id' => $page->id,
-            'blocks' => (new AdminBlocksResource)->getItems($page->blocks),
+            'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
             'content' => $page->getContent(),
             'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),

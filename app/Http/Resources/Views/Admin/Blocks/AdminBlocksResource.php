@@ -26,6 +26,7 @@ final class AdminBlocksResource implements CollectionIndexInterface
     }
 
     /**
+     * Get the resource's blocks collection as an array.
      *
      * @return array<int, array{
      *  id: int|false,
@@ -34,9 +35,9 @@ final class AdminBlocksResource implements CollectionIndexInterface
      *  schema: array{label: string, inputs: array<int, bool|int|string>}
      * }>
      */
-    public function getItems(Collection $collection): array
+    public function getItems(): array
     {
-        return $collection->map(
+        return $this->blocks->map(
             fn (Block $block) => (new AdminBlockResource($block))->getItem()
         )->toArray();
     }

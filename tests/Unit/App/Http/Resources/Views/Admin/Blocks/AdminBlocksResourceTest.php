@@ -22,7 +22,7 @@ test('getCollection returns ok', function (Collection $blocks) {
 })->with('blocks');
 
 test('getItems returns ok', function (Collection $blocks, array $expected) {
-    $actual = (new AdminBlocksResource)->getItems($blocks);
+    $actual = (new AdminBlocksResource($blocks))->getItems();
 
     foreach ($actual as $block) {
         $block_formatted = $block;
