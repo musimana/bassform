@@ -12,6 +12,7 @@ enum BlockType: string
     case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
+    case WYSIWYG = 'wysiwyg';
     case UNKNOWN = 'unknown';
 
     /**
@@ -54,6 +55,11 @@ enum BlockType: string
             ],
             self::TABS => [
                 'label' => 'Tabs',
+            ],
+            self::WYSIWYG => [
+                'label' => 'Custom',
+                'inputs' => [
+                ],
             ],
             default => [],
         };
