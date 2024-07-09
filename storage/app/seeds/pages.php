@@ -69,10 +69,6 @@ $seeds = [
         'meta_description' => 'Page demonstrating the UI control components that come with the template. Including accordions, buttons, dropdowns & modals.',
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
-            [
-                'type' => BlockType::TABS->value,
-                'data' => json_encode(['tabs' => ['Pop-ups', 'Buttons']]),
-            ],
         ],
     ],
 
