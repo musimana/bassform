@@ -2,10 +2,12 @@
 
 use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\DetailsViewResource;
-use App\Http\Resources\Views\Public\Content\HomepageContentResource;
+use App\Http\Resources\Views\Public\Content\PageContentResource;
 use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
+use App\Models\Page;
 
 it('can render the homepage view', function () {
+    $page = Page::factory()->homePage()->make();
     $route = route('home');
     $actual = $this->get($route);
     $session = session()->all();
@@ -21,7 +23,7 @@ it('can render the homepage view', function () {
     expect($headers)->toHaveCorrectHeaderValues();
 
     $data = (new DetailsViewResource)->getItem(
-        (new HomepageContentResource)->getItem(),
+        (new PageContentResource($page))->getItem(),
         (new HomepageMetadataResource)->getItem()
     );
 
