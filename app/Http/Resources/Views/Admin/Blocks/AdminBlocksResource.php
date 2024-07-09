@@ -2,12 +2,12 @@
 
 namespace App\Http\Resources\Views\Admin\Blocks;
 
-use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
+use App\Interfaces\Resources\Indexes\VariableCollectionIndexInterface;
 use App\Models\Block;
 use App\Models\Page;
 use Illuminate\Support\Collection;
 
-final class AdminBlocksResource implements CollectionIndexInterface
+final class AdminBlocksResource implements VariableCollectionIndexInterface
 {
     /** Instantiate the resource. */
     public function __construct(

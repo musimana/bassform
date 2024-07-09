@@ -3,7 +3,7 @@
 use App\Enums\Blocks\BlockType;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlockResource;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
-use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
+use App\Interfaces\Resources\Indexes\VariableCollectionIndexInterface;
 use App\Models\Block;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 
 arch('it implements the expected interface')
     ->expect(AdminBlocksResource::class)
-    ->toImplement(CollectionIndexInterface::class);
+    ->toImplement(VariableCollectionIndexInterface::class);
 
 test('getCollection returns ok', function (Collection $blocks) {
     $actual = (new AdminBlocksResource($blocks))->getCollection();
