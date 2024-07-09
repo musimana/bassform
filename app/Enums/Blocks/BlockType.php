@@ -38,7 +38,7 @@ enum BlockType: string
      */
     public function schema(): array
     {
-        return match ($this) {
+        $block_schema = match ($this) {
             self::STACK => [
                 'label' => 'Application Stack',
                 'inputs' => [],
@@ -47,10 +47,12 @@ enum BlockType: string
                 'label' => 'Tabs',
                 'inputs' => [],
             ],
-            self::UNKNOWN => [
-                'label' => '{unknown}',
-                'inputs' => [],
-            ],
+            default => [],
         };
+
+        return [
+            'label' => $block_schema['label'] ?? '{unknown}',
+            'inputs' => $block_schema['inputs'] ?? [],
+        ];
     }
 }
