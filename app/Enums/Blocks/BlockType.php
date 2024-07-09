@@ -8,6 +8,7 @@ use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 enum BlockType: string
 {
     /* List of the content blocks available to the application. */
+    case PANEL_LINKS = 'panel-links';
     case STACK = 'stack';
     case TABS = 'tabs';
     case UNKNOWN = 'unknown';
@@ -39,6 +40,11 @@ enum BlockType: string
     public function schema(): array
     {
         $block_schema = match ($this) {
+            self::PANEL_LINKS => [
+                'label' => 'Panel Links',
+                'inputs' => [
+                ],
+            ],
             self::STACK => [
                 'label' => 'Application Stack',
                 'inputs' => [],

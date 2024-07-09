@@ -13,6 +13,9 @@ use App\Enums\Webpages\WebpageTemplate;
 |
 */
 
+$description_controls = 'Page demonstrating the UI control components that come with the template. Including accordions, buttons, dropdowns & modals.';
+$description_forms = 'Page demonstrating the UI form & input components that come with the template. Including checkbox, text, select & file upload inputs.';
+
 $seeds = [
 
     [
@@ -30,6 +33,26 @@ $seeds = [
         'template' => WebpageTemplate::PUBLIC_INDEX->value,
         'in_sitemap' => 0,
         'is_homepage' => 1,
+        'blocks' => [
+            [
+                'type' => BlockType::PANEL_LINKS->value,
+                'data' => json_encode([
+                    'title' => 'Features',
+                    'items' => [
+                        [
+                            'title' => 'Controls',
+                            'content' => $description_controls,
+                            'url' => url('controls'),
+                        ],
+                        [
+                            'title' => 'Forms',
+                            'content' => $description_forms,
+                            'url' => url('forms'),
+                        ],
+                    ],
+                ])
+            ],
+        ],
     ],
 
     [
@@ -66,7 +89,7 @@ $seeds = [
         'title' => 'Controls',
         'subtitle' => 'The UI control components that come with the template are demonstrated below.',
         'meta_title' => 'Controls',
-        'meta_description' => 'Page demonstrating the UI control components that come with the template. Including accordions, buttons, dropdowns & modals.',
+        'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
         ],
@@ -77,7 +100,7 @@ $seeds = [
         'title' => 'Forms',
         'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
         'meta_title' => 'Forms',
-        'meta_description' => 'Page demonstrating the UI form & input components that come with the template. Including checkbox, text, select & file upload inputs.',
+        'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
     ],
 
