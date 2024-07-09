@@ -13,6 +13,13 @@ arch('it implements the expected interface')
     ->expect(AdminBlocksResource::class)
     ->toImplement(CollectionIndexInterface::class);
 
+test('getCollection returns ok', function (Collection $blocks) {
+    $actual = (new AdminBlocksResource($blocks))->getCollection();
+
+    expect($actual)
+        ->toEqual($blocks);
+})->with('blocks');
+
 test('getItems returns ok', function (Collection $blocks, array $expected) {
     $actual = (new AdminBlocksResource)->getItems($blocks);
 

@@ -16,7 +16,16 @@ final class AdminBlocksResource implements CollectionIndexInterface
     ) {}
 
     /**
-     * Get the content blocks array for the given block collections.
+     * Get the resource's blocks collection.
+     *
+     * @return Collection<int, Block>
+     */
+    public function getCollection(): Collection
+    {
+        return $this->blocks;
+    }
+
+    /**
      *
      * @return array<int, array{
      *  id: int|false,
