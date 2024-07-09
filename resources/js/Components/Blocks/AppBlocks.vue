@@ -14,10 +14,9 @@ import BlockTabs from '@/Components/Blocks/BlockTabs.vue'
     />
 
     <BlockTabs
-      v-if="(block,index) in $page.props.content.blocks"
+      v-else-if="block?.type === 'tabs'"
       :block-data="block.data"
-      :id="'block-' + index"
-      class="px-4 pb-12 text-sm text-gray-900 dark:text-gray-100"
+      :id="'tabs-' + index"
     />
 
     <AppSectionHtml
