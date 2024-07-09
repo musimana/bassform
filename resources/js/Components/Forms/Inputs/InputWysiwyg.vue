@@ -1,35 +1,95 @@
 <script setup>
 import CKEditor from '@ckeditor/ckeditor5-vue'
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import {
+  ClassicEditor,
+  Essentials,
+  Autoformat,
+  Bold,
+  Italic,
+  BlockQuote,
+  Heading,
+  Link,
+  List,
+  Paragraph,
+  Table,
+  TableToolbar,
+  TextTransformation,
+} from 'ckeditor5'
+import 'ckeditor5/ckeditor5.css'
 
 const model = defineModel({
   type: String,
   required: true,
 })
 
-const editorConfig = {
-  link: {
-    decorators: {
-      openInNewTab: {
-        mode: 'manual',
-        label: 'Open in a new tab',
-        attributes: {
-          target: '_blank',
-          rel: 'noopener noreferrer',
+class Editor extends ClassicEditor {
+  static builtinPlugins = [
+    Essentials,
+    Autoformat,
+    Bold,
+    Italic,
+    BlockQuote,
+    Heading,
+    Link,
+    List,
+    Paragraph,
+    Table,
+    TableToolbar,
+    TextTransformation,
+  ]
+
+  static defaultConfig = {
+    toolbar: {
+      items: [
+        'undo',
+        'redo',
+        '|',
+        'heading',
+        '|',
+        'bold',
+        'italic',
+        '|',
+        'link',
+        'insertTable',
+        'blockQuote',
+        '|',
+        'bulletedList',
+        'numberedList',
+      ],
+    },
+    link: {
+      decorators: {
+        openInNewTab: {
+          mode: 'manual',
+          label: 'Open in a new tab',
+          attributes: {
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          },
         },
       },
     },
-  },
+    table: {
+      contentToolbar: [
+        'tableColumn',
+        'tableRow',
+        'mergeTableCells',
+      ],
+    },
+    language: 'en',
+  }
 }
 
+Editor
+  .create({})
+  .catch(error => console.error(error))
 </script>
 
 <template>
   <div class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none">
     <CKEditor.component
-      :editor="ClassicEditor"
+      :editor="Editor"
       v-model="model"
-      :config="editorConfig"
     ></CKEditor.component>
   </div>
 </template>
