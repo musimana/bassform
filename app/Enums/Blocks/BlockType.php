@@ -2,14 +2,19 @@
 
 namespace App\Enums\Blocks;
 
+use App\Enums\Forms\FormInputType;
 use App\Http\Resources\Formatters\LaravelVersionFormatterResource;
 use App\Http\Resources\Formatters\PhpVersionFormatterResource;
 
 enum BlockType: string
 {
     /* List of the content blocks available to the application. */
+    case HEADER_LOGO = 'header-logo';
+    case PANEL_LINKS = 'panel-links';
+    case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
+    case WYSIWYG = 'wysiwyg';
     case UNKNOWN = 'unknown';
 
     /**
@@ -34,23 +39,59 @@ enum BlockType: string
     /**
      * Get an array of the block type's schema.
      *
-     * @return array{label: string, inputs: array<int, array<string, bool|int|string>>}
+     * @return array{
+     *  label: string,
+     *  inputs: array<int, array<string, string>>,
+     *  inputsRepeatable: array<int, array<string, string>>,
+     * }
      */
     public function schema(): array
     {
-        return match ($this) {
+        $block_schema = match ($this) {
+            self::HEADER_LOGO => [
+                'label' => 'Header with Logo',
+                'inputs' => [
+                    FormInputType::TEXT->schema('Heading', 'heading'),
+                    FormInputType::TEXTAREA->schema('Sub-Heading', 'subheading'),
+                ],
+            ],
+            self::PANEL_LINKS => [
+                'label' => 'Panel Links',
+                'inputs' => [
+                    FormInputType::TEXT->schema('Title', 'title'),
+                ],
+                'inputsRepeatable' => [
+                    FormInputType::TEXT->schema('Panel Title', 'title'),
+                    FormInputType::TEXTAREA->schema('Panel Description', 'description'),
+                    FormInputType::TEXT->schema('Panel URL', 'url'),
+                ],
+            ],
+            self::SECTION_DIVIDER => [
+                'label' => 'Section Divider',
+            ],
             self::STACK => [
                 'label' => 'Application Stack',
-                'inputs' => [],
             ],
             self::TABS => [
                 'label' => 'Tabs',
-                'inputs' => [],
+                'inputsRepeatable' => [
+                    FormInputType::TEXT->schema('Tab Label', 'label'),
+                    FormInputType::WYSIWYG->schema('Tab Content', 'html'),
+                ],
             ],
-            self::UNKNOWN => [
-                'label' => '{unknown}',
-                'inputs' => [],
+            self::WYSIWYG => [
+                'label' => 'Custom',
+                'inputs' => [
+                    FormInputType::WYSIWYG->schema('Content', 'html'),
+                ],
             ],
+            default => [],
         };
+
+        return [
+            'label' => $block_schema['label'] ?? '{unknown}',
+            'inputs' => $block_schema['inputs'] ?? [],
+            'inputsRepeatable' => $block_schema['inputsRepeatable'] ?? [],
+        ];
     }
 }

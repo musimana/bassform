@@ -1,43 +1,38 @@
 <?php
 
-use App\Enums\Blocks\BlockType;
 use App\Models\Page;
+use Tests\Enums\ExampleBlock;
 
-$tabs = ['tabs' => ['Tab One', 'Tab Two'], 'tabContents' => ['<p>Tab one content.</p>', '<p>Tab two content.</p>']];
+$pages_with_blocks = [...array_map(
+    fn (ExampleBlock $block_type) => [
+        'Page min with ' . $block_type->value . ' Block' => fn () => Page::factory()->hasBlocks(1, fn (array $attributes) => [
+            ...$attributes,
+            'parent_type' => Page::class,
+            'type' => $block_type->value,
+            'data' => $block_type->exampleDataJson(),
+        ])->create(),
+    ],
+    ExampleBlock::cases()
+)];
 
-dataset('pages', function () use ($tabs) {
+$pages_with_blocks['Page max, all Blocks'] = function () {
+    $page = Page::factory()->dummy()->create();
+
+    array_map(
+        fn (ExampleBlock $block_type) => $block_type->exampleModel(Page::class, $page->id),
+        ExampleBlock::cases()
+    );
+
+    return Page::with('blocks')->find($page->id);
+};
+
+dataset('pages', function () use ($pages_with_blocks) {
     return [
-        'minimum page record' => [fn () => Page::factory()->create()],
-        'full page record' => [fn () => Page::factory()->dummy()->create()],
-        'homepage' => [fn () => Page::factory()->dummy()->homePage()->create()],
-        'about page' => [fn () => Page::factory()->dummy()->aboutPage()->create()],
-        'privacy page' => [fn () => Page::factory()->dummy()->privacyPage()->create()],
-        'full page with tabs block' => [
-            fn () => Page::factory()->dummy()->hasBlocks(1, fn (array $attributes) => [
-                ...$attributes,
-                'parent_type' => Page::class,
-                'type' => BlockType::TABS->value,
-                'data' => json_encode($tabs),
-            ])->create(),
-        ],
-        'full page with stack block' => [
-            fn () => Page::factory()->dummy()->hasBlocks(1, fn (array $attributes) => [
-                ...$attributes,
-                'parent_type' => Page::class,
-                'type' => BlockType::STACK->value,
-            ])->create(),
-        ],
-        'full page with all blocks' => [
-            fn () => Page::factory()->dummy()->hasBlocks(1, fn (array $attributes) => [
-                ...$attributes,
-                'parent_type' => Page::class,
-                'type' => BlockType::TABS->value,
-                'data' => json_encode($tabs),
-            ])->hasBlocks(1, fn (array $attributes) => [
-                ...$attributes,
-                'parent_type' => Page::class,
-                'type' => BlockType::STACK->value,
-            ])->create(),
-        ],
+        'page min record' => [fn () => Page::factory()->create()],
+        'page max random record' => [fn () => Page::factory()->dummy()->create()],
+        'homepage' => [fn () => Page::factory()->homePage()->create()],
+        'about page' => [fn () => Page::factory()->aboutPage()->create()],
+        'privacy page' => [fn () => Page::factory()->privacyPage()->create()],
+        ...$pages_with_blocks,
     ];
 });

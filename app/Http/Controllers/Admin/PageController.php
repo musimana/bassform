@@ -42,6 +42,7 @@ final class PageController extends Controller
             throw new HttpException(500, 'Failed to update page.');
         }
 
-        return to_route('admin.page.edit', $page);
+        return to_route('admin.page.edit', $page)
+            ->with('status', 'Success');
     }
 }

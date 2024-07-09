@@ -2,21 +2,31 @@
 
 namespace App\Http\Controllers\Public;
 
-use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Http\Resources\Views\Public\Metadata\HomepageMetadataResource;
 use App\Repositories\Views\PublicViewRepository;
 use Inertia\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class HomepageController extends Controller
 {
-    /** Display the public homepage. */
+    /**
+     * Display the public homepage.
+     *
+     * @throws HttpException
+     */
     public function __invoke(): Response
     {
+        $content_resource = new HomepageContentResource;
+
+        if (!$template = $content_resource->getTemplate()) {
+            abort(404);
+        }
+
         return (new PublicViewRepository)->getViewDetails(
-            WebpageTemplate::PUBLIC_INDEX->value,
-            (new HomepageContentResource)->getItem(),
+            $template->value,
+            $content_resource->getItem(),
             (new HomepageMetadataResource)->getItem()
         );
     }

@@ -4,12 +4,14 @@ namespace App\Services\Admin;
 
 use App\Models\Page;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 final class PageAdminService
 {
     /** Update the given page model with the given collection. */
     public static function update(Page $page, Collection $collection): bool
     {
+        $blocks_array = $collection->only('blocks')->toArray();
         $page_array = $collection->except(['blocks']);
 
         $page_array_mutated = [];
@@ -19,12 +21,14 @@ final class PageAdminService
             $page_array_mutated[$key_formatted] = $value;
         }
 
-        $page->fill($page_array_mutated);
+        if (!$page->syncBlocks($blocks_array['blocks'] ?? [])) {
+            Log::error('Failed to sync blocks for page: ' . strval($page->id));
 
-        if (!$page->save()) {
             return false;
         }
 
-        return true;
+        $page->fill($page_array_mutated);
+
+        return $page->save();
     }
 }
