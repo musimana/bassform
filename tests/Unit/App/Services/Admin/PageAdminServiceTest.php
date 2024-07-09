@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Blocks\BlockType;
+use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
 use App\Models\Page;
 use App\Services\Admin\PageAdminService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,17 +21,32 @@ test('update returns correctly for minimum valid data', function (Page $page) {
 
     $page->refresh();
 
-    expect($page->title)->toEqual($data['title']);
-    expect($page->subtitle)->toEqual($page_original->subtitle);
-    expect($page->content)->toEqual($page_original->content);
-    expect($page->meta_title)->toEqual($page_original->meta_title);
-    expect($page->meta_description)->toEqual($page_original->meta_description);
-    expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
-    expect($page->blocks)->toEqual($page_original->blocks);
+    expect($page)
+        ->not->toBeNull()
+        ->title->toEqual($data['title'])
+        ->subtitle->toEqual($page_original->subtitle)
+        ->content->toEqual($page_original->content)
+        ->meta_title->toEqual($page_original->meta_title)
+        ->meta_description->toEqual($page_original->meta_description)
+        ->in_sitemap->toEqual($page_original->in_sitemap)
+        ->template->toEqual($page_original->template)
+        ->blocks->toEqual($page_original->blocks);
 })->with('pages');
 
 test('update returns correctly for maximum valid data', function (Page $page) {
     $page_original = $page;
+
+    $blocks_array = (new AdminBlocksResource($page->blocks, $page))->getItems();
+
+    if ($blocks_array[0] ?? false) {
+        $data_new = match (BlockType::tryFrom($blocks_array[0]['type'])) {
+            BlockType::TABS => ['tabs' => [fake()->word(), fake()->word()], 'tabContents' => ['<p>' . fake()->word() . '.</p>', '<p>' . fake()->word() . '.</p>']],
+            default => false,
+        };
+
+        $blocks_array[0]['data'] = $data_new ?: $blocks_array[0]['data'];
+    }
+
     $data = [
         'title' => 'New Title',
         'subtitle' => 'New Subtitle',
@@ -37,21 +54,24 @@ test('update returns correctly for maximum valid data', function (Page $page) {
         'metaTitle' => 'New Meta-Title',
         'metaDescription' => 'New Meta-Description',
         'inSitemap' => !$page->in_sitemap,
+        'blocks' => $blocks_array,
     ];
 
     $actual = PageAdminService::update($page, collect($data));
 
     expect($actual)->toBeTrue();
 
-    $page->refresh();
+    $page->fresh();
 
-    expect($page->title)->toEqual($data['title']);
-    expect($page->subtitle)->toEqual($data['subtitle']);
-    expect($page->content)->toEqual($data['content']);
-    expect($page->meta_title)->toEqual($data['metaTitle']);
-    expect($page->meta_description)->toEqual($data['metaDescription']);
-    expect($page->in_sitemap)->toEqual($data['inSitemap']);
-    expect($page->blocks)->toEqual($page_original->blocks);
+    expect($page)
+        ->not->toBeNull()
+        ->title->toEqual($data['title'])
+        ->subtitle->toEqual($data['subtitle'])
+        ->content->toEqual($data['content'])
+        ->meta_title->toEqual($data['metaTitle'])
+        ->meta_description->toEqual($data['metaDescription'])
+        ->in_sitemap->toEqual($data['inSitemap'])
+        ->template->toEqual($page_original->template);
 })->with('pages');
 
 test('update ignores unknown fields', function () {
@@ -71,11 +91,15 @@ test('update ignores unknown fields', function () {
 
     /** @phpstan-ignore-next-line (Intentionally accessing undefined property as part of the test.) */
     expect($page->unknown_field)->toBeNull();
-    expect($page->title)->toEqual($data['title']);
-    expect($page->subtitle)->toEqual($page_original->subtitle);
-    expect($page->content)->toEqual($page_original->content);
-    expect($page->meta_title)->toEqual($page_original->meta_title);
-    expect($page->meta_description)->toEqual($page_original->meta_description);
-    expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
-    expect($page->blocks)->toEqual($page_original->blocks);
+
+    expect($page)
+        ->not->toBeNull()
+        ->title->toEqual($data['title'])
+        ->subtitle->toEqual($page_original->subtitle)
+        ->content->toEqual($page_original->content)
+        ->meta_title->toEqual($page_original->meta_title)
+        ->meta_description->toEqual($page_original->meta_description)
+        ->in_sitemap->toEqual($page_original->in_sitemap)
+        ->template->toEqual($page_original->template)
+        ->blocks->toEqual($page_original->blocks);
 });

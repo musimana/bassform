@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Views\Admin\Blocks;
 
+use App\Http\Resources\Views\Public\Blocks\BlockDataResource;
 use App\Http\Resources\Views\Public\Blocks\BlockResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Block;
@@ -32,5 +33,17 @@ final class AdminBlockResource implements ConstantItemInterface
                 'schema' => $this->block->getType()->schema(),
             ],
         );
+    }
+
+    /**
+     * Get the content array for the resource's block.
+     *
+     * @param  array<string, array<int, array<string, string>|string>|string>|null  $data  = null
+     */
+    public function getModel(?array $data = null): Block|false
+    {
+        return $this->block = $this->block->fill([
+            'data' => (new BlockDataResource($this->block->getType(), $data))->getJsonValidated(),
+        ]);
     }
 }

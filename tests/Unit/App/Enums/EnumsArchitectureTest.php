@@ -10,6 +10,10 @@ test('app/Enums/Blocks has valid architecture')
     ->expect('App\Enums\Blocks')
     ->toHavePrefix('Block');
 
+test('app/Enums/Forms has valid architecture')
+    ->expect('App\Enums\Forms')
+    ->toHavePrefix('Form');
+
 test('app/Enums/Webpages has valid architecture')
     ->expect('App\Enums\Webpages')
     ->toHavePrefix('Webpage');
