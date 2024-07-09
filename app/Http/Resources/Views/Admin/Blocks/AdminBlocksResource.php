@@ -4,10 +4,17 @@ namespace App\Http\Resources\Views\Admin\Blocks;
 
 use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
 use App\Models\Block;
+use App\Models\Page;
 use Illuminate\Support\Collection;
 
 final class AdminBlocksResource implements CollectionIndexInterface
 {
+    /** Instantiate the resource. */
+    public function __construct(
+        protected Collection $blocks = new Collection,
+        protected Page $parent = new Page
+    ) {}
+
     /**
      * Get the content blocks array for the given block collections.
      *
