@@ -17,6 +17,10 @@ test('rules returns ok', function () {
     $actual = $this->subject->rules();
 
     $this->assertExactValidationRules([
+        'blocks' => [
+            'nullable',
+            'max:5120',
+        ],
         'title' => [
             'required',
             'string',
