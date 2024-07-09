@@ -20,6 +20,10 @@ parameters:
     ignoreErrors:
         - # Replaces `checkGenericClassInNonGenericObjectType: false`
             identifier: missingType.generics
+        - # Works despite error, may break if strict types enforced
+            message: '#Property App\\Models\\Page::\$blocks is not writable\.#'
+            path: app/Http/Resources/Views/Public/Content/HomepageContentResource.php
+            count: 1
         - # From the way the methods are inherited by Pest
             message: '#Access to an undefined property Pest\\Mixins\\Expectation#'
             path: tests

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Enums\Webpages\WebpageTemplate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
@@ -29,6 +30,12 @@ trait HasPageView
     public function getMetaTitle(): string
     {
         return ($this->meta_title && trim($this->meta_title) !== '') ? $this->meta_title : $this->getTitle();
+    }
+
+    /** Get the webpage template for the resource. */
+    public function getTemplate(): ?WebpageTemplate
+    {
+        return WebpageTemplate::tryFrom($this?->template ?? '');
     }
 
     /** Get the title for the resource. */
