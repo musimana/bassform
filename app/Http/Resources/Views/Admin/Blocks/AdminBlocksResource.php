@@ -40,4 +40,33 @@ final class AdminBlocksResource implements CollectionIndexInterface
             fn (Block $block) => (new AdminBlockResource($block))->getItem()
         )->toArray();
     }
+
+    /**
+     * Set the resource's blocks collection to match the given blocks array.
+     *
+     * @param  array<int, array{
+     *  id: int|false,
+     *  type: string,
+     *  data: array<string, array<int, string>|string>|string,
+     *  schema: array{label: string, inputs: array<int, array<string, bool|int|string>>}
+     * }>  $blocks_array  = []
+     */
+    public function setItems(array $blocks_array = []): void
+    {
+        $this->blocks = collect();
+
+        foreach ($blocks_array as $display_order => $block_array) {
+            $data = is_array($block_array['data']) ? $block_array['data'] : [];
+
+            $this->blocks->push(
+                (new AdminBlockResource(new Block([
+                    'id' => $block_array['id'],
+                    'parent_type' => $this->parent::class,
+                    'parent_id' => $this->parent->id,
+                    'type' => $block_array['type'],
+                    'display_order' => $display_order,
+                ])))->getModel($data)
+            );
+        }
+    }
 }

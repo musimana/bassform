@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Blocks\BlockType;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlockResource;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
 use App\Interfaces\Resources\Indexes\CollectionIndexInterface;
@@ -40,4 +41,32 @@ test('getItems returns ok', function (Collection $blocks, array $expected) {
     expect($actual)
         ->toBeArray()
         ->toHaveCount(count($expected));
+})->with('blocks');
+
+test('setItems returns ok', function (Collection $blocks, array $expected) {
+    $expected = array_map(
+        fn ($block_array) => [
+            'id' => false,
+            'type' => $block_array['type'],
+            'data' => $block_array['data'],
+            'schema' => BlockType::from($block_array['type'])->schema(),
+        ],
+        $expected
+    );
+
+    $resource = new AdminBlocksResource;
+    $resource->setItems($expected);
+
+    $actual = $resource->getCollection();
+
+    foreach ($actual as $index => $block) {
+        $resource = (new AdminBlockResource($block))->getItem();
+
+        expect($resource)
+            ->toBeArray()
+            ->type->toEqual($expected[$index]['type']);
+    }
+
+    expect($actual)
+        ->toHaveCount(count($blocks));
 })->with('blocks');
