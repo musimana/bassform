@@ -74,12 +74,12 @@ $seeds = [
                 The template is open source and once a new project has been initiated from it,
                 you\'re free to customise it however you wish.
             </p>
-            <hr class="my-8 border-gray-900 dark:border-gray-100" />
         ',
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
         'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         'blocks' => [
+            ['type' => BlockType::SECTION_DIVIDER->value],
             ['type' => BlockType::STACK->value],
         ],
     ],

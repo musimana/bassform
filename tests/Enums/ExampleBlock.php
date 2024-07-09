@@ -9,6 +9,7 @@ enum ExampleBlock: string
 {
     /* List of the example content blocks available for tests. */
     case PANEL_LINKS = 'panel-links';
+    case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
     case UNKNOWN = 'unknown';
@@ -36,6 +37,7 @@ enum ExampleBlock: string
                     ],
                 ],
             ],
+            self::SECTION_DIVIDER => null,
             self::STACK => null,
             self::TABS => [
                 'tabs' => ['Tab One', 'Tab Two'],
