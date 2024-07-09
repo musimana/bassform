@@ -12,6 +12,23 @@ use App\Models\Page;
 
 final class HomepageContentResource implements ConstantItemInterface
 {
+    /** Instantiate the resource. */
+    public function __construct(
+        protected Page $page = new Page
+    ) {
+        if (!$this->page->id) {
+            $this->page = Page::query()
+                ->isHomepage()
+                ->with('blocks')
+                ->first()
+                ?? new Page;
+        }
+
+        if (!$this->getTemplate()) {
+            $this->setDefaultModel();
+        }
+    }
+
     /**
      * Get the content array for the site's homepage.
      *

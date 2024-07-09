@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\Public\Content\HomepageContentResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Page;
@@ -68,4 +69,24 @@ test('getTemplate returns a WebpageTemplate', function () {
 
     expect($actual?->value)
         ->toEqual('Public/PublicContent');
+});
+
+it('initialises with setDefaultModel ok', function () {
+    $actual = new HomepageContentResource;
+
+    expect($actual->getTemplate()?->value)
+        ->toEqual(WebpageTemplate::PUBLIC_INDEX->value);
+
+    expect($actual->getItem()['blocks'])
+        ->toHaveCamelCaseKeys()
+        ->toHaveCount(1)
+        ->toMatchArray([
+            [
+                'type' => 'header-logo',
+                'data' => [
+                    'heading' => 'Bassform - VILT SSR',
+                    'subheading' => 'Laravel VILT stack template app with server-side rendering (SSR), Larastan, Pest & Dusk test suites. Created by Musimana.',
+                ],
+            ],
+        ]);
 });
