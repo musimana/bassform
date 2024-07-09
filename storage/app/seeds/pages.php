@@ -21,7 +21,6 @@ $seeds = [
     [
         'slug' => 'home',
         'title' => config('app.name'),
-        'subtitle' => config('metadata.description'),
         'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
@@ -29,6 +28,13 @@ $seeds = [
         'in_sitemap' => 0,
         'is_homepage' => 1,
         'blocks' => [
+            [
+                'type' => BlockType::HEADER_LOGO->value,
+                'data' => json_encode([
+                    'heading' => config('app.name'),
+                    'subheading' => config('metadata.description'),
+                ])
+            ],
             ['type' => BlockType::SECTION_DIVIDER->value],
             [
                 'type' => BlockType::WYSIWYG->value,
