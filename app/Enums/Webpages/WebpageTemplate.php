@@ -14,7 +14,6 @@ enum WebpageTemplate: string
     case AUTH_REGISTER = 'Auth/AuthRegister';
     case PROFILE_DASHBOARD = 'Profile/ProfileDashboard';
     case PROFILE_EDIT = 'Profile/ProfileEdit';
-    case PUBLIC_INDEX = 'Public/PublicHomepage';
     case PUBLIC_CONTENT = 'Public/PublicContent';
     case PUBLIC_CONTENT_CONTROLS = 'Public/PublicContentControls';
     case PUBLIC_CONTENT_FORMS = 'Public/PublicContentForms';
