@@ -26,9 +26,6 @@ final class PageFactory extends Factory
         return [
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
-            'subtitle' => null,
-            'content' => null,
-            'meta_title' => null,
             'meta_description' => null,
             'meta_keywords' => null,
             'open_graph_id' => null,
@@ -45,9 +42,6 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'about',
             'title' => 'About',
-            'subtitle' => config('app.name'),
-            'content' => '',
-            'meta_title' => 'About',
             'meta_description' => config('metadata.description'),
         ]));
     }
@@ -55,19 +49,9 @@ final class PageFactory extends Factory
     /** Indicate that the model should use faked data with all fields filled. */
     public function dummy(): static
     {
-        $title = $this->getFakeString();
-
         return $this->state(fn (array $attributes) => array_merge([
-            'slug' => urlencode(str_replace(' ', '-', $title)),
-            'title' => ucwords($title),
-            'subtitle' => $this->getFakeString(),
-            'content' => $this->getFakeTextHtml(),
-            'meta_title' => ucwords($title),
-            'meta_description' => $this->getFakeString(20, 30),
-            'template' => WebpageTemplate::PUBLIC_CONTENT->value,
-            'in_sitemap' => true,
-            'is_homepage' => false,
             ...$attributes,
+            'meta_description' => $this->getFakeString(20, 30),
         ]));
     }
 
@@ -78,9 +62,6 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'home',
             'title' => config('app.name'),
-            'subtitle' => config('metadata.description'),
-            'content' => '',
-            'meta_title' => config('app.name'),
             'meta_description' => config('metadata.description'),
             'in_sitemap' => false,
             'is_homepage' => true,
@@ -94,8 +75,6 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'privacy',
             'title' => 'Privacy Policy',
-            'subtitle' => config('app.name'),
-            'meta_title' => 'Privacy Policy',
             'meta_description' => BlockType::PRIVACY_POLICY->schema()['description'],
         ]));
     }
