@@ -55,7 +55,7 @@ final class HomepageContentResource implements ConstantItemInterface
     public function setDefaultModel(): void
     {
         $this->page = new Page([
-            'template' => WebpageTemplate::PUBLIC_INDEX->value,
+            'template' => WebpageTemplate::PUBLIC_CONTENT->value,
             'slug' => 'home',
             'title' => config('app.name'),
             'meta_description' => config('metadata.description'),
