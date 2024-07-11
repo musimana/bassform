@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Views\Public\Content;
 
 use App\Enums\Blocks\BlockType;
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
 use App\Models\Block;
@@ -17,6 +18,7 @@ final class HomepageContentResource implements ConstantItemInterface
         if (!$this->page->id) {
             $this->page = Page::query()
                 ->isHomepage()
+                ->published()
                 ->with('blocks')
                 ->first()
                 ?? new Page;
@@ -52,6 +54,7 @@ final class HomepageContentResource implements ConstantItemInterface
     public function setDefaultModel(): void
     {
         $this->page = new Page([
+            'webpage_status_id' => WebpageStatus::PUBLISHED->value,
             'template' => WebpageTemplate::PUBLIC_CONTENT->value,
             'slug' => 'home',
             'title' => config('app.name'),
