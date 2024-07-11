@@ -21,18 +21,12 @@ final class PageContentResource implements ConstantItemInterface
      *      type: string,
      *      data: array<string, array<int, string>|string>,
      *  }>,
-     *  bodytext: string,
-     *  heading: string,
-     *  subheading: string,
      * }
      */
     public function getItem(): array
     {
         return [
             'blocks' => (new BlocksResource)->getItems($this->page->blocks),
-            'bodytext' => $this->page->getContent(),
-            'heading' => $this->page->getTitle(),
-            'subheading' => $this->page->getSubtitle(),
         ];
     }
 }
