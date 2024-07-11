@@ -1,6 +1,12 @@
+section.app-article {
+  @apply
+    leading-relaxed;
+}
+
 section.app-article p {
   @apply
-    mb-4;
+    mb-4
+    text-justify;
 }
 
 section.app-article p a {
