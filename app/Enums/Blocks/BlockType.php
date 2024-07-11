@@ -11,6 +11,7 @@ enum BlockType: string
     /* List of the content blocks available to the application. */
     case HEADER_LOGO = 'header-logo';
     case PANEL_LINKS = 'panel-links';
+    case PRIVACY_POLICY = 'privacy-policy';
     case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
@@ -25,6 +26,9 @@ enum BlockType: string
     public function staticData(): array
     {
         return match ($this) {
+            self::PRIVACY_POLICY => [
+                'html' => view('partials.body.privacy')->render(),
+            ],
             self::STACK => [
                 'html' => view('partials.static-blocks.stack', [
                     'laravel_version' => (new LaravelVersionFormatterResource)->getValue(),
@@ -41,6 +45,7 @@ enum BlockType: string
      *
      * @return array{
      *  label: string,
+     *  description: string,
      *  inputs: array<int, array<string, string>>,
      *  inputsRepeatable: array<int, array<string, string>>,
      * }
@@ -66,6 +71,11 @@ enum BlockType: string
                     FormInputType::TEXT->schema('Panel URL', 'url'),
                 ],
             ],
+            self::PRIVACY_POLICY => [
+                'label' => 'Privacy Policy',
+                'description' => 'Privacy policy for the ' . config('app.name')
+                    . ' website, which covers how this app handles your data.',
+            ],
             self::SECTION_DIVIDER => [
                 'label' => 'Section Divider',
             ],
@@ -90,6 +100,7 @@ enum BlockType: string
 
         return [
             'label' => $block_schema['label'] ?? '{unknown}',
+            'description' => $block_schema['description'] ?? '',
             'inputs' => $block_schema['inputs'] ?? [],
             'inputsRepeatable' => $block_schema['inputsRepeatable'] ?? [],
         ];
