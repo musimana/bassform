@@ -46,6 +46,12 @@ trait HasPageView
         return $this->in_sitemap ?? false;
     }
 
+    /** Returns true if the item is marked as published. */
+    public function isPublished(): bool
+    {
+        return $this->webpage_status_id === WebpageStatus::PUBLISHED->value;
+    }
+
     /** Returns all models that should be in the sitemap (in_sitemap = 1). */
     public function scopeInSitemap(Builder|QueryBuilder $query): Builder|QueryBuilder
     {
