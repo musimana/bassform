@@ -80,9 +80,9 @@ const form = useForm({
 
     <div class="w-full flex p-4">
       <label class="flex items-start">
-        <InputCheckbox name="inSitemap" v-model:checked="form.inSitemap" />
+        <InputCheckbox class="my-auto" name="inSitemap" v-model:checked="form.inSitemap" />
 
-        <span class="ms-2 text-sm text-gray-700 dark:text-gray-300">In Sitemap?</span>
+        <span class="ms-2 text-gray-700 dark:text-gray-300">In Sitemap?</span>
       </label>
     </div>
 
