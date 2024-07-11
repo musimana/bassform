@@ -2,6 +2,7 @@
 
 $standard_array = [
     'title' => 'Title',
+    'webpageStatusId' => 1,
     'inSitemap' => true,
 ];
 
@@ -11,11 +12,12 @@ dataset('page-arrays-update-invalid', function () use ($standard_array) {
             [],
             [
                 'title' => 'The title field is required.',
+                'webpageStatusId' => 'The webpage status id field is required.',
                 'inSitemap' => 'The in sitemap field is required.',
             ],
         ],
         'title missing' => [
-            ['inSitemap' => true],
+            ['webpageStatusId' => 1, 'inSitemap' => true],
             ['title' => 'The title field is required.'],
         ],
         'title empty' => [
@@ -38,8 +40,24 @@ dataset('page-arrays-update-invalid', function () use ($standard_array) {
             array_merge($standard_array, ['metaDescription' => str_pad('', 256, 'a')]),
             ['metaDescription' => 'The meta description field must not be greater than 255 characters.'],
         ],
+        'webpageStatusId missing' => [
+            ['title' => 'Title', 'inSitemap' => true],
+            ['webpageStatusId' => 'The webpage status id field is required.'],
+        ],
+        'webpageStatusId empty' => [
+            array_merge($standard_array, ['webpageStatusId' => '']),
+            ['webpageStatusId' => 'The webpage status id field is required.'],
+        ],
+        'webpageStatusId not integer' => [
+            array_merge($standard_array, ['webpageStatusId' => 'a']),
+            ['webpageStatusId' => 'The webpage status id field must be an integer.'],
+        ],
+        'webpageStatusId > max WebpageStatus' => [
+            array_merge($standard_array, ['webpageStatusId' => 42]),
+            ['webpageStatusId' => 'The webpage status id field must not be greater than 2.'],
+        ],
         'inSitemap missing' => [
-            ['title' => 'Title'],
+            ['title' => 'Title', 'webpageStatusId' => 1],
             ['inSitemap' => 'The in sitemap field is required.'],
         ],
         'inSitemap empty' => [
