@@ -24,9 +24,6 @@ test('update returns correctly for minimum valid data', function (Page $page) {
     expect($page)
         ->not->toBeNull()
         ->title->toEqual($data['title'])
-        ->subtitle->toEqual($page_original->subtitle)
-        ->content->toEqual($page_original->content)
-        ->meta_title->toEqual($page_original->meta_title)
         ->meta_description->toEqual($page_original->meta_description)
         ->in_sitemap->toEqual($page_original->in_sitemap)
         ->template->toEqual($page_original->template)
@@ -49,9 +46,6 @@ test('update returns correctly for maximum valid data', function (Page $page) {
 
     $data = [
         'title' => 'New Title',
-        'subtitle' => 'New Subtitle',
-        'content' => '<p>New content.</p>',
-        'metaTitle' => 'New Meta-Title',
         'metaDescription' => 'New Meta-Description',
         'inSitemap' => !$page->in_sitemap,
         'blocks' => $blocks_array,
@@ -66,9 +60,6 @@ test('update returns correctly for maximum valid data', function (Page $page) {
     expect($page)
         ->not->toBeNull()
         ->title->toEqual($data['title'])
-        ->subtitle->toEqual($data['subtitle'])
-        ->content->toEqual($data['content'])
-        ->meta_title->toEqual($data['metaTitle'])
         ->meta_description->toEqual($data['metaDescription'])
         ->in_sitemap->toEqual($data['inSitemap'])
         ->template->toEqual($page_original->template);
@@ -95,9 +86,6 @@ test('update ignores unknown fields', function () {
     expect($page)
         ->not->toBeNull()
         ->title->toEqual($data['title'])
-        ->subtitle->toEqual($page_original->subtitle)
-        ->content->toEqual($page_original->content)
-        ->meta_title->toEqual($page_original->meta_title)
         ->meta_description->toEqual($page_original->meta_description)
         ->in_sitemap->toEqual($page_original->in_sitemap)
         ->template->toEqual($page_original->template)
