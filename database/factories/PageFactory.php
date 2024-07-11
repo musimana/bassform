@@ -82,7 +82,6 @@ final class PageFactory extends Factory
             'content' => '',
             'meta_title' => config('app.name'),
             'meta_description' => config('metadata.description'),
-            'template' => WebpageTemplate::PUBLIC_INDEX->value,
             'in_sitemap' => false,
             'is_homepage' => true,
         ]));

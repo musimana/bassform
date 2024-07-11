@@ -46,7 +46,7 @@ it('makes the homepage page model')
     ->content->toBeString()
     ->meta_title->toBeString()
     ->meta_description->toBeString()
-    ->template->toEqual(WebpageTemplate::PUBLIC_INDEX->value)
+    ->template->toEqual(WebpageTemplate::PUBLIC_CONTENT->value)
     ->in_sitemap->toBeFalse()
     ->is_homepage->toBeTrue();
 
