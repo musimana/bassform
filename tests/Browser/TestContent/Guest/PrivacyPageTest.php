@@ -29,7 +29,7 @@ final class PrivacyPageTest extends DuskTestCase
     public function testPrivacyPageContentWithPageModel(): void
     {
         (new PageSeeder)->run();
-        $page = Page::where('slug', 'privacy')->first() ?? Page::factory()->create(['slug' => 'privacy']);
+        $page = Page::where('slug', 'privacy')->first() ?? Page::factory()->privacyPage()->create();
         Assert::assertEquals(Page::where('slug', 'privacy')->count(), 1);
 
         $this->browse(fn (Browser $browser) => $browser
