@@ -14,7 +14,7 @@ final class PrivacyPageTest extends DuskTestCase
 {
     use DatabaseTruncation;
 
-    /** Test the about page renders & behaves correctly. */
+    /** Test the privacy page renders & behaves correctly. */
     public function testPrivacyPageContentWithoutPageModel(): void
     {
         $page = Page::factory()->privacyPage()->make();
@@ -25,7 +25,7 @@ final class PrivacyPageTest extends DuskTestCase
         );
     }
 
-    /** Test the about page renders & behaves correctly with a page model. */
+    /** Test the privacy page renders & behaves correctly with a page model. */
     public function testPrivacyPageContentWithPageModel(): void
     {
         (new PageSeeder)->run();
