@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Views\Public\Content;
 
 use App\Enums\Blocks\BlockType;
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
 use App\Interfaces\Resources\Items\ConstantItemInterface;
@@ -17,6 +18,7 @@ final class PrivacyPolicyContentResource implements ConstantItemInterface
     ) {
         if (!$this->page->id) {
             $this->page = Page::query()
+                ->published()
                 ->where('slug', 'privacy')
                 ->with('blocks')
                 ->first()
@@ -63,6 +65,7 @@ final class PrivacyPolicyContentResource implements ConstantItemInterface
     public function setDefaultModel(): void
     {
         $this->page = new Page([
+            'webpage_status_id' => WebpageStatus::PUBLISHED->value,
             'template' => WebpageTemplate::PUBLIC_CONTENT->value,
             'slug' => 'privacy',
             'title' => 'Privacy Policy',
