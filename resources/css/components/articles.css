@@ -58,11 +58,40 @@ section.app-article p code {
 }
 
 section.app-article ul li i,
-section.app-article p i
-{
+section.app-article p i {
   @apply
     font-semibold
-    text-gray-900
-    dark:text-gray-100
     tracking-wide;
+}
+
+section.app-article blockquote,
+section.app-article q {
+  @apply
+    w-full
+    text-lg
+    text-gray-800
+    dark:text-gray-200
+    mb-8
+    border-l-4
+    border-gray-900
+    dark:border-gray-300
+    px-4
+    py-2
+    bg-gray-200
+    dark:bg-gray-800;
+}
+
+section.app-article blockquote p,
+section.app-article q p {
+  @apply
+    mb-0;
+}
+
+section.app-article blockquote p i,
+section.app-article blockquote ul li i,
+section.app-article q p i,
+section.app-article q ul li i {
+  @apply
+    font-normal
+    tracking-widest;
 }
