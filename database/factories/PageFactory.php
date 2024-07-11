@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Blocks\BlockType;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -95,9 +96,8 @@ final class PageFactory extends Factory
             'slug' => 'privacy',
             'title' => 'Privacy Policy',
             'subtitle' => config('app.name'),
-            'content' => view('partials.body.privacy')->render(),
             'meta_title' => 'Privacy Policy',
-            'meta_description' => 'Privacy policy for the ' . config('app.name') . ' website, which covers how this app handles your data.',
+            'meta_description' => BlockType::PRIVACY_POLICY->schema()['description'],
         ]));
     }
 }
