@@ -27,7 +27,7 @@ final class PageView extends StandardPage
         $browser
             ->assertHasLoadedCorrectly($this->url())
             ->assertHasCorrectCookies()
-            ->assertHasRenderedCorrectly($this->page->getMetaTitle())
+            ->assertHasRenderedCorrectly($this->page->getTitle())
 
             ->pause(config('tests.dusk.pause_length'));
     }
