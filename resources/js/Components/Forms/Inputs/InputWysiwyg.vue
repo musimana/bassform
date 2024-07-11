@@ -7,13 +7,16 @@ import {
   Bold,
   Italic,
   BlockQuote,
+  GeneralHtmlSupport,
   Heading,
   Link,
   List,
   Paragraph,
+  Style,
   Table,
   TableToolbar,
   TextTransformation,
+  Underline,
 } from 'ckeditor5'
 import 'ckeditor5/ckeditor5.css'
 
@@ -29,13 +32,16 @@ class Editor extends ClassicEditor {
     Bold,
     Italic,
     BlockQuote,
+    GeneralHtmlSupport,
     Heading,
     Link,
     List,
     Paragraph,
+    Style,
     Table,
     TableToolbar,
     TextTransformation,
+    Underline,
   ]
 
   static defaultConfig = {
@@ -45,9 +51,11 @@ class Editor extends ClassicEditor {
         'redo',
         '|',
         'heading',
+        'style',
         '|',
         'bold',
         'italic',
+        'underline',
         '|',
         'link',
         'insertTable',
@@ -55,6 +63,30 @@ class Editor extends ClassicEditor {
         '|',
         'bulletedList',
         'numberedList',
+      ],
+    },
+    style: {
+      definitions: [
+        {
+          name: 'Heading 3 - Small Print',
+          element: 'h3',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'Paragraph - Small Print',
+          element: 'p',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'Table - Small Print',
+          element: 'table',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'List (Points) - Small Print',
+          element: 'ul',
+          classes: ['text-small-print'],
+        },
       ],
     },
     link: {
