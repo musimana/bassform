@@ -26,12 +26,6 @@ trait HasPageView
         return $this->meta_keywords ?? '';
     }
 
-    /** Get the meta-title for the resource. */
-    public function getMetaTitle(): string
-    {
-        return ($this->meta_title && trim($this->meta_title) !== '') ? $this->meta_title : $this->getTitle();
-    }
-
     /** Get the webpage template for the resource. */
     public function getTemplate(): ?WebpageTemplate
     {
