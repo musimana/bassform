@@ -26,9 +26,6 @@ test('index renders the sitemap index view', function () {
 test('show can render the general pages sitemap view', function () {
     Page::factory()->create([
         'slug' => 'test-page',
-        'meta_description' => 'Test page example meta-description.',
-        'meta_keywords' => 'test, page, keywords',
-        'meta_title' => 'Test Page',
     ]);
 
     $route = route('sitemap.show', 'pages');
