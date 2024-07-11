@@ -28,6 +28,7 @@ final class Page extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'webpage_status_id',
         'slug',
         'title',
         'meta_description',
