@@ -30,6 +30,7 @@ dataset('pages', function () use ($pages_with_blocks) {
     return [
         'page min record' => [fn () => Page::factory()->create()],
         'page max random record' => [fn () => Page::factory()->dummy()->create()],
+        'page draft' => [fn () => Page::factory()->draft()->create()],
         'homepage' => [fn () => Page::factory()->homePage()->create()],
         'about page' => [fn () => Page::factory()->aboutPage()->create()],
         'privacy page' => [fn () => Page::factory()->privacyPage()->create()],
