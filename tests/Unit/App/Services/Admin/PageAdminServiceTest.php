@@ -26,6 +26,7 @@ test('update returns correctly for minimum valid data', function (Page $page) {
         ->title->toEqual($data['title'])
         ->meta_description->toEqual($page_original->meta_description)
         ->in_sitemap->toEqual($page_original->in_sitemap)
+        ->webpage_status_id->toEqual($page_original->webpage_status_id)
         ->template->toEqual($page_original->template)
         ->blocks->toEqual($page_original->blocks);
 })->with('pages');
@@ -45,6 +46,7 @@ test('update returns correctly for maximum valid data', function (Page $page) {
     }
 
     $data = [
+        'webpageStatusId' => $page->webpage_status_id === 1 ? 2 : 1,
         'title' => 'New Title',
         'metaDescription' => 'New Meta-Description',
         'inSitemap' => !$page->in_sitemap,
@@ -62,6 +64,7 @@ test('update returns correctly for maximum valid data', function (Page $page) {
         ->title->toEqual($data['title'])
         ->meta_description->toEqual($data['metaDescription'])
         ->in_sitemap->toEqual($data['inSitemap'])
+        ->webpage_status_id->toEqual($data['webpageStatusId'])
         ->template->toEqual($page_original->template);
 })->with('pages');
 
@@ -88,6 +91,7 @@ test('update ignores unknown fields', function () {
         ->title->toEqual($data['title'])
         ->meta_description->toEqual($page_original->meta_description)
         ->in_sitemap->toEqual($page_original->in_sitemap)
+        ->webpage_status_id->toEqual($page_original->webpage_status_id)
         ->template->toEqual($page_original->template)
         ->blocks->toEqual($page_original->blocks);
 });
