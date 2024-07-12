@@ -48,6 +48,15 @@ final class PageFactory extends Factory
         ]));
     }
 
+    /** Indicate that the model should have draft webpage status. */
+    public function draft(): static
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'webpage_status_id' => WebpageStatus::DRAFT->value,
+        ]));
+    }
+
     /** Indicate that the model should use faked data with all fields filled. */
     public function dummy(): static
     {

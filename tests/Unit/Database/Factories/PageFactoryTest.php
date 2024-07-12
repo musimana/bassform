@@ -27,6 +27,16 @@ it('makes the about page model')
     ->in_sitemap->toBeTrue()
     ->is_homepage->toBeFalse();
 
+it('makes draft page models')
+    ->expect(fn () => Page::factory()->draft()->make())
+    ->title->tobeString()
+    ->slug->toBeString()
+    ->meta_description->toBeNull()
+    ->template->toEqual(WebpageTemplate::PUBLIC_CONTENT->value)
+    ->webpage_status_id->toEqual(WebpageStatus::DRAFT->value)
+    ->in_sitemap->toBeTrue()
+    ->is_homepage->toBeFalse();
+
 it('makes dummy page models')
     ->expect(fn () => Page::factory()->dummy()->make())
     ->title->tobeString()
