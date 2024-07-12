@@ -2,11 +2,13 @@
 
 namespace App\Traits;
 
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
+ * @method Builder|static published()
  * @method Builder|static inSitemap()
  * @method static Builder|static query()
  */
@@ -49,6 +51,14 @@ trait HasPageView
     {
         return $query->where(function ($query) {
             $query->where('in_sitemap', 1);
+        });
+    }
+
+    /** Returns all models that are Published (webpage_status_id = 2). */
+    public function scopePublished(Builder|QueryBuilder $query): Builder|QueryBuilder
+    {
+        return $query->where(function ($query) {
+            $query->where('webpage_status_id', WebpageStatus::PUBLISHED->value);
         });
     }
 }
