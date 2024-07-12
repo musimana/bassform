@@ -35,5 +35,10 @@ test('rules returns ok', function () {
             'required',
             'boolean',
         ],
+        'webpageStatusId' => [
+            'required',
+            'integer',
+            'max:2',
+        ],
     ], $actual);
 });
