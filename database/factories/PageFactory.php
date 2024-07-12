@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Blocks\BlockType;
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,13 +18,14 @@ final class PageFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, bool|string|null>
+     * @return array<string, bool|int|string|null>
      */
     public function definition(): array
     {
         $title = $this->getFakeString();
 
         return [
+            'webpage_status_id' => WebpageStatus::PUBLISHED->value,
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
             'meta_description' => null,
