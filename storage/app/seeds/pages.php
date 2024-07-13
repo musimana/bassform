@@ -76,9 +76,6 @@ $seeds = [
         'slug' => 'about',
         'title' => 'About',
         'subtitle' => config('app.name'),
-        'content' => '
-            <p class="text-lg text-gray-800 dark:text-gray-200 tracking-widest mb-8 border-l-4 border-gray-900 dark:border-gray-300 p-2 bg-gray-200 dark:bg-gray-800"><em>"Laravel Breeze variant with Vue, Inertia & Tailwind"</em></p>
-        ',
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
         'template' => WebpageTemplate::PUBLIC_CONTENT->value,
@@ -87,6 +84,11 @@ $seeds = [
                 'type' => BlockType::WYSIWYG->value,
                 'data' => json_encode([
                     'html' => '
+                        <blockquote>
+                            <p>
+                                <i>“Laravel Breeze variant with Vue, Inertia &amp; Tailwind”&nbsp;</i>
+                            </p>
+                        </blockquote>
                         <p>
                             Bassform is a light-weight template for scaffolding
                             <a href="https://laravel.com/" target="_blank" rel="noopener noreferrer"><i>Laravel</i></a> apps,
