@@ -27,7 +27,7 @@ enum BlockType: string
     {
         return match ($this) {
             self::PRIVACY_POLICY => [
-                'html' => view('partials.body.privacy')->render(),
+                'html' => view('partials.static-blocks.privacy')->render(),
             ],
             self::STACK => [
                 'html' => view('partials.static-blocks.stack', [
