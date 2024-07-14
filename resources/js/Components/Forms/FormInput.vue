@@ -7,7 +7,7 @@ import { computed } from 'vue'
 const props = defineProps({
   inputErrorClasses: {
     type: String,
-    default: 'w-full',
+    default: 'w-full min-h-6',
   },
   inputField: {
     type: String,
@@ -39,6 +39,7 @@ const labelPositionClasses = computed(() => {
   return {
     top: 'w-full text-gray-700 dark:text-gray-300',
     left: 'my-3 w-full md:w-1/3 text-gray-700 dark:text-gray-300',
+    hidden: 'sr-only',
   }[props.inputLabelPosition]
 })
 
