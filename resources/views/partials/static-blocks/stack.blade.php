@@ -1,4 +1,4 @@
-<h3 class="w-full mb-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3>
+<h3 class="w-full my-4 font-semibold text-sm text-gray-950 dark:text-gray-100 uppercase tracking-widest">Stack</h3>
 
 <p class="mb-4">Running on PHP v{{ $php_version }}</p>
 
