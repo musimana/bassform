@@ -51,6 +51,7 @@ $seeds = [
                     ',
                 ]),
             ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
             [
                 'type' => BlockType::PANEL_LINKS->value,
                 'data' => json_encode([
