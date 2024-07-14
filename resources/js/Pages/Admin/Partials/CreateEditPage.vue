@@ -22,7 +22,7 @@ const form = useForm({
 </script>
 
 <template>
-  <h3 class="w-full py-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Edit Page: {{ page.title }}</h3>
+  <h3 class="w-full p-4 font-semibold text-xs uppercase tracking-widest">Edit Page: {{ page.title }}</h3>
 
   <AppForm
     class="w-full"
