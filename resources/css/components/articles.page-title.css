@@ -1,0 +1,16 @@
+section.app-article h2.text-page-title {
+  @apply
+    font-semibold
+    uppercase
+    tracking-widest;
+}
+
+section.app-article p.text-page-subtitle {
+  @apply
+    pt-2
+    font-semibold
+    italic
+    text-xs
+    uppercase
+    tracking-widest;
+}
