@@ -75,7 +75,6 @@ $seeds = [
     [
         'slug' => 'about',
         'title' => 'About',
-        'subtitle' => config('app.name'),
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
         'template' => WebpageTemplate::PUBLIC_CONTENT->value,
@@ -117,7 +116,6 @@ $seeds = [
     [
         'slug' => 'controls',
         'title' => 'Controls',
-        'subtitle' => 'The UI control components that come with the template are demonstrated below.',
         'meta_title' => 'Controls',
         'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
@@ -138,7 +136,6 @@ $seeds = [
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
         'meta_title' => 'Forms',
         'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
