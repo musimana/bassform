@@ -28,8 +28,6 @@ const form = useForm({
 </script>
 
 <template>
-  <h3 class="w-full py-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Form &amp; Input Components</h3>
-
   <AppForm
     class="w-full px-4"
     :endpoint="route('page.store', 'forms')"
