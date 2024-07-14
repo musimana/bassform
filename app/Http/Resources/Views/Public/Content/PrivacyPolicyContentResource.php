@@ -75,10 +75,21 @@ final class PrivacyPolicyContentResource implements ConstantItemInterface
 
         $this->page->blocks = collect([
             new Block([
+                'type' => BlockType::WYSIWYG->value,
+                'parent_type' => Page::class,
+                'parent_id' => $this->page->id,
+                'data' => json_encode([
+                    'html' => '<h2 class="text-page-title">PRIVACY POLICY</h2>
+                        <p class="text-page-subtitle">' . config('app.name') . '</p>',
+                ]),
+            ]),
+
+            new Block([
                 'type' => BlockType::SECTION_DIVIDER->value,
                 'parent_type' => Page::class,
                 'parent_id' => $this->page->id,
             ]),
+
             new Block([
                 'type' => BlockType::PRIVACY_POLICY->value,
                 'parent_type' => Page::class,
