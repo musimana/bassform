@@ -84,6 +84,8 @@ $seeds = [
                 'type' => BlockType::WYSIWYG->value,
                 'data' => json_encode([
                     'html' => '
+                        <h2 class="text-page-title">ABOUT</h2>
+                        <p class="text-page-subtitle">' . config('app.name') . '</p>
                         <blockquote>
                             <p>
                                 <i>“Laravel Breeze variant with Vue, Inertia &amp; Tailwind”&nbsp;</i>
@@ -120,6 +122,16 @@ $seeds = [
         'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">CONTROLS</h2>
+                        <p class="text-page-subtitle">The UI control components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
         ],
     ],
 
@@ -130,6 +142,18 @@ $seeds = [
         'meta_title' => 'Forms',
         'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
+        'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">FORMS</h2>
+                        <p class="text-page-subtitle">The UI form & input components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
+        ],
     ],
 
 ];
