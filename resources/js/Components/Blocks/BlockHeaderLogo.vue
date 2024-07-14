@@ -13,7 +13,7 @@ defineProps({
   <div class="flex justify-center gap-x-4 mt-4">
     <IconAppLogo class="w-12 h-12 stroke-gray-900 fill-gray-900  dark:stroke-gray-100 dark:fill-gray-100" />
 
-    <h2 class="my-auto text-center text-xl font-bold text-gray-900 dark:text-gray-100">{{ blockData.heading }}</h2>
+    <h2 class="my-auto text-center text-xl font-bold">{{ blockData.heading }}</h2>
   </div>
 
   <p
