@@ -2,6 +2,7 @@
 
 @import "tailwindcss/components";
 @import "./components/articles";
+@import "./components/articles.small-print";
 @import "./components/buttons";
 
 @import "tailwindcss/utilities";
