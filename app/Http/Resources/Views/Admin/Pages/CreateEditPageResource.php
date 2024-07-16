@@ -23,7 +23,7 @@ final class CreateEditPageResource implements PageItemInterface
      *  title: string,
      *  metaDescription: string,
      *  inSitemap: bool,
-     *  webpageStatusId: int,
+     *  webpageStatusId: \Closure,
      * }
      */
     public function getItem(Page $page): array
@@ -34,7 +34,8 @@ final class CreateEditPageResource implements PageItemInterface
             'title' => $page->getTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
-            'webpageStatusId' => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value ?? WebpageStatus::DRAFT->value,
+            'webpageStatusId' => fn () => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value
+                ?? WebpageStatus::DRAFT->value,
         ];
     }
 }
