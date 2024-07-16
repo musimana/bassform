@@ -68,6 +68,11 @@ class Editor extends ClassicEditor {
     style: {
       definitions: [
         {
+          name: 'Heading 2 - Page Title',
+          element: 'h2',
+          classes: ['text-page-title'],
+        },
+        {
           name: 'Heading 3 - Small Print',
           element: 'h3',
           classes: ['text-small-print'],
@@ -76,6 +81,11 @@ class Editor extends ClassicEditor {
           name: 'Paragraph - Small Print',
           element: 'p',
           classes: ['text-small-print'],
+        },
+        {
+          name: 'Paragraph - Page Subtitle',
+          element: 'p',
+          classes: ['text-page-subtitle'],
         },
         {
           name: 'Table - Small Print',

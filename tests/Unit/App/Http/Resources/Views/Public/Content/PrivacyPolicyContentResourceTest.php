@@ -16,7 +16,7 @@ test('getItem returns ok without a Page Model', function () {
 
     expect($actual['blocks'])
         ->toBeArray()
-        ->toHaveCount(2);
+        ->toHaveCount(3);
 
     expect($actual)
         ->toHaveCamelCaseKeys()

@@ -1,6 +1,6 @@
 <script setup>
 import AppBlocks from '@/Components/Blocks/AppBlocks.vue'
-import LayoutDefault from '@/Layouts/LayoutDefault.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 
 defineProps({
   content: {
@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <LayoutDefault>
+  <LayoutGuest>
     <AppBlocks />
-  </LayoutDefault>
+  </LayoutGuest>
 </template>

@@ -51,6 +51,7 @@ $seeds = [
                     ',
                 ]),
             ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
             [
                 'type' => BlockType::PANEL_LINKS->value,
                 'data' => json_encode([
@@ -75,7 +76,6 @@ $seeds = [
     [
         'slug' => 'about',
         'title' => 'About',
-        'subtitle' => config('app.name'),
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
         'template' => WebpageTemplate::PUBLIC_CONTENT->value,
@@ -84,6 +84,8 @@ $seeds = [
                 'type' => BlockType::WYSIWYG->value,
                 'data' => json_encode([
                     'html' => '
+                        <h2 class="text-page-title">ABOUT</h2>
+                        <p class="text-page-subtitle">' . config('app.name') . '</p>
                         <blockquote>
                             <p>
                                 <i>“Laravel Breeze variant with Vue, Inertia &amp; Tailwind”&nbsp;</i>
@@ -115,21 +117,41 @@ $seeds = [
     [
         'slug' => 'controls',
         'title' => 'Controls',
-        'subtitle' => 'The UI control components that come with the template are demonstrated below.',
         'meta_title' => 'Controls',
         'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">CONTROLS</h2>
+                        <p class="text-page-subtitle">The UI control components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
         ],
     ],
 
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
         'meta_title' => 'Forms',
         'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
+        'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">FORMS</h2>
+                        <p class="text-page-subtitle">The UI form & input components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
+        ],
     ],
 
 ];
