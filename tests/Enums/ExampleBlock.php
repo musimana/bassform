@@ -10,6 +10,7 @@ enum ExampleBlock: string
     /* List of the example content blocks available for tests. */
     case HEADER_LOGO = 'header-logo';
     case PANEL_LINKS = 'panel-links';
+    case PRIVACY_POLICY = 'privacy-policy';
     case SECTION_DIVIDER = 'section-divider';
     case STACK = 'stack';
     case TABS = 'tabs';
@@ -43,6 +44,7 @@ enum ExampleBlock: string
                     ],
                 ],
             ],
+            self::PRIVACY_POLICY => null,
             self::SECTION_DIVIDER => null,
             self::STACK => null,
             self::TABS => [

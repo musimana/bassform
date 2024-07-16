@@ -37,7 +37,7 @@ it('can render the privacy page view without a Page model', function () {
 });
 
 it('can render the privacy page view with a Page model', function () {
-    $page = Page::factory()->create(['slug' => 'privacy']);
+    $page = Page::factory()->privacyPage()->create();
     $route = route('privacy');
     $actual = $this->get($route);
     $session = session()->all();
