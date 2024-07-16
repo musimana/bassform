@@ -24,7 +24,6 @@ $seeds = [
         'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
-        'template' => WebpageTemplate::PUBLIC_INDEX->value,
         'in_sitemap' => 0,
         'is_homepage' => 1,
         'blocks' => [
@@ -78,7 +77,6 @@ $seeds = [
         'title' => 'About',
         'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
-        'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         'blocks' => [
             [
                 'type' => BlockType::WYSIWYG->value,

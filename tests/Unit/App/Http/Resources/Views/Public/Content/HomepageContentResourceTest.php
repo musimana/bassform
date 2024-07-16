@@ -52,14 +52,14 @@ test('getTemplate returns a WebpageTemplate', function () {
     $actual = (new HomepageContentResource)->getTemplate();
 
     expect($actual?->value)
-        ->toEqual('Public/PublicHomepage');
+        ->toEqual(WebpageTemplate::PUBLIC_CONTENT->value);
 });
 
 it('initialises with setDefaultModel ok', function () {
     $actual = new HomepageContentResource;
 
     expect($actual->getTemplate()?->value)
-        ->toEqual(WebpageTemplate::PUBLIC_INDEX->value);
+        ->toEqual(WebpageTemplate::PUBLIC_CONTENT->value);
 
     expect($actual->getItem()['blocks'])
         ->toHaveCamelCaseKeys()
