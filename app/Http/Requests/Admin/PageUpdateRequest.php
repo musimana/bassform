@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Enums\Webpages\WebpageStatus;
 use App\Interfaces\Requests\RequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -17,10 +18,8 @@ final class PageUpdateRequest extends FormRequest implements RequestInterface
         return [
             'blocks' => ['nullable', 'max:5120'],
             'title' => ['required', 'string', 'max:255'],
-            'subtitle' => ['nullable', 'string', 'max:255'],
-            'content' => ['nullable', 'string', 'max:5120'],
-            'metaTitle' => ['nullable', 'string', 'max:255'],
             'metaDescription' => ['nullable', 'string', 'max:255'],
+            'webpageStatusId' => ['required', 'integer', 'max:' . WebpageStatus::PUBLISHED->value],
             'inSitemap' => ['required', 'boolean'],
         ];
     }

@@ -12,11 +12,8 @@ test('getItem returns ok', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
+        ->toHaveCount(1)
         ->toMatchArray([
             'blocks' => [],
-            'bodytext' => null,
-            'heading' => '',
-            'subheading' => '',
         ]);
 });

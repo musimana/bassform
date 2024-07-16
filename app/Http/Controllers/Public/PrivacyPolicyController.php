@@ -2,26 +2,31 @@
 
 namespace App\Http\Controllers\Public;
 
-use App\Enums\Webpages\WebpageTemplate;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Views\Public\Content\PageContentResource;
-use App\Http\Resources\Views\Public\Metadata\PageMetadataResource;
-use App\Models\Page;
+use App\Http\Resources\Views\Public\Content\PrivacyPolicyContentResource;
 use App\Repositories\Views\PublicViewRepository;
 use Inertia\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 final class PrivacyPolicyController extends Controller
 {
-    /** Display the public privacy policy page. */
+    /**
+     * Display the public privacy policy page.
+     *
+     * @throws HttpException
+     */
     public function __invoke(): Response
     {
-        $page = Page::where('slug', 'privacy')->first() ?? Page::factory()->privacyPage()->make();
-        $template = $page?->template ?? WebpageTemplate::PUBLIC_CONTENT->value;
+        $content_resource = new PrivacyPolicyContentResource;
+
+        if (!$template = $content_resource->getTemplate()) {
+            abort(404);
+        }
 
         return (new PublicViewRepository)->getViewDetails(
-            $template,
-            (new PageContentResource($page))->getItem(),
-            (new PageMetadataResource)->getItem($page)
+            $template->value,
+            $content_resource->getItem(),
+            $content_resource->getMetaData()
         );
     }
 }

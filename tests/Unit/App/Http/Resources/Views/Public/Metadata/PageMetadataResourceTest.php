@@ -10,8 +10,8 @@ uses(RefreshDatabase::class);
 beforeEach(function () {
     $this->page = Page::factory()->create([
         'slug' => 'test-page',
+        'title' => 'Test Page',
         'meta_description' => 'Test page example meta-description.',
-        'meta_title' => 'Test Page',
     ]);
 });
 
@@ -28,6 +28,6 @@ test('getItem returns ok', function () {
         ->toMatchArray([
             'canonical' => url($this->page->slug),
             'description' => $this->page->getMetaDescription(),
-            'title' => $this->page->getMetaTitle(),
+            'title' => $this->page->getTitle(),
         ]);
 });

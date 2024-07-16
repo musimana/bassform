@@ -1,5 +1,6 @@
 <script setup>
-import LayoutDefault from '@/Layouts/LayoutDefault.vue'
+import AppBlocks from '@/Components/Blocks/AppBlocks.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 import ContentControls from '@/Pages/Public/Partials/ContentControls.vue'
 
 defineProps({
@@ -15,7 +16,9 @@ defineProps({
 </script>
 
 <template>
-  <LayoutDefault>
+  <LayoutGuest>
+    <AppBlocks />
+
     <ContentControls />
-  </LayoutDefault>
+  </LayoutGuest>
 </template>

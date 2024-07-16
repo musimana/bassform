@@ -1,0 +1,27 @@
+section.app-article h3.text-small-print {
+  @apply
+    w-full
+    mt-4
+    mb-2
+    px-4
+    font-semibold
+    text-xs
+    uppercase
+    tracking-widest;
+}
+
+section.app-article p.text-small-print,
+section.app-article table.text-small-print,
+section.app-article ul.text-small-print {
+  @apply
+    text-sm
+    text-gray-800
+    dark:text-gray-200
+    px-4
+    pb-4;
+}
+
+section.app-article ul.text-small-print li {
+  @apply
+    ml-4;
+}

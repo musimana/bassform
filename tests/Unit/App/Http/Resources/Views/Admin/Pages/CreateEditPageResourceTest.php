@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Webpages\WebpageStatus;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
 use App\Http\Resources\Views\Admin\Pages\CreateEditPageResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
@@ -17,16 +18,16 @@ test('getItem returns ok with stored models', function (Page $page) {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(8)
+        ->toHaveCount(7)
         ->toMatchArray([
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
+            'slug' => $page->slug,
+            'webpageStatusId' => fn () => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value
+                ?? WebpageStatus::DRAFT->value,
         ]);
 })->with('pages');
 
@@ -35,15 +36,15 @@ test('getItem returns ok with ghost models', function (Page $page) {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(8)
+        ->toHaveCount(7)
         ->toMatchArray([
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
+            'slug' => $page->slug,
+            'webpageStatusId' => fn () => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value
+                ?? WebpageStatus::DRAFT->value,
         ]);
 })->with('page-ghosts');

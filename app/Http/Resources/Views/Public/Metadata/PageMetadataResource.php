@@ -17,7 +17,7 @@ final class PageMetadataResource implements PageItemInterface
         return [
             'canonical' => $page->getUrl(),
             'description' => $page->getMetaDescription(),
-            'title' => $page->getMetaTitle(),
+            'title' => $page->getTitle(),
         ];
     }
 }

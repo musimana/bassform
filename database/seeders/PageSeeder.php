@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Webpages\WebpageStatus;
+use App\Enums\Webpages\WebpageTemplate;
 use App\Models\Block;
 use App\Models\Page;
 use Exception;
@@ -26,16 +28,14 @@ final class PageSeeder extends Seeder
         if ($seeds !== [0]) {
             foreach ($seeds as $seed) {
                 $page = Page::factory()->create([
+                    'webpage_status_id' => $seed['webpage_status_id'] ?? WebpageStatus::PUBLISHED->value,
                     'slug' => $seed['slug'] ?? null,
                     'title' => $seed['title'] ?? null,
-                    'subtitle' => $seed['subtitle'] ?? null,
-                    'content' => $seed['content'] ?? null,
-                    'meta_title' => $seed['meta_title'] ?? null,
-                    'meta_description' => $seed['meta_description'] ?? null,
-                    'meta_keywords' => $seed['meta_keywords'] ?? null,
-                    'template' => $seed['template'] ?? null,
                     'in_sitemap' => $seed['in_sitemap'] ?? 1,
                     'is_homepage' => $seed['is_homepage'] ?? 0,
+                    'meta_description' => $seed['meta_description'] ?? null,
+                    'meta_keywords' => $seed['meta_keywords'] ?? null,
+                    'template' => $seed['template'] ?? WebpageTemplate::PUBLIC_CONTENT->value,
                 ]);
 
                 foreach ($seed['blocks'] ?? [] as $display_order => $block) {

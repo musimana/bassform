@@ -2,6 +2,7 @@
 
 $standard_array = [
     'title' => 'Title',
+    'webpageStatusId' => 1,
     'inSitemap' => true,
 ];
 
@@ -11,11 +12,12 @@ dataset('page-arrays-update-invalid', function () use ($standard_array) {
             [],
             [
                 'title' => 'The title field is required.',
+                'webpageStatusId' => 'The webpage status id field is required.',
                 'inSitemap' => 'The in sitemap field is required.',
             ],
         ],
         'title missing' => [
-            ['inSitemap' => true],
+            ['webpageStatusId' => 1, 'inSitemap' => true],
             ['title' => 'The title field is required.'],
         ],
         'title empty' => [
@@ -30,26 +32,6 @@ dataset('page-arrays-update-invalid', function () use ($standard_array) {
             array_merge($standard_array, ['title' => str_pad('', 256, 'a')]),
             ['title' => 'The title field must not be greater than 255 characters.'],
         ],
-        'subtitle not string' => [
-            array_merge($standard_array, ['subtitle' => 1]),
-            ['subtitle' => 'The subtitle field must be a string.'],
-        ],
-        'subtitle >255 characters' => [
-            array_merge($standard_array, ['subtitle' => str_pad('', 256, 'a')]),
-            ['subtitle' => 'The subtitle field must not be greater than 255 characters.'],
-        ],
-        'content not string' => [
-            array_merge($standard_array, ['content' => 1]),
-            ['content' => 'The content field must be a string.'],
-        ],
-        'metaTitle not string' => [
-            array_merge($standard_array, ['metaTitle' => 1]),
-            ['metaTitle' => 'The meta title field must be a string.'],
-        ],
-        'metaTitle >255 characters' => [
-            array_merge($standard_array, ['metaTitle' => str_pad('', 256, 'a')]),
-            ['metaTitle' => 'The meta title field must not be greater than 255 characters.'],
-        ],
         'metaDescription not string' => [
             array_merge($standard_array, ['metaDescription' => 1]),
             ['metaDescription' => 'The meta description field must be a string.'],
@@ -58,8 +40,24 @@ dataset('page-arrays-update-invalid', function () use ($standard_array) {
             array_merge($standard_array, ['metaDescription' => str_pad('', 256, 'a')]),
             ['metaDescription' => 'The meta description field must not be greater than 255 characters.'],
         ],
+        'webpageStatusId missing' => [
+            ['title' => 'Title', 'inSitemap' => true],
+            ['webpageStatusId' => 'The webpage status id field is required.'],
+        ],
+        'webpageStatusId empty' => [
+            array_merge($standard_array, ['webpageStatusId' => '']),
+            ['webpageStatusId' => 'The webpage status id field is required.'],
+        ],
+        'webpageStatusId not integer' => [
+            array_merge($standard_array, ['webpageStatusId' => 'a']),
+            ['webpageStatusId' => 'The webpage status id field must be an integer.'],
+        ],
+        'webpageStatusId > max WebpageStatus' => [
+            array_merge($standard_array, ['webpageStatusId' => 42]),
+            ['webpageStatusId' => 'The webpage status id field must not be greater than 2.'],
+        ],
         'inSitemap missing' => [
-            ['title' => 'Title'],
+            ['title' => 'Title', 'webpageStatusId' => 1],
             ['inSitemap' => 'The in sitemap field is required.'],
         ],
         'inSitemap empty' => [

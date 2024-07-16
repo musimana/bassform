@@ -32,7 +32,7 @@ import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
     <AppSectionHtml
       v-else
       :html="block.data.html"
-      class="app-article px-4 pb-8 leading-relaxed"
+      class="app-article px-4"
       :id="'section-' + index"
     ></AppSectionHtml>
   </div>

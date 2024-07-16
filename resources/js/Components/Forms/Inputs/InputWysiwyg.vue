@@ -7,13 +7,16 @@ import {
   Bold,
   Italic,
   BlockQuote,
+  GeneralHtmlSupport,
   Heading,
   Link,
   List,
   Paragraph,
+  Style,
   Table,
   TableToolbar,
   TextTransformation,
+  Underline,
 } from 'ckeditor5'
 import 'ckeditor5/ckeditor5.css'
 
@@ -29,13 +32,16 @@ class Editor extends ClassicEditor {
     Bold,
     Italic,
     BlockQuote,
+    GeneralHtmlSupport,
     Heading,
     Link,
     List,
     Paragraph,
+    Style,
     Table,
     TableToolbar,
     TextTransformation,
+    Underline,
   ]
 
   static defaultConfig = {
@@ -45,9 +51,11 @@ class Editor extends ClassicEditor {
         'redo',
         '|',
         'heading',
+        'style',
         '|',
         'bold',
         'italic',
+        'underline',
         '|',
         'link',
         'insertTable',
@@ -55,6 +63,40 @@ class Editor extends ClassicEditor {
         '|',
         'bulletedList',
         'numberedList',
+      ],
+    },
+    style: {
+      definitions: [
+        {
+          name: 'Heading 2 - Page Title',
+          element: 'h2',
+          classes: ['text-page-title'],
+        },
+        {
+          name: 'Heading 3 - Small Print',
+          element: 'h3',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'Paragraph - Small Print',
+          element: 'p',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'Paragraph - Page Subtitle',
+          element: 'p',
+          classes: ['text-page-subtitle'],
+        },
+        {
+          name: 'Table - Small Print',
+          element: 'table',
+          classes: ['text-small-print'],
+        },
+        {
+          name: 'List (Points) - Small Print',
+          element: 'ul',
+          classes: ['text-small-print'],
+        },
       ],
     },
     link: {
@@ -86,12 +128,12 @@ Editor
 </script>
 
 <template>
-  <div class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none">
+  <section class="app-article bg-gray-100 dark:bg-gray-900 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none">
     <CKEditor.component
       :editor="Editor"
       v-model="model"
     ></CKEditor.component>
-  </div>
+  </section>
 </template>
 
 <style>

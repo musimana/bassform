@@ -26,21 +26,6 @@ test('rules returns ok', function () {
             'string',
             'max:255',
         ],
-        'subtitle' => [
-            'nullable',
-            'string',
-            'max:255',
-        ],
-        'content' => [
-            'nullable',
-            'string',
-            'max:5120',
-        ],
-        'metaTitle' => [
-            'nullable',
-            'string',
-            'max:255',
-        ],
         'metaDescription' => [
             'nullable',
             'string',
@@ -49,6 +34,11 @@ test('rules returns ok', function () {
         'inSitemap' => [
             'required',
             'boolean',
+        ],
+        'webpageStatusId' => [
+            'required',
+            'integer',
+            'max:2',
         ],
     ], $actual);
 });

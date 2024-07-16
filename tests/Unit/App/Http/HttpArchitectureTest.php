@@ -90,11 +90,6 @@ arch('app/Http/Resources/Views/Public/Metadata has valid architecture')
     ->toHaveSuffix('MetadataResource')
     ->tohaveMethod('getItem');
 
-arch('app/Http/Resources/Views/Public/Summaries has valid architecture')
-    ->expect('App\Http\Resources\Views\Public\Summaries')
-    ->toHaveSuffix('SummaryResource')
-    ->tohaveMethod('getItem');
-
 arch('app/Http/Resources/Views/Sitemaps has valid architecture')
     ->expect('App\Http\Resources\Views\Sitemaps')
     ->toHaveSuffix('SitemapResource');

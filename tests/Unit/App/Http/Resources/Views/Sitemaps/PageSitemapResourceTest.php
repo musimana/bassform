@@ -10,9 +10,6 @@ uses(RefreshDatabase::class);
 beforeEach(function () {
     $this->page = Page::factory()->create([
         'slug' => 'test-page',
-        'meta_description' => 'Test page example meta-description.',
-        'meta_keywords' => 'test, page, keywords',
-        'meta_title' => 'Test Page',
     ]);
 });
 

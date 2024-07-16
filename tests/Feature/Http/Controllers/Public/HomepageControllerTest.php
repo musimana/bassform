@@ -28,10 +28,10 @@ it('can render the homepage view', function () {
     );
 
     expect($actual)
-        ->toHaveCorrectHtmlHead(WebpageTemplate::PUBLIC_INDEX->value)
+        ->toHaveCorrectHtmlHead(WebpageTemplate::PUBLIC_CONTENT->value)
         ->toHaveCorrectHtmlBody()
         ->toHaveCorrectPropsDetails(
-            WebpageTemplate::PUBLIC_INDEX->value,
+            WebpageTemplate::PUBLIC_CONTENT->value,
             $data['content'],
             $data['metadata']
         );

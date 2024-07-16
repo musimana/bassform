@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Views\Admin\Pages;
 
+use App\Enums\Webpages\WebpageStatus;
 use App\Http\Resources\Views\Admin\Blocks\AdminBlocksResource;
 use App\Interfaces\Resources\Items\PageItemInterface;
 use App\Models\Page;
@@ -19,12 +20,11 @@ final class CreateEditPageResource implements PageItemInterface
      *      data: array<string, array<int, string>|string>,
      *      schema: array{label:string, inputs:array<int, bool|int|string>}
      *  }>,
-     *  content: string,
-     *  subtitle: string,
      *  title: string,
-     *  metaTitle: string,
      *  metaDescription: string,
      *  inSitemap: bool,
+     *  slug: string|null,
+     *  webpageStatusId: \Closure,
      * }
      */
     public function getItem(Page $page): array
@@ -32,12 +32,12 @@ final class CreateEditPageResource implements PageItemInterface
         return [
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
+            'slug' => $page->slug,
+            'webpageStatusId' => fn () => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value
+                ?? WebpageStatus::DRAFT->value,
         ];
     }
 }

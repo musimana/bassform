@@ -21,10 +21,8 @@ $seeds = [
     [
         'slug' => 'home',
         'title' => config('app.name'),
-        'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
-        'template' => WebpageTemplate::PUBLIC_INDEX->value,
         'in_sitemap' => 0,
         'is_homepage' => 1,
         'blocks' => [
@@ -51,6 +49,7 @@ $seeds = [
                     ',
                 ]),
             ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
             [
                 'type' => BlockType::PANEL_LINKS->value,
                 'data' => json_encode([
@@ -75,18 +74,19 @@ $seeds = [
     [
         'slug' => 'about',
         'title' => 'About',
-        'subtitle' => config('app.name'),
-        'content' => '
-            <p class="text-lg text-gray-800 dark:text-gray-200 tracking-widest mb-8 border-l-4 border-gray-900 dark:border-gray-300 p-2 bg-gray-200 dark:bg-gray-800"><em>"Laravel Breeze variant with Vue, Inertia & Tailwind"</em></p>
-        ',
-        'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
-        'template' => WebpageTemplate::PUBLIC_CONTENT->value,
         'blocks' => [
             [
                 'type' => BlockType::WYSIWYG->value,
                 'data' => json_encode([
                     'html' => '
+                        <h2 class="text-page-title">ABOUT</h2>
+                        <p class="text-page-subtitle">' . config('app.name') . '</p>
+                        <blockquote>
+                            <p>
+                                <i>“Laravel Breeze variant with Vue, Inertia &amp; Tailwind”&nbsp;</i>
+                            </p>
+                        </blockquote>
                         <p>
                             Bassform is a light-weight template for scaffolding
                             <a href="https://laravel.com/" target="_blank" rel="noopener noreferrer"><i>Laravel</i></a> apps,
@@ -113,21 +113,39 @@ $seeds = [
     [
         'slug' => 'controls',
         'title' => 'Controls',
-        'subtitle' => 'The UI control components that come with the template are demonstrated below.',
-        'meta_title' => 'Controls',
         'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">CONTROLS</h2>
+                        <p class="text-page-subtitle">The UI control components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
         ],
     ],
 
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'subtitle' => 'The UI form & input components that come with the template are demonstrated below.',
-        'meta_title' => 'Forms',
         'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
+        'blocks' => [
+            [
+                'type' => BlockType::WYSIWYG->value,
+                'data' => json_encode([
+                    'html' => '
+                        <h2 class="text-page-title">FORMS</h2>
+                        <p class="text-page-subtitle">The UI form & input components that come with the template are demonstrated below</p>
+                    ',
+                ])
+            ],
+            ['type' => BlockType::SECTION_DIVIDER->value],
+        ],
     ],
 
 ];

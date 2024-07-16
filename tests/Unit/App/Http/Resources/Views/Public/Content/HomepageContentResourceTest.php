@@ -21,7 +21,7 @@ test('getItem returns ok without a Page Model', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4);
+        ->toHaveCount(1);
 });
 
 test('getItem returns ok with a Page Model', function () {
@@ -39,12 +39,9 @@ test('getItem returns ok with a Page Model', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
+        ->toHaveCount(1)
         ->toMatchArray([
             'blocks' => [],
-            'bodytext' => $page->content,
-            'heading' => $page->title,
-            'subheading' => $page->subtitle,
         ]);
 });
 
@@ -52,14 +49,14 @@ test('getTemplate returns a WebpageTemplate', function () {
     $actual = (new HomepageContentResource)->getTemplate();
 
     expect($actual?->value)
-        ->toEqual('Public/PublicHomepage');
+        ->toEqual(WebpageTemplate::PUBLIC_CONTENT->value);
 });
 
 it('initialises with setDefaultModel ok', function () {
     $actual = new HomepageContentResource;
 
     expect($actual->getTemplate()?->value)
-        ->toEqual(WebpageTemplate::PUBLIC_INDEX->value);
+        ->toEqual(WebpageTemplate::PUBLIC_CONTENT->value);
 
     expect($actual->getItem()['blocks'])
         ->toHaveCamelCaseKeys()

@@ -16,7 +16,15 @@ test('show renders the page view', function (Page $page) {
     $actual = $this->get($route);
     $session = session()->all();
     $headers = $actual->headers->all();
-    $status = $page->is_homepage ? 302 : 200;
+    $status = 200;
+
+    if (!$page->isPublished()) {
+        $status = 404;
+    }
+
+    if ($page->is_homepage) {
+        $status = 302;
+    }
 
     $actual
         ->assertStatus($status)

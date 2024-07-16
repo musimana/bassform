@@ -38,7 +38,7 @@ const props = defineProps({
       :key="inputIndex"
     >
       <InputLabel
-        class="block w-full font-medium text-sm mb-2"
+        :class="input.type === 'wysiwyg' ? 'sr-only' : 'block w-full font-medium text-sm mb-2'"
         :value="input.label"
       />
 

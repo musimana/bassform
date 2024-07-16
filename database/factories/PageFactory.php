@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\Blocks\BlockType;
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -16,18 +18,16 @@ final class PageFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, bool|string|null>
+     * @return array<string, bool|int|string|null>
      */
     public function definition(): array
     {
         $title = $this->getFakeString();
 
         return [
+            'webpage_status_id' => WebpageStatus::PUBLISHED->value,
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
-            'subtitle' => null,
-            'content' => null,
-            'meta_title' => null,
             'meta_description' => null,
             'meta_keywords' => null,
             'open_graph_id' => null,
@@ -44,29 +44,25 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'about',
             'title' => 'About',
-            'subtitle' => config('app.name'),
-            'content' => '',
-            'meta_title' => 'About',
             'meta_description' => config('metadata.description'),
+        ]));
+    }
+
+    /** Indicate that the model should have draft webpage status. */
+    public function draft(): static
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'webpage_status_id' => WebpageStatus::DRAFT->value,
         ]));
     }
 
     /** Indicate that the model should use faked data with all fields filled. */
     public function dummy(): static
     {
-        $title = $this->getFakeString();
-
         return $this->state(fn (array $attributes) => array_merge([
-            'slug' => urlencode(str_replace(' ', '-', $title)),
-            'title' => ucwords($title),
-            'subtitle' => $this->getFakeString(),
-            'content' => $this->getFakeTextHtml(),
-            'meta_title' => ucwords($title),
-            'meta_description' => $this->getFakeString(20, 30),
-            'template' => WebpageTemplate::PUBLIC_CONTENT->value,
-            'in_sitemap' => true,
-            'is_homepage' => false,
             ...$attributes,
+            'meta_description' => $this->getFakeString(20, 30),
         ]));
     }
 
@@ -77,11 +73,7 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'home',
             'title' => config('app.name'),
-            'subtitle' => config('metadata.description'),
-            'content' => '',
-            'meta_title' => config('app.name'),
             'meta_description' => config('metadata.description'),
-            'template' => WebpageTemplate::PUBLIC_INDEX->value,
             'in_sitemap' => false,
             'is_homepage' => true,
         ]));
@@ -94,10 +86,7 @@ final class PageFactory extends Factory
             ...$attributes,
             'slug' => 'privacy',
             'title' => 'Privacy Policy',
-            'subtitle' => config('app.name'),
-            'content' => view('partials.body.privacy')->render(),
-            'meta_title' => 'Privacy Policy',
-            'meta_description' => 'Privacy policy for the ' . config('app.name') . ' website, which covers how this app handles your data.',
+            'meta_description' => BlockType::PRIVACY_POLICY->schema()['description'],
         ]));
     }
 }
