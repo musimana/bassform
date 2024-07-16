@@ -10,6 +10,7 @@ import TabBody from '@/Components/Controls/Tabs/TabBody.vue'
 import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
 import CreateEditControls from '@/Pages/Admin/Partials/CreateEditControls.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
+import { reactive } from 'vue'
 
 const page = usePage().props.content
 
@@ -19,6 +20,10 @@ const form = useForm({
   metaDescription: page.metaDescription,
   title: page.title,
   webpageStatusId: page.webpageStatusId,
+})
+
+const state = reactive({
+  showPreviewButton: page.webpageStatusId === 1,
 })
 
 </script>
@@ -31,6 +36,7 @@ const form = useForm({
     method="patch"
     :endpoint="route('admin.page.edit', page.id)"
     :form="form"
+    @success="state.showPreviewButton = form.webpageStatusId === 1"
   >
     <TabControls
       class="pt-4 px-4"
@@ -129,7 +135,10 @@ const form = useForm({
 
     <CreateEditControls
       :parent-form="form"
+      :show-preview-button="state.showPreviewButton"
+      :url-preview-url="route('admin.page.show', page.id)"
       :url-return="route('dashboard')"
+      :url-view="route('page.show', page.slug)"
     />
   </AppForm>
 </template>
