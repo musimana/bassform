@@ -19,10 +19,7 @@ final class CreateEditPageResource implements PageItemInterface
      *      data: array<string, array<int, string>|string>,
      *      schema: array{label:string, inputs:array<int, bool|int|string>}
      *  }>,
-     *  content: string,
-     *  subtitle: string,
      *  title: string,
-     *  metaTitle: string,
      *  metaDescription: string,
      *  inSitemap: bool,
      * }
@@ -32,10 +29,7 @@ final class CreateEditPageResource implements PageItemInterface
         return [
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
         ];

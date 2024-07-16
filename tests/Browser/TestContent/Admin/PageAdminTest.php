@@ -20,16 +20,12 @@ final class PageAdminTest extends DuskTestCase
         $initial_array = [
             'in_sitemap' => 0,
             'meta_description' => 'Old meta-description.',
-            'meta_title' => 'Old Title',
-            'subtitle' => 'Old subtitle',
             'title' => 'Old Title',
         ];
 
         $expected_array = [
             'title' => 'New Title',
-            'subtitle' => 'New subtitle',
-            'metaTitle' => 'New meta-title',
-            'metaDescription' => 'New meta-description.',
+            'metaDescription' => 'New description.',
             'inSitemap' => ['type' => 'checkbox'],
         ];
 
@@ -37,8 +33,6 @@ final class PageAdminTest extends DuskTestCase
         $user = User::factory()->isAdmin()->create();
 
         Assert::assertTrue($page->title === $initial_array['title']);
-        Assert::assertTrue($page->subtitle === $initial_array['subtitle']);
-        Assert::assertTrue($page->meta_title === $initial_array['meta_title']);
         Assert::assertTrue($page->meta_description === $initial_array['meta_description']);
         Assert::assertFalse($page->in_sitemap);
 

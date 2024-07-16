@@ -30,9 +30,6 @@ final class Page extends Model
     protected $fillable = [
         'slug',
         'title',
-        'subtitle',
-        'content',
-        'meta_title',
         'meta_description',
         'meta_keywords',
         'open_graph_id',
@@ -41,24 +38,12 @@ final class Page extends Model
         'is_homepage',
     ];
 
-    /** Get the HTML content string for the page. */
-    public function getContent(): string
-    {
-        return $this->content ?? '';
-    }
-
     /** Get the public URL's path for the page. */
     public function getPath(): string
     {
         return $this->is_homepage
             ? route('home', [], false)
             : route('page.show', $this->slug, false);
-    }
-
-    /** Get the subtitle for the page. */
-    public function getSubtitle(): string
-    {
-        return $this->subtitle ?? '';
     }
 
     /** Get the public URL for the page. */

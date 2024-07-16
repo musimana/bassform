@@ -21,7 +21,6 @@ $seeds = [
     [
         'slug' => 'home',
         'title' => config('app.name'),
-        'meta_title' => config('app.name'),
         'meta_description' => config('metadata.description'),
         'meta_keywords' => config('metadata.keywords'),
         'in_sitemap' => 0,
@@ -75,7 +74,6 @@ $seeds = [
     [
         'slug' => 'about',
         'title' => 'About',
-        'meta_title' => 'About',
         'meta_description' => config('metadata.description'),
         'blocks' => [
             [
@@ -115,7 +113,6 @@ $seeds = [
     [
         'slug' => 'controls',
         'title' => 'Controls',
-        'meta_title' => 'Controls',
         'meta_description' => $description_controls,
         'template' => WebpageTemplate::PUBLIC_CONTENT_CONTROLS->value,
         'blocks' => [
@@ -135,7 +132,6 @@ $seeds = [
     [
         'slug' => 'forms',
         'title' => 'Forms',
-        'meta_title' => 'Forms',
         'meta_description' => $description_forms,
         'template' => WebpageTemplate::PUBLIC_CONTENT_FORMS->value,
         'blocks' => [

@@ -21,7 +21,7 @@ test('getItem returns ok without a Page Model', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4);
+        ->toHaveCount(1);
 });
 
 test('getItem returns ok with a Page Model', function () {
@@ -39,12 +39,9 @@ test('getItem returns ok with a Page Model', function () {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(4)
+        ->toHaveCount(1)
         ->toMatchArray([
             'blocks' => [],
-            'bodytext' => $page->content,
-            'heading' => $page->title,
-            'subheading' => $page->subtitle,
         ]);
 });
 

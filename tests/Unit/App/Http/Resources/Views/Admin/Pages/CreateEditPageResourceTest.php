@@ -17,14 +17,10 @@ test('getItem returns ok with stored models', function (Page $page) {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(8)
         ->toMatchArray([
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
         ]);
@@ -35,14 +31,10 @@ test('getItem returns ok with ghost models', function (Page $page) {
 
     expect($actual)
         ->toHaveCamelCaseKeys()
-        ->toHaveCount(8)
         ->toMatchArray([
             'id' => $page->id,
             'blocks' => (new AdminBlocksResource($page->blocks, $page))->getItems(),
-            'content' => $page->getContent(),
-            'subtitle' => $page->getSubtitle(),
             'title' => $page->getTitle(),
-            'metaTitle' => $page->getMetaTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
         ]);

@@ -29,13 +29,10 @@ final class PageSeeder extends Seeder
                 $page = Page::factory()->create([
                     'slug' => $seed['slug'] ?? null,
                     'title' => $seed['title'] ?? null,
-                    'subtitle' => $seed['subtitle'] ?? null,
-                    'content' => $seed['content'] ?? null,
-                    'meta_title' => $seed['meta_title'] ?? null,
-                    'meta_description' => $seed['meta_description'] ?? null,
-                    'meta_keywords' => $seed['meta_keywords'] ?? null,
                     'in_sitemap' => $seed['in_sitemap'] ?? 1,
                     'is_homepage' => $seed['is_homepage'] ?? 0,
+                    'meta_description' => $seed['meta_description'] ?? null,
+                    'meta_keywords' => $seed['meta_keywords'] ?? null,
                     'template' => $seed['template'] ?? WebpageTemplate::PUBLIC_CONTENT->value,
                 ]);
 
