@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Models\Block;
 use App\Models\Page;
@@ -27,6 +28,7 @@ final class PageSeeder extends Seeder
         if ($seeds !== [0]) {
             foreach ($seeds as $seed) {
                 $page = Page::factory()->create([
+                    'webpage_status_id' => $seed['webpage_status_id'] ?? WebpageStatus::PUBLISHED->value,
                     'slug' => $seed['slug'] ?? null,
                     'title' => $seed['title'] ?? null,
                     'in_sitemap' => $seed['in_sitemap'] ?? 1,

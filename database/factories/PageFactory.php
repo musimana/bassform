@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Blocks\BlockType;
+use App\Enums\Webpages\WebpageStatus;
 use App\Enums\Webpages\WebpageTemplate;
 use App\Traits\FakesDatabaseValues;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,13 +18,14 @@ final class PageFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, bool|string|null>
+     * @return array<string, bool|int|string|null>
      */
     public function definition(): array
     {
         $title = $this->getFakeString();
 
         return [
+            'webpage_status_id' => WebpageStatus::PUBLISHED->value,
             'slug' => urlencode(str_replace(' ', '-', $title)),
             'title' => ucwords($title),
             'meta_description' => null,
@@ -43,6 +45,15 @@ final class PageFactory extends Factory
             'slug' => 'about',
             'title' => 'About',
             'meta_description' => config('metadata.description'),
+        ]));
+    }
+
+    /** Indicate that the model should have draft webpage status. */
+    public function draft(): static
+    {
+        return $this->state(fn (array $attributes) => array_merge([
+            ...$attributes,
+            'webpage_status_id' => WebpageStatus::DRAFT->value,
         ]));
     }
 

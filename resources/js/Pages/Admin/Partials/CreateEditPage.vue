@@ -3,6 +3,7 @@ import AppForm from '@/Components/Forms/AppForm.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
 import InputBlocks from '@/Components/Forms/Inputs/InputBlocks.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
+import InputSelect from '@/Components/Forms/Inputs/InputSelect.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
 import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
 import TabBody from '@/Components/Controls/Tabs/TabBody.vue'
@@ -17,6 +18,7 @@ const form = useForm({
   inSitemap: page.inSitemap,
   metaDescription: page.metaDescription,
   title: page.title,
+  webpageStatusId: page.webpageStatusId,
 })
 
 </script>
@@ -90,6 +92,28 @@ const form = useForm({
             type="text"
             class="block w-full"
             v-model="form.metaDescription"
+          />
+        </FormInput>
+      </div>
+
+      <div class="w-full flex pt-2 px-4">
+        <FormInput
+          input-label="Webpage Status"
+          input-label-position="left"
+          input-field="webpageStatusId"
+          :parent-form="form"
+        >
+          <InputSelect
+            id="input-webpage-status-id"
+            name="webpageStatusId"
+            class="block w-full"
+            v-model="form.webpageStatusId"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
+            :options="{
+              0: { label: 'Draft', value: 1 },
+              1: { label: 'Published', value: 2 },
+            }"
           />
         </FormInput>
       </div>

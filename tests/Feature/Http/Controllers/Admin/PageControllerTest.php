@@ -71,6 +71,7 @@ test('update returns correctly for minimum valid data', function (Page $page) {
     $user = User::factory()->isAdmin()->create();
     $data = [
         'title' => $page->getTitle() . ' - UPDATED',
+        'webpageStatusId' => $page->webpage_status_id,
         'inSitemap' => (bool) $page->in_sitemap,
     ];
 
@@ -88,6 +89,7 @@ test('update returns correctly for minimum valid data', function (Page $page) {
 
     expect($page->title)->toEqual($data['title']);
     expect($page->meta_description)->toEqual($page_original->meta_description);
+    expect($page->webpage_status_id)->toEqual($page_original->webpage_status_id);
     expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
     expect($page->blocks)->toEqual($page_original->blocks);
 })->with('pages');
@@ -99,6 +101,7 @@ test('update returns correctly for maximum valid data', function (Page $page) {
     $data = [
         'title' => 'New Title',
         'metaDescription' => 'New Meta-Description',
+        'webpageStatusId' => $page->webpage_status_id !== 1 ? 1 : 2,
         'inSitemap' => !$page->in_sitemap,
     ];
 
@@ -116,6 +119,7 @@ test('update returns correctly for maximum valid data', function (Page $page) {
 
     expect($page->title)->toEqual($data['title']);
     expect($page->meta_description)->toEqual($data['metaDescription']);
+    expect($page->webpage_status_id)->toEqual($data['webpageStatusId']);
     expect($page->in_sitemap)->toEqual($data['inSitemap']);
     expect($page->blocks)->toEqual($page_original->blocks);
 })->with('pages');
@@ -127,6 +131,7 @@ test('update ignores unknown fields', function () {
     $user = User::factory()->isAdmin()->create();
     $data = [
         'title' => $page->getTitle() . ' - UPDATED',
+        'webpageStatusId' => $page->webpage_status_id,
         'inSitemap' => (bool) $page->in_sitemap,
         'unknownField' => 'invalid value',
     ];
@@ -147,6 +152,7 @@ test('update ignores unknown fields', function () {
     expect($page->unknown_field)->toBeNull();
     expect($page->title)->toEqual($data['title']);
     expect($page->meta_description)->toEqual($page_original->meta_description);
+    expect($page->webpage_status_id)->toEqual($page_original->webpage_status_id);
     expect($page->in_sitemap)->toEqual($page_original->in_sitemap);
     expect($page->blocks)->toEqual($page_original->blocks);
 });

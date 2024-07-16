@@ -27,9 +27,10 @@ final class PageController extends Controller
             return to_route('home');
         }
 
-        $template = WebpageTemplate::tryFrom($page?->template ?? '');
-
-        if (!$template) {
+        if (
+            !$page->isPublished()
+            || !$template = WebpageTemplate::tryFrom($page?->template ?? '')
+        ) {
             abort(404);
         }
 
