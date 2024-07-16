@@ -1,4 +1,6 @@
 <script setup>
+const emit = defineEmits(['success'])
+
 const props = defineProps({
   endpoint: {
     type: String,
@@ -18,10 +20,12 @@ const submit = () => {
   if (props.method === 'patch') {
     props.form.patch(props.endpoint, {
       preserveScroll: true,
+      onSuccess: () => emit('success'),
     })
   } else {
     props.form.post(props.endpoint, {
       preserveScroll: true,
+      onSuccess: () => emit('success'),
     })
   }
 }
