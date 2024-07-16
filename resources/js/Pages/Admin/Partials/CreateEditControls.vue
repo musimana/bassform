@@ -3,6 +3,7 @@ import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import InputError from '@/Components/Forms/Inputs/InputError.vue'
 import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import LinkButton from '@/Components/Controls/Links/LinkButton.vue'
+import OutlineArrowTopRightOnSquare from '@/Components/Icons/HeroIcons/Outline/OutlineArrowTopRightOnSquare.vue'
 import OutlineArrowUturnLeft from '@/Components/Icons/HeroIcons/Outline/OutlineArrowUturnLeft.vue'
 import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
 import { usePage } from '@inertiajs/vue3'
@@ -12,7 +13,19 @@ defineProps({
     type: Object,
     required: true,
   },
+  showPreviewButton: {
+    type: Boolean,
+    default: false,
+  },
+  urlPreview: {
+    type: String,
+    default: '',
+  },
   urlReturn: {
+    type: String,
+    default: '',
+  },
+  urlView: {
     type: String,
     default: '',
   },
@@ -46,6 +59,30 @@ defineProps({
         min-width="md"
       >
         Cancel <OutlineArrowUturnLeft class="ml-2 h-4 w-4" />
+      </LinkButton>
+
+      <LinkButton
+        v-show="urlPreview !== '' && showPreviewButton"
+        custom-classes="app-button-secondary-gray-100"
+        :href="previewUrl"
+        min-width="md"
+        title="Preview the draft page"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Preview <OutlineArrowTopRightOnSquare class="-mt-0.5 -mr-0.5 ml-2 h-4 w-4" />
+      </LinkButton>
+
+      <LinkButton
+        v-show="urlView !== '' && !showPreviewButton"
+        custom-classes="app-button-secondary-gray-100"
+        :href="viewUrl"
+        min-width="md"
+        title="View the page"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View <OutlineArrowTopRightOnSquare class="-mt-0.5 -mr-0.5 ml-2 h-4 w-4" />
       </LinkButton>
 
       <AppButton

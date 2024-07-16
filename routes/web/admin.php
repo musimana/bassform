@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->middleware(['auth', 'verified', 'admin'])->name('admin.')->group(function () {
     /** PageController Routes */
     Route::controller(PageController::class)->group(function () {
+        Route::get('pages/{page}/preview', 'show')->name('page.show');
         Route::get('pages/{page}', 'edit')->name('page.edit');
         Route::patch('pages/{page}', 'update')->name('page.update');
     });
