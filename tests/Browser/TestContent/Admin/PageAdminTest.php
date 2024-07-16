@@ -40,7 +40,9 @@ final class PageAdminTest extends DuskTestCase
             ->loginAs($user)
 
             ->visit(new AdminEditPage($page))
-            ->screenshotWholePage('admin-pages-edit-blank')
+            ->screenshotWholePage('admin-pages-edit-content-blank')
+            ->press('META DATA')
+            ->screenshotWholePage('admin-pages-edit-metadata-blank')
             ->completeForm('form', $expected_array)
             ->screenshotWholePage('admin-pages-edit-filled')
             ->submitForm('form')
