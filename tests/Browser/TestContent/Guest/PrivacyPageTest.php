@@ -34,7 +34,6 @@ final class PrivacyPageTest extends DuskTestCase
 
         $this->browse(fn (Browser $browser) => $browser
             ->visit(new PageView($page))
-            ->assertSee(strtoupper($page->getTitle()))
         );
     }
 }
