@@ -23,6 +23,7 @@ final class CreateEditPageResource implements PageItemInterface
      *  title: string,
      *  metaDescription: string,
      *  inSitemap: bool,
+     *  slug: string|null,
      *  webpageStatusId: \Closure,
      * }
      */
@@ -34,6 +35,7 @@ final class CreateEditPageResource implements PageItemInterface
             'title' => $page->getTitle(),
             'metaDescription' => $page->getMetaDescription(),
             'inSitemap' => $page->isInSitemap(),
+            'slug' => $page->slug,
             'webpageStatusId' => fn () => WebpageStatus::tryFrom($page->webpage_status_id ?? 1)?->value
                 ?? WebpageStatus::DRAFT->value,
         ];
