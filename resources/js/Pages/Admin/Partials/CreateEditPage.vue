@@ -1,13 +1,13 @@
 <script setup>
-import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
 import InputBlocks from '@/Components/Forms/Inputs/InputBlocks.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
-import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
+import AppSectionDivider from '@/Components/Sections/AppSectionDivider.vue'
+import TabBody from '@/Components/Controls/Tabs/TabBody.vue'
+import TabControls from '@/Components/Controls/Tabs/TabControls.vue'
+import CreateEditControls from '@/Pages/Admin/Partials/CreateEditControls.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 
 const page = usePage().props.content
@@ -22,7 +22,7 @@ const form = useForm({
 </script>
 
 <template>
-  <h3 class="w-full py-4 font-semibold text-xs text-gray-950 dark:text-gray-100 uppercase tracking-widest">Edit Page: {{ page.title }}</h3>
+  <h3 class="w-full p-4 font-semibold text-xs uppercase tracking-widest">Edit Page: {{ page.title }}</h3>
 
   <AppForm
     class="w-full"
@@ -30,86 +30,82 @@ const form = useForm({
     :endpoint="route('admin.page.edit', page.id)"
     :form="form"
   >
-    <div class="w-full flex pt-4 px-4">
-      <FormInput
-        input-label="Title*"
-        input-label-position="left"
-        input-field="title"
-        :parent-form="form"
-      >
-        <InputText
-          id="input-title"
-          name="title"
-          type="text"
-          class="block w-full"
-          v-model="form.title"
-          autofocus
-        />
-      </FormInput>
-    </div>
+    <TabControls
+      class="pt-4 px-4"
+      :tabs="['Content', 'Meta Data']"
+    />
 
-    <div class="w-full flex pt-4 px-4">
-      <FormInput
-        input-label="Blocks"
-        input-label-position="left"
-        input-field="blocks"
-        :parent-form="form"
-      >
-        <InputBlocks
-          :blocks="form.blocks"
-        />
-      </FormInput>
-    </div>
+    <AppSectionDivider margin="min" />
 
-    <div class="w-full flex pt-4 px-4">
-      <FormInput
-        input-label="Meta Description"
-        input-label-position="left"
-        input-field="metaDescription"
-        :parent-form="form"
-      >
-        <InputText
-          id="input-meta-description"
-          name="metaDescription"
-          type="text"
-          class="block w-full"
-          v-model="form.metaDescription"
-        />
-      </FormInput>
-    </div>
-
-    <div class="w-full flex p-4">
-      <label class="flex items-start">
-        <InputCheckbox name="inSitemap" v-model:checked="form.inSitemap" />
-
-        <span class="ms-2 text-sm text-gray-700 dark:text-gray-300">In Sitemap?</span>
-      </label>
-    </div>
-
-    <div class="w-full flex mt-4 pt-4 justify-between">
-      <span class="flex mt-4">
-        <InputError class="my-auto" :message="form.hasErrors ? 'Please update the indicated fields' : ''" />
-
-        <InputSuccess class="my-auto" :message="usePage().props.flash.status" />
-      </span>
-
-      <span class="w-1/2 h-8 my-auto py-1">
-        <progress
-          v-if="form.progress"
-          class="w-full my-auto"
-          max="100"
-          :value="form.progress.percentage"
+    <TabBody
+      class="mx-4 pt-4 px-4 bg-white dark:bg-gray-900 rounded-b-md"
+      :tab="0"
+    >
+      <div class="w-full flex pt-4 px-4">
+        <FormInput
+          input-label="Blocks"
+          input-label-position="hidden"
+          input-field="blocks"
+          :parent-form="form"
         >
-          {{ form.progress.percentage }}%
-        </progress>
-      </span>
+          <InputBlocks
+            :blocks="form.blocks"
+          />
+        </FormInput>
+      </div>
+    </TabBody>
 
-      <AppButton
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
-      >
-        Save <OutlinePaperAirplane class="ml-2 h-4 w-4" />
-      </AppButton>
-    </div>
+    <TabBody
+      class="mx-4 px-4 py-8 bg-white dark:bg-gray-900 rounded-b-md"
+      :tab="1"
+    >
+      <div class="w-full flex pt-2 px-4">
+        <FormInput
+          input-label="Title*"
+          input-label-position="left"
+          input-field="title"
+          :parent-form="form"
+        >
+          <InputText
+            id="input-title"
+            name="title"
+            type="text"
+            class="block w-full"
+            v-model="form.title"
+            autofocus
+          />
+        </FormInput>
+      </div>
+
+      <div class="w-full flex pt-2 px-4">
+        <FormInput
+          input-label="Meta Description"
+          input-label-position="left"
+          input-field="metaDescription"
+          :parent-form="form"
+        >
+          <InputText
+            id="input-meta-description"
+            name="metaDescription"
+            type="text"
+            class="block w-full"
+            v-model="form.metaDescription"
+          />
+        </FormInput>
+      </div>
+
+      <div class="w-full flex pt-2 px-4">
+        <label class="flex items-start text-sm">
+          <InputCheckbox class="my-auto" name="inSitemap" v-model:checked="form.inSitemap" />
+
+          <span class="ms-2 text-gray-700 dark:text-gray-300">In Sitemap?</span>
+        </label>
+      </div>
+    </TabBody>
+
+    <CreateEditControls
+      :parent-form="form"
+      :url-return="route('dashboard')"
+    />
   </AppForm>
 </template>

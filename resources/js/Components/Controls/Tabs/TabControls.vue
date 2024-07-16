@@ -27,7 +27,7 @@ onMounted(() => selectTab(0))
     <button
       v-for="(tab,index) in props.tabs"
       :key="index"
-      class="inline-flex space-x-2 border-t border-x rounded-t-lg px-6 py-3 bg-white dark:bg-gray-900 transition ease-in-out duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:rounded-sm"
+      class="inline-flex space-x-2 border-t border-x rounded-t-lg px-6 py-3 bg-white dark:bg-gray-900 transition ease-in-out duration-150 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-900 dark:focus:ring-gray-100 focus:rounded-md"
       :class="{ 'border-gray-900 dark:border-gray-100 font-semibold cursor-default': index === store.tabs[0].activeTab, 'border-gray-400 dark:border-gray-300 opacity-75 hover:opacity-100 cursor-pointer': index !== store.tabs[0].activeTab }"
       type="button"
       @click="selectTab(index)"
