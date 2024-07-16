@@ -1,13 +1,10 @@
 <script setup>
-import AppButton from '@/Components/Controls/Buttons/AppButton.vue'
 import AppForm from '@/Components/Forms/AppForm.vue'
 import FormInput from '@/Components/Forms/FormInput.vue'
 import InputBlocks from '@/Components/Forms/Inputs/InputBlocks.vue'
 import InputCheckbox from '@/Components/Forms/Inputs/InputCheckbox.vue'
-import InputError from '@/Components/Forms/Inputs/InputError.vue'
-import InputSuccess from '@/Components/Forms/Inputs/InputSuccess.vue'
 import InputText from '@/Components/Forms/Inputs/InputText.vue'
-import OutlinePaperAirplane from '@/Components/Icons/HeroIcons/Outline/OutlinePaperAirplane.vue'
+import CreateEditControls from '@/Pages/Admin/Partials/CreateEditControls.vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 
 const page = usePage().props.content
@@ -86,30 +83,9 @@ const form = useForm({
       </label>
     </div>
 
-    <div class="w-full flex mt-4 pt-4 justify-between">
-      <span class="flex mt-4">
-        <InputError class="my-auto" :message="form.hasErrors ? 'Please update the indicated fields' : ''" />
-
-        <InputSuccess class="my-auto" :message="usePage().props.flash.status" />
-      </span>
-
-      <span class="w-1/2 h-8 my-auto py-1">
-        <progress
-          v-if="form.progress"
-          class="w-full my-auto"
-          max="100"
-          :value="form.progress.percentage"
-        >
-          {{ form.progress.percentage }}%
-        </progress>
-      </span>
-
-      <AppButton
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
-      >
-        Save <OutlinePaperAirplane class="ml-2 h-4 w-4" />
-      </AppButton>
-    </div>
+    <CreateEditControls
+      :parent-form="form"
+      :url-return="route('dashboard')"
+    />
   </AppForm>
 </template>
