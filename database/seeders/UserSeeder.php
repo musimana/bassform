@@ -10,12 +10,12 @@ final class UserSeeder extends Seeder
     /** Run the database seeds. */
     public function run(): void
     {
-        $primary_user = User::where([['email', config('mail.from.address')]])->first();
+        $primary_user = User::where([['email', config('contacts.owner.address')]])->first();
 
         if (!$primary_user) {
             User::factory()->isAdmin()->create([
-                'name' => config('mail.from.name', 'admin'),
-                'email' => config('mail.from.address', 'admin@example.com'),
+                'name' => config('contacts.owner.name'),
+                'email' => config('contacts.owner.address'),
             ]);
         }
 
