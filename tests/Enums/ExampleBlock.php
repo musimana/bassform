@@ -44,15 +44,13 @@ enum ExampleBlock: string
                     ],
                 ],
             ],
-            self::PRIVACY_POLICY => null,
-            self::SECTION_DIVIDER => null,
-            self::STACK => null,
             self::TABS => [
                 'tabs' => ['Tab One', 'Tab Two'],
                 'tabContents' => ['<p>Tab one content.</p>', '<p>Tab two content.</p>'],
             ],
             self::WYSIWYG => ['html' => '<p>test</p>'],
-            default => BlockType::from($this->value)->staticData(),
+            self::UNKNOWN => BlockType::from($this->value)->staticData(),
+            default => null,
         };
     }
 

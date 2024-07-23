@@ -16,7 +16,24 @@ test('getItem returns ok without a Page Model', function () {
 
     expect($actual['blocks'])
         ->toBeArray()
-        ->toHaveCount(3);
+        ->toHaveCount(3)
+        ->toMatchArray([
+            [
+                'type' => 'wysiwyg',
+                'data' => [
+                    'html' => '<h2 class="text-page-title">PRIVACY POLICY</h2>
+                        <p class="text-page-subtitle">' . config('app.name') . '</p>',
+                ],
+            ],
+            [
+                'type' => 'section-divider',
+                'data' => [],
+            ],
+            [
+                'type' => 'privacy-policy',
+                'data' => ['html' => view('partials.static-blocks.privacy')->render()],
+            ],
+        ]);
 
     expect($actual)
         ->toHaveCamelCaseKeys()
