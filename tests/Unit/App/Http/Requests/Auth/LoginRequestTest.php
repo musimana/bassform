@@ -5,7 +5,7 @@ use App\Interfaces\Requests\RequestInterface;
 use Illuminate\Validation\ValidationException;
 
 beforeEach(function () {
-    $this->subject = new LoginRequest();
+    $this->subject = new LoginRequest;
 });
 
 arch('it implements the expected interface')

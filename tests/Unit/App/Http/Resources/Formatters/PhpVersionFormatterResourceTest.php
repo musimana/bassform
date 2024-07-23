@@ -8,7 +8,7 @@ arch('it implements the expected interface')
     ->toImplement(ConstantStringFormatterInterface::class);
 
 test('getValue returns ok with valid inputs', function () {
-    $actual = (new PhpVersionFormatterResource())->getValue();
+    $actual = (new PhpVersionFormatterResource)->getValue();
 
     expect($actual)
         ->toBeString()
