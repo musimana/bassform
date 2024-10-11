@@ -15,8 +15,8 @@
         "php": "8.2.*||8.3.*",
         "guzzlehttp/guzzle": "^7.9",
         "inertiajs/inertia-laravel": "^1.3",
-        "laravel/framework": "^11.16",
-        "laravel/tinker": "^2.9.0",
+        "laravel/framework": "^11.27",
+        "laravel/tinker": "^2.10",
         "tightenco/ziggy": "^1.8.2"
     },
     "require-dev": {
@@ -24,11 +24,11 @@
         "jasonmccreary/laravel-test-assertions": "^2.4",
         "larastan/larastan": "^2.9",
         "laravel/dusk": "^8.2",
-        "laravel/pint": "^1.16",
-        "laravel/sail": "^1.31",
+        "laravel/pint": "^1.18",
+        "laravel/sail": "^1.35",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.3",
-        "pestphp/pest": "^2.34",
+        "nunomaduro/collision": "^8.4",
+        "pestphp/pest": "^2.35",
         "pestphp/pest-plugin-laravel": "^2.4",
         "spatie/laravel-ignition": "^2.8"
     },
