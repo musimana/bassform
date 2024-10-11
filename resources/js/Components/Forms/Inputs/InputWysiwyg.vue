@@ -1,5 +1,5 @@
 <script setup>
-import CKEditor from '@ckeditor/ckeditor5-vue'
+import { Ckeditor } from '@ckeditor/ckeditor5-vue'
 import {
   ClassicEditor,
   Essentials,
@@ -129,10 +129,10 @@ Editor
 
 <template>
   <section class="app-article bg-gray-100 dark:bg-gray-900 border-gray-500 focus:border-gray-100 focus:ring-gray-100 rounded-md shadow-sm dark:shadow-none">
-    <CKEditor.component
+    <Ckeditor
       :editor="Editor"
       v-model="model"
-    ></CKEditor.component>
+    ></Ckeditor>
   </section>
 </template>
 

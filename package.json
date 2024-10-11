@@ -28,9 +28,9 @@
         "vue": "^3.4.33"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-vue": "^6.0.0",
-        "@vueuse/components": "^10.11.0",
-        "@vueuse/core": "^10.11.0",
-        "ckeditor5": "^42.0.1"
+        "@ckeditor/ckeditor5-vue": "^7.2.0",
+        "@vueuse/components": "^11.1.0",
+        "@vueuse/core": "^11.1.0",
+        "ckeditor5": "^43.2.0"
     }
 }
