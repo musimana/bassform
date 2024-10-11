@@ -52,6 +52,12 @@ Node versions on Linux distributions should be normally be managed with [NVM](ht
 
 * Run any new migrations with `php artisan migrate --force`
 
+### Asset Cache Set-up
+
+For web apps in production environments, it's usually beneficial to set static assets e.g. images, to be cached by browsers.
+
+Example boilerplate for this is provided in the project's [.htaccess](/public/.htaccess).
+
 ### Optimisation
 
 * Run `php artisan optimize`

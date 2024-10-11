@@ -19,3 +19,8 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# One month cache for most static assets, recommended for production environments
+# <FilesMatch ".(css|jpg|jpeg|png|gif|webp|js|ico)$">
+#    Header set Cache-Control "max-age=31536000, public"
+# </FilesMatch>
